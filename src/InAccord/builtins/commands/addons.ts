@@ -1,6 +1,7 @@
 import {t} from "@common/i18n";
 import {OptionTypes} from "@modules/commandmanager";
 import DiscordModules from "@modules/discordmodules";
+import backup from "@modules/backupmanager";
 import Plugins from "@modules/pluginmanager";
 import Themes from "@modules/thememanager";
 
@@ -95,7 +96,7 @@ export default (type: "plugin" | "theme") => {
             }
 
             if (action === "share") {
-                DiscordModules.MessageUtils.sendMessage(channel.id, {content: `<betterdiscord://store/${encodeURIComponent(addon.name)}>`}, undefined, {});
+                DiscordModules.MessageUtils.sendMessage(channel.id, {content: `<inaccord://store/${encodeURIComponent(addon.name)}>`}, undefined, {});
             }
         }
     };

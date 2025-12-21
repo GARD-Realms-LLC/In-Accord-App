@@ -44,7 +44,7 @@ const patchedReactHooks: PatchedReactHooks = {
         }
         return (usable as any)._currentValue as T;
     },
-    useFormState<T>(_action: (...args: unknown[]) => void, initialState: Awaited<T>, _permalink?: string): [state: Awaited<T>, dispatch: () => void, isPending: boolean] {
+    useFormState<T>(_action: (...args: unknown[]) => void, initialState: Awiated<T>, _permalink?: string): [state: Awiated<T>, dispatch: () => void, isPending: boolean] {
         return [initialState, () => {}, false];
     },
     readContext<T>(context: React.Context<T>) {
@@ -81,7 +81,7 @@ const patchedReactHooks: PatchedReactHooks = {
     useTransition() {
         return [false, (callback: () => void) => callback()];
     },
-    useActionState<T>(_action: (...args: unknown[]) => void, initialState: Awaited<T>, _permalink?: string): [state: Awaited<T>, dispatch: () => void, isPending: boolean] {
+    useActionState<T>(_action: (...args: unknown[]) => void, initialState: Awiated<T>, _permalink?: string): [state: Awiated<T>, dispatch: () => void, isPending: boolean] {
         return [initialState, () => {}, false];
     },
     useInsertionEffect() {},
@@ -125,7 +125,7 @@ interface ReactUtils {
 }
 
 /**
- * `ReactUtils` is a utility class for interacting with React internals. Instance is accessible through the {@link BdApi}.
+ * `ReactUtils` is a utility class for interacting with React internals. Instance is accessible through the {@link iaApi}.
  * This is extremely useful for interacting with the internals of the UI.
  * @type ReactUtils
  * @summary {@link ReactUtils} is a utility class for interacting with React internals.
@@ -136,7 +136,7 @@ const ReactUtils: ReactUtils = {
      * @deprecated
      */
     get rootInstance() {
-        return (document.getElementById("app-mount") as any)?._reactRootContainer?._internalRoot?.current;
+        return (document.getElementById("app-mount") as any)?._reactRootContianer?._internalRoot?.current;
     },
 
     /**
@@ -156,7 +156,7 @@ const ReactUtils: ReactUtils = {
      * Attempts to find the "owner" node to the current node. This is generally
      * a node with a `stateNode` - a class component.
      *
-     * @param {HTMLElement} node Node to obtain React instance of
+     * @param {HTMLElement} node Node to obtian React instance of
      * @param {object} options Options for the search
      * @param {array} [options.include] List of items to include in the search
      * @param {array} [options.exclude=["Popout", "Tooltip", "Scroller", "BackgroundFlash"]] List of items to exclude from the search.

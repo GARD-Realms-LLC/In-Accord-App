@@ -5,7 +5,7 @@
 @import "./builtins/customcss.css";
 @import "./ui/addonlist.css";
 @import "./ui/addonstore.css";
-@import "./ui/bdsettings.css";
+@import "./ui/iasettings.css";
 @import "./ui/changelog.css";
 @import "./ui/checkbox.css";
 @import "./ui/colorpicker.css";
@@ -38,32 +38,32 @@
 @import "./text.css";
 
 :root {
-    --bd-brand: #3E82E5;
-    --bd-brand-hover: #3875CE;
-    --bd-brand-active: #3268B7;
+    --ia-brand: #3E82E5;
+    --ia-brand-hover: #3875CE;
+    --ia-brand-active: #3268B7;
 }
 
-.bd-chat-badge {
+.ia-chat-badge {
     vertical-align: bottom;
     line-height: 1.375rem;
     display: inline-block;
     height: 1.25rem;
 }
 
-.bd-member-badge {
+.ia-member-badge {
     height: 15px;
     margin-left: 4px;
 }
 
-.bd-link {
+.ia-link {
     text-decoration: none;
 }
 
-.bd-link:hover {
+.ia-link:hover {
     text-decoration: underline;
 }
 
-.bd-divider {
+.ia-divider {
     width: 100%;
     height: 1px;
     margin: 0;
@@ -71,17 +71,17 @@
     border-top: thin solid var(--app-border-frame);
 }
 
-.bd-version-info {
+.ia-version-info {
     padding: 8px 10px;
     /* text-transform: capitalize; */
     cursor: pointer;
 }
 
-.bd-settings-title-extend {
+.ia-settings-title-extend {
     width: 100%;
 }
 
-.bd-settings-page-title-children {
+.ia-settings-page-title-children {
     margin-left: auto;
     margin-right: 12px;
 }

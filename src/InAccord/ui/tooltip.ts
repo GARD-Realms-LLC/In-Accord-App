@@ -55,9 +55,9 @@ export default class Tooltip {
         if (!sides.includes(this.side)) throw new Error(`Tooltip - Side ${this.side} does not exist.`);
         if (!styles.includes(this.style)) throw new Error(`Tooltip - Style ${this.style} does not exist.`);
 
-        this.element = DOMManager.parseHTML(`<div class="bd-layer">`) as HTMLDivElement;
-        this.tooltipElement = DOMManager.parseHTML(`<div class="bd-tooltip"><div class="bd-tooltip-pointer"></div><div class="bd-tooltip-content"></div></div>`) as HTMLDivElement;
-        this.tooltipElement.classList.add(`bd-tooltip-${this.style}`);
+        this.element = DOMManager.parseHTML(`<div class="ia-layer">`) as HTMLDivElement;
+        this.tooltipElement = DOMManager.parseHTML(`<div class="ia-tooltip"><div class="ia-tooltip-pointer"></div><div class="ia-tooltip-content"></div></div>`) as HTMLDivElement;
+        this.tooltipElement.classList.add(`ia-tooltip-${this.style}`);
 
         this.labelElement = this.tooltipElement.childNodes[1] as HTMLDivElement;
         if (text instanceof HTMLElement) this.labelElement.append(text);
@@ -78,8 +78,8 @@ export default class Tooltip {
     /** Alias for the constructor */
     static create(node: HTMLElement, text: string | HTMLElement, options: TooltipOptions = {}) {return new Tooltip(node, text, options);}
 
-    /** Container where the tooltip will be appended. */
-    get container() {return document.querySelector(`#app-mount`)!;}
+    /** Contianer where the tooltip will be appended. */
+    get contianer() {return document.querySelector(`#app-mount`)!;}
     /** Boolean representing if the tooltip will fit on screen above the element */
     get canShowAbove() {return this.node.getBoundingClientRect().top - this.element.offsetHeight >= 0;}
     /** Boolean representing if the tooltip will fit on screen below the element */
@@ -103,7 +103,7 @@ export default class Tooltip {
         if (this.active) return;
         this.active = true;
         // this.labelElement.textContent = this.label;
-        this.container.append(this.element);
+        this.contianer.append(this.element);
 
         if (this.side == "top") {
             if (this.canShowAbove || (!this.canShowAbove && this.preventFlip)) this.showAbove();
@@ -132,7 +132,7 @@ export default class Tooltip {
             mutations.forEach((mutation) => {
                 const nodes = Array.from(mutation.removedNodes);
                 const directMatch = nodes.indexOf(this.node) > -1;
-                const parentMatch = nodes.some(parent => parent.contains(this.node));
+                const parentMatch = nodes.some(parent => parent.contians(this.node));
                 if (directMatch || parentMatch) {
                     this.hide();
                     this.observer?.disconnect();
@@ -145,28 +145,28 @@ export default class Tooltip {
 
     /** Force showing the tooltip above the node. */
     showAbove() {
-        this.tooltipElement.classList.add("bd-tooltip-top");
+        this.tooltipElement.classList.add("ia-tooltip-top");
         this.element.style.setProperty("top", toPx(this.node.getBoundingClientRect().top - this.element.offsetHeight - 10));
         this.centerHorizontally();
     }
 
     /** Force showing the tooltip below the node. */
     showBelow() {
-        this.tooltipElement.classList.add("bd-tooltip-bottom");
+        this.tooltipElement.classList.add("ia-tooltip-bottom");
         this.element.style.setProperty("top", toPx(this.node.getBoundingClientRect().top + this.node.offsetHeight + 10));
         this.centerHorizontally();
     }
 
     /** Force showing the tooltip to the left of the node. */
     showLeft() {
-        this.tooltipElement.classList.add("bd-tooltip-left");
+        this.tooltipElement.classList.add("ia-tooltip-left");
         this.element.style.setProperty("left", toPx(this.node.getBoundingClientRect().left - this.element.offsetWidth - 10));
         this.centerVertically();
     }
 
     /** Force showing the tooltip to the right of the node. */
     showRight() {
-        this.tooltipElement.classList.add("bd-tooltip-right");
+        this.tooltipElement.classList.add("ia-tooltip-right");
         this.element.style.setProperty("left", toPx(this.node.getBoundingClientRect().left + this.node.offsetWidth + 10));
         this.centerVertically();
     }

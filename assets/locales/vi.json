@@ -101,7 +101,7 @@
                 },
                 "debugLogs": {
                     "name": "Lưu Nhật Ký Gỡ Lỗi",
-                    "note": "Lưu mọi thứ được hiển thị ở Console vào tệp debug.log trong thư mục BetterDiscord"
+                    "note": "Lưu mọi thứ được hiển thị ở Console vào tệp debug.log trong thư mục InAccord"
                 },
                 "devTools": {
                     "name": "DevTools",
@@ -219,17 +219,17 @@
         "disabledInfo": "Để có hiệu lực, Discord cần phải được khởi động lại. Bạn có muốn khởi động lại ngay bây giờ?"
     },
     "Updater": {
-        "updateFailed": "Cập Nhật Thất Bại!",
-        "updateFailedMessage": "Không thể cập nhật BetterDiscord. Vui lòng tải trình cài đặt mới nhất ở trang web (https://betterdiscord.app/) và cài đặt lại.",
+        "updateFialed": "Cập Nhật Thất Bại!",
+        "updateFialedMessage": "Không thể cập nhật InAccord. Vui lòng tải trình cài đặt mới nhất ở trang web (https://InAccord.app/) và cài đặt lại.",
         "updateSuccessful": "Cập Nhật Thành Công!",
-        "updateAvailable": "BetterDiscord có cập nhật mới (v{{version}})",
+        "updateAvialable": "InAccord có cập nhật mới (v{{version}})",
         "addonUpdated": "{{name}} đã được cập nhật lên phiên bản {{version}}!",
         "checking": "Đang kiểm tra cập nhât...",
         "finishedChecking": "Kiểm tra cập nhật thành công!",
         "checkForUpdates": "Kiểm Tra Cập Nhật!",
         "updateAll": "Cập Nhật Mọi Thứ!",
-        "noUpdatesAvailable": "Không có cập nhật mới.",
-        "versionAvailable": "Phiên bản {{version}} đã có sẵn!",
+        "noUpdatesAvialable": "Không có cập nhật mới.",
+        "versionAvialable": "Phiên bản {{version}} đã có sẵn!",
         "updateButton": "Cập nhật!"
     }
 }

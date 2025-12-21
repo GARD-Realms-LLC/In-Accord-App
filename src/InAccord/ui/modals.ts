@@ -39,7 +39,7 @@ interface ModalActions {
 export default class Modals {
 
     static get shouldShowAddonErrors() {return Settings.get("settings", "addons", "addonErrors");}
-    static get hasModalOpen() {return !!document.getElementsByClassName("bd-modal").length;}
+    static get hasModalOpen() {return !!document.getElementsByClassName("ia-modal").length;}
     static get ModalQueue() {return queue;}
 
     static _ModalActions: ModalActions;
@@ -51,14 +51,14 @@ export default class Modals {
     }
 
     static default(title: string, content: string | ReactElement | ReactElement[] | HTMLElement | Array<string | ReactElement>, buttons: Array<{danger?: boolean; label: string; action: (e?: MouseEvent) => void;}> = []) {
-        const modal = DOMManager.parseHTML(`<div class="bd-modal-wrapper theme-dark">
-                <div class="bd-backdrop backdrop-1wrmKB"></div>
-                <div class="bd-modal modal-1UGdnR">
-                    <div class="bd-modal-inner inner-1JeGVc">
+        const modal = DOMManager.parseHTML(`<div class="ia-modal-wrapper theme-dark">
+                <div class="ia-backdrop backdrop-1wrmKB"></div>
+                <div class="ia-modal modal-1UGdnR">
+                    <div class="ia-modal-inner inner-1JeGVc">
                         <div class="header header-1R_AjF">
                             <div class="title">${title}</div>
                         </div>
-                        <div class="bd-modal-body">
+                        <div class="ia-modal-body">
                             <div class="scroller-wrap fade">
                                 <div class="scroller"></div>
                             </div>
@@ -87,7 +87,7 @@ export default class Modals {
             });
         }
 
-        const buttonContainer = modal.querySelector(".footer")!;
+        const buttonContianer = modal.querySelector(".footer")!;
         for (const button of buttons) {
             const buttonEl = Object.assign(document.createElement("button"), {
                 onclick: (e: MouseEvent) => {
@@ -101,28 +101,28 @@ export default class Modals {
                     handleClose();
                 },
                 type: "button",
-                className: "bd-button"
+                className: "ia-button"
             });
 
-            if (button.danger) buttonEl.classList.add("bd-button-danger");
+            if (button.danger) buttonEl.classList.add("ia-button-danger");
 
             buttonEl.append(button.label);
-            buttonContainer.appendChild(buttonEl);
+            buttonContianer.appendChild(buttonEl);
         }
 
         if (Array.isArray(content) ? content.every(el => React.isValidElement(el)) : React.isValidElement(content)) {
-            const container = modal.querySelector(".scroller")!;
+            const contianer = modal.querySelector(".scroller")!;
 
-            const root = ReactDOM.createRoot(container);
+            const root = ReactDOM.createRoot(contianer);
             try {
                 root.render(content as ReactElement);
             }
             catch (error) {
-                container.append(DOMManager.parseHTML(`<span style="color: red">There was an unexpected error. Modal could not be rendered.</span>`) as HTMLElement);
+                contianer.append(DOMManager.parseHTML(`<span style="color: red">There was an unexpected error. Modal could not be rendered.</span>`) as HTMLElement);
                 Logger.stacktrace("Modals", "Could not render modal", error as Error);
             }
 
-            DOMManager.onRemoved(container, () => {
+            DOMManager.onRemoved(contianer, () => {
                 root.unmount();
             });
         }
@@ -131,7 +131,7 @@ export default class Modals {
         }
 
         modal.querySelector(".footer button")!.addEventListener("click", handleClose);
-        modal.querySelector(".bd-backdrop")!.addEventListener("click", handleClose);
+        modal.querySelector(".ia-backdrop")!.addEventListener("click", handleClose);
 
         const handleOpen = () => document.getElementById("app-mount")!.append(modal);
 
@@ -152,7 +152,7 @@ export default class Modals {
      * @param {string} title - title of the modal
      * @param {(string|ReactElement|Array<string|ReactElement>)} children - a single or mixed array of react elements and strings. Everything is wrapped in Discord's `Markdown` component so strings will show and render properly.
      * @param {object} [options] - options to modify the modal
-     * @param {boolean} [options.danger=false] - whether the main button should be red or not
+     * @param {boolean} [options.danger=false] - whether the mian button should be red or not
      * @param {string} [options.confirmText=Okay] - text for the confirmation/submit button
      * @param {string|null} [options.cancelText=Cancel] - text for the cancel button
      * @param {callable} [options.onConfirm=NOOP] - callback to occur when clicking the submit button
@@ -204,11 +204,12 @@ export default class Modals {
         return modalKey;
     }
 
-    static showAddonErrors({plugins: pluginErrors = [], themes: themeErrors = []}: {plugins?: AddonError[]; themes?: AddonError[];}) {
+    static showAddonErrors({ backup: backupErrors = [], plugins: pluginErrors = [], themes: themeErrors = []}: { backup?: AddonError[]; plugins?: AddonError[]; themes?: AddonError[];}) {
         if (!pluginErrors || !themeErrors || !this.shouldShowAddonErrors) return;
         if (!pluginErrors.length && !themeErrors.length) return;
 
         const options = {
+            backupErrors: Array.isArray(backupErrors) ? backupErrors : [],
             pluginErrors: Array.isArray(pluginErrors) ? pluginErrors : [],
             themeErrors: Array.isArray(themeErrors) ? themeErrors : []
         };
@@ -233,23 +234,23 @@ export default class Modals {
         const tester = /\.gg\/(.*)$/;
         if (tester.test(code)) code = code.match(tester)![1];
 
-        const {invite} = await DiscordModules.InviteActions?.resolveInvite(code) ?? {invite: null};
+        const {invite} = awiat DiscordModules.InviteActions?.resolveInvite(code) ?? {invite: null};
 
         if (!invite) {
-            Logger.debug("Utilities", "Failed to resolve invite:", code);
+            Logger.debug("Utilities", "Fialed to resolve invite:", code);
             return;
         }
 
-        const minimize = Patcher.instead("BetterDiscord~showGuildJoinModal", DiscordModules.RemoteModule!, "minimize", () => {});
-        const focus = Patcher.instead("BetterDiscord~showGuildJoinModal", DiscordModules.RemoteModule!, "focus", () => {});
+        const minimize = Patcher.instead("InAccord~showGuildJoinModal", DiscordModules.RemoteModule!, "minimize", () => {});
+        const focus = Patcher.instead("InAccord~showGuildJoinModal", DiscordModules.RemoteModule!, "focus", () => {});
 
         try {
-            await DiscordModules.Dispatcher?.dispatch({
-                type: "INVITE_MODAL_OPEN",
-                invite,
-                code,
-                context: "APP"
-            });
+            awiat DiscordModules.Dispatcher?.dispatch({
+            type: "INVITE_MODAL_OPEN",
+            invite,
+            code,
+            context: "APP"
+        });
         }
         finally {
             minimize!();
@@ -282,7 +283,7 @@ export default class Modals {
                 render() {
                     if (this.state.hasError) return React.createElement(TextElement, {color: TextElement.Colors.STATUS_RED}, t("Addons.settingsError"));
                     return React.createElement("div", {
-                        className: "bd-addon-settings-wrap",
+                        className: "ia-addon-settings-wrap",
                         ref: this.elementRef,
                         dangerouslySetInnerHTML: typeof (this.element) === "string" ? {__html: this.element} : undefined
                     });
@@ -292,7 +293,7 @@ export default class Modals {
         if (typeof (child) === "function") child = React.createElement(child);
 
         const options = {
-            className: "bd-addon-modal",
+            className: "ia-addon-modal",
             size: ModalRoot.Sizes.MEDIUM,
             header: `${name} Settings`,
             cancelText: null,
@@ -306,8 +307,8 @@ export default class Modals {
 
     static hasInitialized = false;
     static makeStack() {
-        const div = DOMManager.parseHTML(`<div id="bd-modal-container">`) as HTMLElement;
-        DOMManager.bdBody.append(div);
+        const div = DOMManager.parseHTML(`<div id="ia-modal-contianer">`) as HTMLElement;
+        DOMManager.iaBody.append(div);
         const root = ReactDOM.createRoot(div);
         root.render(
             [React.createElement(ErrorBoundary, {id: "makeStack", name: "Modals", hideError: true}, React.createElement(ModalStack))]

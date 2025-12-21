@@ -17,7 +17,7 @@ type FooterProps = PropsWithChildren<{
 export default function Footer({id, className, children, justify, direction, align, wrap}: FooterProps) {
     return <Flex
                 id={id}
-                className={clsx("bd-modal-footer", className)}
+                className={clsx("ia-modal-footer", className)}
                 grow={0}
                 shrink={0}
                 direction={direction ?? Flex.Direction.HORIZONTAL_REVERSE}

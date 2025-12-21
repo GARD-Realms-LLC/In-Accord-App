@@ -62,16 +62,16 @@ export default function Slider({value: initialValue, min, max, step, onChange, d
 
     }, [max, min, jumpToValue, inputRef]);
 
-    return <div className={`bd-slider-wrap ${isDisabled ? "bd-slider-disabled" : ""} ${markers.length > 0 ? "bd-slider-markers" : ""}`}>
-        <input onChange={change} type="range" className="bd-slider-input" min={min} max={max} step={step} value={value} disabled={disabled} ref={inputRef} />
-        <div className="bd-slider-label" style={{left: `${percent(value)}%`, transform: `translateX(${labelOffset}%)`}}>{value}{units}</div>
-        <div className="bd-slider-track" style={{backgroundSize: percent(value) + "% 100%"}} onClick={trackClick}></div>
-        {markers?.length > 0 && <div className="bd-slider-marker-container">
+    return <div className={`ia-slider-wrap ${isDisabled ? "ia-slider-disabled" : ""} ${markers.length > 0 ? "ia-slider-markers" : ""}`}>
+        <input onChange={change} type="range" className="ia-slider-input" min={min} max={max} step={step} value={value} disabled={disabled} ref={inputRef} />
+        <div className="ia-slider-label" style={{left: `${percent(value)}%`, transform: `translateX(${labelOffset}%)`}}>{value}{units}</div>
+        <div className="ia-slider-track" style={{backgroundSize: percent(value) + "% 100%"}} onClick={trackClick}></div>
+        {markers?.length > 0 && <div className="ia-slider-marker-contianer">
             {markers.map(m => {
                 const markerValue = typeof m === "number" ? m : m.value;
                 const markerLabel = typeof m === "number" ? m : m?.label;
                 const showUnits = units && typeof m === "number";
-                return <div className="bd-slider-marker" style={{left: percent(markerValue) + "%"}} onClick={() => jumpToValue(markerValue)}>
+                return <div className="ia-slider-marker" style={{left: percent(markerValue) + "%"}} onClick={() => jumpToValue(markerValue)}>
                     {markerLabel}{showUnits && units}
                 </div>;
             })}

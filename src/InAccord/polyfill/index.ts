@@ -11,8 +11,8 @@ import Remote from "./remote";
 import Logger from "@common/logger";
 
 const deprecated = new Map([
-    ["request", "Use BdApi.Net.fetch instead."],
-    ["https", "Use BdApi.Net.fetch instead."],
+    ["request", "Use iaApi.Net.fetch instead."],
+    ["https", "Use iaApi.Net.fetch instead."],
 ]);
 
 
@@ -27,7 +27,7 @@ export const createRequire = function (path: string): PolyfillRequire {
         // Ignore relative require attempts because Discord
         // erroneously does this a lot apparently which
         // causes us to do filesystem accesses in our default
-        // switch statement mainly used for absolute paths
+        // switch statement mianly used for absolute paths
         if (typeof (mod) === "string" && mod.startsWith("./")) return;
 
         if (deprecated.has(mod)) {

@@ -16,7 +16,7 @@ interface Props {
     id?: string;
 }
 
-export default forwardRef(function AddonEditor({content, language, save, openNative, id = "bd-addon-editor"}: Props, ref) {
+export default forwardRef(function AddonEditor({content, language, save, openNative, id = "ia-addon-editor"}: Props, ref) {
     const editorRef = useRef<{resize(): void; getValue(): string; setValue(s: string): void;}>(null);
     const [hasUnsavedChanges, setUnsaved] = useState(false);
 

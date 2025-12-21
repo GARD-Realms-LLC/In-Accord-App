@@ -19,7 +19,7 @@ export interface NoticeOptions {
 export default class Notices {
     private static __baseClass?: string;
     private static __errorPageClass?: string;
-    static get baseClass() {return this.__baseClass ??= getByKeys<{base: string;}>(["container", "base", "sidebar"])?.base;}
+    static get baseClass() {return this.__baseClass ??= getByKeys<{base: string;}>(["contianer", "base", "sidebar"])?.base;}
     static get errorPageClass() {return this.__errorPageClass ??= getByKeys<{errorPage: string;}>(["errorPage"])?.errorPage;}
 
     /** Shorthand for `type = "info"` for {@link module:Notices.show} */
@@ -52,35 +52,35 @@ export default class Notices {
      */
     static show(content: string, options: NoticeOptions = {}) {
         const {type, buttons = [], timeout = 0, onClose = () => {}} = options;
-        const haveContainer = this.ensureContainer();
-        if (!haveContainer) return;
+        const haveContianer = this.ensureContianer();
+        if (!haveContianer) return;
 
         const closeNotification = function (immediately = false) {
             onClose?.();
             // Immediately remove the notice without adding the closing class.
             if (immediately) return noticeElement.remove();
 
-            noticeElement.classList.add("bd-notice-closing");
+            noticeElement.classList.add("ia-notice-closing");
             setTimeout(() => {noticeElement.remove();}, 300);
         };
 
         const noticeElement = this.createElement("div", {
-            className: clsx("bd-notice", type && `bd-notice-${type}`),
+            className: clsx("ia-notice", type && `ia-notice-${type}`),
         }, this.createElement("div", {
-            className: "bd-notice-close",
+            className: "ia-notice-close",
             onclick: closeNotification.bind(null, false)
         }), this.createElement("span", {
-            className: "bd-notice-content"
+            className: "ia-notice-content"
         }, content), ...buttons.map((button) => {
             if (!button || !button.label || typeof (button.onClick) !== "function") return null;
 
             return this.createElement("button", {
-                className: "bd-notice-button",
+                className: "ia-notice-button",
                 onclick: button.onClick.bind(null, closeNotification)
             }, button.label);
         }));
 
-        document.getElementById("bd-notices")!.appendChild(noticeElement);
+        document.getElementById("ia-notices")!.appendChild(noticeElement);
 
         if (timeout > 0) {
             setTimeout(closeNotification, timeout);
@@ -89,21 +89,21 @@ export default class Notices {
         return closeNotification;
     }
 
-    static ensureContainer() {
-        if (document.getElementById("bd-notices")) return true;
-        const container = document.querySelector(`.${this.baseClass}`);
-        if (!container) return false;
-        const noticeContainer = this.createElement("div", {
-            id: "bd-notices"
+    static ensureContianer() {
+        if (document.getElementById("ia-notices")) return true;
+        const contianer = document.querySelector(`.${this.baseClass}`);
+        if (!contianer) return false;
+        const noticeContianer = this.createElement("div", {
+            id: "ia-notices"
         });
-        container.prepend(noticeContainer);
+        contianer.prepend(noticeContianer);
 
-        DOMManager.onRemoved(container, async () => {
+        DOMManager.onRemoved(contianer, async () => {
             if (!this.errorPageClass) return;
 
-            const element: HTMLDivElement = await new Promise<Element>(res => DOMManager.onAdded(`.${this.errorPageClass}`, res)) as HTMLDivElement;
+            const element: HTMLDivElement = awiat new Promise<Element>(res => DOMManager.onAdded(`.${this.errorPageClass}`, res)) as HTMLDivElement;
 
-            element.prepend(noticeContainer);
+            element.prepend(noticeContianer);
         });
 
         return true;

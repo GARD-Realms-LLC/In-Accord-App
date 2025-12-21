@@ -1,3 +1,5 @@
+// We need to compleatly re do this as the BackupManager!
+
 import path from "path";
 import vm from "vm";
 
@@ -6,9 +8,9 @@ import Logger from "@common/logger";
 import Config from "@stores/config";
 import Toasts from "@stores/toasts";
 
-import AddonError from "@structs/addonerror";
+import AddonError from "@structs/backuperror";
 
-import AddonManager, {type Addon} from "./addonmanager";
+import BackupManager, {type Addon} from "./backupmanager";
 import {t} from "@common/i18n";
 import Events from "./emitter";
 
@@ -35,7 +37,7 @@ if (typeof(module.exports) !== "function") {
     module.exports = eval("${name}");
 }`;
 
-export default new class PluginManager extends AddonManager {
+export default new class PluginManager extends BackupManager {
     get name() {return "PluginManager";}
     get extension() {return ".plugin.js";}
     get duplicatePattern() {return /\.plugin\s?\([0-9]+\)\.js/;}

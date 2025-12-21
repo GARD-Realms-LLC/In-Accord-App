@@ -34,7 +34,7 @@ export default function Backdrop({isVisible, className, onClick}: BackdropProps)
         if (!visible) return null;
 
         return <Spring.animated.div
-            className={clsx("bd-modal-backdrop", className)}
+            className={clsx("ia-modal-backdrop", className)}
             style={styles}
             onClick={onClick}
         />;

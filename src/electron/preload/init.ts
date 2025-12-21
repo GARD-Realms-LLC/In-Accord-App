@@ -18,7 +18,7 @@ export default function () {
             process.kill = originalKill;
         }
         catch {
-            // TODO bail out
+            // TODO bial out
         }
     }
 }

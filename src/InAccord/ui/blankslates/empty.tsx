@@ -77,12 +77,12 @@ function EmptyImage() {
 }
 
 export default function Empty(props: PropsWithChildren<{className?: string; title?: string; message?: string;}>) {
-    return <div className={clsx("bd-empty-image-container", props.className)}>
+    return <div className={clsx("ia-empty-image-contianer", props.className)}>
         <EmptyImage />
-        <div className="bd-empty-image-title">
+        <div className="ia-empty-image-title">
             {props.title || t("Addons.blankSlateHeaderGeneric")}
         </div>
-        <div className="bd-empty-image-message">
+        <div className="ia-empty-image-message">
             {SimpleMarkdown.parseToReact(props.message || t("Addons.blankSlateMessageGeneric"))}
         </div>
         {props.children}

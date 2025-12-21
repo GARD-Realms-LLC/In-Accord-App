@@ -29,7 +29,7 @@
   overflow: auto;
   resize: both;
   padding-bottom: 10px;
-  background: var(--bd-editor-background, var(--background-base-lowest));
+  background: var(--ia-editor-background, var(--background-base-lowest));
 }
 
 .floating-window-titlebar {
@@ -47,7 +47,7 @@
 .floating-window-content {
   display: flex;
   flex-direction: column;
-  background: var(--bd-editor-background, var(--background-base-lower));
+  background: var(--ia-editor-background, var(--background-base-lower));
   color: #ffffff;
   flex: 1;
   overflow: hidden;
@@ -94,7 +94,7 @@
   color: #ffffff;
 }
 
-.floating-window-content #bd-editor-panel {
+.floating-window-content #ia-editor-panel {
   display: flex;
   flex-direction: column;
   flex: 1;
@@ -116,7 +116,7 @@
   flex: 1;
 }
 
-.floating-window #bd-editor-controls {
+.floating-window #ia-editor-controls {
   z-index: 10;
   height: auto;
   background: var(--background-base-lower);
@@ -138,20 +138,20 @@
   max-width: 90%;
 }
 
-.bd-editor-footer {
-  color: var(--bd-editor-foreground);
-  border-top: 1px solid var(--bd-editor-divider);
+.ia-editor-footer {
+  color: var(--ia-editor-foreground);
+  border-top: 1px solid var(--ia-editor-divider);
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.bd-editor-footer-left,
-.bd-editor-footer-right {
+.ia-editor-footer-left,
+.ia-editor-footer-right {
   display: flex;
 }
 
-.bd-editor-footer-item {
+.ia-editor-footer-item {
   align-items: center;
   cursor: pointer;
   display: flex;
@@ -168,47 +168,47 @@
   font-size: 12px;
 }
 
-.bd-editor-problems {
+.ia-editor-problems {
   position: absolute;
   overflow: hidden scroll;
   left: 0;
   top: 0;
   height: 100%;
   width: 100%;
-  background: var(--bd-editor-background, var(--background-base-lowest));
+  background: var(--ia-editor-background, var(--background-base-lowest));
   z-index: 5;
 }
 
-.bd-editor-problem {
-  color: var(--bd-editor-foreground, var(--text-default));
+.ia-editor-problem {
+  color: var(--ia-editor-foreground, var(--text-default));
   display: inline-flex;
   gap: 8px;
   padding: 3px 4px 0;
 }
 
-.bd-editor-problem.bd-editor-severity-8 svg {
+.ia-editor-problem.ia-editor-severity-8 svg {
   color: var(--background-feedback-critical);
 }
 
-.bd-editor-problem.bd-editor-severity-4 svg {
+.ia-editor-problem.ia-editor-severity-4 svg {
   color: var(--background-feedback-info);
 }
 
-.bd-editor-problem.bd-editor-severity-2 svg,
-.bd-editor-problem.bd-editor-severity-1 svg {
+.ia-editor-problem.ia-editor-severity-2 svg,
+.ia-editor-problem.ia-editor-severity-1 svg {
   color: var(--background-feedback-info);
 }
 
-.bd-editor-problem > :nth-child(2) ~ span {
+.ia-editor-problem > :nth-child(2) ~ span {
   opacity: 0.7;
 }
 
-.bd-editor-no-problems {
-  color: var(--bd-editor-foreground, var(--text-default));
+.ia-editor-no-problems {
+  color: var(--ia-editor-foreground, var(--text-default));
   padding: 4px;
 }
 
-.bd-editor-footer-right .codicon {
+.ia-editor-footer-right .codicon {
   align-items: center;
   cursor: pointer;
   display: flex;

@@ -53,19 +53,19 @@ const Icon = ({type}: {type: NotificationType;}) => {
 };
 
 class NotificationUI {
-    static container: HTMLDivElement | null = null;
+    static contianer: HTMLDivElement | null = null;
 
     constructor() {
-        const containerId = "bd-notifications-container";
-        let container = document.getElementById(containerId) as HTMLDivElement;
-        if (!container) {
-            container = document.createElement("div");
-            container.id = containerId;
-            DOMManager.bdBody.appendChild(container);
+        const contianerId = "ia-notifications-contianer";
+        let contianer = document.getElementById(contianerId) as HTMLDivElement;
+        if (!contianer) {
+            contianer = document.createElement("div");
+            contianer.id = contianerId;
+            DOMManager.iaBody.appendChild(contianer);
         }
-        NotificationUI.container = container;
+        NotificationUI.contianer = contianer;
 
-        ReactDOM.createRoot(container).render(<PersistentNotificationContainer />);
+        ReactDOM.createRoot(contianer).render(<PersistentNotificationContianer />);
     }
 
     show(notif: Notification) {
@@ -118,14 +118,14 @@ class NotificationUI {
     }
 }
 
-const PersistentNotificationContainer = () => {
+const PersistentNotificationContianer = () => {
     const notifications = useStateFromStores<Notification[]>(Notifications, () => Notifications.notifications.concat(), [], true);
     const position: string = useStateFromStores(Settings, () => Settings.get("settings", "general", "notificationPosition"));
 
     return (
         <div
-            id="bd-notifications-root"
-            className={`bd-notification-${position}`}
+            id="ia-notifications-root"
+            className={`ia-notification-${position}`}
         >
             {notifications.map((notification) => (
                 <NotificationItem
@@ -172,12 +172,12 @@ const NotificationItem = ({notification}: {notification: Notification;}) => {
         <spring.animated.div
             onMouseEnter={() => setIsPaused(true)}
             onMouseLeave={() => setIsPaused(false)}
-            className={`bd-notification bd-notification-${type}`}
+            className={`ia-notification ia-notification-${type}`}
         >
-            <div className={"bd-notification-content"}>
-                <div className="bd-notification-header">
-                    <div className="bd-notification-icon">
-                        <div className="bd-notification-icon">
+            <div className={"ia-notification-content"}>
+                <div className="ia-notification-header">
+                    <div className="ia-notification-icon">
+                        <div className="ia-notification-icon">
                             {notification.icon ? (
                                 <ErrorBoundary>
                                     <notification.icon />
@@ -187,14 +187,14 @@ const NotificationItem = ({notification}: {notification: Notification;}) => {
                             )}
                         </div>
                     </div>
-                    {title && <div className="bd-notification-title">{title}</div>}
+                    {title && <div className="ia-notification-title">{title}</div>}
                 </div>
                 {content && (
-                    <div className="bd-notification-body">
-                        <div className="bd-notification-content-text">
+                    <div className="ia-notification-body">
+                        <div className="ia-notification-content-text">
                             {content && (
-                                <div className="bd-notification-body">
-                                    <div className="bd-notification-content-text">
+                                <div className="ia-notification-body">
+                                    <div className="ia-notification-content-text">
                                         {typeof content === "string" ? (
                                             <Markdown>{content}</Markdown>
                                         ) : (
@@ -208,10 +208,10 @@ const NotificationItem = ({notification}: {notification: Notification;}) => {
                 )}
             </div>
             {actions.length > 0 && (
-                <div className="bd-notification-footer">
+                <div className="ia-notification-footer">
                     {actions.map((action, index) => {
-                        const color = Colors[action?.color?.toUpperCase()] ? `bd-button-color-${action?.color}` : Button.Colors.PRIMARY;
-                        const look = Looks[action?.look?.toUpperCase()] ? `bd-button-${action?.look}` : Button.Looks.FILLED;
+                        const color = Colors[action?.color?.toUpperCase()] ? `ia-button-color-${action?.color}` : Button.Colors.PRIMARY;
+                        const look = Looks[action?.look?.toUpperCase()] ? `ia-button-${action?.look}` : Button.Looks.FILLED;
 
                         return <Button
                             {...action}
@@ -225,7 +225,7 @@ const NotificationItem = ({notification}: {notification: Notification;}) => {
                                     handleClose();
                                 }
                             }}
-                            className="bd-notification-action"
+                            className="ia-notification-action"
                         >
                             {action?.label}
                         </Button>;
@@ -237,19 +237,19 @@ const NotificationItem = ({notification}: {notification: Notification;}) => {
                     e.stopPropagation();
                     handleClose();
                 }}
-                className="bd-notification-close"
+                className="ia-notification-close"
             >
                 ✕
             </Text>
             <spring.animated.div
-                className="bd-notification-progress"
+                className="ia-notification-progress"
                 style={{
                     ...progressProps,
                     backgroundColor: {
                         success: "var(--status-positive)",
                         error: "var(--status-danger)",
                         warning: "var(--status-warning)",
-                        info: "var(--bd-brand)"
+                        info: "var(--ia-brand)"
                     }[type]
                 }}
             />

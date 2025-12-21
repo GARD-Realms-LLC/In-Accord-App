@@ -6,7 +6,7 @@ import * as IPCEvents from "@common/constants/ipcevents";
 let dataPath = "";
 if (process.platform === "win32" || process.platform === "darwin") dataPath = path.join(electron.ipcRenderer.sendSync(IPCEvents.GET_PATH, "userData"), "..");
 else dataPath = process.env.XDG_CONFIG_HOME ? process.env.XDG_CONFIG_HOME : path.join(process.env.HOME!, ".config"); // This will help with snap packages eventually
-dataPath = path.join(dataPath, "BetterDiscord") + "/";
+dataPath = path.join(dataPath, "InAccord") + "/";
 
 let _settings: Record<string, Record<string, any>>;
 function getSetting(category: string, key: string) {
@@ -24,7 +24,7 @@ function getSetting(category: string, key: string) {
     }
 }
 
-const {exposeInMainWorld} = electron.contextBridge;
+const {exposeInMianWorld} = electron.contextBridge;
 
 // Hold the listeners
 let /** @type {Function} */ onOpened: () => void, /** @type {Function} */ onClosed: () => void;
@@ -36,11 +36,11 @@ if (typeof patchDevtoolsCallbacks !== "boolean") patchDevtoolsCallbacks = false;
 
 const contextBridge = {
     ...electron.contextBridge,
-    exposeInMainWorld(apiKey: string, api: any) {
+    exposeInMianWorld(apiKey: string, api: any) {
         if (apiKey === "DiscordNative") {
             // On macOS check if native frame is enabled
             // every other os say false
-            api.window.USE_OSX_NATIVE_TRAFFIC_LIGHTS = process.platform === "darwin" && process.env.BETTERDISCORD_IN_APP_TRAFFIC_LIGHTS === "false";
+            api.window.USE_OSX_NATIVE_TRAFFIC_LIGHTS = process.platform === "darwin" && process.env.InAccord_IN_APP_TRAFFIC_LIGHTS === "false";
 
             api.window.setDevtoolsCallbacks(
                 () => {
@@ -59,7 +59,7 @@ const contextBridge = {
             };
         }
 
-        exposeInMainWorld(apiKey, api);
+        exposeInMianWorld(apiKey, api);
     }
 };
 
@@ -78,9 +78,9 @@ class DiscordNativePatch {
 
     // For native frame
     // document.body does not exist when this is ran.
-    // so we have to wait for it
+    // so we have to wiat for it
     static injectCSS() {
-        if (process.env.BETTERDISCORD_NATIVE_FRAME === "false") return;
+        if (process.env.InAccord_NATIVE_FRAME === "false") return;
 
         // Have to use `global.` because the file is in node
         const mutationObserver = new global.MutationObserver(() => {
@@ -104,7 +104,7 @@ class DiscordNativePatch {
     static patch() {
         const electronPath = require.resolve("electron");
         delete require.cache[electronPath]!.exports; // If it didn't work, try to delete existing
-        require.cache[electronPath]!.exports = {...electron, contextBridge}; // Try to assign again after deleting
+        require.cache[electronPath]!.exports = {...electron, contextBridge}; // Try to assign agian after deleting
     }
 
     static init() {

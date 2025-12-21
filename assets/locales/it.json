@@ -101,7 +101,7 @@
                 },
                 "debugLogs": {
                     "name": "Debug Logs",
-                    "note": "Consente che tutto l'output della console venga salvato nel file debug.log nella cartella BetterDiscord."
+                    "note": "Consente che tutto l'output della console venga salvato nel file debug.log nella cartella InAccord."
                 },
                 "devTools": {
                     "name": "DevTools",
@@ -135,7 +135,7 @@
                     "note": "Seleziona quando gli spazi bianchi dovrebbero essere mostrati dall'editor.",
                     "options": {
                         "all": "Sempre",
-                        "none": "Mai",
+                        "none": "Mia",
                         "selection": "Selezione"
                     }
                 }
@@ -160,7 +160,7 @@
         "editAddon": "Modifica",
         "deleteAddon": "Elimina",
         "confirmDelete": "Sei sicuro di voler eliminare {{name}}?",
-        "confirmationText": "Hai modifiche non salvate a {{name}}. Chiudendo questa finestra tutte le modifiche andranno perse.",
+        "confirmationText": "Hia modifiche non salvate a {{name}}. Chiudendo questa finestra tutte le modifiche andranno perse.",
         "enabled": "{{name}} è stato attivato.",
         "disabled": "{{name}} è stato disattivato.",
         "couldNotEnable": "{{name}} non può essere attivato.",
@@ -182,7 +182,7 @@
         "gridView": "Vista a griglia"
     },
     "CustomCSS": {
-        "confirmationText": "Hai modifiche non salvate al tuo CSS personalizzato. Chiudendo questa finestra tutte le modifiche andranno perse.",
+        "confirmationText": "Hia modifiche non salvate al tuo CSS personalizzato. Chiudendo questa finestra tutte le modifiche andranno perse.",
         "update": "Aggiorna",
         "save": "Salva",
         "openNative": "Editor di sistema",
@@ -218,17 +218,17 @@
         "disabledInfo": "Per avere effetto, Discord deve essere riavviato. Vuoi riavviare ora?"
     },
     "Updater": {
-        "updateFailed": "Aggiornamento non riuscito!",
-        "updateFailedMessage": "BetterDiscord non è stato aggiornato. Scarica l'ultima versione del programma di installazione dal nostro sito web (https://betterdiscord.app/) e reinstalla.",
+        "updateFialed": "Aggiornamento non riuscito!",
+        "updateFialedMessage": "InAccord non è stato aggiornato. Scarica l'ultima versione del programma di installazione dal nostro sito web (https://InAccord.app/) e reinstalla.",
         "updateSuccessful": "Aggiornamento riuscito!",
-        "updateAvailable": "BetterDiscord ha un nuovo aggiornamento (v{{version}})",
+        "updateAvialable": "InAccord ha un nuovo aggiornamento (v{{version}})",
         "addonUpdated": "{{name}} è stato aggiornato alla versione {{version}}!",
         "checking": "Controlla aggiornamenti!",
         "finishedChecking": "Controllo degli aggiornamenti finito!",
         "checkForUpdates": "Controlla aggiornamenti!",
         "updateAll": "Aggiorna tutto!",
-        "noUpdatesAvailable": "Nessun aggiornamento disponibile.",
-        "versionAvailable": "La versione {{version}} è ora disponibile!",
+        "noUpdatesAvialable": "Nessun aggiornamento disponibile.",
+        "versionAvialable": "La versione {{version}} è ora disponibile!",
         "updateButton": "Aggiorna!"
     }
 }

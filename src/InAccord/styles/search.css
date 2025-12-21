@@ -1,4 +1,4 @@
-.bd-search-wrapper {
+.ia-search-wrapper {
     padding: 3px;
     border-radius: 3px;
     outline: none;
@@ -9,7 +9,7 @@
     align-items: center;
 }
 
-.bd-search {
+.ia-search {
     padding: 2px 3px;
     background: none;
     border: 0;
@@ -17,25 +17,25 @@
     flex: 1;
 }
 
-.bd-search::-webkit-input-placeholder {
+.ia-search::-webkit-input-placeholder {
     color: var(--text-default);
 }
 
-.bd-search-wrapper > svg {
+.ia-search-wrapper > svg {
     margin-right: 2px;
     color: var(--interactive-text-default);
 }
 
-.bd-search-wrapper > .bd-button {
+.ia-search-wrapper > .ia-button {
     margin-right: 2px;
     background: none;
     padding: 0;
 }
 
-.bd-search-wrapper > .bd-button > svg .fill {
+.ia-search-wrapper > .ia-button > svg .fill {
     fill: var(--interactive-text-default);
 }
 
-.bd-search-wrapper > .bd-button:hover > svg .fill {
+.ia-search-wrapper > .ia-button:hover > svg .fill {
     fill: var(--interactive-text-hover);
 }

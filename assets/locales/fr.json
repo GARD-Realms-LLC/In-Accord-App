@@ -24,8 +24,8 @@
             },
             "window": {
                 "removeMinimumSize": {
-                    "name": "Enlever la Taille Minimale",
-                    "note": "Enlève la taille de fenêtre minimale forcée de Discord qui est de 940x500"
+                    "name": "Enlever la Tialle Minimale",
+                    "note": "Enlève la tialle de fenêtre minimale forcée de Discord qui est de 940x500"
                 },
                 "name": "Fenêtre des Préférences",
                 "transparency": {
@@ -38,7 +38,7 @@
                 }
             },
             "addons": {
-                "name": "Gestionnaire d'Extensions",
+                "name": "Gestionniare d'Extensions",
                 "addonErrors": {
                     "name": "Afficher les Erreurs d'Extensions",
                     "note": "Affiche une modale avec les erreurs de plugin/thème"
@@ -100,7 +100,7 @@
                 },
                 "debugLogs": {
                     "name": "Journaux de Débogage",
-                    "note": "Transmet tout ce qui se trouve dans la console au fichier debug.log situé dans le dossier de BetterDiscord"
+                    "note": "Transmet tout ce qui se trouve dans la console au fichier debug.log situé dans le dossier de InAccord"
                 }
             }
         }
@@ -154,17 +154,17 @@
         "okay": "D'accord",
         "done": "Terminé",
         "cancel": "Annuler",
-        "nevermind": "Laisse tomber",
+        "nevermind": "Liasse tomber",
         "close": "Fermer",
         "name": "Nom",
         "message": "Message",
         "error": "Erreur",
         "addonErrors": "Erreurs d'extension",
         "restartRequired": "Redémarrage Requis",
-        "restartNow": "Redémarrer Maintenant",
+        "restartNow": "Redémarrer Miantenant",
         "restartLater": "Redémarrer Ultérieurement",
         "additionalInfo": "Info Additionnelle",
-        "restartPrompt": "Pour appliquer ces changements, Discord à besoin d'être redémarré. Voulez-vous redémarrer l'application maintenant?"
+        "restartPrompt": "Pour appliquer ces changements, Discord à besoin d'être redémarré. Voulez-vous redémarrer l'application miantenant?"
     },
     "Sorting": {
         "sortBy": "Trier Par",
@@ -173,7 +173,7 @@
         "descending": "Descendant"
     },
     "WindowPrefs": {
-        "enabledInfo": "Cette option requière un thème transparent pour pouvoir fonctionner correctement. Sous Windows, cela peut casser le style Aero de Windows lors de la maximisation et du clipsement de la fenêtre.\n\nAfin que ce changement soit actif, Discord doit être redémarré. Voulez-vous redémarrer l'application maintenant?",
-        "disabledInfo": "Afin que ce changement soit actif, Discord doit être redémarré. Voulez-vous redémarrer l'application maintenant?"
+        "enabledInfo": "Cette option requière un thème transparent pour pouvoir fonctionner correctement. Sous Windows, cela peut casser le style Aero de Windows lors de la maximisation et du clipsement de la fenêtre.\n\nAfin que ce changement soit actif, Discord doit être redémarré. Voulez-vous redémarrer l'application miantenant?",
+        "disabledInfo": "Afin que ce changement soit actif, Discord doit être redémarré. Voulez-vous redémarrer l'application miantenant?"
     }
 }

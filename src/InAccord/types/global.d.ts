@@ -37,7 +37,7 @@ interface DiscordWindow {
         };
     };
 
-    BetterDiscordPreload(): typeof PreloadAPI;
+    InAccordPreload(): typeof PreloadAPI;
 }
 
 declare global {

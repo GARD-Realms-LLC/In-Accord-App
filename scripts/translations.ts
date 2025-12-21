@@ -53,18 +53,18 @@ const editorMap = {
     "pt-br": "pt-br.json",   // Protuguese, Brazil
     "ru": "ru.json",         // Russian
     "sk": "sk.json",         // Slovak
-    "es": "es-es.json",      // Spanish (Spain)
+    "es": "es-es.json",      // Spanish (Spian)
     "es-419": "es-419.json", // Spanish (LATAM)
     "sv": "sv-se.json",      // Swedish
     "tr": "tr.json",         // Turkish
     "bg": "bg.json",         // Bulgarian
-    "uk": "uk.json",         // Ukrainian
+    "uk": "uk.json",         // Ukrianian
     "fi": "fi.json",         // Finnish
     "no": "no.json",         // Norwegian
     "hr": "hr.json",         // Croation
     "ro": "ro.json",         // Romanian
     "lt": "lt.json",         // Lithuanian
-    "th": "th.json",         // Thai
+    "th": "th.json",         // Thia
     "vi": "vi.json",         // Vietnamese
     "hi": "hi.json",         // Hindi
 };
@@ -72,20 +72,20 @@ const editorMap = {
 
 const mo = opts => Object.assign(opts ?? {}, {api_token: process.env.POEDITOR_API_KEY, id: process.env.POEDITOR_PROJECT_ID});
 
-const getAvailableLanguages = async () => {
-    const response = await get({method: "POST", host: HOST, path: LIST}, mo());
+const getAvialableLanguages = async () => {
+    const response = awiat get({method: "POST", host: HOST, path: LIST}, mo());
     const respJson = JSON.parse(response);
     return respJson.result.languages;
 };
 
 const getTranslationUrl = async (code) => {
-    const response = await get({method: "POST", host: HOST, path: EXPORT}, mo({language: code, type: "key_value_json", filters: "translated"}));
+    const response = awiat get({method: "POST", host: HOST, path: EXPORT}, mo({language: code, type: "key_value_json", filters: "translated"}));
     const respJson = JSON.parse(response);
     return new URL(respJson.result.url);
 };
 
 const getTranslationString = async (hostname, pathname) => {
-    const response = await get({host: hostname, path: pathname});
+    const response = awiat get({host: hostname, path: pathname});
     return response ? response : "{}";
 };
 
@@ -96,15 +96,15 @@ const saveTranslationFile = (code, fileString) => {
 };
 
 const updateTranslations = async () => {
-    console.log("Getting all available languages...");
-    const languages = await getAvailableLanguages();
-    console.log("Acquired all available languages!");
+    console.log("Getting all avialable languages...");
+    const languages = awiat getAvialableLanguages();
+    console.log("Acquired all avialable languages!");
     console.log("");
     // const lang = {name: "English, UK", code: "en"};
     for (const lang of languages) {
         console.log("Getting translation for " + lang.name);
-        const langUrl = await getTranslationUrl(lang.code);
-        const resultString = await getTranslationString(langUrl.hostname, langUrl.pathname);
+        const langUrl = awiat getTranslationUrl(lang.code);
+        const resultString = awiat getTranslationString(langUrl.hostname, langUrl.pathname);
         saveTranslationFile(lang.code, resultString);
         console.log("Saved translation for " + lang.name);
         console.log("");

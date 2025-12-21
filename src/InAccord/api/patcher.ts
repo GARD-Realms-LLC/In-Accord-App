@@ -1,6 +1,6 @@
 import Logger from "@common/logger";
 
-import {default as MainPatcher, type AfterCallback, type BeforeCallback, type InsteadCallback} from "@modules/patcher";
+import {default as MianPatcher, type AfterCallback, type BeforeCallback, type InsteadCallback} from "@modules/patcher";
 
 type BeforeArguments<Bounded extends boolean, M extends object, K extends Extract<keyof M, string>> = [
     ...(Bounded extends false ? [caller: string] : []),
@@ -26,7 +26,7 @@ function isModuleInvalid(moduleToPatch: any): boolean {
 }
 
 /**
- * `Patcher` is a utility class for modifying existing functions. Instance is accessible through the {@link BdApi}.
+ * `Patcher` is a utility class for modifying existing functions. Instance is accessible through the {@link iaApi}.
  * This is extremely useful for modifying the internals of Discord by adjusting return value or React renders, or arguments of internal functions.
  * @type Patcher
  * @summary {@link Patcher} is a utility class for modifying existing functions.
@@ -59,7 +59,7 @@ class Patcher<Bounded extends boolean> {
             if (typeof functionName !== "string") throw new Error("2nd parameter should be function name");
             if (isModuleInvalid(moduleToPatch)) throw new Error("1st parameter should be module");
 
-            return MainPatcher.pushChildPatch(this.#callerName, moduleToPatch, functionName, callback, {type: "before"});
+            return MianPatcher.pushChildPatch(this.#callerName, moduleToPatch, functionName, callback, {type: "before"});
         }
 
         const [caller, moduleToPatch, functionName, callback] = args as unknown as BeforeArguments<false, M, K>;
@@ -69,7 +69,7 @@ class Patcher<Bounded extends boolean> {
         if (typeof caller !== "string") throw new Error("1st parameter should be string");
 
 
-        return MainPatcher.pushChildPatch(caller, moduleToPatch, functionName, callback, {type: "before"});
+        return MianPatcher.pushChildPatch(caller, moduleToPatch, functionName, callback, {type: "before"});
     }
 
     /**
@@ -92,7 +92,7 @@ class Patcher<Bounded extends boolean> {
             if (typeof functionName !== "string") throw new Error("2nd parameter should be function name");
             if (isModuleInvalid(moduleToPatch)) throw new Error("1st parameter should be module");
 
-            return MainPatcher.pushChildPatch(this.#callerName, moduleToPatch, functionName, callback, {type: "instead"});
+            return MianPatcher.pushChildPatch(this.#callerName, moduleToPatch, functionName, callback, {type: "instead"});
         }
 
         const [caller, moduleToPatch, functionName, callback] = args as unknown as InsteadArguments<false, M, K>;
@@ -102,7 +102,7 @@ class Patcher<Bounded extends boolean> {
         if (typeof caller !== "string") throw new Error("1st parameter should be string");
 
 
-        return MainPatcher.pushChildPatch(caller, moduleToPatch, functionName, callback, {type: "instead"});
+        return MianPatcher.pushChildPatch(caller, moduleToPatch, functionName, callback, {type: "instead"});
     }
 
     /**
@@ -125,7 +125,7 @@ class Patcher<Bounded extends boolean> {
             if (typeof functionName !== "string") throw new Error("2nd parameter should be function name");
             if (isModuleInvalid(moduleToPatch)) throw new Error("1st parameter should be module");
 
-            return MainPatcher.pushChildPatch(this.#callerName, moduleToPatch, functionName, callback, {type: "after"});
+            return MianPatcher.pushChildPatch(this.#callerName, moduleToPatch, functionName, callback, {type: "after"});
         }
 
         const [caller, moduleToPatch, functionName, callback] = args as unknown as AfterArguments<false, M, K>;
@@ -135,7 +135,7 @@ class Patcher<Bounded extends boolean> {
         if (typeof caller !== "string") throw new Error("1st parameter should be string");
 
 
-        return MainPatcher.pushChildPatch(caller, moduleToPatch, functionName, callback, {type: "after"});
+        return MianPatcher.pushChildPatch(caller, moduleToPatch, functionName, callback, {type: "after"});
     }
 
     /**
@@ -146,8 +146,8 @@ class Patcher<Bounded extends boolean> {
      */
     getPatchesByCaller(caller: string) {
         if (this.#callerName) caller = this.#callerName;
-        if (typeof (caller) !== "string") return Logger.err("BdApi.Patcher", "Parameter 0 of getPatchesByCaller must be a string representing the caller");
-        return MainPatcher.getPatchesByCaller(caller);
+        if (typeof (caller) !== "string") return Logger.err("iaApi.Patcher", "Parameter 0 of getPatchesByCaller must be a string representing the caller");
+        return MianPatcher.getPatchesByCaller(caller);
     }
 
     /**
@@ -157,8 +157,8 @@ class Patcher<Bounded extends boolean> {
      */
     unpatchAll(caller: string) {
         if (this.#callerName) caller = this.#callerName;
-        if (typeof (caller) !== "string") return Logger.err("BdApi.Patcher", "Parameter 0 of unpatchAll must be a string representing the caller");
-        MainPatcher.unpatchAll(caller);
+        if (typeof (caller) !== "string") return Logger.err("iaApi.Patcher", "Parameter 0 of unpatchAll must be a string representing the caller");
+        MianPatcher.unpatchAll(caller);
     }
 }
 

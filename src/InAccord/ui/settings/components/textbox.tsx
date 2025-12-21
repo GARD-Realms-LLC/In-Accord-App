@@ -27,5 +27,5 @@ export default function Textbox({value: initialValue, maxLength, placeholder, on
         setValue(e.currentTarget.value);
     }, [onChange, isDisabled]);
 
-    return <input onChange={change} onKeyDown={onKeyDown} type="text" className="bd-text-input" placeholder={placeholder} maxLength={maxLength} value={value} disabled={isDisabled} />;
+    return <input onChange={change} onKeyDown={onKeyDown} type="text" className="ia-text-input" placeholder={placeholder} maxLength={maxLength} value={value} disabled={isDisabled} />;
 }

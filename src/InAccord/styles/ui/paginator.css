@@ -1,23 +1,23 @@
-.bd-paginator {
+.ia-paginator {
   display: flex;
   align-items: center;
   margin: auto;
   justify-content: space-between;
 }
 
-.bd-paginator-bubbles {
+.ia-paginator-bubbles {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.bd-paginator-back,
-.bd-paginator-next {
+.ia-paginator-back,
+.ia-paginator-next {
   padding: 0 8px;
 }
 
-#app-mount :where(.bd-paginator-back, .bd-paginator-next),
-.bd-paginator-bubble {
+#app-mount :where(.ia-paginator-back, .ia-paginator-next),
+.ia-paginator-bubble {
   font-weight: 600;
   box-sizing: border-box;
   display: flex;
@@ -33,30 +33,30 @@
   color: var(--text-strong);
 }
 
-:where(.bd-paginator-back, .bd-paginator-next):disabled {
+:where(.ia-paginator-back, .ia-paginator-next):disabled {
   cursor: not-allowed;
   opacity: 0.5;
 }
 
-#app-mount :where(.bd-paginator-back, .bd-paginator-next):hover {
+#app-mount :where(.ia-paginator-back, .ia-paginator-next):hover {
   color: var(--interactive-text-hover);
   background-color: var(--background-base-lower);
 }
 
-.bd-paginator-back {
+.ia-paginator-back {
   padding-right: 12px;
 }
 
-.bd-paginator-next {
+.ia-paginator-next {
   padding-right: 12px;
 }
 
-.bd-paginator-bubble:where([data-selected="true"], :hover) {
+.ia-paginator-bubble:where([data-selected="true"], :hover) {
   color: var(--white-500);
   background-color: var(--brand-500);
 }
 
-.bd-paginator-bubble {
+.ia-paginator-bubble {
   min-width: 28px;
   border-radius: 14px;
 }

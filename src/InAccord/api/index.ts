@@ -1,5 +1,6 @@
-import BDLogger from "@common/logger";
+import iaLogger from "@common/logger";
 
+import BackupManager from "@modules/backupmanager";
 import PluginManager from "@modules/pluginmanager";
 import ThemeManager from "@modules/thememanager";
 import DiscordModules from "@modules/discordmodules";
@@ -44,6 +45,7 @@ type ReactDOMType = typeof ReactDOMBaseType & typeof ReactDOMClientType;
 
 
 const bounded = new Map();
+const BackupAPI = new AddonAPI(BackupManager);
 const PluginAPI = new AddonAPI(PluginManager);
 const ThemeAPI = new AddonAPI(ThemeManager);
 const PatcherAPI = new Patcher<false>();
@@ -55,7 +57,7 @@ const HooksAPI = new Hooks();
 const DefaultLogger = new Logger<false>();
 
 /**
- * `Components` is a namespace holding a series of React components. It is available under {@link BdApi}.
+ * `Components` is a namespace holding a series of React components. It is avialable under {@link iaApi}.
  * @summary {@link Components} a namespace holding a series of React components
  * @name Components
  */
@@ -82,29 +84,29 @@ const Components = {
 /**
  * The React module being used inside Discord.
  * @type React
- * @memberof BdApi
+ * @memberof iaApi
  */
 const React: typeof ReactType = DiscordModules.React;
 
 /**
  * The ReactDOM module being used inside Discord.
  * @type ReactDOM
- * @memberof BdApi
+ * @memberof iaApi
  */
 const ReactDOM: ReactDOMType = DiscordModules.ReactDOM;
 
 /**
- * A reference string for BD's version.
+ * A reference string for ia's version.
  * @type string
- * @memberof BdApi
+ * @memberof iaApi
  */
 const version: string = Config.get("version");
 
 /**
- * `BdApi` is a globally (`window.BdApi`) accessible object for use by plugins and developers to make their lives easier.
- * @name BdApi
+ * `iaApi` is a globally (`window.iaApi`) accessible object for use by plugins and developers to make their lives easier.
+ * @name iaApi
  */
-export default class BdApi {
+export default class iaApi {
     Patcher: Patcher<true> = PatcherAPI as Patcher<true>;
     Data: Data<true> = DataAPI as Data<true>;
     DOM: DOM<true> = DOMAPI as DOM<true>;
@@ -135,11 +137,11 @@ export default class BdApi {
     static Net: {fetch: typeof fetch;};
 
     constructor(pluginName: string) {
-        if (!pluginName) return BdApi;
+        if (!pluginName) return iaApi;
         if (bounded.has(pluginName)) return bounded.get(pluginName);
         if (typeof (pluginName) !== "string") {
-            BDLogger.error("BdApi", "Plugin name not a string, returning generic API!");
-            return BdApi;
+            iaLogger.error("iaApi", "Plugin name not a string, returning generic API!");
+            return iaApi;
         }
 
         // Bind to pluginName
@@ -154,6 +156,7 @@ export default class BdApi {
     }
 
     // Non-bound namespaces
+    get Backup() {return BackupAPI;}
     get Plugins() {return PluginAPI;}
     get Themes() {return ThemeAPI;}
     get Webpack() {return Webpack;}
@@ -169,93 +172,93 @@ export default class BdApi {
  * An instance of {@link AddonAPI} to access plugins.
  * @type AddonAPI
  */
-BdApi.Plugins = PluginAPI;
+iaApi.Plugins = PluginAPI;
 
 /**
  * An instance of {@link AddonAPI} to access themes.
  * @type AddonAPI
  */
-BdApi.Themes = ThemeAPI;
+iaApi.Themes = ThemeAPI;
 
 /**
  * An instance of {@link Patcher} to monkey patch functions.
  * @type Patcher
  */
-BdApi.Patcher = PatcherAPI;
+iaApi.Patcher = PatcherAPI;
 
 /**
  * An instance of {@link Webpack} to search for modules.
  * @type Webpack
  */
-BdApi.Webpack = Webpack;
+iaApi.Webpack = Webpack;
 
 /**
  * An instance of {@link Data} to manage data.
  * @type Data
  */
-BdApi.Data = DataAPI;
+iaApi.Data = DataAPI;
 
 /**
  * An instance of {@link UI} to create interfaces.
  * @type UI
  */
-BdApi.UI = UI;
+iaApi.UI = UI;
 
 /**
  * An instance of {@link ReactUtils} to work with React.
  * @type ReactUtils
  */
-BdApi.ReactUtils = ReactUtils;
+iaApi.ReactUtils = ReactUtils;
 
 /**
  * An instance of {@link Utils} for general utility functions.
  * @type Utils
  */
-BdApi.Utils = Utils;
+iaApi.Utils = Utils;
 
 /**
  * An instance of {@link DOM} to interact with the DOM.
  * @type DOM
  */
-BdApi.DOM = DOMAPI;
+iaApi.DOM = DOMAPI;
 
 /**
  * An instance of {@link ContextMenu} for interacting with context menus.
  * @type ContextMenu
  */
-BdApi.ContextMenu = ContextMenuAPI;
+iaApi.ContextMenu = ContextMenuAPI;
 
 /**
  * An set of react components plugins can make use of.
  * @type Components
  */
-BdApi.Components = Components;
+iaApi.Components = Components;
 
 /**
  * An instance of {@link CommandAPI} for adding slash commands.
  * @type CommandAPI
  */
-BdApi.Commands = CommandsAPI;
+iaApi.Commands = CommandsAPI;
 
 /**
  * An instance of {@link Net} for using network related tools.
  * @type Net
  */
-BdApi.Net = {fetch};
+iaApi.Net = {fetch};
 
 /**
  * An instance of {@link Logger} for logging information.
  * @type Logger
  */
-BdApi.Logger = DefaultLogger;
+iaApi.Logger = DefaultLogger;
 
 /**
  * An instance of {@link Hooks} for react hooks.
  * @type Hooks
  */
-BdApi.Hooks = HooksAPI;
+iaApi.Hooks = HooksAPI;
 
-Object.freeze(BdApi);
-Object.freeze(BdApi.Net);
-Object.freeze(BdApi.prototype);
-Object.freeze(BdApi.Components);
+Object.freeze(iaApi);
+Object.freeze(iaApi.Net);
+Object.freeze(iaApi.prototype);
+Object.freeze(iaApi.Components);

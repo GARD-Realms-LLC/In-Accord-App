@@ -7,7 +7,7 @@ import * as IPCEvents from "@common/constants/ipcevents";
 let dataPath = "";
 if (process.platform === "win32" || process.platform === "darwin") dataPath = path.join(electron.ipcRenderer.sendSync(IPCEvents.GET_PATH, "userData"), "..");
 else dataPath = process.env.XDG_CONFIG_HOME ? process.env.XDG_CONFIG_HOME : path.join(process.env.HOME!, ".config"); // This will help with snap packages eventually
-dataPath = path.join(dataPath, "BetterDiscord") + "/";
+dataPath = path.join(dataPath, "InAccord") + "/";
 
 const query = new URLSearchParams(location.search);
 
@@ -22,7 +22,7 @@ else {
     filepath = path.join(dataPath, `${type}s`, filename);
 }
 
-electron.contextBridge.exposeInMainWorld("Editor", {
+electron.contextBridge.exposeInMianWorld("Editor", {
     type,
     filename,
     filepath,

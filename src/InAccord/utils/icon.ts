@@ -14,7 +14,7 @@ export type DiscordProps = {
 
 export type DiscordIcon = React.ComponentType<DiscordProps>;
 
-// BdApi.Webpack.getModule(m => m.refresh_sm);
+// iaApi.Webpack.getModule(m => m.refresh_sm);
 const sizes = <const>{
     xxs: 12,
     xs: 16,

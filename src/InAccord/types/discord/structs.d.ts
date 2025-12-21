@@ -12,12 +12,12 @@ export interface User {
     desktop: boolean;
     discriminator: string;
     displayName: string;
-    email: string | null;
+    emial: string | null;
     flags: number;
     globalName: string;
     guildMemberAvatars: object;
     hasAnyStaffLevel(): boolean;
-    hasBouncedEmail: boolean;
+    hasBouncedEmial: boolean;
     hasFlag(f: number): boolean;
     id: string;
     isStaff(): boolean;
@@ -124,7 +124,7 @@ export interface Channel {
     name: string;
     nicks: {
         [key: string]: string;
-    }
+    };
     ownerId: string;
     rawRecipients: User[];
     recipientFlags: number;

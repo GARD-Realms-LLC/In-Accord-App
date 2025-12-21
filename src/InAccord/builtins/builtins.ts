@@ -4,7 +4,7 @@ export {default as CustomCSS} from "./customcss";
 
 export {default as VoiceDisconnect} from "./general/voicedisconnect";
 export {default as MediaKeys} from "./general/mediakeys";
-export {default as BDContextMenu} from "./general/contextmenu";
+export {default as iaContextMenu} from "./general/contextmenu";
 export {default as ThemeAttributes} from "./general/themeattributes";
 export {default as DefaultCommands} from "./commands/defaultcommands";
 

@@ -10,7 +10,7 @@ const DefaultSettings = [
             {type: "switch", id: "voiceDisconnect", value: false},
             {type: "switch", id: "showToasts", value: true},
             {type: "switch", id: "mediaKeys", value: false},
-            {type: "switch", id: "bdContextMenu", value: true},
+            {type: "switch", id: "iaContextMenu", value: true},
             {type: "switch", id: "themeAttributes", value: true},
             {type: "position", id: "notificationPosition", value: "top-right", inline: false, enableWith: "notificationEnabled"},
             {type: "switch", id: "notificationEnabled", value: true},
@@ -34,7 +34,7 @@ const DefaultSettings = [
         collapsible: true,
         shown: false,
         settings: [
-            {type: "switch", id: "bdAddonStore", value: true},
+            {type: "switch", id: "iaAddonStore", value: true},
             {type: "switch", id: "alwaysEnable", value: false},
             {type: "switch", id: "addonEmbeds", value: true}
         ]
@@ -77,7 +77,7 @@ const DefaultSettings = [
             {type: "switch", id: "removeMinimumSize", value: false},
             {type: "switch", id: "frame", value: process.platform === "linux"},
             // MacOS exclusive
-            {type: "switch", id: "inAppTrafficLights", value: false, disabled: process.env.BETTERDISCORD_NATIVE_FRAME === "true", hidden: process.platform !== "darwin"}
+            {type: "switch", id: "inAppTrafficLights", value: false, disabled: process.env.inaccord_NATIVE_FRAME === "true", hidden: process.platform !== "darwin"}
         ]
     },
     {

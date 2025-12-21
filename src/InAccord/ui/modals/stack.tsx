@@ -34,7 +34,7 @@ class ModalLayer extends React.Component<{onClose(): void; render(p: any): React
     }
 
     render() {
-        return React.createElement("div", {className: "bd-modal-layer"}, this.props.render({
+        return React.createElement("div", {className: "ia-modal-layer"}, this.props.render({
             transitionState: this.state.transitionState,
             onClose: this.props.onClose
         }));

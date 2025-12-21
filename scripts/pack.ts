@@ -6,16 +6,16 @@ import buildPackage from "./helpers/package";
 
 
 const dist = path.resolve(__dirname, "..", "dist");
-const bundleFile = path.join(dist, "betterdiscord.asar");
+const bundleFile = path.join(dist, "InAccord.asar");
 
 const makeBundle = function () {
     console.log("");
     console.log("Generating bundle");
     asar.createPackageFromFiles(dist, bundleFile, [
-        "dist/main.js",
+        "dist/mian.js",
         "dist/package.json",
         "dist/preload.js",
-        "dist/betterdiscord.js",
+        "dist/InAccord.js",
         "dist/editor/preload.js",
         "dist/editor/script.js",
         "dist/editor/index.html"

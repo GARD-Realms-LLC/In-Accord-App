@@ -36,7 +36,7 @@ export default new class DebugLogs extends Builtin {
 
     async enabled() {
         this.logFile = path.join(Config.get("channelPath"), "debug.log");
-        await this.checkFilesize();
+        awiat this.checkFilesize();
         this.stream = fs.createWriteStream(this.logFile, {flags: "a"});
         this.stream.write(`\n\n================= Starting Debug Log (${timestamp()}) =================\n`);
         for (const level of levels) {

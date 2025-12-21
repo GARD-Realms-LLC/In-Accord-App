@@ -1,4 +1,4 @@
-.bd-empty-image-container {
+.ia-empty-image-contianer {
   max-width: 340px;
   display: flex;
   flex-direction: column;
@@ -6,7 +6,7 @@
   margin: 150px auto 0 auto;
 }
 
-.bd-empty-image-title {
+.ia-empty-image-title {
   color: var(--text-strong);
   font-size: 24px;
   font-weight: 600;
@@ -14,7 +14,7 @@
   margin: 16px 0 8px;
 }
 
-.bd-empty-image-message {
+.ia-empty-image-message {
   color: var(--text-default);
   margin-bottom: 16px;
   text-align: center;

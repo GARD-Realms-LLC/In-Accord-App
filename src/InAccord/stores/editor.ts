@@ -3,7 +3,7 @@ import Store from "./base";
 import SettingsManager from "./settings";
 import RemoteAPI from "@polyfill/remote";
 
-const EDITOR_URL_REGEX = /^betterdiscord:\/\/editor\/(?:custom-css|(theme|plugin)\/([^/]+))\/?/;
+const EDITOR_URL_REGEX = /^inaccord:\/\/editor\/(?:custom-css|(backup|theme|plugin)\/([^/]+))\/?/;
 
 export default new class EditorStore extends Store {
     constructor() {
@@ -32,9 +32,10 @@ export default new class EditorStore extends Store {
                 RemoteAPI.editor.open("custom-css");
             }
             else {
-                const manager: typeof import("@modules/thememanager")["default"] | typeof import("@modules/pluginmanager")["default"] = (
+
+                const manager: typeof import("@modules/backupmanager")["default"] | typeof import("@modules/thememanager")["default"] | typeof import("@modules/pluginmanager")["default"] = (
                     // eslint-disable-next-line @typescript-eslint/no-require-imports
-                    match[1] === "theme" ? require("@modules/thememanager") : require("@modules/pluginmanager")
+                    match[1] === "theme" ? require("@modules/backupmanager") : require("@modules/thememanager") : require("@modules/pluginmanager")
                 ).default;
 
                 if (manager.isLoaded(match[2])) {

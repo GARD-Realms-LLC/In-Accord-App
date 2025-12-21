@@ -27,7 +27,7 @@ export default function AddonEmbed({id, original}: {id: string; original: ReactN
         if (!loading) return original;
 
         return (
-            <div className="bd-addon-store-card-embed bd-addon-store-card-loading">
+            <div className="ia-addon-store-card-embed ia-addon-store-card-loading">
                 <Spinner type={Spinner.Type.SPINNING_CIRCLE} />
             </div>
         );

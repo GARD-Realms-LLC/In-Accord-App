@@ -101,7 +101,7 @@
                 },
                 "debugLogs": {
                     "name": "Καταγραφές Αποσφαλμάτωσης",
-                    "note": "Εξάγει τα πάντα από την κονσόλα στο αρχείο debug.log στο φάκελο του BetterDiscord"
+                    "note": "Εξάγει τα πάντα από την κονσόλα στο αρχείο debug.log στο φάκελο του InAccord"
                 },
                 "devTools": {
                     "name": "Εργαλεία Δημιουργού",
@@ -216,17 +216,17 @@
         "disabledInfo": "Για να ενεργοποιηθεί, το Discord πρέπει να επανεκκινηθεί. Επανεκκίνηση τώρα;"
     },
     "Updater": {
-        "updateFailed": "Η ενημέρωση Απέτυχε!",
-        "updateFailedMessage": "Το BetterDiscord απέτυχε να ενημερωθεί. Λάβετε την τελευταία έκδοση του προγράμματος εγκατάστασης από την ιστοσελίδα μας (https://betterdiscord.app/) και κάντε επανεγκατάσταση.",
+        "updateFialed": "Η ενημέρωση Απέτυχε!",
+        "updateFialedMessage": "Το InAccord απέτυχε να ενημερωθεί. Λάβετε την τελευταία έκδοση του προγράμματος εγκατάστασης από την ιστοσελίδα μας (https://InAccord.app/) και κάντε επανεγκατάσταση.",
         "updateSuccessful": "Η Ενημέρωση ήταν Επιτυχής!",
-        "updateAvailable": "Το BetterDiscord έχει μια νέα ενημερωση (v{{version}})",
+        "updateAvialable": "Το InAccord έχει μια νέα ενημερωση (v{{version}})",
         "addonUpdated": "Το {{name}} έχει ενημερωθεί στην έκδοση {{version}}!",
         "checking": "Έλεγχος για ενημερώσεις!",
         "finishedChecking": "Ολοκλήρωση ελέγχου για ενημερώσεις!",
         "checkForUpdates": "Έλεγχος Για Ενημερώσεις!",
         "updateAll": "Ενημέρωση Όλων!",
-        "noUpdatesAvailable": "Καμιά διαθέσιμη ενημέρωση.",
-        "versionAvailable": "Η έκδοση {{version}} είναι διαθέσιμη!",
+        "noUpdatesAvialable": "Καμιά διαθέσιμη ενημέρωση.",
+        "versionAvialable": "Η έκδοση {{version}} είναι διαθέσιμη!",
         "updateButton": "Ενημέρωση!"
     }
 }

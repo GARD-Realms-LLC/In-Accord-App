@@ -4,6 +4,7 @@ import {t} from "@common/i18n";
 import SettingsStore, {type SettingsCollection} from "@stores/settings";
 
 import ContextMenuPatcher from "@api/contextmenu";
+import backupManager from "@modules/backupmanager";
 import pluginManager, {type Plugin} from "@modules/pluginmanager";
 import themeManager from "@modules/thememanager";
 import React from "@modules/react";
@@ -26,10 +27,10 @@ const ContextMenu = new ContextMenuPatcher() as InstanceType<typeof ContextMenuP
     Menu: any;
 };
 
-export default new class BDContextMenu extends Builtin {
-    get name() {return "BDContextMenu";}
+export default new class iaContextMenu extends Builtin {
+    get name() {return "iaContextMenu";}
     get category() {return "general";}
-    get id() {return "bdContextMenu";}
+    get id() {return "iaContextMenu";}
 
     patch?(): void;
 
@@ -51,9 +52,9 @@ export default new class BDContextMenu extends Builtin {
         if (!target) return;
 
         // Prevent conflict with plugin until its eradicated
-        if (target.some((e: any) => e.props.label.toLowerCase() === "betterdiscord")) return;
+        if (target.some((e: any) => e.props.label.toLowerCase() === "inaccord")) return;
 
-        // BetterDiscord Settings
+        // InAccord Settings
         // TODO: de-dup when converting context menu module
         const items: Array<{type?: string; label: any; action: () => Promise<void>; items?: any;}> = SettingsStore.collections.map(c => this.buildCollectionMenu(c));
 
@@ -71,14 +72,15 @@ export default new class BDContextMenu extends Builtin {
             });
         }
 
-        // Plugins & Themes
+        // Plugins & Themes & backups
+        items.push(this.buildAddonMenu("backup", t("Panels.backups"), backupManager));
         items.push(this.buildAddonMenu("plugin", t("Panels.plugins"), pluginManager));
         items.push(this.buildAddonMenu("theme", t("Panels.themes"), themeManager));
 
         // Parent SubMenu
-        const bdSubMenu = ContextMenu.buildItem({type: "submenu", label: "BetterDiscord", items: items});
-        const bdGroup = React.createElement(ContextMenu.Group, null, [bdSubMenu]);
-        target.push(bdGroup);
+        const iaSubMenu = ContextMenu.buildItem({type: "submenu", label: "InAccord", items: items});
+        const iaGroup = React.createElement(ContextMenu.Group, null, [iaSubMenu]);
+        target.push(iaGroup);
     }
 
     buildCollectionMenu(collection: SettingsCollection) {
@@ -136,7 +138,7 @@ export default new class BDContextMenu extends Builtin {
         });
 
         // If the store is enabled, add a separate item to open it
-        if (SettingsStore.get("settings", "store", "bdAddonStore")) {
+        if (SettingsStore.get("settings", "store", "iaAddonStore")) {
             if (toggles.length) toggles.push({type: "separator"}); // Add separator when addons exist
 
             toggles.push({
@@ -144,7 +146,7 @@ export default new class BDContextMenu extends Builtin {
                 action: () => {
                     this.openCategory(manager.prefix + "s");
                     // If the addon store instantly opens have it just stop basically
-                    DOMManager.onAdded(":where(.bd-store-card, .bd-addon-title > :nth-child(3))", (elem) => (elem as HTMLElement)?.click());
+                    DOMManager.onAdded(":where(.ia-store-card, .ia-addon-title > :nth-child(3))", (elem) => (elem as HTMLElement)?.click());
                 }
             });
         }

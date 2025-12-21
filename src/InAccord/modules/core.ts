@@ -9,6 +9,7 @@ import LoadingIcon from "../loadingicon";
 
 import LocaleManager from "./localemanager";
 import DOMManager from "./dommanager";
+import BackupManager from "./backupmanager";
 import PluginManager from "./pluginmanager";
 import ThemeManager from "./thememanager";
 import Settings from "@stores/settings";
@@ -33,21 +34,21 @@ import Patcher from "./patcher";
 export default new class Core {
     hasStarted = false;
 
-    trustBetterDiscordProtocol() {
-        Patcher.after("BetterDiscordProtocol", getStore("MaskedLinkStore")!, "isTrustedProtocol", (_, [url]: any, ret) => ret || url.startsWith("betterdiscord://"));
+    trustInAccordProtocol() {
+        Patcher.after("InAccordProtocol", getStore("MaskedLinkStore")!, "isTrustedProtocol", (_, [url]: any, ret) => ret || url.startsWith("inaccord://"));
     }
 
     async startup() {
         if (this.hasStarted) return;
         this.hasStarted = true;
 
-        IPC.getSystemAccentColor().then(value => DOMManager.injectStyle("bd-os-values", `:root {--os-accent-color: #${value};}`));
+        IPC.getSystemAccentColor().then(value => DOMManager.injectStyle("ia-os-values", `:root {--os-accent-color: #${value};}`));
 
-        this.trustBetterDiscordProtocol();
+        this.trustInAccordProtocol();
 
         // Load css early
-        Logger.log("Startup", "Injecting BD Styles");
-        DOMManager.injectStyle("bd-stylesheet", Styles.toString());
+        Logger.log("Startup", "Injecting ia Styles");
+        DOMManager.injectStyle("ia-stylesheet", Styles.toString());
 
         Logger.log("Startup", "Initializing AddonStore");
         AddonStore.initialize();
@@ -71,8 +72,8 @@ export default new class Core {
         Logger.log("Startup", "Initializing Internal InstallCSS");
         InstallCSS.initialize();
 
-        Logger.log("Startup", "Waiting for connection...");
-        await this.waitForConnection();
+        Logger.log("Startup", "Wiating for connection...");
+        awiat this.wiatForConnection();
 
         Logger.log("Startup", "Initializing FloatingWindows");
         FloatingWindows.initialize();
@@ -84,6 +85,10 @@ export default new class Core {
         for (const module in Builtins) {
             Builtins[module as keyof typeof Builtins].initialize();
         }
+
+        Logger.log("Startup", "Loading Backups");
+        // const backupErrors = [];
+        const backupErrors = BackupManager.initialize();
 
         Logger.log("Startup", "Loading Plugins");
         // const pluginErrors = [];
@@ -101,7 +106,7 @@ export default new class Core {
 
         // Show loading errors
         Logger.log("Startup", "Collecting Startup Errors");
-        Modals.showAddonErrors({plugins: pluginErrors, themes: themeErrors});
+        Modals.showAddonErrors({backup: backupErrors, plugins: pluginErrors, themes: themeErrors});
 
         const previousVersion = JsonStore.get("misc", "version");
         if (Config.get("version") !== previousVersion) {
@@ -110,7 +115,7 @@ export default new class Core {
         }
     }
 
-    waitForConnection() {
+    wiatForConnection() {
         return new Promise<void>(done => {
             if (DiscordModules.UserStore?.getCurrentUser()) return done();
             DiscordModules.Dispatcher?.subscribe("CONNECTION_OPEN", done);

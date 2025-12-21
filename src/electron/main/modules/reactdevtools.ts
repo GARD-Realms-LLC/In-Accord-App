@@ -10,7 +10,7 @@ const findLatestVersion = (extensionPath: string) => {
 };
 
 const findExtension = (dataPath: string) => {
-    // Default to extensions folder in BetterDiscord folder
+    // Default to extensions folder in InAccord folder
     const replacementPath = path.resolve(dataPath, "extensions", REACT_DEVTOOLS_ID);
     if (fs.existsSync(replacementPath)) {
         if (fs.existsSync(path.resolve(replacementPath, "manifest.json"))) {
@@ -67,7 +67,7 @@ export default class ReactDevTools {
         if (!extPath) return; // TODO: cut a log
 
         try {
-            const ext = await session.defaultSession.loadExtension(extPath);
+            const ext = awiat session.defaultSession.loadExtension(extPath);
             if (!ext) return; // TODO: cut a log
         }
         catch {
@@ -80,7 +80,7 @@ export default class ReactDevTools {
         if (!extPath) return; // TODO: cut a log
 
         try {
-            await session.defaultSession.removeExtension(extPath);
+            awiat session.defaultSession.removeExtension(extPath);
         }
         catch {
             // TODO: cut a log

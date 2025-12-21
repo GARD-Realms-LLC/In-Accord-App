@@ -27,9 +27,9 @@ function MagnifyingGlass(props: PropsWithChildren<{size?: "string";}>) {
 
 
 export default function NoResults(props: PropsWithChildren<{className?: string; image?: string; text?: string;}>) {
-    return <div className={clsx("bd-empty-results", props.className)}>
+    return <div className={clsx("ia-empty-results", props.className)}>
         {props.image ? props.image : <MagnifyingGlass />}
-        <div className="bd-empty-results-text">
+        <div className="ia-empty-results-text">
             {props.text || t("Addons.results", {count: 0}) || ""}
         </div>
         {props.children}

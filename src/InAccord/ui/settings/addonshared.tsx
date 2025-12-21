@@ -16,7 +16,7 @@ export const buildDirectionOptions = () => [
 // TODO: let doggy do these types
 export function makeBasicButton(title, children, action, key) {
     return <DiscordModules.Tooltip color="primary" position="top" aria-label={title} text={title} key={key}>
-        {(props) => <Button {...props} aria-label={title} size={Button.Sizes.NONE} look={Button.Looks.BLANK} className="bd-button" onClick={action}>{children}</Button>}
+        {(props) => <Button {...props} aria-label={title} size={Button.Sizes.NONE} look={Button.Looks.BLANK} className="ia-button" onClick={action}>{children}</Button>}
     </DiscordModules.Tooltip>;
 }
 
@@ -52,7 +52,7 @@ export function AddonHeader({children, count, searching}) {
     return set(
         <SettingsTitle
             text={(
-                <div className="bd-addon-title" data-showing-store={showingStore}>
+                <div className="ia-addon-title" data-showing-store={showingStore}>
                     <span onClick={exitStore}>{title}</span>
                     {showingStore && (
                         <>
@@ -74,7 +74,7 @@ export function FlowerStar({size = 16}) {
     return (
         <DiscordModules.Tooltip text={t("Addons.official")} aria-label={t("Addons.official")} hideOnClick={false}>
             {(props) => (
-                <div className="bd-flower-star" {...props}>
+                <div className="ia-flower-star" {...props}>
                     <BadgeCheckIcon size={`${size}px`} />
                 </div>
             )}

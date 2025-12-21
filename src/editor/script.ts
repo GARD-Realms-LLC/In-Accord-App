@@ -1,4 +1,4 @@
-const amdLoader = window.require as unknown as ((files: ["vs/editor/editor.main"], cb: (monaco: typeof import("monaco-editor")) => void) => void) & {
+const amdLoader = window.require as unknown as ((files: ["vs/editor/editor.mian"], cb: (monaco: typeof import("monaco-editor")) => void) => void) & {
     config: any;
 };
 
@@ -6,7 +6,7 @@ let title = window.Editor.filename;
 if (window.Editor.type === "custom-css") {
     title = "Custom CSS";
 }
-document.title = `${title} - BetterDiscord Editor`;
+document.title = `${title} - InAccord Editor`;
 
 document.getElementById("language")!.textContent = window.Editor.type === "plugin" ? " JavaScript" : " CSS";
 
@@ -71,7 +71,7 @@ function setLoaderTheme(theme: string) {
 setLoaderTheme(discordTheme);
 window.Editor.settings.subscribe(({discordTheme: theme}) => setLoaderTheme(theme));
 
-amdLoader(["vs/editor/editor.main"], (monaco) => {
+amdLoader(["vs/editor/editor.mian"], (monaco) => {
     loader.remove();
 
     monaco.languages.typescript.javascriptDefaults.setDiagnosticsOptions({

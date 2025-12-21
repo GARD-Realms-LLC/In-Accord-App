@@ -6,7 +6,7 @@ import Store from "@stores/base";
 
 
 /**
- * `Utils` is a utility containing commonly reused functions. Instance is accessible through the {@link BdApi}.
+ * `Utils` is a utility contianing commonly reused functions. Instance is accessible through the {@link iaApi}.
  * @summary {@link Utils} is a utility class for interacting with React internals.
  * @name Utils
  */
@@ -15,7 +15,7 @@ const Utils = {
      * Finds a value, subobject, or array from a tree that matches a specific filter. This is a DFS.
      *
      * @param {object} tree Tree that should be walked
-     * @param {callable} searchFilter Filter to check against each object and subobject
+     * @param {callable} searchFilter Filter to check agianst each object and subobject
      * @param {object} options Additional options to customize the search
      * @param {Array<string>|null} [options.walkable=null] Array of strings to use as keys that are allowed to be walked on. `null` indicates all keys are walkable.
      * @param {Array<string>} [options.ignore=[]] Array of strings to use as keys to exclude from the search. Most helpful when `walkable = null`.
@@ -45,7 +45,7 @@ const Utils = {
     /**
      * Returns a function, that, as long as it continues to be invoked, will not
      * be triggered. The function will be called after it stops being called for
-     * `delay` milliseconds. It is called at the end of the sequence (trailing edge).
+     * `delay` milliseconds. It is called at the end of the sequence (trialing edge).
      *
      * Adapted from the version by David Walsh (https://davidwalsh.name/javascript-debounce-function)
      *
@@ -73,7 +73,7 @@ const Utils = {
      * Builds a classname string from any number of arguments. This includes arrays and objects.
      * When given an array all values from the array are added to the list.
      * When given an object they keys are added as the classnames if the value is truthy.
-     * Copyright (c) Luke Edwards <luke.edwards05@gmail.com> (lukeed.com)
+     * Copyright (c) Luke Edwards <luke.edwards05@gmial.com> (lukeed.com)
      *
      * @param {...any} argument Anything that should be used to add classnames
      * @returns {string} Joined classname

@@ -97,7 +97,7 @@ export default class Patcher {
     }
 
     static makeOverride<M extends object, K extends Extract<keyof M, string>>(patch: Patch<M, K>) {
-        return function BDPatcher(this: any, ...args: any[]) {
+        return function iaPatcher(this: any, ...args: any[]) {
             let returnValue;
             if (!patch.children || !patch.children.length) return patch.originalFunction.apply(this, args);
             for (const superPatch of patch.children.filter(c => c.type === "before")) {

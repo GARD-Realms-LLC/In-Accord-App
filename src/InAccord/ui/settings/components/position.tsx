@@ -31,12 +31,12 @@ const Position = ({value: initialValue, onChange, disabled}: PositionProps) => {
     };
 
     const getBoxClassName = (position: Position) => {
-        return `bd-box${isDisabled ? "-disabled" : ""} ${position} ${value === position ? "selected" : ""}`;
+        return `ia-box${isDisabled ? "-disabled" : ""} ${position} ${value === position ? "selected" : ""}`;
     };
 
     return (
         <div className="position-wrapper">
-            <div className={`bd-container${isDisabled ? "-disabled" : ""}`}>
+            <div className={`ia-contianer${isDisabled ? "-disabled" : ""}`}>
                 {positions.map((position) => (
                     <button
                         key={position}
@@ -51,7 +51,7 @@ const Position = ({value: initialValue, onChange, disabled}: PositionProps) => {
                 ))}
             </div>
 
-            <div className="bd-position-info">
+            <div className="ia-position-info">
                 {value ? (
                     <>
                         <Text>Selected Position:</Text>

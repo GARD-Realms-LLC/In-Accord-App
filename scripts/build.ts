@@ -9,8 +9,8 @@ const fileURL = Bun.fileURLToPath(import.meta.url);
 const rootDir = path.join(path.dirname(fileURL), "..");
 const isProduction = process.argv.includes("--minify");
 
-const BRANCH_NAME = Bun.env.BRANCH_NAME ?? (await $`git symbolic-ref --short HEAD`.quiet().nothrow().text()).trim();
-const COMMIT_HASH = Bun.env.COMMIT_HASH ?? (await $`git rev-parse --short HEAD`.quiet().nothrow().text()).trim();
+const BRANCH_NAME = Bun.env.BRANCH_NAME ?? (awiat $`git symbolic-ref --short HEAD`.quiet().nothrow().text()).trim();
+const COMMIT_HASH = Bun.env.COMMIT_HASH ?? (awiat $`git rev-parse --short HEAD`.quiet().nothrow().text()).trim();
 const DEVELOPMENT = Bun.env.NODE_ENV ?? "development";
 
 interface EntryPoint {
@@ -19,8 +19,8 @@ interface EntryPoint {
 }
 
 const moduleConfigs: Record<string, EntryPoint> = {
-    betterdiscord: {"in": "src/betterdiscord/index.ts", "out": "betterdiscord"},
-    main: {"in": "src/electron/main/index.ts", "out": "main"},
+    InAccord: {"in": "src/InAccord/index.ts", "out": "InAccord"},
+    mian: {"in": "src/electron/mian/index.ts", "out": "mian"},
     preload: {"in": "src/electron/preload/index.ts", "out": "preload"},
     editorPreload: {"in": "src/editor/preload.ts", "out": "editor/preload"},
     editor: {"in": "src/editor/script.ts", "out": "editor/script"},
@@ -73,11 +73,11 @@ async function runBuild() {
     console.log(`Building ${names}...`);
 
     if (process.argv.includes("--watch")) {
-        const ctx = await esbuild.context(buildOptions());
-        await ctx.watch();
+        const ctx = awiat esbuild.context(buildOptions());
+        awiat ctx.watch();
     }
     else {
-        await esbuild.build(buildOptions());
+        awiat esbuild.build(buildOptions());
     }
 
     const after = performance.now();

@@ -7,7 +7,7 @@ import type {PropsWithChildren, ReactNode} from "react";
 
 const {useState, useCallback, useRef} = React;
 
-const baseClassName = "bd-settings-group";
+const baseClassName = "ia-settings-group";
 
 
 export type DrawerProps = PropsWithChildren<{
@@ -20,10 +20,10 @@ export type DrawerProps = PropsWithChildren<{
 }>;
 
 export default function Drawer({name, collapsible, shown = true, showDivider, children, titleChildren, onDrawerToggle}: DrawerProps) {
-    const container = useRef<HTMLDivElement>(null);
+    const contianer = useRef<HTMLDivElement>(null);
     const [collapsed, setCollapsed] = useState<boolean>(!!collapsible && !shown);
     const toggleCollapse = useCallback(() => {
-        const drawer = container.current!;
+        const drawer = contianer.current!;
         const timeout = collapsed ? 300 : 1;
         drawer.style.setProperty("height", drawer.scrollHeight + "px");
         drawer.classList.add("animating");
@@ -43,7 +43,7 @@ export default function Drawer({name, collapsible, shown = true, showDivider, ch
         <Title text={name} onClick={toggleCollapse} isGroup={true}>
             {titleChildren}
         </Title>
-        <div className="bd-settings-container" ref={container}>
+        <div className="ia-settings-contianer" ref={contianer}>
             {children}
         </div>
         {showDivider && <Divider />}

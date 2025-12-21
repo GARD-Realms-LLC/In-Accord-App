@@ -6,5 +6,5 @@ export interface SettingsContextValue {
     disabled: boolean;
 }
 
-export const none = Symbol("betterdiscord.none");
+export const none = Symbol("inaccord.none");
 export const SettingsContext = createContext<SettingsContextValue>({value: none, disabled: false});

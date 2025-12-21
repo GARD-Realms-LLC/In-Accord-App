@@ -1,18 +1,18 @@
-.bd-modal-wrapper {
+.ia-modal-wrapper {
     position: absolute;
     z-index: 1000;
     width: 100vw;
     height: 100vh;
 }
 
-.bd-backdrop {
+.ia-backdrop {
     width: 100%;
     height: 100%;
     background: rgba(0,0,0, .6);
     position: absolute;
 }
 
-.bd-modal {
+.ia-modal {
     position: absolute;
     left: 50%;
     top: 50%;
@@ -20,59 +20,59 @@
     width: 33%;
 }
 
-.bd-modal-inner {
+.ia-modal-inner {
     background: var(--background-base-low);
     border-radius: var(--radius-md);
     overflow: hidden;
-    animation: bd-modal-open ease-out;
+    animation: ia-modal-open ease-out;
     animation-duration: 300ms;
 }
 
-.bd-modal-wrapper.closing .bd-modal-inner {
-    animation: bd-modal-close ease-in;
+.ia-modal-wrapper.closing .ia-modal-inner {
+    animation: ia-modal-close ease-in;
     animation-duration: 300ms;
 }
 
-.bd-modal .footer {
+.ia-modal .footer {
     display: flex;
     justify-content: flex-end;
     padding: 15px;
     background: var(--background-base-lower);
 }
 
-.bd-modal-body {
+.ia-modal-body {
     padding: 20px 15px;
     padding-top: 0;
 }
 
-.bd-modal .header {
+.ia-modal .header {
     padding: 15px;
 }
 
-.bd-modal .title {
+.ia-modal .title {
     font-size: 22px;
     color: #fff;
     font-weight: 600;
 }
 
-.bd-modal-body {
+.ia-modal-body {
     color: #fff;
 }
 
-.bd-modal .footer .bd-button {
+.ia-modal .footer .ia-button {
     min-width: 80px;
     height: 38px;
 }
 
-@keyframes bd-modal-close {
+@keyframes ia-modal-close {
     to {transform: scale(0.7);}
 }
 
-@keyframes bd-modal-open {
+@keyframes ia-modal-open {
     from {transform: scale(0.7);}
 }
 
-.bd-modal-root {
+.ia-modal-root {
     display: flex;
     flex-direction: column;
     background-color: var(--modal-background);
@@ -84,7 +84,7 @@
     max-height: 100%;
 }
 
-.bd-close-button {
+.ia-close-button {
     height: 26px;
     padding: 4px;
     transition: opacity 0.2s ease-in-out;
@@ -95,18 +95,18 @@
     box-sizing: content-box;
 }
 
-.bd-close-button:hover {
+.ia-close-button:hover {
     opacity: 1;
     color: var(--interactive-text-hover);
 }
 
-.bd-modal-small {
+.ia-modal-small {
     width: 440px;
     max-height: 720px;
     min-height: 200px;
 }
 
-.bd-modal-standard {
+.ia-modal-standard {
     font-size: 13px;
     white-space: pre-wrap;
     word-wrap: break-word;
@@ -114,24 +114,24 @@
     max-height: min(800px, 60vh);
 }
 
-.bd-modal-medium {
+.ia-modal-medium {
     width: 600px;
     max-height: min(800px, 60vh);
     min-height: 400px;
 }
 
-.bd-modal-large {
+.ia-modal-large {
     width: 800px;
     max-height: min(960px, 70vh);
     min-height: 400px;
 }
 
-.bd-addon-modal {
+.ia-addon-modal {
     min-height: 0;
 }
 
-.bd-modal-header,
-.bd-modal-footer {
+.ia-modal-header,
+.ia-modal-footer {
     position: relative;
     flex: 0 0 auto;
     padding: 16px;
@@ -139,19 +139,19 @@
     overflow-x: hidden;
 }
 
-.bd-modal-header {
+.ia-modal-header {
     border-radius: var(--radius-md) var(--radius-md) 0 0;
     transition: box-shadow 0.1s ease-out;
     word-wrap: break-word;
 }
 
-.bd-modal-footer {
+.ia-modal-footer {
     border-radius: 0 0 var(--radius-md) var(--radius-md);
     background-color: var(--modal-footer-background);
     overflow: hidden;
 }
 
-.bd-modal-content {
+.ia-modal-content {
     position: relative;
     z-index: 0;
     border-radius: var(--radius-md) var(--radius-md) 0 0;
@@ -165,7 +165,7 @@
     color: var(--text-default);
 }
 
-.bd-modal-backdrop {
+.ia-modal-backdrop {
     position: fixed;
     top: 0;
     right: var(--devtools-sidebar-width,0);
@@ -176,7 +176,7 @@
     pointer-events: all;
 }
 
-#bd-modal-container {
+#ia-modal-contianer {
     position: absolute;
     top: 0;
     left: 0;
@@ -187,7 +187,7 @@
     z-index: 1002;
 }
 
-.bd-modal-layer {
+.ia-modal-layer {
     position: absolute;
     top: 0;
     bottom: 0;
@@ -195,7 +195,7 @@
     right: 0;
 }
 
-.bd-modal-layer {
+.ia-modal-layer {
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;

@@ -20,13 +20,13 @@ export default new class NativeFrame extends Builtin {
     }
 
     async enabled() {
-        document.body.classList.add("bd-frame");
+        document.body.classList.add("ia-frame");
 
         this.showModal();
     }
 
     async disabled() {
-        document.body.classList.remove("bd-frame");
+        document.body.classList.remove("ia-frame");
 
         this.showModal();
     }

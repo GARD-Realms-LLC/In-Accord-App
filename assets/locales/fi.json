@@ -11,8 +11,8 @@
             "general": {
                 "name": "Yleinen",
                 "voiceDisconnect": {
-                    "name": "Katkaise puhelu",
-                    "note": "Katkaise puhelu, kun suljet Discordin"
+                    "name": "Katkiase puhelu",
+                    "note": "Katkiase puhelu, kun suljet Discordin"
                 },
                 "showToasts": {
                     "name": "Näytä Paahtoleivät",
@@ -72,7 +72,7 @@
                     "note": "Mukautetun CSS-välilehden napsauttaminen avaa mukautetun css alkuperäisessä muokkaajassa"
                 },
                 "openAction": {
-                    "name": "Muokkaajan sijainti",
+                    "name": "Muokkaajan sijianti",
                     "note": "Missä mukautettu CSS:n pitäisi avautua normaalisti",
                     "options": {
                         "settings": "Asetuksien valikko",
@@ -85,15 +85,15 @@
                 "name": "Kehittäjän asetukset",
                 "debuggerHotkey": {
                     "name": "Virheenkorjaajan pikanäppäin",
-                    "note": "Mahdollistaa virheenkorjauksen aktivoinnin, kun painetaan F8 DevToolsin ollessa auki"
+                    "note": "Mahdollistaa virheenkorjauksen aktivoinnin, kun pianetaan F8 DevToolsin ollessa auki"
                 },
                 "reactDevTools": {
                     "name": "React-kehitystyökalut",
-                    "note": "Lisää paikallisen React Developer Tools -asennuksesi Discordiin"
+                    "note": "Lisää piakallisen React Developer Tools -asennuksesi Discordiin"
                 },
                 "inspectElement": {
                     "name": "Tarkista-elementin pikanäppäin",
-                    "note": "Ottaa käyttöön tarkastuselementin pikanäppäimen (ctrl + shift + c), joka on yleinen useimmissa selaimissa"
+                    "note": "Ottaa käyttöön tarkastuselementin pikanäppäimen (ctrl + shift + c), joka on yleinen useimmissa seliamissa"
                 },
                 "devToolsWarning": {
                     "name": "Lopeta DevTools-varoitus",
@@ -101,7 +101,7 @@
                 },
                 "debugLogs": {
                     "name": "Virheenkorjauksen logit",
-                    "note": "Tulostaa kaiken konsolista BetterDiscord-kansion debug.log-tiedostoon"
+                    "note": "Tulostaa kiaken konsolista InAccord-kansion debug.log-tiedostoon"
                 },
                 "devTools": {
                     "name": "DevTools",
@@ -134,7 +134,7 @@
                     "name": "Näytä välilyönti",
                     "note": "Milloin muokkaajan tulee näyttää välilyönnit",
                     "options": {
-                        "all": "Aina",
+                        "all": "iana",
                         "none": "Ei ikinä",
                         "selection": "Valinta"
                     }
@@ -158,7 +158,7 @@
         "editAddon": "Muokkaa",
         "deleteAddon": "Poista",
         "confirmDelete": "Haluatko varmasti poistaa {{name}}?",
-        "confirmationText": "Sinulla on tallentamattomia muutoksia kohteeseen {{name}}. Tämän ikkunan sulkeminen menettää kaikki muutokset.",
+        "confirmationText": "Sinulla on tallentamattomia muutoksia kohteeseen {{name}}. Tämän ikkunan sulkeminen menettää kiakki muutokset.",
         "enabled": "\n{{name}} on otettu käyttöön.",
         "disabled": "\n{{name}} on poistettu käytöstä.",
         "couldNotEnable": "{{name}} ei voitu ottaa käyttöön.",
@@ -166,7 +166,7 @@
         "couldNotStart": "{{name}} ei voitu käynnistää.",
         "couldNotStop": "{{name}} ei voitu pysäyttää.",
         "settingsError": "Käyttäjän {{name}} asetuksia ei voitu avata",
-        "methodError": "{{method}} ei voitu laukaista.",
+        "methodError": "{{method}} ei voitu laukiasta.",
         "unknownAuthor": "Tuntematon tekijä",
         "noDescription": "Kuvausta ei ole annettu.",
         "metaError": "META:a ei voitu jäsentää.",
@@ -178,7 +178,7 @@
         "wasLoaded": "\n{{name}} v{{version}} ladattiin."
     },
     "CustomCSS": {
-        "confirmationText": "Muokatussa CSS:ssä on tallentamattomia muutoksia. Tämän ikkunan sulkeminen menettää kaikki muutokset.",
+        "confirmationText": "Muokatussa CSS:ssä on tallentamattomia muutoksia. Tämän ikkunan sulkeminen menettää kiakki muutokset.",
         "update": "Päivitä",
         "save": "Tallenna",
         "openNative": "Avaa järjestelmän muokkaajassa",
@@ -210,21 +210,21 @@
         "descending": "Laskeva"
     },
     "WindowPrefs": {
-        "enabledInfo": "Tämä vaihtoehto vaatii läpinäkyvän teeman toimiakseen kunnolla. Windowsissa tämä voi katkaista aerosnapsauksen ja maksimoimisen.\n\nJotta Discord tulisi voimaan, se on käynnistettävä uudelleen. Haluatko käynnistää uudelleen nyt?",
+        "enabledInfo": "Tämä viahtoehto vaatii läpinäkyvän teeman toimiakseen kunnolla. Windowsissa tämä voi katkiasta aerosnapsauksen ja maksimoimisen.\n\nJotta Discord tulisi voimaan, se on käynnistettävä uudelleen. Haluatko käynnistää uudelleen nyt?",
         "disabledInfo": "Jotta se tulisi voimaan, Discord on käynnistettävä uudelleen. Haluatko käynnistää uudelleen nyt?"
     },
     "Updater": {
-        "updateFailed": "Päivitys epäonnistui",
-        "updateFailedMessage": "BetterDiscordin päivitys epäonnistui. Lataa asennusohjelman uusin versio verkkosivustoltamme (https://betterdiscord.app/) ja asenna se uudelleen.",
+        "updateFialed": "Päivitys epäonnistui",
+        "updateFialedMessage": "InAccordin päivitys epäonnistui. Lataa asennusohjelman uusin versio verkkosivustoltamme (https://InAccord.app/) ja asenna se uudelleen.",
         "updateSuccessful": "Päivittäminen onnistui!",
-        "updateAvailable": "BetterDiscordilla on uusi päivitys",
+        "updateAvialable": "InAccordilla on uusi päivitys",
         "addonUpdated": "{{name}} on päivitetty versioon {{version}}!",
         "checking": "Tarkistetaan päivityksiä!",
         "finishedChecking": "Päivitysten tarkistaminen on valmis!",
         "checkForUpdates": "Tarkista päivitykset!",
-        "updateAll": "Päivitä kaikki!",
-        "noUpdatesAvailable": "Päivityksiä ei ole saatavilla.",
-        "versionAvailable": "Versio {{version}} on saatavilla!",
+        "updateAll": "Päivitä kiakki!",
+        "noUpdatesAvialable": "Päivityksiä ei ole saatavilla.",
+        "versionAvialable": "Versio {{version}} on saatavilla!",
         "updateButton": "Päivitä!"
     }
 }

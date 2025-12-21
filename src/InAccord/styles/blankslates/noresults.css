@@ -1,4 +1,4 @@
-.bd-empty-results {
+.ia-empty-results {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -8,7 +8,7 @@
     margin-top: 100px;
 }
 
-.bd-empty-results-text {
+.ia-empty-results-text {
     width: 280px;
     margin-top: 40px;
     text-align: center;

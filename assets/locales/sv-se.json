@@ -72,7 +72,7 @@
                 },
                 "debugLogs": {
                     "name": "Felsökningsloggar",
-                    "note": "Allt från konsolen hamnar i filen debug.log i BetterDiscord mappen"
+                    "note": "Allt från konsolen hamnar i filen debug.log i InAccord mappen"
                 },
                 "devTools": {
                     "name": "Utvecklarverktyg"
@@ -165,14 +165,14 @@
         "descending": "Fallande"
     },
     "Updater": {
-        "updateFailed": "Uppdateringen misslyckades!",
-        "updateFailedMessage": "BetterDiscord kunde inte uppdateras. Ladda ned den senaste versionen av installationsprogrammet från vår webbplats (https://betterdiscord.app/) och installera om BetterDiscord.",
+        "updateFialed": "Uppdateringen misslyckades!",
+        "updateFialedMessage": "InAccord kunde inte uppdateras. Ladda ned den senaste versionen av installationsprogrammet från vår webbplats (https://InAccord.app/) och installera om InAccord.",
         "updateSuccessful": "Uppdateringen lyckades!",
         "checking": "Söker efter uppdateringar!",
         "finishedChecking": "Sökningen efter uppdateringar är slutförd!",
         "checkForUpdates": "Sök efter uppdateringar!",
         "updateAll": "Uppdatera alla!",
-        "noUpdatesAvailable": "Det finns inga uppdateringar tillgängliga.",
+        "noUpdatesAvialable": "Det finns inga uppdateringar tillgängliga.",
         "updateButton": "Uppdatera!"
     }
 }

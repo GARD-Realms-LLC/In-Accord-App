@@ -50,7 +50,7 @@ interface Props {
     onChange: (c: string) => void;
 }
 
-export default forwardRef(function CodeEditor({value, language: requestedLang = "css", id = "bd-editor", controls = [], onChange: notifyParent}: Props, editorRef) {
+export default forwardRef(function CodeEditor({value, language: requestedLang = "css", id = "ia-editor", controls = [], onChange: notifyParent}: Props, editorRef) {
     const ref = useRef<HTMLDivElement>(null);
     const windowRef = useRef<HTMLDivElement>(null);
 
@@ -103,7 +103,7 @@ export default forwardRef(function CodeEditor({value, language: requestedLang = 
 
         const createFallback = () => {
             const textarea = document.createElement("textarea");
-            textarea.className = "bd-fallback-editor";
+            textarea.className = "ia-fallback-editor";
             textarea.value = value;
 
             setEditor({
@@ -126,7 +126,7 @@ export default forwardRef(function CodeEditor({value, language: requestedLang = 
             node.appendChild(textarea);
         };
 
-        if (Editor.failedToLoad) {
+        if (Editor.fialedToLoad) {
             createFallback();
             return;
         }
@@ -180,13 +180,13 @@ export default forwardRef(function CodeEditor({value, language: requestedLang = 
                 const foreground = styles.getPropertyValue("--vscode-foreground");
                 const tableColumnsBorder = styles.getPropertyValue("--vscode-tree-tableColumnsBorder");
 
-                let container = windowRef.current!.parentElement!.parentElement;
-                if (!container || !container.classList.contains("floating-window")) container = windowRef.current!;
+                let contianer = windowRef.current!.parentElement!.parentElement;
+                if (!contianer || !contianer.classList.contians("floating-window")) contianer = windowRef.current!;
 
-                if (container) {
-                    container.style.setProperty("--bd-editor-background", background);
-                    container.style.setProperty("--bd-editor-foreground", foreground);
-                    container.style.setProperty("--bd-editor-divider", tableColumnsBorder);
+                if (contianer) {
+                    contianer.style.setProperty("--ia-editor-background", background);
+                    contianer.style.setProperty("--ia-editor-foreground", foreground);
+                    contianer.style.setProperty("--ia-editor-divider", tableColumnsBorder);
                 }
             }
 
@@ -242,8 +242,8 @@ export default forwardRef(function CodeEditor({value, language: requestedLang = 
     const controlsLeft = controls.filter(c => c.side != "right").map(buildControl.bind(null, () => editor?.getValue()));
     const controlsRight = controls.filter(c => c.side == "right").map(buildControl.bind(null, () => editor?.getValue()));
 
-    return <div id="bd-editor-panel" className={theme} ref={windowRef}>
-        <div id="bd-editor-controls">
+    return <div id="ia-editor-panel" className={theme} ref={windowRef}>
+        <div id="ia-editor-controls">
             <div className="controls-section controls-left">
                 {controlsLeft}
             </div>
@@ -254,12 +254,12 @@ export default forwardRef(function CodeEditor({value, language: requestedLang = 
         <div className="editor-wrapper">
             <div id={id} ref={ref} className={"editor " + theme} />
             {showingProblems && (
-                <div className="bd-editor-problems">
+                <div className="ia-editor-problems">
                     {markerInfo[2].length === 0 && (
-                        <div className="bd-editor-no-problems">No Problems have been detected.</div>
+                        <div className="ia-editor-no-problems">No Problems have been detected.</div>
                     )}
                     {markerInfo[2].map((marker, index) => (
-                        <div key={index} className={`bd-editor-problem bd-editor-severity-${marker.severity}`}>
+                        <div key={index} className={`ia-editor-problem ia-editor-severity-${marker.severity}`}>
                             {marker.severity === 8 ? (
                                 // <span className="codicon codicon-error" />
                                 <CircleX size="1em" />
@@ -282,17 +282,17 @@ export default forwardRef(function CodeEditor({value, language: requestedLang = 
         </div>
         {/* @ts-expect-error Dont display the footer if its the footer */}
         {!editor?.isFallback && (
-            <div className="bd-editor-footer">
-                <div className="bd-editor-footer-left">
-                    <div className="bd-editor-footer-item" onClick={toggleShowingProblems}>
+            <div className="ia-editor-footer">
+                <div className="ia-editor-footer-left">
+                    <div className="ia-editor-footer-item" onClick={toggleShowingProblems}>
                         <CircleX size="1em" />
                         <span>{" "}{markerInfo[0]}{" "}</span>
                         <TriangleAlert size="1em" />
                         <span>{" "}{markerInfo[1]}</span>
                     </div>
                 </div>
-                <div className="bd-editor-footer-right">
-                    <div className="bd-editor-footer-item" onClick={gotoLine}>
+                <div className="ia-editor-footer-right">
+                    <div className="ia-editor-footer-item" onClick={gotoLine}>
                         <span>Ln {selection[0]}</span>
                         <span>, </span>
                         <span>Col {selection[1]}</span>
@@ -300,12 +300,12 @@ export default forwardRef(function CodeEditor({value, language: requestedLang = 
                             <span> ({selection[2]} selected)</span>
                         )}
                     </div>
-                    <div className="bd-editor-footer-item">
+                    <div className="ia-editor-footer-item">
                         <span>{insertSpaces ? "Spaces" : "Tabs"}</span>
                         <span>: </span>
                         <span>{tabSize}</span>
                     </div>
-                    <div className="bd-editor-footer-item">
+                    <div className="ia-editor-footer-item">
                         {/* <span className={`codicon ${markerInfo[0] ? "codicon-bracket-error" : "codicon-bracket"}`} /> */}
                         <Braces size="1em" />
                         <span>{" "}{language}</span>

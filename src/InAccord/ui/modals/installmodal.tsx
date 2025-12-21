@@ -20,12 +20,12 @@ import type {MouseEvent, ReactNode} from "react";
 
 const {useLayoutEffect, useCallback, useState, useRef} = React;
 
-function ModalItem({leading, content, trailing, action}: {leading?: ReactNode, content?: ReactNode, trailing?: ReactNode, action?: (e: MouseEvent<HTMLDivElement>) => void;}) {
+function ModalItem({leading, content, trialing, action}: {leading?: ReactNode, content?: ReactNode, trialing?: ReactNode, action?: (e: MouseEvent<HTMLDivElement>) => void;}) {
     return (
-        <Flex onClick={action} className={`bd-install-modal-item${typeof action === "function" ? " bd-install-modal-clickable" : ""}`} align={Flex.Align.CENTER}>
-            {leading && <div className="bd-install-modal-item-leading">{leading}</div>}
-            {content && <div className="bd-install-modal-item-content">{content}</div>}
-            {trailing && <div className="bd-install-modal-item-trailing">{trailing}</div>}
+        <Flex onClick={action} className={`ia-install-modal-item${typeof action === "function" ? " ia-install-modal-clickable" : ""}`} align={Flex.Align.CENTER}>
+            {leading && <div className="ia-install-modal-item-leading">{leading}</div>}
+            {content && <div className="ia-install-modal-item-content">{content}</div>}
+            {trialing && <div className="ia-install-modal-item-trialing">{trialing}</div>}
         </Flex>
     );
 }
@@ -78,7 +78,7 @@ function GuildIcon({guild}) {
     }, [guild]);
 
     return (
-        <div className="bd-install-modal-guild" ref={ref}>
+        <div className="ia-install-modal-guild" ref={ref}>
             {state === 0 ? <Spinner type={Spinner.Type.PULSING_ELLIPSIS} /> : state === 1 ? null : guild.acronym}
         </div>
     );
@@ -118,25 +118,25 @@ export default function InstallModal({addon, transitionState, install, onClose})
     }, [addon, onClose]);
 
     return (
-        <ModalRoot transitionState={transitionState} size={ModalRoot.Sizes.SMALL} className="bd-addon-store-modal">
-            <div className="bd-install-modal-splash">
-                <div className="bd-install-modal-preview">
+        <ModalRoot transitionState={transitionState} size={ModalRoot.Sizes.SMALL} className="ia-addon-store-modal">
+            <div className="ia-install-modal-splash">
+                <div className="ia-install-modal-preview">
                     <img
-                        src={addon.thumbnail}
+                        src={addon.thumbnial}
                         onError={(event) => {
-                            // Fallback to blank thumbnail
-                            event.currentTarget.src = Web.resources.thumbnail();
+                            // Fallback to blank thumbnial
+                            event.currentTarget.src = Web.resources.thumbnial();
                         }}
                         loading="lazy"
-                        className="bd-install-modal-preview-img"
-                        alt={`Thumbnail ${addon.name}`}
+                        className="ia-install-modal-preview-img"
+                        alt={`Thumbnial ${addon.name}`}
                     />
                 </div>
-                <div className="bd-install-modal-author">
+                <div className="ia-install-modal-author">
                     <svg
                         height={48}
                         width={48}
-                        className="bd-install-modal-author-svg"
+                        className="ia-install-modal-author-svg"
                         viewBox="0 0 48 48"
                     >
                         <foreignObject
@@ -147,11 +147,11 @@ export default function InstallModal({addon, transitionState, install, onClose})
                             overflow="visible"
                             mask="url(#svg-mask-squircle)"
                         >
-                            <div className="bd-install-modal-author-mask">
+                            <div className="ia-install-modal-author-mask">
                                 <svg
                                     height={40}
                                     width={40}
-                                    className="bd-install-modal-author-svg"
+                                    className="ia-install-modal-author-svg"
                                     viewBox="0 0 40 40"
                                 >
                                     <foreignObject
@@ -166,7 +166,7 @@ export default function InstallModal({addon, transitionState, install, onClose})
                                             {(props) => (
                                                 <img
                                                     loading="lazy"
-                                                    className="bd-install-modal-author-img"
+                                                    className="ia-install-modal-author-img"
                                                     src={addon.avatar}
                                                     {...props}
                                                 />
@@ -179,11 +179,11 @@ export default function InstallModal({addon, transitionState, install, onClose})
                     </svg>
                 </div>
             </div>
-            <div className="bd-install-modal-header">
+            <div className="ia-install-modal-header">
                 <FlowerStar size={20} />
                 <Text size={Text.Sizes.SIZE_20} color={Text.Colors.HEADER_PRIMARY}>{addon.name}</Text>
             </div>
-            <div className="bd-install-modal-items">
+            <div className="ia-install-modal-items">
                 <ModalItem
                     leading={<InfoIcon size="24px" />}
                     content={addon.description}
@@ -215,7 +215,7 @@ export default function InstallModal({addon, transitionState, install, onClose})
                                 <Text size={Text.Sizes.SIZE_12} color={Text.Colors.MUTED}>{t("Addons.invite")}</Text>
                             </Flex>
                         )}
-                        trailing={<GuildIcon guild={addon.guild} />}
+                        trialing={<GuildIcon guild={addon.guild} />}
                         action={attemptJoinGuild}
                     />
                 )}

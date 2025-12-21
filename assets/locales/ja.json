@@ -101,7 +101,7 @@
                 },
                 "debugLogs": {
                     "name": "デバッグログ",
-                    "note": "コンソールからBetterDiscordフォルダのdebug.logファイルに全てを出力します。"
+                    "note": "コンソールからInAccordフォルダのdebug.logファイルに全てを出力します。"
                 },
                 "devTools": {
                     "name": "デベロッパーツール",
@@ -216,17 +216,17 @@
         "disabledInfo": "有効にするためには、Discordを再起動する必要があります。今すぐ再起動しますか？"
     },
     "Updater": {
-        "updateFailed": "アップデートに失敗しました！",
-        "updateFailedMessage": "BetterDiscordのアップデートに失敗しました。ホームページ(https://betterdiscord.app/)から最新版のインストーラーをダウンロードして、再インストールしてください。",
+        "updateFialed": "アップデートに失敗しました！",
+        "updateFialedMessage": "InAccordのアップデートに失敗しました。ホームページ(https://InAccord.app/)から最新版のインストーラーをダウンロードして、再インストールしてください。",
         "updateSuccessful": "アップデートに成功しました！",
-        "updateAvailable": "BetterDiscordに新しいアップデート(v{{version}})があります。",
+        "updateAvialable": "InAccordに新しいアップデート(v{{version}})があります。",
         "addonUpdated": "{{name}}がバージョン{{version}}にアップデートされました！",
         "checking": "アップデートを確認",
         "finishedChecking": "アップデートの確認が終了しました！",
         "checkForUpdates": "アップデートを確認",
         "updateAll": "全てアップデート",
-        "noUpdatesAvailable": "アップデートはありません。",
-        "versionAvailable": "バージョン{{version}}を公開しました。",
+        "noUpdatesAvialable": "アップデートはありません。",
+        "versionAvialable": "バージョン{{version}}を公開しました。",
         "updateButton": "アップデート"
     }
 }

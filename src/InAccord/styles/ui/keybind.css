@@ -1,4 +1,4 @@
-.bd-keybind-wrap {
+.ia-keybind-wrap {
     display: flex;
     align-items: center;
     gap: 5px;
@@ -13,18 +13,18 @@
     cursor: pointer;
 }
 
-.bd-keybind-wrap.bd-keybind-disabled {
+.ia-keybind-wrap.ia-keybind-disabled {
     cursor: not-allowed;
     opacity: 0.5;
 }
 
-.bd-keybind-wrap.bd-keybind-disabled .bd-keybind-record,
-.bd-keybind-wrap.bd-keybind-disabled .bd-keybind-clear,
-.bd-keybind-wrap.bd-keybind-disabled .bd-keybind-input {
+.ia-keybind-wrap.ia-keybind-disabled .ia-keybind-record,
+.ia-keybind-wrap.ia-keybind-disabled .ia-keybind-clear,
+.ia-keybind-wrap.ia-keybind-disabled .ia-keybind-input {
     pointer-events: none;
 }
 
-.bd-keybind-wrap input {
+.ia-keybind-wrap input {
     flex: 1;
     outline: none;
     border: none;
@@ -36,44 +36,44 @@
     font-weight: 600;
 }
 
-.bd-keybind-wrap input::placeholder {
+.ia-keybind-wrap input::placeholder {
     text-transform: capitalize;
 }
 
-.bd-keybind-wrap.recording,
-.bd-keybind-wrap:not(.bd-keybind-disabled):hover {
+.ia-keybind-wrap.recording,
+.ia-keybind-wrap:not(.ia-keybind-disabled):hover {
     border-color: hsl(var(--red-400-hsl)/.3);
 }
 
-.bd-keybind-wrap.recording {
+.ia-keybind-wrap.recording {
     box-shadow: 0 0 6px hsl(var(--red-400-hsl)/.3);
 }
 
-.bd-keybind-wrap.recording input {
+.ia-keybind-wrap.recording input {
     color: var(--status-danger)
 }
 
-.bd-keybind-wrap .bd-keybind-record {
+.ia-keybind-wrap .ia-keybind-record {
     padding: 3px 8px;
 }
 
-.bd-keybind-wrap .bd-keybind-record.bd-button-color-red svg {
+.ia-keybind-wrap .ia-keybind-record.ia-button-color-red svg {
     color: var(--interactive-text-active);
 }
 
-.bd-keybind-clear {
+.ia-keybind-clear {
     margin-left: 5px;
     /* background: none!important; */
     opacity: 0.5;
     padding-right: 4px!important;
 }
 
-.bd-keybind-clear:hover {
+.ia-keybind-clear:hover {
     /* background: none; */
     opacity: 1;
 }
 
-.bd-keybind-clear svg {
+.ia-keybind-clear svg {
     width: 18px !important;
     height: 18px !important;
 }

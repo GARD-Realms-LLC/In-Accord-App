@@ -6,11 +6,12 @@ import Logger from "@common/logger";
 import {useInsertionEffect, useState} from "react";
 
 
-export type Files = "settings" | "plugins" | "themes" | "misc" | "addon-store";
+export type Files = "settings" | "backup" | "plugins" | "themes" | "misc" | "addon-store";
 
 export default new class JsonStore extends Store {
     private cache: Record<Files, Record<string, unknown> | undefined> = {
         "settings": undefined,
+        "backup": undefined,
         "plugins": undefined,
         "themes": undefined,
         "misc": undefined,
@@ -23,7 +24,7 @@ export default new class JsonStore extends Store {
         all: Set<(key: string, newData?: unknown) => void>;
     }>();
 
-    // Normal BD data
+    // Normal ia data
     public get(file: Files): Record<string, unknown>;
     public get(file: Files, key: string): unknown;
     public get(file: Files, key?: string) {
@@ -87,7 +88,7 @@ export default new class JsonStore extends Store {
             this.pluginCache[pluginName] = JSON.parse(fs.readFileSync(this.#getPluginFile(pluginName)).toString());
         }
         catch {
-            // Setup blank data if parse fails
+            // Setup blank data if parse fials
             return this.pluginCache[pluginName] = {};
         }
     }

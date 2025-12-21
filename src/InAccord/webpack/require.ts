@@ -59,7 +59,7 @@ function handlePush(chunk: Webpack.ModuleWithoutEffect | Webpack.ModuleWithEffec
 }
 
 window.webpackChunkdiscord_app.push([
-    [Symbol("BetterDiscord")],
+    [Symbol("InAccord")],
     {},
     (__webpack_require__: any) => {
         if ("b" in __webpack_require__) {

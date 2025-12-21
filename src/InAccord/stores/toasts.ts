@@ -44,7 +44,7 @@ export default new class Toasts extends Store {
      * @param {string} [options.type="default"] Changes the type of the toast stylistically and semantically. Choices: "default", "info", "success", "error", "warning". Default: "default"
      * @param {boolean} [options.icon=true] Determines whether the icon should show corresponding to the type. A toast without type will always have no icon. Default: true
      * @param {number} [options.timeout=3000] Adjusts the time (in ms) the toast should be shown for before disappearing automatically. Default: 3000
-     * @param {boolean} [options.forceShow=false] Whether to force showing the toast and ignore the bd setting
+     * @param {boolean} [options.forceShow=false] Whether to force showing the toast and ignore the ia setting
      */
     show(content: string, options: ToastOptions = {}) {
         try {

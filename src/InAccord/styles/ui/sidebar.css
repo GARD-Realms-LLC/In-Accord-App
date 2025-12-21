@@ -1,10 +1,10 @@
-.bd-sidebar-header {
+.ia-sidebar-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.bd-sidebar-header h2 {
+.ia-sidebar-header h2 {
     padding: 6px 10px;
     box-sizing: border-box;
     color: #96989d;
@@ -19,16 +19,16 @@
     font-size: 12px;
 }
 
-.bd-sidebar-header .bd-changelog-button {
+.ia-sidebar-header .ia-changelog-button {
     height: 16px;
     padding: 0;
 }
 
-.bd-sidebar-header .bd-icon {
+.ia-sidebar-header .ia-icon {
     cursor: pointer;
     color: var(--interactive-text-default);
 }
 
-.bd-sidebar-header .bd-changelog-button:hover .bd-icon {
+.ia-sidebar-header .ia-changelog-button:hover .ia-icon {
     color: var(--interactive-text-hover);
 }

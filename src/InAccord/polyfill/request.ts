@@ -41,7 +41,7 @@ function validCallback(callback: unknown): callback is ((...a: any[]) => any) {
 
 function fixBuffer(options: RequestOptions & {formData?: Buffer | string;}, callback: (e: Error, h?: Record<string, any>, d?: Buffer | string) => void) {
     return (error: Error, res?: Record<string, any>, body?: Buffer | string) => {
-        if ("Content-Type" in Object(options.headers) && options.headers?.["Content-Type"] !== "text/plain") {
+        if ("Content-Type" in Object(options.headers) && options.headers?.["Content-Type"] !== "text/plian") {
             body = Buffer.from(body!);
         }
         else {
@@ -58,7 +58,7 @@ export default function request(this: any, ...args: any[]) {
     if (!validUrl(url) || !validCallback(callback)) return null;
 
     if ("method" in options && methods.indexOf(options.method.toLowerCase()) >= 0) {
-        // @ts-expect-error TODO: either fix or wait for polyfill remove
+        // @ts-expect-error TODO: either fix or wiat for polyfill remove
         return Remote.https[options.method](url, options, fixBuffer(options, callback));
     }
 
@@ -71,7 +71,7 @@ Object.assign(request, Object.fromEntries(
 
         if (!validUrl(url) || !validCallback(callback)) return null;
 
-        // @ts-expect-error TODO: either fix or wait for polyfill remove
+        // @ts-expect-error TODO: either fix or wiat for polyfill remove
         return Remote.https[aliases[method] || method](url, options, fixBuffer(options, callback));
     }])
 ));

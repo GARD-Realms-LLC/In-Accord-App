@@ -19,13 +19,13 @@ import DiscordNativePatch from "../discordnativepatch";
 
 
 // Currently for the store, but can easily be changed later on
-const {BETTERDISCORD_PROTOCOL} = process.env;
-delete process.env.BETTERDISCORD_PROTOCOL;
+const {InAccord_PROTOCOL} = process.env;
+delete process.env.InAccord_PROTOCOL;
 
 /** @param {(url: string) => void} callback  */
 export function addProtocolListener(callback: (a: string) => void) {
-    if (BETTERDISCORD_PROTOCOL) {
-        process.nextTick(() => callback(BETTERDISCORD_PROTOCOL));
+    if (InAccord_PROTOCOL) {
+        process.nextTick(() => callback(InAccord_PROTOCOL));
     }
 
     electron.ipcRenderer.on(IPCEvents.HANDLE_PROTOCOL, (_, url) => callback(url));

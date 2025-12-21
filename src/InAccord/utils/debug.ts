@@ -1,6 +1,7 @@
 import config from "@stores/config";
 import type AddonManager from "@modules/addonmanager";
 import DiscordModules from "@modules/discordmodules";
+import BackupManager from "@modules/backupmanager";
 import PluginManager from "@modules/pluginmanager";
 import ThemeManager from "@modules/thememanager";
 
@@ -65,9 +66,11 @@ export function getCoreInfo() {
 }
 
 export function getAddonInfo() {
+    const backupCount = getAddonCounts(BackupManager);
     const pluginCount = getAddonCounts(PluginManager);
     const themeCount = getAddonCounts(ThemeManager);
     return [
+        `### ${backupCount.total} Backups (${backupCount.enabled} Enabled):\n${getAddonList(BackupManager)}\n`,
         `### ${pluginCount.total} Plugins (${pluginCount.enabled} Enabled):\n${getAddonList(PluginManager)}\n`,
         `### ${themeCount.total} Themes (${themeCount.enabled} Enabled):\n${getAddonList(ThemeManager)}\n`
     ].join("\n");
@@ -76,7 +79,7 @@ export function getAddonInfo() {
 export default function getDebugInfo() {
     return [
         `## Discord Info\n${getDiscordInfo()}\n`,
-        `## BetterDiscord`,
+        `## InAccord`,
         getCoreInfo(),
         getAddonInfo(),
     ].join("\n");

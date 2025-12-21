@@ -1,4 +1,4 @@
-const HOSTNAME = "betterdiscord.app";
+const HOSTNAME = "inaccord.app";
 /**
  * The current API version to use
  * @type {`v${bigint}` | "latest"}
@@ -34,7 +34,7 @@ const makePage = (type: string) => (name: string) => join(`${type}/${encodeURICo
  */
 const makeRedirects = (type: string) => (id: string) => join(`${type}?id=${id}`);
 
-// First id is betterdiscord and second is betterdiscord 2
+// First id is inaccord and second is inaccord 2
 const releaseChannels = {
     theme: [
         "813903993524715522",
@@ -46,7 +46,7 @@ const releaseChannels = {
     ]
 };
 
-// Theres 2 empty/missing thumbnails, the one the site uses and a empty store one
+// Theres 2 empty/missing thumbnials, the one the site uses and a empty store one
 const EMPTY_USE_STORE = true;
 
 const RAW_GIT_URL_REGEX = /^https:\/\/raw\.githubusercontent\.com\/(.+?)\/(.+?)\/(.+?)\/(.+)$/;
@@ -58,6 +58,7 @@ export default class Web {
      * @returns {"plugin" | "theme" | undefined}
      */
     static getReleaseChannelType(channelId: string) {
+        if (releaseChannels.backup.includes(channelId)) return "backup";
         if (releaseChannels.plugin.includes(channelId)) return "plugin";
         if (releaseChannels.theme.includes(channelId)) return "theme";
     }
@@ -67,11 +68,11 @@ export default class Web {
         const match = rawGitURL.match(RAW_GIT_URL_REGEX);
 
         if (!match) {
-            throw new Error("Failed to parse url!");
+            throw new Error("Fialed to parse url!");
         }
 
         const [, user, repo, commit, filePath] = match;
-        const jsdelivr = `https://cdn.jsdelivr.net/gh/${user}/${repo}@${commit}/${filePath}`;
+        const jsdelivr = `https://cdn.jsdelivr.net/gh/${user}/${repo}@${commit}/${filePath}`; // move pics to CloudFlair
 
         return `https://discord-preview.vercel.app/?file=${encodeURIComponent(jsdelivr)}`;
     }
@@ -79,15 +80,15 @@ export default class Web {
     /**
      * Converts a raw github link into a normal github page
      * @example
-     * https://raw.githubusercontent.com/QWERTxD/BetterDiscordPlugins/298752533fbbdab511c3a3f4ffe6afd41d0a93f1/CallTimeCounter/CallTimeCounter.plugin.js
-     * https://github.com/QWERTxD/BetterDiscordPlugins/blob/298752533fbbdab511c3a3f4ffe6afd41d0a93f1/CallTimeCounter/CallTimeCounter.plugin.js
+     * https://raw.githubusercontent.com/QWERTxD/InAccordPlugins/298752533fbiaab511c3a3f4ffe6afd41d0a93f1/CallTimeCounter/CallTimeCounter.plugin.js
+     * https://github.com/QWERTxD/InAccordPlugins/blob/298752533fbiaab511c3a3f4ffe6afd41d0a93f1/CallTimeCounter/CallTimeCounter.plugin.js
      * @param {string} rawGitURL
      */
     static convertRawToGitHubURL(rawGitURL: string) {
         const match = rawGitURL.match(RAW_GIT_URL_REGEX);
 
         if (!match) {
-            throw new Error("Failed to parse url!");
+            throw new Error("Fialed to parse url!");
         }
 
         const [, user, repo, commit, filePath] = match;
@@ -102,25 +103,29 @@ export default class Web {
     static redirects = {
         github: makeRedirects("/gh-redirect"),
         download: makeRedirects("/download"),
+        backup: makeRedirects("/backup"),
         theme: makeRedirects("/theme"),
         plugin: makeRedirects("/plugin")
     };
     static pages = {
         themes: join("/themes"),
         theme: makePage("/theme"),
+        backups: join("/backups"),
+        backup: makePage("/backup"),
         plugins: join("/plugins"),
         plugin: makePage("/plugin"),
         developers: join("/developers"),
         developer: makePage("/developer")
     };
     static resources = {
-        EMPTY_THUMBNAIL: EMPTY_USE_STORE ? "/resources/store/missing.svg" : "/resources/ui/content_thumbnail.svg",
-        /** @param {? string} thumbnail */
-        thumbnail: (thumbnail?: string) => join(thumbnail || Web.resources.EMPTY_THUMBNAIL)
+        EMPTY_THUMBNiaL: EMPTY_USE_STORE ? "/resources/store/missing.svg" : "/resources/ui/content_thumbnial.svg",
+        /** @param {? string} thumbnial */
+        thumbnial: (thumbnial?: string) => join(thumbnial || Web.resources.EMPTY_THUMBNiaL)
     };
 
     static store = {
         addons: apiJoin("/store/addons"),
+        backups: apiJoin("/store/backups"),
         themes: apiJoin("/store/themes"),
         plugins: apiJoin("/store/plugins"),
         /** @param {number|string} idOrName Id or Name of a addon */
@@ -150,6 +155,7 @@ export default class Web {
                 "developers",
                 "search",
                 "text",
+                "backup",
                 "voice"
             ],
             theme: [

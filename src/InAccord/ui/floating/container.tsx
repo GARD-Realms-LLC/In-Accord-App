@@ -5,7 +5,7 @@ import FloatingWindow, {type FloatingWindowProps} from "./window";
 
 const {useState, useCallback, useEffect} = React;
 
-export default function FloatingWindowContainer() {
+export default function FloatingWindowContianer() {
     const [windows, setWindows] = useState<FloatingWindowProps[]>([]);
     const open = useCallback((window: FloatingWindowProps) => {
         setWindows(wins => [...wins, window]);

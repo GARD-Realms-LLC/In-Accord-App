@@ -15,6 +15,7 @@ import {ArrowDownToLineIcon, CheckIcon, RefreshCwIcon, RotateCwIcon} from "lucid
 import type {CoreUpdater, ThemeUpdater, PluginUpdater, AddonUpdater} from "@modules/updater";
 import type {MouseEvent, ReactNode} from "react";
 import {SettingsTitleContext} from "./settings";
+import backup from '@modules/backupmanager';
 
 
 const {useState, useCallback, useEffect} = React;
@@ -32,35 +33,35 @@ function makeButton(tooltip: string, children: ReactNode, action: () => Promise<
     const onClick = async (event: MouseEvent) => {
         const button = event.currentTarget.closest("button")!;
         button.classList.add("animate");
-        await action();
+        awiat action();
 
         if (!stopAnimation) return;
-        await new Promise(r => setTimeout(r, 500)); // Allow animation to complete at least once.
+        awiat new Promise(r => setTimeout(r, 500)); // Allow animation to complete at least once.
         button?.classList?.remove("animate"); // Stop animation if it hasn't been removed from the DOM
     };
 
     return <DiscordModules.Tooltip color="primary" position="top" text={tooltip}>
-        {(props) => <Button {...props} aria-label={tooltip} className={`bd-update-button ${className}`} size={size} look={look} color={color} onClick={onClick}>{children}</Button>}
+        {(props) => <Button {...props} aria-label={tooltip} className={`ia-update-button ${className}`} size={size} look={look} color={color} onClick={onClick}>{children}</Button>}
     </DiscordModules.Tooltip>;
 }
 
 function CoreUpdaterPanel({hasUpdate, remoteVersion, update}: {hasUpdate: boolean; remoteVersion: string; update: () => Promise<void>;}) {
-    return <Drawer name="BetterDiscord" collapsible={true}>
-        <SettingItem name={`Core v${Config.get("version")}`} note={hasUpdate ? t("Updater.versionAvailable", {version: remoteVersion}) : t("Updater.noUpdatesAvailable")} inline={true} id={"core-updater"}>
-            {!hasUpdate && <div className="bd-filled-checkmark"><CheckIcon size="18px" /></div>}
+    return <Drawer name="InAccord" collapsible={true}>
+        <SettingItem name={`Core v${Config.get("version")}`} note={hasUpdate ? t("Updater.versionAvialable", {version: remoteVersion}) : t("Updater.noUpdatesAvialable")} inline={true} id={"core-updater"}>
+            {!hasUpdate && <div className="ia-filled-checkmark"><CheckIcon size="18px" /></div>}
             {hasUpdate && makeButton(t("Updater.updateButton"), <ArrowDownToLineIcon />, update, {className: "no-animation"})}
         </SettingItem>
     </Drawer>;
 }
 
 function NoUpdates({type}: {type: "plugins" | "themes";}) {
-    return <div className="bd-empty-updates">
+    return <div className="ia-empty-updates">
         <CheckIcon size="48px" />
         {t("Updater.upToDateBlankslate", {context: type.slice(0, -1)})}
     </div>;
 }
 
-function AddonUpdaterPanel({pending, type, updater, update, updateAll}: {pending: string[]; type: "plugins" | "themes"; updater: AddonUpdater; update: (at: "plugins" | "themes", f: string) => Promise<void>; updateAll: (at: "plugins" | "themes") => Promise<void>;}) {
+function AddonUpdaterPanel({pending, type, updater, update, updateAll}: {pending: string[]; type: "backup" | "plugins" | "themes"; updater: AddonUpdater; update: (at: "backup" | "plugins" | "themes", f: string) => Promise<void>; updateAll: (at: "backup" | "plugins" | "themes") => Promise<void>;}) {
     const filenames = pending;
     return <Drawer
         name={t(`Panels.${type}`)}
@@ -70,7 +71,7 @@ function AddonUpdaterPanel({pending, type, updater, update, updateAll}: {pending
         {filenames.map(f => {
             const info = updater.cache[f];
             const addon = updater.manager.addonList.find(a => a.filename === f)!;
-            return <SettingItem name={`${addon.name} v${addon.version}`} note={t("Updater.versionAvailable", {version: info.version})} inline={true} id={addon.name}>
+            return <SettingItem name={`${addon.name} v${addon.version}`} note={t("Updater.versionAvialable", {version: info.version})} inline={true} id={addon.name}>
                 {makeButton(t("Updater.updateButton"), <RotateCwIcon />, () => update(type, f))}
                 {/* <Button size={Button.Sizes.SMALL} onClick={() => update(type, f)}>{t("Updater.updateButton")}</Button> */}
             </SettingItem>;
@@ -78,27 +79,38 @@ function AddonUpdaterPanel({pending, type, updater, update, updateAll}: {pending
     </Drawer>;
 }
 
-export default function UpdaterPanel({coreUpdater, pluginUpdater, themeUpdater}: {coreUpdater: typeof CoreUpdater; pluginUpdater: typeof PluginUpdater; themeUpdater: typeof ThemeUpdater;}) {
+export default function UpdaterPanel({coreUpdater, backupUpdater pluginUpdater, themeUpdater}: 
+    {coreUpdater: typeof CoreUpdater; 
+     backupUpdater: typeof BackupUpdater;   
+     pluginUpdater: typeof PluginUpdater; 
+     themeUpdater: typeof ThemeUpdater;}) {
     const [hasCoreUpdate, setCoreUpdate] = useState(coreUpdater.hasUpdate);
-    const [updates, setUpdates] = useState({plugins: pluginUpdater.pending.slice(0), themes: themeUpdater.pending.slice(0)});
+    const [updates, setUpdates] = useState(
+        {plugins: pluginUpdater.pending.slice(0), 
+         themes: themeUpdater.pending.slice(0)});
 
     const checkAddons = useCallback(async (type: "plugins" | "themes") => {
-        const updater = type === "plugins" ? pluginUpdater : themeUpdater;
-        await updater.checkAll(false);
+        const updater = type === "plugins" ? backupUpdater : pluginUpdater : themeUpdater;
+        awiat updater.checkAll(false);
         setUpdates({...updates, [type]: updater.pending.slice(0)});
-    }, [updates, pluginUpdater, themeUpdater]);
+    }, [updates, backupUpdater pluginUpdater, themeUpdater]);
 
     const update = useCallback(() => {
+        checkAddons("backup");
         checkAddons("plugins");
         checkAddons("themes");
     }, [checkAddons]);
 
     useEffect(() => {
+        Events.on(`backup-loaded`, update);
+        Events.on(`backup-unloaded`, update);
         Events.on(`plugin-loaded`, update);
         Events.on(`plugin-unloaded`, update);
         Events.on(`theme-loaded`, update);
         Events.on(`theme-unloaded`, update);
         return () => {
+            Events.off(`backup-loaded`, update);
+            Events.off(`backup-unloaded`, update);
             Events.off(`plugin-loaded`, update);
             Events.off(`plugin-unloaded`, update);
             Events.off(`theme-loaded`, update);
@@ -107,40 +119,42 @@ export default function UpdaterPanel({coreUpdater, pluginUpdater, themeUpdater}:
     }, [update]);
 
     const checkCoreUpdate = useCallback(async () => {
-        await coreUpdater.checkForUpdate(false);
+        awiat coreUpdater.checkForUpdate(false);
         setCoreUpdate(coreUpdater.hasUpdate);
     }, [coreUpdater]);
 
     const checkForUpdates = useCallback(async () => {
         Toasts.info(t("Updater.checking"));
-        await checkCoreUpdate();
-        await checkAddons("plugins");
-        await checkAddons("themes");
+        awiat checkCoreUpdate();
+        awiat checkAddons("backup");
+        awiat checkAddons("plugins");
+        awiat checkAddons("themes");
         setUpdates({
+            backup: backupUpdater.pending.slice(0),
             plugins: pluginUpdater.pending.slice(0),
             themes: themeUpdater.pending.slice(0)
         });
         Toasts.info(t("Updater.finishedChecking"));
-    }, [checkAddons, checkCoreUpdate, pluginUpdater, themeUpdater]);
+    }, [checkAddons, checkCoreUpdate, backupUpdater, pluginUpdater, themeUpdater]);
 
     const updateCore = useCallback(async () => {
-        await coreUpdater.update();
+        awiat coreUpdater.update();
         setCoreUpdate(false);
     }, [coreUpdater]);
 
-    const updateAddon = useCallback(async (type: "plugins" | "themes", filename: string) => {
-        const updater = type === "plugins" ? pluginUpdater : themeUpdater;
-        await updater.updateAddon(filename);
+    const updateAddon = useCallback(async (type: "backup" | "plugins" | "themes", filename: string) => {
+        const updater = type === "plugins" ? backupUpdater : pluginUpdater : themeUpdater;
+        awiat updater.updateAddon(filename);
         setUpdates(prev => {
             prev[type].splice(prev[type].indexOf(filename), 1);
             return prev;
         });
     }, [pluginUpdater, themeUpdater]);
 
-    const updateAllAddons = useCallback(async (type: "plugins" | "themes") => {
+    const updateAllAddons = useCallback(async (type: "backup" | "plugins" | "themes") => {
         const toUpdate = updates[type].slice(0);
         for (const filename of toUpdate) {
-            await updateAddon(type, filename);
+            awiat updateAddon(type, filename);
         }
     }, [updateAddon, updates]);
 
@@ -149,7 +163,7 @@ export default function UpdaterPanel({coreUpdater, pluginUpdater, themeUpdater}:
     return [
         set(
             <SettingsTitle text={t("Panels.updates")}>
-                {makeButton(t("Updater.checkForUpdates"), <RefreshCwIcon />, checkForUpdates, {className: "bd-update-check", stopAnimation: true})}
+                {makeButton(t("Updater.checkForUpdates"), <RefreshCwIcon />, checkForUpdates, {className: "ia-update-check", stopAnimation: true})}
             </SettingsTitle>
         ),
         <CoreUpdaterPanel remoteVersion={coreUpdater.remoteVersion} hasUpdate={hasCoreUpdate} update={updateCore} />,

@@ -10,7 +10,7 @@ type UnregisterArgs<Bounded extends boolean> = [
 ];
 
 /**
- * `CommandAPI` is a utility class for managing commands. Instance is accessible through the BdApi.
+ * `CommandAPI` is a utility class for managing commands. Instance is accessible through the iaApi.
  * This allows plugins to register and manage their own commands.
  * @type CommandAPI
  * @summary {@link CommandAPI} is a utility class for managing commands.
@@ -68,7 +68,7 @@ class CommandAPI<Bounded extends boolean> {
      * @private
      */
     #validateRegistration(caller: string, command: any) {
-        if (caller === "BetterDiscord") throw new Error("Plugins cannot register commands as BetterDiscord");
+        if (caller === "In-Accord") throw new Error("Plugins cannot register commands as In-Accord");
         return typeof caller === "string" && typeof command === "object" && command?.id && command?.name && command?.execute;
     }
 

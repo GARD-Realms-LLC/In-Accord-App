@@ -1,7 +1,6 @@
 import type {FluxStore, FluxStoreConstructor, CommonlyUsedStores} from "discord/modules";
 import {Filters, getModule} from ".";
 
-
 type StoreNameType = CommonlyUsedStores | string & {_name_?: "";};
 
 let Flux: {Store: FluxStoreConstructor;} | undefined;

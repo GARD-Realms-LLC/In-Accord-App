@@ -1,6 +1,6 @@
 import EventEmitter from "events";
 
-export default new class BDEvents extends EventEmitter {
+export default new class iaEvents extends EventEmitter {
     constructor() {
         super();
         this.setMaxListeners(20);

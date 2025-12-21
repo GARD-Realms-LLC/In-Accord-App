@@ -31,7 +31,7 @@ export default function CheckBox(props: CheckboxProps) {
 
     return (
         <Flex
-            className={clsx("bd-checkbox", props.className, {"bd-checkbox-disabled": props.disabled, "bd-checkbox-has-label": props.label, "bd-checkbox-reverse": props.reverse})}
+            className={clsx("ia-checkbox", props.className, {"ia-checkbox-disabled": props.disabled, "ia-checkbox-has-label": props.label, "ia-checkbox-reverse": props.reverse})}
             align={Flex.Align.CENTER}
             direction={props.reverse ? Flex.Direction.HORIZONTAL_REVERSE : Flex.Direction.HORIZONTAL}
             onClick={onChange}
@@ -40,13 +40,13 @@ export default function CheckBox(props: CheckboxProps) {
                 type="checkbox"
                 checked={state}
                 id={props.id}
-                className={clsx("bd-checkbox-input", props.inputClassName)}
+                className={clsx("ia-checkbox-input", props.inputClassName)}
             />
-            <div className={clsx("bd-checkbox-box", props.iconClassName)}>
+            <div className={clsx("ia-checkbox-box", props.iconClassName)}>
                 <CheckIcon size="18px" />
             </div>
             {props.label && (
-                <div className={clsx("bd-checkbox-label", props.label)}>{props.label}</div>
+                <div className={clsx("ia-checkbox-label", props.label)}>{props.label}</div>
             )}
         </Flex>
     );

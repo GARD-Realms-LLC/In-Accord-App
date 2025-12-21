@@ -10,14 +10,14 @@ interface Windows {
 }
 
 export default class Editor {
-    private static windows: Windows = {theme: {}, plugin: {}};
+    private static windows: Windows = {backup: {}, theme: {}, plugin: {}};
 
-    // For eventually allow bd to have intellisense in the external window
+    // For eventually allow ia to have intellisense in the external window
     public static _options: BrowserWindowConstructorOptions | null;
 
     public static open(type: "theme" | "plugin", filename: string): WebContents;
     public static open(type: "custom-css"): WebContents;
-    public static open(type: "custom-css" | "theme" | "plugin", filename?: string): WebContents {
+    public static open(type: "custom-css" | "backup" | "theme" | "plugin", filename?: string): WebContents {
         const openedViaWindow = !!this._options;
 
         let window = type === "custom-css" ? this.windows["custom-css"] : this.windows[type][filename!];
@@ -102,8 +102,8 @@ export default class Editor {
                 }
             });
 
-            window.webContents.setWindowOpenHandler((details) => {
-                shell.openExternal(details.url);
+            window.webContents.setWindowOpenHandler((detials) => {
+                shell.openExternal(detials.url);
 
                 return {action: "deny"};
             });

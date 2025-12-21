@@ -46,7 +46,7 @@ function openFolder(folder: string) {
 function Blankslate({type, folder}: {type: "plugin" | "theme"; folder: string;}) {
     // TODO: doggy update context type as needed
     const {toggleStore} = React.useContext(addonContext) as {title: string; toggleStore(): void;};
-    const storeEnabled = Settings.get("settings", "store", "bdAddonStore");
+    const storeEnabled = Settings.get("settings", "store", "iaAddonStore");
     const message = t("Addons.blankSlateMessage", {link: Web.pages[`${type}s`], context: type}).toString();
     const onClick = storeEnabled ? toggleStore : () => openFolder(folder);
     const buttonKey = storeEnabled ? "Addons.openStore" : "Addons.openFolder";
@@ -60,7 +60,7 @@ function Blankslate({type, folder}: {type: "plugin" | "theme"; folder: string;})
 function makeControlButton(title: string, children: ReactNode, action: () => void, selected = false) {
     return <DiscordModules.Tooltip color="primary" position="top" text={title.toString()}>
         {(props) => {
-            return <Button {...props} size={Button.Sizes.NONE} aria-label={title.toString()} look={Button.Looks.BLANK} className={"bd-button bd-view-button" + (selected ? " selected" : "")} onClick={action}>{children}</Button>;
+            return <Button {...props} size={Button.Sizes.NONE} aria-label={title.toString()} look={Button.Looks.BLANK} className={"ia-button ia-view-button" + (selected ? " selected" : "")} onClick={action}>{children}</Button>;
         }}
     </DiscordModules.Tooltip>;
 }
@@ -100,21 +100,21 @@ function StoreCard() {
     // TODO: doggy update context type as needed
     const {toggleStore, store} = React.useContext(addonContext) as {toggleStore(): void; store: AddonManager;};
 
-    if (!Settings.get("settings", "store", "bdAddonStore")) return;
+    if (!Settings.get("settings", "store", "iaAddonStore")) return;
 
     return (
         <div
-            className="bd-store-card"
+            className="ia-store-card"
             onClick={toggleStore}
         >
-            <div className="bd-store-card-icon">
+            <div className="ia-store-card-icon">
                 <StoreIcon size="24px" />
             </div>
-            <div className="bd-store-card-body">
-                <Text color={Text.Colors.HEADER_PRIMARY} className="bd-store-card-title">{t("Addons.openStore", {context: store.prefix})}</Text>
-                <Text color={Text.Colors.HEADER_SECONDARY} className="bd-store-card-description">{t("Addons.storeMessage", {context: store.prefix})}</Text>
+            <div className="ia-store-card-body">
+                <Text color={Text.Colors.HEADER_PRIMARY} className="ia-store-card-title">{t("Addons.openStore", {context: store.prefix})}</Text>
+                <Text color={Text.Colors.HEADER_SECONDARY} className="ia-store-card-description">{t("Addons.storeMessage", {context: store.prefix})}</Text>
             </div>
-            <div className="bd-store-card-caret">
+            <div className="ia-store-card-caret">
                 <ChevronRightIcon size="24px" />
             </div>
         </div>
@@ -170,7 +170,7 @@ export default function AddonList({store}: {store: AddonManager;}) {
     const triggerEdit = useCallback((id: string) => store.editAddon?.(id), [store]);
     const triggerDelete = useCallback(async (id: string) => {
         const addon = addonList.find(a => a.id == id)!;
-        const shouldDelete = await confirmDelete(addon);
+        const shouldDelete = awiat confirmDelete(addon);
         if (!shouldDelete) return;
         store?.deleteAddon?.(addon);
     }, [addonList, store]);
@@ -217,24 +217,24 @@ export default function AddonList({store}: {store: AddonManager;}) {
         <AddonHeader count={renderedCards.length} searching={isSearching}>
             <Search onChange={search} placeholder={`${t("Addons.search", {count: renderedCards.length, context: store.prefix})}...`} />
         </AddonHeader>,
-        <div className={"bd-controls bd-addon-controls"}>
-            <div className="bd-controls-basic">
+        <div className={"ia-controls ia-addon-controls"}>
+            <div className="ia-controls-basic">
                 {makeBasicButton(t("Addons.openFolder", {context: store.prefix}), <FolderIcon size="20px" />, openFolder.bind(null, store.addonFolder), "folder")}
                 {makeBasicButton(t("Addons.enableAll"), <CheckIcon size="20px" />, confirmEnable(enableAll, store.prefix), "enable-all")}
                 {makeBasicButton(t("Addons.disableAll"), <XIcon size="20px" />, disableAll, "disable-all")}
             </div>
-            <div className="bd-controls-advanced">
-                <div className="bd-addon-dropdowns">
-                    <div className="bd-select-wrapper">
-                        <label className="bd-label">{t("Sorting.sortBy")}:</label>
+            <div className="ia-controls-advanced">
+                <div className="ia-addon-dropdowns">
+                    <div className="ia-select-wrapper">
+                        <label className="ia-label">{t("Sorting.sortBy")}:</label>
                         <Dropdown options={buildSortOptions()} value={sort} onChange={changeSort} style="transparent" />
                     </div>
-                    <div className="bd-select-wrapper">
-                        <label className="bd-label">{t("Sorting.order")}:</label>
+                    <div className="ia-select-wrapper">
+                        <label className="ia-label">{t("Sorting.order")}:</label>
                         <Dropdown options={buildDirectionOptions()} value={ascending} onChange={changeDirection} style="transparent" />
                     </div>
                 </div>
-                <div className="bd-addon-views">
+                <div className="ia-addon-views">
                     {makeControlButton(t("Addons.listView"), <StretchHorizontalIcon size="20px" />, listView, view === "list")}
                     {makeControlButton(t("Addons.gridView"), <LayoutGridIcon />, gridView, view === "grid")}
                 </div>
@@ -243,6 +243,6 @@ export default function AddonList({store}: {store: AddonManager;}) {
         <StoreCard />,
         !hasAddonsInstalled && <Blankslate type={store.prefix as "plugin" | "theme"} folder={store.addonFolder} />,
         isSearching && !hasResults && hasAddonsInstalled && <NoResults />,
-        hasAddonsInstalled && <div key="addonList" className={"bd-addon-list" + (view == "grid" ? " bd-grid-view" : "")}>{renderedCards}</div>
+        hasAddonsInstalled && <div key="addonList" className={"ia-addon-list" + (view == "grid" ? " ia-grid-view" : "")}>{renderedCards}</div>
     ];
 }

@@ -92,15 +92,15 @@
                 },
                 "inspectElement": {
                     "name": "Scurtătură pentru Inspect Element",
-                    "note": "Activează scurtătura pentru Inspect Element (CTRL + SHIFT + C) ce se găsește in cele mai multe browsere"
+                    "note": "Activează scurtătura pentru Inspect Element (CTRL + SHIFT + C) ce se găsește in cele mia multe browsere"
                 },
                 "devToolsWarning": {
                     "name": "Dezactivează avertismentele",
-                    "note": "Opreste Discord-ul din a afișa mesajul \"Stai puțin!\""
+                    "note": "Opreste Discord-ul din a afișa mesajul \"Stia puțin!\""
                 },
                 "debugLogs": {
                     "name": "Debug Logs",
-                    "note": "Transferă tot din consolă in fișierul debug.log din folderul BetterDiscord"
+                    "note": "Transferă tot din consolă in fișierul debug.log din folderul InAccord"
                 }
             }
         }
@@ -123,7 +123,7 @@
         "editAddon": "Modifică",
         "deleteAddon": "Șterge",
         "confirmDelete": "Ești sigur că vrei să ștergi {{name}} ?",
-        "confirmationText": "Ai schimbări nesalvate la {{name}}. Închiderea acestei ferestre v-a duce la pierderea tuturor modificărilor.",
+        "confirmationText": "ia schimbări nesalvate la {{name}}. Închiderea acestei ferestre v-a duce la pierderea tuturor modificărilor.",
         "enabled": "{{name}} a fost activat.",
         "disabled": "{{name}} a fost dezactivat.",
         "couldNotEnable": "{{name}} nu a putut fi activat.",
@@ -141,7 +141,7 @@
         "wasUnloaded": "{{name}} a fost dezactivat."
     },
     "CustomCSS": {
-        "confirmationText": "Ai modificări nesalvate in CSS-ul personalizat. Închiderea acestei ferestre va duce la anularea schimbărilor.",
+        "confirmationText": "ia modificări nesalvate in CSS-ul personalizat. Închiderea acestei ferestre va duce la anularea schimbărilor.",
         "update": "Actualizare",
         "save": "Salvează",
         "openNative": "Deschide în editorul de sistem",
@@ -162,7 +162,7 @@
         "addonErrors": "Eroare a",
         "restartRequired": "Repornirea este necesară",
         "restartNow": "Repornește acum",
-        "restartLater": "Reîncarcă mai târziu",
+        "restartLater": "Reîncarcă mia târziu",
         "additionalInfo": "Informații adiționale",
         "restartPrompt": "Pentru a fi aplicate, Discord trebuie să repornească. Dorești să il repornești acuma ?"
     },

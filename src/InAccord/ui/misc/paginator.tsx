@@ -63,9 +63,9 @@ export default function Paginator({className, currentPage, length, pageSize, onP
     }, [currentPage, max, maxVisible]);
 
     return (
-        <div className={clsx("bd-paginator", className)}>
+        <div className={clsx("ia-paginator", className)}>
             <Button
-                className="bd-paginator-back"
+                className="ia-paginator-back"
                 color={Button.Colors.TRANSPARENT}
                 look={Button.Looks.BLANK}
                 disabled={currentPage === 0}
@@ -73,14 +73,14 @@ export default function Paginator({className, currentPage, length, pageSize, onP
             >
                 {t("Paginator.back")}
             </Button>
-            <div className="bd-paginator-bubbles">
+            <div className="ia-paginator-bubbles">
                 {visiblePages.map((value, key) => {
                     const ellipsis = value === "...";
 
                     return (
                         <div
                             key={key}
-                            className="bd-paginator-bubble"
+                            className="ia-paginator-bubble"
                             onClick={ellipsis ? () => {} : () => onPageChange(value as number)}
                             data-selected={currentPage === value}
                             data-ellipsis={ellipsis}
@@ -89,7 +89,7 @@ export default function Paginator({className, currentPage, length, pageSize, onP
                 })}
             </div>
             <Button
-                className="bd-paginator-next"
+                className="ia-paginator-next"
                 color={Button.Colors.TRANSPARENT}
                 look={Button.Looks.BLANK}
                 disabled={currentPage === (max - 1)}

@@ -6,8 +6,8 @@ import type {MouseEvent, PropsWithChildren} from "react";
 const {useCallback} = React;
 
 
-const basicClass = "bd-settings-title";
-const groupClass = "bd-settings-title bd-settings-group-title";
+const basicClass = "ia-settings-title";
+const groupClass = "ia-settings-title ia-settings-group-title";
 
 export type SettingsTitleProps = PropsWithChildren<{
     isGroup?: boolean;
@@ -29,7 +29,7 @@ export default function SettingsTitle({isGroup = false, className = "", button =
     const titleClass = className ? `${baseClass} ${className}` : baseClass;
     return <h2 className={titleClass} onClick={() => {onClick?.();}}>
         {text}
-        {button && <Button className="bd-button-title" onClick={click} size={Button.Sizes.NONE}>{button.title}</Button>}
+        {button && <Button className="ia-button-title" onClick={click} size={Button.Sizes.NONE}>{button.title}</Button>}
         {children}
     </h2>;
 

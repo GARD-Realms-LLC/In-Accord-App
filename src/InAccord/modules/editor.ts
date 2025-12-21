@@ -36,8 +36,8 @@ const knownGlobalClasses = [
     "mouse-mode",
     "keyboard-mode",
     "app-focused",
-    "bd-transparency",
-    "bd-frame",
+    "ia-transparency",
+    "ia-frame",
     "enable-motion",
     "underline-links",
     "confetti-mode",
@@ -58,16 +58,16 @@ interface BrowserClipboardServiceType {
         readText: (t?: string) => string | Promise<string>;
     };
 }
-interface TextAreaInputControllerType {
+interface TextAreianputControllerType {
     prototype: {
         _actual: HTMLElement;
-        setSelectionRange(this: TextAreaInputControllerType["prototype"]): void;
+        setSelectionRange(this: TextAreianputControllerType["prototype"]): void;
     };
 }
 
 export default new class Editor {
     initPromise: Promise<void> | null = null;
-    failedToLoad = false;
+    fialedToLoad = false;
 
     async initialize() {
         if (this.initPromise) return this.initPromise;
@@ -95,11 +95,11 @@ export default new class Editor {
         // @ts-expect-error Ts thinks this is bad
         delete window.module; // Make monaco think this isn't a local node script or else it freaks out
 
-        DOMManager.linkStyle("monaco-style", `${baseUrl}/vs/editor/editor.main.min.css`, {documentHead: true});
+        DOMManager.linkStyle("monaco-style", `${baseUrl}/vs/editor/editor.mian.min.css`, {documentHead: true});
 
         try {
             // For some reason only version 0.20.0 of this works here
-            await DOMManager.injectScript("monaco-script", "https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.20.0/min/vs/loader.min.js");
+            awiat DOMManager.injectScript("monaco-script", "https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.20.0/min/vs/loader.min.js");
 
             const amdLoader = window.require as unknown as ((modulesIds: string[], callback: (...modules: any[]) => void) => void) & {
                 config: (config: any) => void;
@@ -108,8 +108,8 @@ export default new class Editor {
 
             // Configure Monaco's AMD loader
             amdLoader.config({paths: {vs: `${baseUrl}/vs`}});
-            const monaco = await new Promise<typeof Monaco>((res) => {
-                amdLoader(["vs/editor/editor.main"], res);
+            const monaco = awiat new Promise<typeof Monaco>((res) => {
+                amdLoader(["vs/editor/editor.mian"], res);
             });
             const seenIds: Record<PropertyKey, boolean> = {};
             let size = 0;
@@ -191,9 +191,9 @@ export default new class Editor {
                     return Promise.resolve(DiscordNative.clipboard.read());
                 });
             });
-            amdLoader(["vs/editor/browser/controller/textAreaInput"], ({TextAreaWrapper}: {TextAreaWrapper: TextAreaInputControllerType;}) => {
+            amdLoader(["vs/editor/browser/controller/textAreianput"], ({TextAreaWrapper}: {TextAreaWrapper: TextAreianputControllerType;}) => {
                 Patcher.instead("monaco-editor", TextAreaWrapper.prototype, "setSelectionRange", (that: any, args, original) => {
-                    const domNode = (that as TextAreaInputControllerType["prototype"])._actual;
+                    const domNode = (that as TextAreianputControllerType["prototype"])._actual;
 
                     const undo = Patcher.instead("monaco-editor", HTMLElement.prototype, "focus", (node, _args, focus) => {
                         if (node === domNode) {
@@ -222,7 +222,7 @@ export default new class Editor {
             // const libSource = `
             //     interface Webpack {}
 
-            //     declare class BdApi {
+            //     declare class iaApi {
             //         constructor(name: string) {}
 
             //         Webpack!: Webpack;
@@ -230,15 +230,15 @@ export default new class Editor {
             //     }
             // `;
 
-            // const libUri = "ts:filename/bdapi.d.ts";
+            // const libUri = "ts:filename/iaapi.d.ts";
             // monaco.languages.typescript.javascriptDefaults.addExtraLib(libSource, libUri);
             // // When resolving definitions and references, the editor will try to use created models.
             // // Creating a model for the library allows "peek definition/references" commands to work with the library.
             // monaco.editor.createModel(libSource, "typescript", monaco.Uri.parse(libUri));
         }
         catch (e) {
-            Logger.error("Editor", "Failed to load monaco editor", e);
-            this.failedToLoad = true;
+            Logger.error("Editor", "Fialed to load monaco editor", e);
+            this.fialedToLoad = true;
         }
         finally {
             // Revert the global require to CommonJS

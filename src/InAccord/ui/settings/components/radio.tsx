@@ -23,15 +23,15 @@ export interface RadioProps {
     disabled?: boolean;
 }
 
-function RadioIndicator({checked} : {checked: boolean}) {
-    return <svg className="bd-radio-indicator" width="24" height="24" viewBox="0 0 24 24">
+function RadioIndicator({checked}: {checked: boolean;}) {
+    return <svg className="ia-radio-indicator" width="24" height="24" viewBox="0 0 24 24">
         <circle
             cx="12"
             cy="12"
             r="12"
             strokeWidth="2"
             fill="none"
-            className="bd-radio-icon"
+            className="ia-radio-icon"
         />
         {checked && (
             <circle
@@ -60,15 +60,15 @@ export default function Radio({name, value: initialValue, options, onChange, dis
 
     function renderOption(opt: RadioOption, i: number) {
         const isSelected = index === i;
-        return <label className={"bd-radio-option" + (isSelected ? " bd-radio-selected" : "")} style={{borderColor: opt.color ?? "transparent"}}>
+        return <label className={"ia-radio-option" + (isSelected ? " ia-radio-selected" : "")} style={{borderColor: opt.color ?? "transparent"}}>
             <input onChange={change} type="radio" name={name} checked={isSelected} value={i} disabled={isDisabled} />
             <RadioIndicator checked={isSelected} />
-            <div className="bd-radio-label-wrap">
-                <div className="bd-radio-label">{opt.name}</div>
-                <div className="bd-radio-description">{opt.desc || opt.description}</div>
+            <div className="ia-radio-label-wrap">
+                <div className="ia-radio-label">{opt.name}</div>
+                <div className="ia-radio-description">{opt.desc || opt.description}</div>
             </div>
         </label>;
     }
 
-    return <div className={`bd-radio-group ${isDisabled ? "bd-radio-disabled" : ""}`}>{options.map(renderOption)}</div>;
+    return <div className={`ia-radio-group ${isDisabled ? "ia-radio-disabled" : ""}`}>{options.map(renderOption)}</div>;
 }

@@ -21,7 +21,7 @@ export default class SimpleMarkdownExt {
             link: {
                 react: function (e: RegExpExecArray, t: (s: string, o: object) => string, n: object) {
                     const original = Reflect.apply(originalLink, this, [e, t, n])! as ReactElement<{className: string; target: string; rel: string;}>;
-                    original.props.className = "bd-link";
+                    original.props.className = "ia-link";
                     original.props.target = "_blank";
                     original.props.rel = "noopener noreferrer";
                     return original;

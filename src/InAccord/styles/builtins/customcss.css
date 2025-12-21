@@ -1,16 +1,16 @@
-#bd-editor-panel {
+#ia-editor-panel {
   display: flex;
   flex-direction: column;
-  background: var(--bd-editor-background, var(--background-base-lower));
+  background: var(--ia-editor-background, var(--background-base-lower));
 }
 
-/* div:has(> #bd-editor-panel) {
+/* div:has(> #ia-editor-panel) {
     margin-block: auto;
     margin-inline: auto;
     max-width: unset;
 } */
 
-#bd-editor-controls button {
+#ia-editor-controls button {
   margin: 0 5px 0 0;
   background: none;
   color: var(--interactive-text-default);
@@ -21,20 +21,20 @@
   align-items: center;
 }
 
-#bd-editor-controls button:hover {
+#ia-editor-controls button:hover {
   background: var(--interactive-background-hover);
   color: var(--interactive-text-hover);
 }
 
-#bd-editor-controls button:active {
+#ia-editor-controls button:active {
   background: var(--interactive-background-active);
 }
 
-/* #bd-editor-controls button svg {
+/* #ia-editor-controls button svg {
     fill: currentColor;
 } */
 
-#bd-editor-controls {
+#ia-editor-controls {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -77,7 +77,7 @@
 .monaco-editor:not(.rename-box),
 .monaco-editor .overflow-guard,
 .monaco-editor .overlayWidgets,
-#bd-customcss-editor > div > .overflow-guard > div:nth-child(3) {
+#ia-customcss-editor > div > .overflow-guard > div:nth-child(3) {
   width: 100% !important;
 }
 
@@ -95,7 +95,7 @@
   width: 1e6px !important;
 }
 
-.bd-fallback-editor {
+.ia-fallback-editor {
   height: 100%;
   width: 100%;
   resize: none;
@@ -118,11 +118,11 @@
   transition: all 0.2s ease;
 }
 
-.bd-recovery-buttons.bd-recovery-buttons {
+.ia-recovery-buttons.ia-recovery-buttons {
   justify-content: center;
 }
 
-.bd-button-recovery {
+.ia-button-recovery {
   width: 100% !important;
   max-width: 400px !important;
   height: var(--custom-button-button-lg-height);
@@ -131,7 +131,7 @@
   margin-top: 8px !important;
 }
 
-.bd-error-toggle {
+.ia-error-toggle {
   width: 30% !important;
   padding: 12px !important;
   text-align: center !important;
@@ -146,21 +146,21 @@
   z-index: 1;
 }
 
-.bd-error-toggle.expanded {
+.ia-error-toggle.expanded {
   background: var(--interactive-background-selected) !important;
 }
 
-.bd-error-toggle:hover {
+.ia-error-toggle:hover {
   background: var(--interactive-background-hover) !important;
 }
 
-.bd-error-content-wrapper {
+.ia-error-content-wrapper {
   height: 0;
   overflow: hidden;
   transition: height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.bd-error-content {
+.ia-error-content {
   padding: 16px;
   font-family: monospace;
   font-size: 12px;
@@ -175,32 +175,32 @@
   overflow-y: auto;
 }
 
-.bd-error-content::-webkit-scrollbar {
+.ia-error-content::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
 
-.bd-error-content::-webkit-scrollbar-thumb {
+.ia-error-content::-webkit-scrollbar-thumb {
   background-color: var(--scrollbar-auto-thumb);
   border-radius: 4px;
 }
 
-.bd-error-content::-webkit-scrollbar-track {
+.ia-error-content::-webkit-scrollbar-track {
   background-color: var(--scrollbar-auto-track);
   border-radius: 4px;
 }
 
-.bd-error-content::-webkit-scrollbar-thumb:hover {
+.ia-error-content::-webkit-scrollbar-thumb:hover {
   background-color: var(--scrollbar-auto-thumb-hover);
 }
 
-.bd-error-content pre {
+.ia-error-content pre {
   margin: 0;
   white-space: pre-wrap;
   word-break: break-all;
 }
 
-.bd-error-container {
+.ia-error-contianer {
   width: 100%;
   max-width: 1500px;
   margin: 16px auto;
@@ -209,7 +209,7 @@
   overflow: hidden;
 }
 
-.bd-error-toggle-wrapper {
+.ia-error-toggle-wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -218,7 +218,7 @@
   background: var(--background-base-lowest);
 }
 
-.bd-error-toggle {
+.ia-error-toggle {
   width: 30% !important;
   padding: 12px !important;
   text-align: center !important;
@@ -233,15 +233,15 @@
   z-index: 1;
 }
 
-.bd-error-toggle.expanded {
+.ia-error-toggle.expanded {
   background: var(--interactive-background-selected) !important;
 }
 
-.bd-error-toggle:hover {
+.ia-error-toggle:hover {
   background: var(--interactive-background-hover) !important;
 }
 
-.bd-error-actions {
+.ia-error-actions {
   display: flex;
   gap: 8px;
   width: 100%;
@@ -250,7 +250,7 @@
   padding: 0 16px;
 }
 
-.bd-error-actions button {
+.ia-error-actions button {
   flex: 1;
   max-width: 200px;
   padding: 8px 16px !important;
@@ -260,18 +260,18 @@
   transition: all 0.2s ease;
 }
 
-.bd-error-github {
+.ia-error-github {
   background-color: "#fdd18c" !important;
 }
 
-.bd-error-github:hover {
+.ia-error-github:hover {
   background-color: "#fcc145" !important;
 }
 
-.bd-error-discord {
+.ia-error-discord {
   background-color: var(--control-connect-background-default) !important;
 }
 
-.bd-error-discord:hover {
+.ia-error-discord:hover {
   background-color: var(--control-connect-background-hover) !important;
 }

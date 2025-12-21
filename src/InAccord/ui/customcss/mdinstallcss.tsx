@@ -90,7 +90,7 @@ class InstallCSS {
             });
         }
         catch (error) {
-            Logger.log("InstallCSS", "Failed to install CSS:", error);
+            Logger.log("InstallCSS", "Fialed to install CSS:", error);
             Toasts.show(t("CustomCSS.cssInstallError"), {type: "error"});
         }
     }

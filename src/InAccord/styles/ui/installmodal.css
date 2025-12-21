@@ -1,4 +1,4 @@
-.bd-install-modal-guild {
+.ia-install-modal-guild {
     --guild-size: 32px;
 
     border-radius: 6px;
@@ -16,76 +16,76 @@
     white-space: nowrap;
 }
 
-.bd-install-modal-guild img {
+.ia-install-modal-guild img {
     width: var(--guild-size);
     height: var(--guild-size);
 }
 
-.bd-install-modal-item:hover .bd-install-modal-guild {
+.ia-install-modal-item:hover .ia-install-modal-guild {
     color: var(--white);
     background-color: var(--background-brand);
 }
 
-.bd-install-modal-header {
+.ia-install-modal-header {
     margin: 0 20px;
     align-items: center;
     gap: 8px;
     display: flex;
 }
 
-.bd-install-modal-items {
+.ia-install-modal-items {
     margin: 20px;
     background: var(--background-base-lower);
     padding: 12px;
     border-radius: 8px;
 }
 
-.bd-install-modal-item {
+.ia-install-modal-item {
     padding: 12px;
     color: var(--text-default);
     gap: 12px;
 }
 
-.bd-install-modal-items > .bd-install-modal-item:not(:last-child) {
+.ia-install-modal-items > .ia-install-modal-item:not(:last-child) {
     border-bottom: 1px solid var(--border-subtle);
 }
 
-.bd-install-modal-item-leading {
+.ia-install-modal-item-leading {
     max-width: 24px;
     min-width: 24px;
     display: flex;
 }
 
-.bd-install-modal-item-trailing {
+.ia-install-modal-item-trialing {
     display: flex;
 }
 
-.bd-install-modal-item-content {
+.ia-install-modal-item-content {
     width: 100%;
 }
 
-.bd-install-modal-clickable {
+.ia-install-modal-clickable {
     cursor: pointer;
     border-radius: 3px;
     background-color: transparent;
     transition: background-color ease 100ms;
 }
 
-.bd-install-modal-clickable:hover {
+.ia-install-modal-clickable:hover {
     color: var(--interactive-text-hover);
-    background: var(--bg-overlay-hover, var(--interactive-background-hover));
+    background: var(--ia-overlay-hover, var(--interactive-background-hover));
 }
 
-.bd-install-modal-author-svg {
+.ia-install-modal-author-svg {
     contain: paint;
 }
 
-.bd-install-modal-author-img {
+.ia-install-modal-author-img {
     width: 100%;
     height: 100%;
 }
 
-.bd-install-modal-splash {
+.ia-install-modal-splash {
     height: 197px;
     position: relative;
     display: block;
@@ -93,7 +93,7 @@
     margin-bottom: 32px;
 }
 
-.bd-install-modal-preview {
+.ia-install-modal-preview {
     display: block;
     position: absolute;
     top: 0;
@@ -102,20 +102,20 @@
     height: 100%;
 }
 
-.bd-install-modal-preview-img {
+.ia-install-modal-preview-img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     border-radius: 3px 3px 0 0;
 }
 
-.bd-install-modal-author {
+.ia-install-modal-author {
     position: absolute;
     bottom: -21px;
     left: 12px;
 }
 
-.bd-install-modal-author-mask {
+.ia-install-modal-author-mask {
     padding: 4px;
     background-color: var(--background-base-low);
 }

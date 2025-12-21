@@ -11,7 +11,7 @@ import {RotateCwIcon, SaveIcon, PencilIcon, ExternalLinkIcon} from "lucide-react
 const {useState, useCallback, useEffect, forwardRef, useImperativeHandle, useRef} = React;
 
 // TODO: let doggy do these types
-export default forwardRef(function CssEditor({css, openNative, update, save, onChange: notifyParent, readOnly = false, id = "bd-customcss-editor", openDetached = false}, ref) {
+export default forwardRef(function CssEditor({css, openNative, update, save, onChange: notifyParent, readOnly = false, id = "ia-customcss-editor", openDetached = false}, ref) {
     const editorRef = useRef(null);
     const [hasUnsavedChanges, setUnsaved] = useState(false);
 

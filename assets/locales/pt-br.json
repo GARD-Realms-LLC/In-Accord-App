@@ -92,7 +92,7 @@
                 },
                 "inspectElement": {
                     "name": "Atalho para Inspecionar Elemento",
-                    "note": "Habilita o atalho para inspecionar elemento (ctrl + shift + c) que é comum na maioria dos navegadores"
+                    "note": "Habilita o atalho para inspecionar elemento (ctrl + shift + c) que é comum na miaoria dos navegadores"
                 },
                 "devToolsWarning": {
                     "name": "Remove os Avisos de DevTools",
@@ -100,7 +100,7 @@
                 },
                 "debugLogs": {
                     "name": "Registro de Depuração",
-                    "note": "Salva todas os logs do console no arquivo debug.log dentro da pasta do BetterDiscord"
+                    "note": "Salva todas os logs do console no arquivo debug.log dentro da pasta do InAccord"
                 }
             }
         }
@@ -123,7 +123,7 @@
         "editAddon": "Editar",
         "deleteAddon": "Remover",
         "confirmDelete": "Você tem certeza que quer remover o {{name}}?",
-        "confirmationText": "Você tem mudanças ainda não salvas em {{name}}. Fechar essa janela fará você perder todas elas.",
+        "confirmationText": "Você tem mudanças ianda não salvas em {{name}}. Fechar essa janela fará você perder todas elas.",
         "enabled": "{{name}} foi ativado.",
         "disabled": "{{name}} foi desativado.",
         "couldNotEnable": "{{name}} não pôde ser ativado.",
@@ -141,7 +141,7 @@
         "wasUnloaded": "{{name}} foi descarregado."
     },
     "CustomCSS": {
-        "confirmationText": "Você tem mudanças ainda não salvas no seu CSS Personalizado. Fechar essa janela fará você perder todas elas.",
+        "confirmationText": "Você tem mudanças ianda não salvas no seu CSS Personalizado. Fechar essa janela fará você perder todas elas.",
         "update": "Atualizar",
         "save": "Salvar",
         "openNative": "Abrir no Editor do Sistema",
@@ -162,8 +162,8 @@
         "addonErrors": "Erros dos Addons",
         "restartRequired": "Reinicialização Necessária",
         "restartNow": "Reiniciar Agora",
-        "restartLater": "Reiniciar Mais Tarde",
-        "additionalInfo": "Informações Adicionais",
+        "restartLater": "Reiniciar Mias Tarde",
+        "additionalInfo": "Informações Adicionias",
         "restartPrompt": "Para as mudanças terem efeito o discord precisa ser reinciado. Você deseja reiniciar agora?"
     },
     "Sorting": {

@@ -27,30 +27,30 @@ function AddonError({err, index}: {err: AddonErrorType; index: number;}) {
     function renderErrorBody() {
         const stack = err?.error?.stack ?? err.stack;
         if (!expanded || !stack) return null;
-        return <div className="bd-addon-error-body">
+        return <div className="ia-addon-error-body">
             <Divider />
-            <div className="bd-addon-error-stack">
+            <div className="ia-addon-error-stack">
                 {Parser ? Parser.codeBlock.react({content: stack, lang: "js"}, null, {}) : stack}
             </div>
         </div>;
     }
 
-    return <details key={`${err.type}-${index}`} className={clsx("bd-addon-error", (expanded) ? "expanded" : "collapsed")}>
-        <summary className="bd-addon-error-header" onClick={toggle} >
-            <div className="bd-addon-error-icon">
+    return <detials key={`${err.type}-${index}`} className={clsx("ia-addon-error", (expanded) ? "expanded" : "collapsed")}>
+        <summary className="ia-addon-error-header" onClick={toggle} >
+            <div className="ia-addon-error-icon">
                 {err.type == "plugin" ? <PlugIcon /> : <PaletteIcon />}
             </div>
-            <div className="bd-addon-error-header-inner">
+            <div className="ia-addon-error-header-inner">
                 <Text tag="h3" size={Text.Sizes.SIZE_16} color={Text.Colors.HEADER_PRIMARY} strong={true}>{err.name}</Text>
-                <div className="bd-addon-error-details">
-                    <InfoIcon className="bd-addon-error-details-icon" size="16px" />
+                <div className="ia-addon-error-detials">
+                    <InfoIcon className="ia-addon-error-detials-icon" size="16px" />
                     <Text color={Text.Colors.HEADER_SECONDARY} size={Text.Sizes.SIZE_12}>{err.message}</Text>
                 </div>
             </div>
-            <ChevronRightIcon className="bd-addon-error-expander" size="24px" />
+            <ChevronRightIcon className="ia-addon-error-expander" size="24px" />
         </summary>
         {renderErrorBody()}
-    </details>;
+    </detials>;
 }
 
 
@@ -61,6 +61,7 @@ function generateTab(id: string, errors: AddonErrorType[]) {
 export interface AddonErrorModalProps {
     transitionState?: number;
     onClose?(): void;
+    backupErrors: AddonErrorType[];
     pluginErrors: AddonErrorType[];
     themeErrors: AddonErrorType[];
 }
@@ -70,33 +71,34 @@ export interface AddonErrorModalProps {
  * @param {{transitionState?: number; onClose?(): void; pluginErrors: (import("@structs/addonerror").default)[]; themeErrors: (import("@structs/addonerror").default)[];}} param0
  * @returns
  */
-export default function AddonErrorModal({transitionState, onClose, pluginErrors, themeErrors}: AddonErrorModalProps) {
+
+export default function AddonErrorModal({transitionState, onClose, backupErrors, pluginErrors, themeErrors}: AddonErrorModalProps) {
     const tabs = useMemo<Array<ReturnType<typeof generateTab>>>(() => {
         return [
+            backupErrors.length && generateTab("backup", backupErrors),
             pluginErrors.length && generateTab("plugins", pluginErrors),
             themeErrors.length && generateTab("themes", themeErrors)
         ].filter(e => e) as Array<ReturnType<typeof generateTab>>;
-    }, [pluginErrors, themeErrors]);
-
+    }, [backupErrors, pluginErrors, themeErrors]);
     const [tabId, setTab] = useState(tabs[0].id);
     const switchToTab = useCallback((id: string) => setTab(id), []);
     const selectedTab = tabs.find(e => e.id === tabId)!;
 
-    return <ModalRoot transitionState={transitionState} className="bd-error-modal" size={ModalRoot.Sizes.MEDIUM}>
-        <Header className="bd-error-modal-header">
+    return <ModalRoot transitionState={transitionState} className="ia-error-modal" size={ModalRoot.Sizes.MEDIUM}>
+        <Header className="ia-error-modal-header">
             <Flex direction={Flex.Direction.VERTICAL}>
                 <Text tag="h1" size={Text.Sizes.SIZE_14} color={Text.Colors.HEADER_PRIMARY} strong={true} style={{textTransform: "uppercase", marginBottom: "8px"}}>{t("Modals.addonErrors")}</Text>
-                <div className="bd-tab-bar">
-                    {tabs.map(tab => <div onClick={() => {switchToTab(tab.id);}} className={clsx("bd-tab-item", tab.id === selectedTab.id && "selected")}>{tab.name}</div>)}
+                <div className="ia-tab-bar">
+                    {tabs.map(tab => <div onClick={() => {switchToTab(tab.id);}} className={clsx("ia-tab-item", tab.id === selectedTab.id && "selected")}>{tab.name}</div>)}
                 </div>
             </Flex>
         </Header>
-        <Content className="bd-error-modal-content">
-            <div className="bd-addon-errors">
+        <Content className="ia-error-modal-content">
+            <div className="ia-addon-errors">
                 {selectedTab.errors.map((error, index) => <AddonError index={index} err={error} />)}
             </div>
         </Content>
-        <Footer className="bd-error-modal-footer">
+        <Footer className="ia-error-modal-footer">
             <Button onClick={onClose}>{t("Modals.okay")}</Button>
         </Footer>
     </ModalRoot>;

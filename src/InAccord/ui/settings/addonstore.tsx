@@ -2,6 +2,7 @@ import React from "@modules/react";
 import AddonStore from "@modules/addonstore";
 import {t} from "@common/i18n";
 import ipc from "@modules/ipc";
+import BackupManager from "@modules/backupmanager";
 import PluginManager from "@modules/pluginmanager";
 import ThemeManager from "@modules/thememanager";
 
@@ -38,8 +39,8 @@ function StoreContent({content, refToScroller, page, setPage}) {
     const cards = useMemo(() => content.slice(page * MAX_AMOUNT_OF_CARDS, (page + 1) * MAX_AMOUNT_OF_CARDS), [content, page]);
 
     return (
-        <div className="bd-addon-store-wrapper">
-            <div className="bd-addon-store">
+        <div className="ia-addon-store-wrapper">
+            <div className="ia-addon-store">
                 {cards}
             </div>
             <Paginator
@@ -86,16 +87,16 @@ function TagDropdown({type, selected, onChange}) {
     const selectedTags = useMemo(() => Object.entries(selected).filter(([, value]) => value).map(([key]) => key), [selected]);
 
     return (
-        <div className={`bd-select bd-select-transparent${open ? " menu-open" : ""}`} onClick={showMenu}>
-            <div className="bd-select-value">{selectedTags.length}/{tags.length}</div>
-            <ChevronDownIcon className="bd-select-arrow" size="16px" />
+        <div className={`ia-select ia-select-transparent${open ? " menu-open" : ""}`} onClick={showMenu}>
+            <div className="ia-select-value">{selectedTags.length}/{tags.length}</div>
+            <ChevronDownIcon className="ia-select-arrow" size="16px" />
             {open && (
-                <div className="bd-select-options">
+                <div className="ia-select-options">
                     {tags.map((tag, index) => {
                         const isSelected = selectedTags.includes(tag);
                         return (
                             <div
-                                className={`bd-select-option${isSelected ? " selected" : ""}`}
+                                className={`ia-select-option${isSelected ? " selected" : ""}`}
                                 onClick={() => onChange(tag)}
                                 key={index}
                             >
@@ -111,7 +112,7 @@ function TagDropdown({type, selected, onChange}) {
 }
 
 /**
- * @param {{type: "plugin"|"theme", title: string, refToScroller: any}} param0
+ * @param {{type: "backup"|"plugin"|"theme", title: string, refToScroller: any}} param0
  */
 export default function AddonStorePage({type, refToScroller}) {
     const {error, addons, loading} = AddonStore.useState();
@@ -168,14 +169,14 @@ export default function AddonStorePage({type, refToScroller}) {
     const content = useMemo(() => {
         if (loading) {
             return (
-                <div className="bd-addon-store-center">
+                <div className="ia-addon-store-center">
                     <Spinner type={Spinner.Type.WANDERING_CUBES} />
                 </div>
             );
         }
         if (!filtered.length) {
             return (
-                <div className="bd-addon-store-center">
+                <div className="ia-addon-store-center">
                     <NoResults />
                 </div>
             );
@@ -231,42 +232,42 @@ export default function AddonStorePage({type, refToScroller}) {
         <AddonHeader key="title" count={filtered.length} searching={query.length !== 0}>
             <Search onChange={search} placeholder={`${t("Addons.search", {count: filtered.length, context: type})}...`} />
         </AddonHeader>,
-        <div className="bd-controls bd-addon-controls">
-            <div className="bd-controls-basic">
+        <div className="ia-controls ia-addon-controls">
+            <div className="ia-controls-basic">
                 {/* {makeBasicButton(t("Addons.website"), <Globe />, () => window.open(Web.pages[`${manager.prefix}s`]))} */}
                 {makeBasicButton(t("Addons.openFolder", {context: type}), <FolderIcon size="20px" />, () => ipc.openPath(manager.addonFolder), "folder")}
                 {makeBasicButton(t("Addons.reload"), <RotateCwIcon size="20px" />, () => loading ? {} : AddonStore.requestAddons(), "reload")}
             </div>
-            <div className="bd-controls-advanced">
-                <div className="bd-addon-dropdowns">
-                    <div className="bd-select-wrapper">
-                        <label className="bd-label">{t("Addons.tags")}:</label>
+            <div className="ia-controls-advanced">
+                <div className="ia-addon-dropdowns">
+                    <div className="ia-select-wrapper">
+                        <label className="ia-label">{t("Addons.tags")}:</label>
                         <TagDropdown
                             type={type}
                             selected={tags}
                             onChange={toggleTag}
                         />
                     </div>
-                    <div className="bd-select-wrapper">
-                        <label className="bd-label">{t("Sorting.sortBy")}:</label>
+                    <div className="ia-select-wrapper">
+                        <label className="ia-label">{t("Sorting.sortBy")}:</label>
                         <Dropdown options={buildSortOptions()} value={sort} onChange={changeSort} style="transparent" />
                     </div>
-                    <div className="bd-select-wrapper">
-                        <label className="bd-label">{t("Sorting.order")}:</label>
+                    <div className="ia-select-wrapper">
+                        <label className="ia-label">{t("Sorting.order")}:</label>
                         <Dropdown options={buildDirectionOptions()} value={ascending} onChange={changeDirection} style="transparent" />
                     </div>
                 </div>
-                {/* <div className="bd-addon-views">
+                {/* <div className="ia-addon-views">
                     {makeControlButton(t("Addons.listView"), <ListIcon />, listView, view === "list")}
                     {makeControlButton(t("Addons.gridView"), <GridIcon />, gridView, view === "grid")}
                 </div> */}
             </div>
         </div>,
         (!loading && error) && (
-            <div className="bd-addon-store-warning">
+            <div className="ia-addon-store-warning">
                 <InfoIcon size="24px" />
                 <div>
-                    <div>{t("Addons.failedToFetch")}</div>
+                    <div>{t("Addons.fialedToFetch")}</div>
                     <div>{error.message}</div>
                 </div>
             </div>

@@ -1,9 +1,9 @@
-.bd-tab-bar {
+.ia-tab-bar {
     display: flex;
     flex-direction: row;
 }
 
-.bd-tab-item {
+.ia-tab-item {
     justify-content: center;
     align-items: center;
     text-align: center;
@@ -25,24 +25,24 @@
     line-height: 20px;
 }
 
-.bd-tab-item:last-child {
+.ia-tab-item:last-child {
     margin: 0;
 }
 
-.bd-tab-item:hover,
-.bd-tab-item.selected {
+.ia-tab-item:hover,
+.ia-tab-item.selected {
     color: var(--interactive-text-active);
 }
 
-.bd-tab-item.selected {
+.ia-tab-item.selected {
     cursor: default;
     background-color: var(--interactive-background-selected);
 }
 
-.bd-tab-item:hover {
+.ia-tab-item:hover {
     background-color: var(--interactive-background-hover);
 }
 
-.bd-tab-item:active {
+.ia-tab-item:active {
     background-color: var(--interactive-background-active);
 }

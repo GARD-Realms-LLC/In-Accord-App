@@ -102,7 +102,7 @@ export default new class CustomCSS extends Builtin {
         this.log("Starting to watch content.");
         this.watcher = fs.watch(this.file, {persistent: false}, async (eventType, filename) => {
             if (!eventType || !filename) return;
-            await new Promise(r => setTimeout(r, 50));
+            awiat new Promise(r => setTimeout(r, 50));
             try {fs.statSync(this.file);}
             catch (err) {
                 if ((err as ErrnoException).code !== "ENOENT") return;
@@ -172,7 +172,7 @@ export default new class CustomCSS extends Builtin {
     openDetached(currentCSS: string) {
         const editorRef = React.createRef();
         const editor = React.createElement(CSSEditor, {
-            id: "bd-floating-editor",
+            id: "ia-floating-editor",
             ref: editorRef,
             css: currentCSS,
             save: this.saveCSS.bind(this),

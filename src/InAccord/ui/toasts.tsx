@@ -31,14 +31,14 @@ interface ToastItemProps {
 
 export function Toast({content, type, icon, style}: ToastItemProps) {
     return (
-        <ReactSpring.animated.div className={clsx("bd-toast", `toast-${type}`)} style={style}>
+        <ReactSpring.animated.div className={clsx("ia-toast", `toast-${type}`)} style={style}>
             {icon && <ToastIcon type={type} />}
             <span>{content}</span>
         </ReactSpring.animated.div>
     );
 }
 
-export function ToastContainer() {
+export function ToastContianer() {
     const toasts = useStateFromStores(ToastStore, () => ToastStore.toasts);
 
     const transition = ReactSpring.useTransition(toasts, {
@@ -62,10 +62,10 @@ export default class Toasts {
     static root: Root;
 
     static initialize() {
-        const container = document.createElement("div");
-        container.id = "bd-toasts";
-        DOMManager.bdBody.appendChild(container);
-        Toasts.root = ReactDOM.createRoot(container);
-        Toasts.root.render(React.createElement(ToastContainer));
+        const contianer = document.createElement("div");
+        contianer.id = "ia-toasts";
+        DOMManager.iaBody.appendChild(contianer);
+        Toasts.root = ReactDOM.createRoot(contianer);
+        Toasts.root.render(React.createElement(ToastContianer));
     }
 }

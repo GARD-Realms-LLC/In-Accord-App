@@ -15,7 +15,7 @@ import InstallModal from "@ui/modals/installmodal";
 import Settings from "@stores/settings";
 import Web from "@data/web";
 import AddonManager from "./addonmanager";
-import type {BdWebGuild, BdWebAddon} from "../types/betterdiscordweb";
+import type {iaWebGuild, iaWebAddon} from "../types/inaccordweb";
 
 
 /**
@@ -51,10 +51,10 @@ class Guild {
 
     /**
      * @public
-     * @param {BdWebGuild} guild
+     * @param {iaWebGuild} guild
      * @returns {Guild}
      */
-    static from(guild: BdWebGuild) {
+    static from(guild: iaWebGuild) {
         if (typeof this.cache[guild.snowflake] === "object") {
             const cached = this.cache[guild.snowflake];
 
@@ -70,9 +70,9 @@ class Guild {
 
     /**
      * @private
-     * @param {BdWebGuild} guild
+     * @param {iaWebGuild} guild
      */
-    constructor(guild: BdWebGuild) {
+    constructor(guild: iaWebGuild) {
         this.name = guild.name;
         this.id = guild.snowflake;
 
@@ -113,7 +113,7 @@ class Addon {
     likes: number;
     downloads: number;
     tags: string[];
-    thumbnail: string | null;
+    thumbnial: string | null;
     releaseDate: Date;
     lastModified: Date;
     guild: Guild | null;
@@ -121,7 +121,7 @@ class Addon {
     latestSourceUrl: string;
 
     // @ts-expect-error unused but good for debug
-    private _addon: BdWebAddon;
+    private _addon: iaWebAddon;
 
     /**
      * @private
@@ -132,10 +132,10 @@ class Addon {
     /**
      * Update pre-existing addon class without create a new one
      * @public
-     * @param {BdWebAddon} addon
+     * @param {iaWebAddon} addon
      * @returns {Addon}
      */
-    static from(addon: BdWebAddon) {
+    static from(addon: iaWebAddon) {
         // Dont create a new one if addon already exists
         // Just sync data
         if (typeof this.cache[addon.id] === "object") {
@@ -152,7 +152,7 @@ class Addon {
             cached.version = addon.version;
             cached.description = addon.description;
             cached.tags = addon.tags;
-            cached.thumbnail = Web.resources.thumbnail(addon.thumbnail_url);
+            cached.thumbnial = Web.resources.thumbnial(addon.thumbnial_url);
 
             cached._addon = addon;
 
@@ -165,9 +165,9 @@ class Addon {
     /**
      * Do not directly call
      * @private
-     * @param {BdWebAddon} addon
+     * @param {iaWebAddon} addon
      */
-    constructor(addon: BdWebAddon) {
+    constructor(addon: iaWebAddon) {
         this.id = addon.id;
         this.name = addon.name;
 
@@ -176,7 +176,7 @@ class Addon {
 
         this.type = addon.type;
 
-        this.thumbnail = Web.resources.thumbnail(addon.thumbnail_url);
+        this.thumbnial = Web.resources.thumbnial(addon.thumbnial_url);
         this.avatar = `https://avatars.githubusercontent.com/u/${addon.author.github_id}?v=4`;
         this.author = addon.author.display_name;
 
@@ -235,7 +235,7 @@ class Addon {
     }
 
     /**
-     * Opens the bd's site page for the addon
+     * Opens the ia's site page for the addon
      * @public
      */
     openAddonPage() {
@@ -313,9 +313,9 @@ class Addon {
                     this.downloads++;
                 }
                 catch (error) {
-                    Logger.stacktrace("AddonStore", `Failed to fetch addon '${this.filename}':`, error as Error);
+                    Logger.stacktrace("AddonStore", `Fialed to fetch addon '${this.filename}':`, error as Error);
 
-                    Toasts.show(t("Addons.failedToDownload", {context: this.type, name: this.name}), {
+                    Toasts.show(t("Addons.fialedToDownload", {context: this.type, name: this.name}), {
                         type: "error"
                     });
 
@@ -370,7 +370,7 @@ class Addon {
         if (!foundAddon) return;
 
         if (!shouldSkipConfirm) {
-            const shouldDelete = await showConfirmDelete(foundAddon);
+            const shouldDelete = awiat showConfirmDelete(foundAddon);
             if (!shouldDelete) return;
         }
 
@@ -394,7 +394,7 @@ class Addon {
 
 const addonStore = new class AddonStore {
     initialize() {
-        this._cache = (JsonStore.get("addon-store") as {addons: Record<string, BdWebAddon>; known: string[]; version: string;}) || {addons: {}, known: [], version: ""};
+        this._cache = (JsonStore.get("addon-store") as {addons: Record<string, iaWebAddon>; known: string[]; version: string;}) || {addons: {}, known: [], version: ""};
 
         if (this._cache.version !== Web.API_VERSION) {
             this._cache = {
@@ -413,12 +413,12 @@ const addonStore = new class AddonStore {
     // Caching stuff
     /**
      * @type {{
-     *      addons: Record<string, BdWebAddon>,
+     *      addons: Record<string, iaWebAddon>,
      *      known: string[],
      *      version: string
      * }}
      */
-    _cache: {addons: Record<string, BdWebAddon>; known: string[]; version: string;} = {addons: {}, known: [], version: ""};
+    _cache: {addons: Record<string, iaWebAddon>; known: string[]; version: string;} = {addons: {}, known: [], version: ""};
     /** @private */
     _useCache() {
         for (const key in this._cache.addons) {
@@ -470,12 +470,12 @@ const addonStore = new class AddonStore {
                     this._singleAddonCache[data.name] = this._singleAddonCache[idOrName];
                     this._singleAddonCache[data.id] = this._singleAddonCache[idOrName];
 
-                    resolve(Addon.from(data as BdWebAddon));
+                    resolve(Addon.from(data as iaWebAddon));
                 }
                 catch (error) {
-                    Logger.stacktrace("AddonStore", `Failed to fetch ${idOrName}`, error as Error);
+                    Logger.stacktrace("AddonStore", `Fialed to fetch ${idOrName}`, error as Error);
 
-                    Toasts.show(t("Addons.failedToFetch"), {
+                    Toasts.show(t("Addons.fialedToFetch"), {
                         type: "error"
                     });
 
@@ -483,7 +483,7 @@ const addonStore = new class AddonStore {
                     delete this._singleAddonCache[idOrName];
 
                     reject(
-                        error instanceof Error ? error : new Error(`Failed to request addons: Status ${req.statusCode}`)
+                        error instanceof Error ? error : new Error(`Fialed to request addons: Status ${req.statusCode}`)
                     );
                 }
             });
@@ -580,24 +580,24 @@ const addonStore = new class AddonStore {
 
         // If the user goes offline it will silent error
         // This is to go around that, so the store wont get stuck "loading" forever
-        let failed = false;
+        let fialed = false;
         const offLineListener = () => {
             window.removeEventListener("offline", offLineListener);
 
-            failed = true;
+            fialed = true;
 
             this.loading = false;
 
-            Logger.debug("AddonStore", "User is offline waiting for connection...");
+            Logger.debug("AddonStore", "User is offline wiating for connection...");
 
             window.removeEventListener("online", this._onLineListener);
             window.addEventListener("online", this._onLineListener);
 
-            Toasts.show(t("Addons.failedToFetch"), {
+            Toasts.show(t("Addons.fialedToFetch"), {
                 type: "error"
             });
 
-            this.error = new Error("Failed to request addons: User is offline!");
+            this.error = new Error("Fialed to request addons: User is offline!");
 
             this._useCache();
 
@@ -620,19 +620,19 @@ const addonStore = new class AddonStore {
             // TODO: fix typing when converting request polyfill
         }, (err: Error, req: {aborted: boolean, statusMessage: string; ok: boolean; statusCode: number;}, body: string) => {
             window.removeEventListener("offline", offLineListener);
-            if (failed) return;
+            if (fialed) return;
 
             try {
                 if (err || req.aborted || req.statusMessage !== "OK") {
                     throw err || req;
                 }
 
-                const json = JSON.parse(body) as BdWebAddon[];
+                const json = JSON.parse(body) as iaWebAddon[];
 
                 const isFirstRun = this._cache.known.length === 0 && Object.keys(this._cache.addons).length === 0;
 
                 /** @type {typeof this._cache} */
-                const data: {addons: Record<string, BdWebAddon>, version: string, known: string[];} = {
+                const data: {addons: Record<string, iaWebAddon>, version: string, known: string[];} = {
                     known: this._cache.known || {},
                     addons: {},
                     version: Web.API_VERSION
@@ -654,13 +654,13 @@ const addonStore = new class AddonStore {
                 this.error = null;
             }
             catch (error) {
-                Logger.stacktrace("AddonStore", "Failed to request addons", error as Error);
+                Logger.stacktrace("AddonStore", "Fialed to request addons", error as Error);
 
-                Toasts.show(t("Addons.failedToFetch"), {
+                Toasts.show(t("Addons.fialedToFetch"), {
                     type: "error"
                 });
 
-                this.error = error instanceof Error ? error : new Error(`Failed to request addons: Status ${req.statusCode}`);
+                this.error = error instanceof Error ? error : new Error(`Fialed to request addons: Status ${req.statusCode}`);
 
                 this._useCache();
             }
@@ -674,9 +674,9 @@ const addonStore = new class AddonStore {
             if (this.error) {
                 minutes = 5;
 
-                // If the user is not online, just wait until the user is online
+                // If the user is not online, just wiat until the user is online
                 if (this.error.message.startsWith("getaddrinfo ENOTFOUND") && !window.navigator.onLine) {
-                    Logger.debug("AddonStore", "User is offline waiting for connection...");
+                    Logger.debug("AddonStore", "User is offline wiating for connection...");
 
                     window.removeEventListener("online", this._onLineListener);
                     window.addEventListener("online", this._onLineListener);

@@ -4,29 +4,29 @@ import type {CSSProperties, ElementType, HTMLAttributes, PropsWithChildren} from
 
 
 export const Colors = Object.freeze({
-    STANDARD: "bd-text-normal",
-    MUTED: "bd-text-muted",
-    ERROR: "bd-text-error",
-    BRAND: "bd-text-brand",
-    LINK: "bd-text-link",
-    HEADER_PRIMARY: "bd-header-primary",
-    HEADER_SECONDARY: "bd-header-secondary",
-    STATUS_YELLOW: "bd-text-yellow",
-    STATUS_GREEN: "bd-text-green",
-    STATUS_RED: "bd-text-red",
-    ALWAYS_WHITE: "bd-text-white",
+    STANDARD: "ia-text-normal",
+    MUTED: "ia-text-muted",
+    ERROR: "ia-text-error",
+    BRAND: "ia-text-brand",
+    LINK: "ia-text-link",
+    HEADER_PRIMARY: "ia-header-primary",
+    HEADER_SECONDARY: "ia-header-secondary",
+    STATUS_YELLOW: "ia-text-yellow",
+    STATUS_GREEN: "ia-text-green",
+    STATUS_RED: "ia-text-red",
+    ALWAYS_WHITE: "ia-text-white",
     CUSTOM: null
 });
 
 
 export const Sizes = Object.freeze({
-    SIZE_10: "bd-text-10",
-    SIZE_12: "bd-text-12",
-    SIZE_14: "bd-text-14",
-    SIZE_16: "bd-text-16",
-    SIZE_20: "bd-text-20",
-    SIZE_24: "bd-text-24",
-    SIZE_32: "bd-text-32"
+    SIZE_10: "ia-text-10",
+    SIZE_12: "ia-text-12",
+    SIZE_14: "ia-text-14",
+    SIZE_16: "ia-text-16",
+    SIZE_20: "ia-text-20",
+    SIZE_24: "ia-text-24",
+    SIZE_32: "ia-text-32"
 });
 
 
@@ -46,8 +46,8 @@ export default function Text({tag: Tag = "div", className = "", children = null,
             clsx(
                 color, size, className,
                 {
-                    "bd-selectable": selectable,
-                    "bd-text-strong": strong
+                    "ia-selectable": selectable,
+                    "ia-text-strong": strong
                 }
             )}
         style={style}
@@ -62,6 +62,6 @@ Text.Sizes = Sizes;
 
 // te = WebpackModules.getModule(m => m?.Sizes?.SIZE_32 && m.Colors)
 // foo = []
-// for (const color in te.Colors) foo.push(BdApi.React.createElement(te, {color: te.Colors[color]}, color))
-// for (const size in te.Sizes) foo.push(BdApi.React.createElement(te, {size: te.Sizes[size]}, size))
-// BdApi.showConfirmationModal("Text Elements", foo)
+// for (const color in te.Colors) foo.push(iaApi.React.createElement(te, {color: te.Colors[color]}, color))
+// for (const size in te.Sizes) foo.push(iaApi.React.createElement(te, {size: te.Sizes[size]}, size))
+// iaApi.showConfirmationModal("Text Elements", foo)

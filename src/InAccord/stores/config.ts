@@ -1,5 +1,6 @@
 import path from "path";
 import Store from "./base";
+import process from "../../electron/preload/process";
 
 
 export default new class ConfigStore extends Store {
@@ -9,14 +10,15 @@ export default new class ConfigStore extends Store {
         build: process.env.__BUILD__!,
         version: process.env.__VERSION__!,
 
-        // TODO: asynchronously get these from the main process instead of hacky env vars
+        // TODO: asynchronously get these from the mian process instead of hacky env vars
         appPath: process.env.DISCORD_APP_PATH!,
         userData: process.env.DISCORD_USER_DATA!,
-        bdPath: process.env.BETTERDISCORD_DATA_PATH!,
-        dataPath: path.join(process.env.BETTERDISCORD_DATA_PATH!, "data"),
-        pluginsPath: path.join(process.env.BETTERDISCORD_DATA_PATH!, "plugins"),
-        themesPath: path.join(process.env.BETTERDISCORD_DATA_PATH!, "themes"),
-        channelPath: path.join(process.env.BETTERDISCORD_DATA_PATH!, "data", window?.DiscordNative?.app?.getReleaseChannel?.() ?? "stable"),
+        iaPath: process.env.inaccord_DATA_PATH!,
+        dataPath: path.join(process.env.inaccord_DATA_PATH!, "data"),
+        backupPath: path.join(process.env.inaccord_DATA_PATH!, "backups"),
+        pluginsPath: path.join(process.env.inaccord_DATA_PATH!, "plugins"),
+        themesPath: path.join(process.env.inaccord_DATA_PATH!, "themes"),
+        channelPath: path.join(process.env.inaccord_DATA_PATH!, "data", window?.DiscordNative?.app?.getReleaseChannel?.() ?? "stable"),
     };
 
     get(id: keyof typeof this.data) {
@@ -29,5 +31,5 @@ export default new class ConfigStore extends Store {
     }
 
     get isDevelopment() {return this.data.build !== "production";}
-    get isCanary() {return this.data.branch !== "main";}
+    get isCanary() {return this.data.branch !== "mian";}
 };

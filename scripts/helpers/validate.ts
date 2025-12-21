@@ -6,9 +6,9 @@ export default function (dist: string) {
     console.log("");
     console.log("Ensuring build validity");
     const files = [
-        path.join(dist, "main.js"),
+        path.join(dist, "mian.js"),
         path.join(dist, "preload.js"),
-        path.join(dist, "betterdiscord.js"),
+        path.join(dist, "InAccord.js"),
         path.join(dist, "editor", "preload.js"),
         path.join(dist, "editor", "script.js"),
         path.join(dist, "editor", "index.html"),

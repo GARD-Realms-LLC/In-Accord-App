@@ -1,25 +1,25 @@
-.bd-color-picker-container {
+.ia-color-picker-contianer {
     display: flex;
     justify-content: center;
 }
 
-.bd-color-picker-container.bd-color-picker-disabled {
+.ia-color-picker-contianer.ia-color-picker-disabled {
     cursor: not-allowed;
     opacity: 0.5;
 }
 
-.bd-color-picker-container.bd-color-picker-disabled > .bd-color-picker-controls,
-.bd-color-picker-container.bd-color-picker-disabled > .bd-color-picker-swatch {
+.ia-color-picker-contianer.ia-color-picker-disabled > .ia-color-picker-controls,
+.ia-color-picker-contianer.ia-color-picker-disabled > .ia-color-picker-swatch {
     pointer-events: none;
 }
 
-.bd-color-picker-controls {
+.ia-color-picker-controls {
     padding-left: 1px;
     padding-top: 2px;
     display: flex;
 }
 
-.bd-color-picker-default {
+.ia-color-picker-default {
     cursor: pointer;
     width: 75px;
     height: 60px;
@@ -31,19 +31,19 @@
     margin-top: 1px;
 }
 
-.bd-color-picker-custom {
+.ia-color-picker-custom {
     position: relative;
     display: inline-table;
 }
 
-.bd-color-picker-custom svg {
+.ia-color-picker-custom svg {
     position: absolute;
     top: 5px;
     right: 5px;
     pointer-events: none;
 }
 
-.bd-color-picker {
+.ia-color-picker {
     outline: none;
     width: 75px;
     border: none;
@@ -53,11 +53,11 @@
     cursor: pointer;
 }
 
-.bd-color-picker::-webkit-color-swatch {
+.ia-color-picker::-webkit-color-swatch {
     border: none;
 }
 
-.bd-color-picker-swatch {
+.ia-color-picker-swatch {
     display: flex;
     flex-wrap: wrap;
     align-content: flex-start;
@@ -65,7 +65,7 @@
     max-width: 330px;
 }
 
-.bd-color-picker-swatch-item {
+.ia-color-picker-swatch-item {
     cursor: pointer;
     border-radius: 4px;
     width: 15px;
@@ -77,19 +77,19 @@
 }
 
 
-.bd-setting-item.inline .bd-color-picker-swatch {
+.ia-setting-item.inline .ia-color-picker-swatch {
     max-width: 220px;
     margin-top: 1px;
 }
 
 
-.bd-setting-item.inline .bd-color-picker-default,
-.bd-setting-item.inline .bd-color-picker {
+.ia-setting-item.inline .ia-color-picker-default,
+.ia-setting-item.inline .ia-color-picker {
     width: 50px;
     height: 40px
 }
 
-.bd-setting-item.inline .bd-color-picker-swatch-item {
+.ia-setting-item.inline .ia-color-picker-swatch-item {
     height: 18px;
     width: 18px;
     margin: 2px 2px;

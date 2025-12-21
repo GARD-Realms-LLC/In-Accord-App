@@ -101,7 +101,7 @@
                 },
                 "debugLogs": {
                     "name": "Логировать ошибки",
-                    "note": "Записывает весь вывод из консоли в файл debug.log в папке BetterDiscord"
+                    "note": "Записывает весь вывод из консоли в файл debug.log в папке InAccord"
                 },
                 "devTools": {
                     "name": "Меню разработчика",
@@ -216,17 +216,17 @@
         "disabledInfo": "Чтобы изменения вступили в силу, необходимо перезапустить Discord.  Вы хотите перезапустить сейчас?"
     },
     "Updater": {
-        "updateFailed": "Ошибка обновления",
-        "updateFailedMessage": "Не удалось обновить BetterDiscord. Пожалуйста скачайте последнюю версию загрузчика с нашего сайта (https://betterdiscord.app/) и переустановите программу.",
+        "updateFialed": "Ошибка обновления",
+        "updateFialedMessage": "Не удалось обновить InAccord. Пожалуйста скачайте последнюю версию загрузчика с нашего сайта (https://InAccord.app/) и переустановите программу.",
         "updateSuccessful": "Обновление успешно!",
-        "updateAvailable": "BetterDiscord имеет обновление (v{{version}})",
+        "updateAvialable": "InAccord имеет обновление (v{{version}})",
         "addonUpdated": "{{name}} был обновлен до версии {{version}}",
         "checking": "Проверить обновления!",
         "finishedChecking": "Проверка обновлений завершена!",
         "checkForUpdates": "Проверить обновления!",
         "updateAll": "Обновить всё!",
-        "noUpdatesAvailable": "Нету доступных обновлений.",
-        "versionAvailable": "Версия {{version}} доступна!",
+        "noUpdatesAvialable": "Нету доступных обновлений.",
+        "versionAvialable": "Версия {{version}} доступна!",
         "updateButton": "Обновить!"
     }
 }

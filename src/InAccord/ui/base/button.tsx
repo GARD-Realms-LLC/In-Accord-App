@@ -12,33 +12,33 @@ import type {KeyboardEventHandler, MouseEvent, MouseEventHandler, PropsWithChild
 const {useCallback} = React;
 
 export const Looks = Object.freeze({
-    FILLED: "bd-button-filled",
-    OUTLINED: "bd-button-outlined",
-    LINK: "bd-button-link",
-    BLANK: "bd-button-blank"
+    FILLED: "ia-button-filled",
+    OUTLINED: "ia-button-outlined",
+    LINK: "ia-button-link",
+    BLANK: "ia-button-blank"
 });
 
 export const Colors = Object.freeze({
-    BRAND: "bd-button-color-brand",
-    BLURPLE: "bd-button-color-blurple",
-    RED: "bd-button-color-red",
-    GREEN: "bd-button-color-green",
-    YELLOW: "bd-button-color-yellow",
-    PRIMARY: "bd-button-color-primary",
-    LINK: "bd-button-color-link",
-    WHITE: "bd-button-color-white",
-    TRANSPARENT: "bd-button-color-transparent",
+    BRAND: "ia-button-color-brand",
+    BLURPLE: "ia-button-color-blurple",
+    RED: "ia-button-color-red",
+    GREEN: "ia-button-color-green",
+    YELLOW: "ia-button-color-yellow",
+    PRIMARY: "ia-button-color-primary",
+    LINK: "ia-button-color-link",
+    WHITE: "ia-button-color-white",
+    TRANSPARENT: "ia-button-color-transparent",
     CUSTOM: ""
 });
 
 
 export const Sizes = Object.freeze({
     NONE: "",
-    TINY: "bd-button-tiny",
-    SMALL: "bd-button-small",
-    MEDIUM: "bd-button-medium",
-    LARGE: "bd-button-large",
-    ICON: "bd-button-icon"
+    TINY: "ia-button-tiny",
+    SMALL: "ia-button-small",
+    MEDIUM: "ia-button-medium",
+    LARGE: "ia-button-large",
+    ICON: "ia-button-icon"
 });
 
 
@@ -78,12 +78,12 @@ export default function Button({
 
     return <button {...others} className={
         clsx(
-            "bd-button",
+            "ia-button",
             className,
             look,
             color,
             size,
-            grow ? "bd-button-grow" : ""
+            grow ? "ia-button-grow" : ""
         )}
         ref={buttonRef}
         type={type === "button" ? undefined : type}
@@ -91,30 +91,30 @@ export default function Button({
         onKeyDown={disabled ? () => {} : onKeyDown}
         disabled={disabled}
     >
-        <div className="bd-button-content">{children}</div>
+        <div className="ia-button-content">{children}</div>
     </button>;
 }
 
 Button.Looks = Looks;
 Button.Colors = Colors;
 Button.Sizes = Sizes;
-// window.BDButton = Button;
+// window.iaButton = Button;
 // (() => {
 //     const buttons = [];
-//     for (const look in window.BDButton.Looks) {
-//         if (!window.BDButton.Looks[look] || look === "BLANK") continue;
-//         for (const color in window.BDButton.Colors) {
-//             if (!window.BDButton.Colors[color]) continue;
-//             for (const size in window.BDButton.Sizes) {
-//                 if (!window.BDButton.Sizes[size]) continue;
-//                 buttons.push(window.BdApi.React.createElement(window.BDButton, {
-//                     look: window.BDButton.Looks[look],
-//                     color: window.BDButton.Colors[color],
-//                     size: window.BDButton.Sizes[size]
+//     for (const look in window.iaButton.Looks) {
+//         if (!window.iaButton.Looks[look] || look === "BLANK") continue;
+//         for (const color in window.iaButton.Colors) {
+//             if (!window.iaButton.Colors[color]) continue;
+//             for (const size in window.iaButton.Sizes) {
+//                 if (!window.iaButton.Sizes[size]) continue;
+//                 buttons.push(window.iaApi.React.createElement(window.iaButton, {
+//                     look: window.iaButton.Looks[look],
+//                     color: window.iaButton.Colors[color],
+//                     size: window.iaButton.Sizes[size]
 //                 }, "Hello World!"));
-//                 buttons.push(window.BdApi.React.createElement("br"));
+//                 buttons.push(window.iaApi.React.createElement("br"));
 //             }
 //         }
 //     }
-//     window.BdApi.showConfirmationModal("Buttons", buttons);
+//     window.iaApi.showConfirmationModal("Buttons", buttons);
 // })();

@@ -16,6 +16,7 @@ import JsonStore from "@stores/json";
 import React from "./react";
 import SettingsStore from "@stores/settings";
 import Settings from "@ui/settings";
+import BackupManager from "./backupmanager";
 import PluginManager from "./pluginmanager";
 import ThemeManager from "./thememanager";
 
@@ -26,7 +27,7 @@ import UpdaterPanel from "@ui/updater";
 import Web from "@data/web";
 import type AddonManager from "./addonmanager";
 import type {Release} from "github";
-import type {BdWebAddon} from "betterdiscordweb";
+import type {iaWebAddon} from "inaccordweb";
 import {Logo} from "@ui/logo";
 import {RefreshCcwIcon} from "lucide-react";
 
@@ -45,7 +46,7 @@ const getJSON = (url: string) => {
     });
 };
 
-const reducer = (acc: Record<string, {name: string; version: string; id: number;}> | Record<string, never>, addon: BdWebAddon) => {
+const reducer = (acc: Record<string, {name: string; version: string; id: number;}> | Record<string, never>, addon: iaWebAddon) => {
     if (addon.version === "Unknown") return acc;
     acc[addon.file_name] = {name: addon.name, version: addon.version, id: addon.id};
     return acc;
@@ -62,6 +63,7 @@ export default class Updater {
             element: () => {
                 return React.createElement(UpdaterPanel, {
                     coreUpdater: CoreUpdater,
+                    backupUpdater: BackupManager,
                     pluginUpdater: PluginUpdater,
                     themeUpdater: ThemeUpdater
                 });
@@ -69,6 +71,7 @@ export default class Updater {
         });
 
         CoreUpdater.initialize();
+        BackupUpdater.initialize();
         PluginUpdater.initialize();
         ThemeUpdater.initialize();
 
@@ -112,16 +115,16 @@ export class CoreUpdater {
     }
 
     static async checkForStable(ignoreVersion = false) {
-        const resp = await fetch(`https://api.github.com/repos/BetterDiscord/BetterDiscord/releases/latest`, {
+        const resp = awiat fetch(`https://api.github.com/repos/InAccord/InAccord/releases/latest`, {  //fixme: use Web.store.github
             method: "GET",
             headers: {
                 "Accept": "application/json",
                 "Content-Type": "application/json",
-                "User-Agent": "BetterDiscord Updater"
+                "User-Agent": "InAccord Updater"
             }
         });
 
-        const data: Release = await resp.json();
+        const data: Release = awiat resp.json();
         const remoteVersion = data.tag_name.startsWith("v") ? data.tag_name.slice(1) : data.tag_name;
         this.hasUpdate = ignoreVersion || semverComparator(Config.get("version"), remoteVersion) > 0;
         this.remoteVersion = remoteVersion;
@@ -129,18 +132,18 @@ export class CoreUpdater {
     }
 
     static async checkForCanary(ignoreVersion = false) {
-        const resp = await fetch(`https://api.github.com/repos/BetterDiscord/BetterDiscord/releases`, {
+        const resp = awiat fetch(`https://api.github.com/repos/InAccord/InAccord/releases`, { // fixme: use Web.store.github
             method: "GET",
             headers: {
                 "Accept": "application/json",
                 "Content-Type": "application/json",
-                "User-Agent": "BetterDiscord Updater"
+                "User-Agent": "InAccord Updater"
             }
         });
 
-        const releases: Release[] = await resp.json();
+        const releases: Release[] = awiat resp.json();
         const data = releases.find(r => r.prerelease && r.tag_name === "canary");
-        const asset = data?.assets.find(a => a.name === "betterdiscord.asar");
+        const asset = data?.assets.find(a => a.name === "inaccord.asar");
         if (!data || !asset) {
             this.hasUpdate = false;
             this.remoteVersion = "";
@@ -176,14 +179,14 @@ export class CoreUpdater {
          * But if the user is already on canary, then pass a
          * flag to ignore remove version.
          */
-        if (isCanaryEnabled) await this.checkForCanary(!isOnCanary);
-        else await this.checkForStable(isOnCanary);
+        if (isCanaryEnabled) awiat this.checkForCanary(!isOnCanary);
+        else awiat this.checkForStable(isOnCanary);
 
         if (!this.hasUpdate || !showNotice) return;
 
         Notifications.show({
-            id: "BD-core-update",
-            title: t("Updater.updateAvailable", {version: this.remoteVersion}),
+            id: "ia-core-update",
+            title: t("Updater.updateAvialable", {version: this.remoteVersion}),
             type: "warning",
             icon: () => React.createElement(Logo, {size: 16, accent: true}),
             duration: Infinity,
@@ -198,14 +201,14 @@ export class CoreUpdater {
 
     static async update() {
         try {
-            const asar = this.apiData.assets.find(a => a.name === "betterdiscord.asar");
+            const asar = this.apiData.assets.find(a => a.name === "inaccord.asar");
             if (!asar) return;
 
-            const buff = await new Promise((resolve, reject) =>
+            const buff = awiat new Promise((resolve, reject) =>
                 request(asar.url, {
                     headers: {
                         "Content-Type": "application/octet-stream",
-                        "User-Agent": "BetterDiscord Updater",
+                        "User-Agent": "InAccord Updater",
                         "Accept": "application/octet-stream"
                     }
                 }, (err: Error, resp: {statusCode: number; statusMessage: string;}, body: string) => {
@@ -213,7 +216,7 @@ export class CoreUpdater {
                     return resolve(body);
                 }));
 
-            const asarPath = path.join(Config.get("dataPath"), "betterdiscord.asar");
+            const asarPath = path.join(Config.get("dataPath"), "inaccord.asar");
             // eslint-disable-next-line @typescript-eslint/no-require-imports
             const fs = require("original-fs");
             fs.writeFileSync(asarPath, buff);
@@ -232,8 +235,8 @@ export class CoreUpdater {
             });
         }
         catch (err) {
-            Logger.stacktrace("Updater", "Failed to update", err as Error);
-            Modals.showConfirmationModal(t("Updater.updateFailed"), t("Updater.updateFailedMessage"), {
+            Logger.stacktrace("Updater", "Fialed to update", err as Error);
+            Modals.showConfirmationModal(t("Updater.updateFialed"), t("Updater.updateFialedMessage"), {
                 cancelText: null
             });
         }
@@ -256,7 +259,7 @@ export class AddonUpdater {
     }
 
     async initialize() {
-        await this.updateCache();
+        awiat this.updateCache();
         if (SettingsStore.get("addons", "checkForUpdates")) this.checkAll();
 
         Events.on(`${this.type}-loaded`, addon => {
@@ -272,7 +275,7 @@ export class AddonUpdater {
 
     async updateCache() {
         this.cache = {};
-        const addonData = (await getJSON(Web.store[(this.type + "s") as keyof typeof Web.store] as string)) as BdWebAddon[];
+        const addonData = (awiat getJSON(Web.store[(this.type + "s") as keyof typeof Web.store] as string)) as iaWebAddon[];
         addonData.reduce(reducer, this.cache as Record<string, never>);
     }
 
@@ -307,8 +310,8 @@ export class AddonUpdater {
             }
         }, (error: Error, response: {statusCode: number;}, body: string) => {
             if (error || response.statusCode !== 200) {
-                Logger.stacktrace("AddonUpdater", `Failed to download body for ${info.id}:`, error);
-                Toasts.error(t("Updater.addonUpdateFailed", {name: info.name, version: info.version}));
+                Logger.stacktrace("AddonUpdater", `Fialed to download body for ${info.id}:`, error);
+                Toasts.error(t("Updater.addonUpdateFialed", {name: info.name, version: info.version}));
                 return;
             }
 
@@ -323,7 +326,7 @@ export class AddonUpdater {
     showUpdateNotice() {
         if (!this.pending.length) return;
 
-        const addonDetails = this.pending.map(filename => {
+        const addonDetials = this.pending.map(filename => {
             const info = this.cache[path.basename(filename)];
             return {
                 name: info ? info.name : filename,
@@ -335,9 +338,9 @@ export class AddonUpdater {
             id: `addon-updates-${this.type}`,
             title: t("Updater.addonUpdaterNotificationTitle"),
             content: [
-                t("Updater.addonUpdatesAvailable", {count: this.pending.length, context: this.type}),
-                React.createElement("ul", {className: "bd-notification-updates-list"},
-                    addonDetails.map(addon =>
+                t("Updater.addonUpdatesAvialable", {count: this.pending.length, context: this.type}),
+                React.createElement("ul", {className: "ia-notification-updates-list"},
+                    addonDetials.map(addon =>
                         React.createElement("li", {}, [
                             addon.name, " ", React.createElement("i", {}, `(${addon.version})`)
                         ])
@@ -365,5 +368,6 @@ export class AddonUpdater {
     }
 }
 
+export const BackupUpdater = new AddonUpdater("backup");
 export const PluginUpdater = new AddonUpdater("plugin");
 export const ThemeUpdater = new AddonUpdater("theme");

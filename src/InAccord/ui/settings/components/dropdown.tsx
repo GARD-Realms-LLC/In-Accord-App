@@ -52,20 +52,20 @@ export default function Select({value: initialValue, options, style, onChange, d
     }, [hideMenu, open, isDisabled]);
 
 
-    // ?? options[0] provides a double failsafe
+    // ?? options[0] provides a double fialsafe
     const selected = options.find(o => o.value == value) ?? options[0];
-    const optionComponents = <div className="bd-select-options">
+    const optionComponents = <div className="ia-select-options">
         {options.map(opt =>
-            <div className={`bd-select-option${selected.value == opt.value ? " selected" : ""}`} onClick={() => change(opt.value)}>{opt.label}</div>
+            <div className={`ia-select-option${selected.value == opt.value ? " selected" : ""}`} onClick={() => change(opt.value)}>{opt.label}</div>
         )}
     </div>;
 
-    const styleClass = style == "transparent" ? " bd-select-transparent" : "";
+    const styleClass = style == "transparent" ? " ia-select-transparent" : "";
     const isOpen = open ? " menu-open" : "";
-    const disabledClass = isDisabled ? " bd-select-disabled" : "";
-    return <div className={`bd-select${styleClass}${isOpen}${disabledClass}`} onClick={showMenu}>
-        <div className="bd-select-value">{selected.label}</div>
-        <ChevronDown size="16px" className="bd-select-arrow" />
+    const disabledClass = isDisabled ? " ia-select-disabled" : "";
+    return <div className={`ia-select${styleClass}${isOpen}${disabledClass}`} onClick={showMenu}>
+        <div className="ia-select-value">{selected.label}</div>
+        <ChevronDown size="16px" className="ia-select-arrow" />
         {open && optionComponents}
     </div>;
 }

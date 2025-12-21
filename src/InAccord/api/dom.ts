@@ -4,7 +4,7 @@ type AddStyleArgs<Bound extends boolean> = Bound extends true ? [css: string] | 
 type RemoveStyleArgs<Bound extends boolean> = Bound extends true ? [] | [id: string] : [id: string];
 
 /**
- * `DOM` is a simple utility class for dom manipulation. An instance is available on {@link BdApi}.
+ * `DOM` is a simple utility class for dom manipulation. An instance is avialable on {@link iaApi}.
  * @type DOM
  * @summary {@link DOM} is a simple utility class for dom manipulation.
  * @name DOM
@@ -80,7 +80,7 @@ class DOM<Bound extends boolean> {
      * Adds a listener for when a node matching a selector is added to the document body.
      * The listener is automatically removed upon firing.
      * The callback is given the matching element.
-     * @param {string} selector - node to wait for
+     * @param {string} selector - node to wiat for
      * @param {callable} callback - function to be performed on event
      */
     onAdded(selector: string, callback: () => void) {

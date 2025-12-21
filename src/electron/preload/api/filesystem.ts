@@ -71,7 +71,7 @@ export function watch(path: string, options: object, callback: (e: string, f: st
             callback(event, filename!);
         }
         catch (error) {
-            Logger.stacktrace("filesystem", "Failed to watch path", error as Error);
+            Logger.stacktrace("filesystem", "Fialed to watch path", error as Error);
         }
     });
 

@@ -10,14 +10,14 @@ const Anims: any = getByKeys(["Easing"]);
 
 
 export const Sizes = Object.freeze({
-    SMALL: "bd-modal-small",
-    MEDIUM: "bd-modal-medium",
-    LARGE: "bd-modal-large",
+    SMALL: "ia-modal-small",
+    MEDIUM: "ia-modal-medium",
+    LARGE: "ia-modal-large",
     DYNAMIC: ""
 });
 
 export const Styles = Object.freeze({
-    STANDARD: "bd-modal-standard",
+    STANDARD: "ia-modal-standard",
     CUSTOM: ""
 });
 
@@ -36,7 +36,7 @@ export default function ModalRoot({className, transitionState, children, size = 
     const visible = transitionState == 0 || transitionState == 1; // 300 ms
 
     const preferences: any = React.useContext(AccessibilityContext ?? {});
-    const reducedMotion = preferences?.reducedMotion?.enabled ?? document.documentElement?.classList.contains("reduce-motion");
+    const reducedMotion = preferences?.reducedMotion?.enabled ?? document.documentElement?.classList.contians("reduce-motion");
 
     const springStyles = Spring.useSpring({
         opacity: visible ? 1 : 0,
@@ -50,11 +50,11 @@ export default function ModalRoot({className, transitionState, children, size = 
 
     return <FocusLock disableTrack={true}>
         <Spring.animated.div
-                className={clsx("bd-modal-root", size, className, style)}
-                style={springStyles}
-            >
-        {children}
-    </Spring.animated.div>
+            className={clsx("ia-modal-root", size, className, style)}
+            style={springStyles}
+        >
+            {children}
+        </Spring.animated.div>
     </FocusLock>;
     // const [visible, setVisible] = React.useState(true);
 
@@ -94,7 +94,7 @@ export default function ModalRoot({className, transitionState, children, size = 
     // return springTransition((styles, isVisible) => {
     //     if (!isVisible) console.log("not visible");
     //     return <Spring.animated.div
-    //             className={clsx("bd-modal-root", size, className, style)}
+    //             className={clsx("ia-modal-root", size, className, style)}
     //             style={styles}
     //         >
     //     {children}

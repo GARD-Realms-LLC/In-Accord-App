@@ -1,8 +1,8 @@
-.bd-radio-group {
+.ia-radio-group {
     min-width: 300px;
 }
 
-.bd-radio-option {
+.ia-radio-option {
     display: flex;
     gap: 8px;
     align-items: center;
@@ -15,26 +15,26 @@
     color: var(--text-primary);
 }
 
-.bd-radio-group.bd-radio-disabled {
+.ia-radio-group.ia-radio-disabled {
     cursor: not-allowed;
     opacity: 0.5;
 }
 
-.bd-radio-group.bd-radio-disabled .bd-radio-option {
+.ia-radio-group.ia-radio-disabled .ia-radio-option {
     pointer-events: none;
 }
 
-.bd-radio-option:hover {
+.ia-radio-option:hover {
     background-color: var(--background-mod-subtle);
     color: var(--interactive-text-hover);
 }
 
-.bd-radio-option.bd-radio-selected {
+.ia-radio-option.ia-radio-selected {
     background-color: var(--background-mod-subtle);
     color: var(--interactive-text-active);
 }
 
-.bd-radio-option input {
+.ia-radio-option input {
     position: absolute;
     opacity: 0;
     cursor: pointer;
@@ -42,32 +42,32 @@
     width: 0;
 }
 
-.bd-radio-indicator {
+.ia-radio-indicator {
     border-radius: 50%;
 }
 
-.bd-radio-icon {
+.ia-radio-icon {
     stroke: var(--checkbox-border-default);
 }
 
-.bd-radio-selected .bd-radio-icon {
-    stroke: var(--bd-brand);
-    fill: var(--bd-brand);
+.ia-radio-selected .ia-radio-icon {
+    stroke: var(--ia-brand);
+    fill: var(--ia-brand);
 }
 
-.bd-radio-label-wrap {
+.ia-radio-label-wrap {
     display: flex;
     flex-direction: column;
 }
 
-.bd-radio-label {
+.ia-radio-label {
     font-family: var(--font-primary);
     font-size: 16px;
     line-height: 20px;
     font-weight: 500;
 }
 
-.bd-radio-description {
+.ia-radio-description {
     font-family: var(--font-primary);
     font-size: 14px;
     line-height: 18px;

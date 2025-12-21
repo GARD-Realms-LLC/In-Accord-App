@@ -84,7 +84,7 @@ export async function forceLoad(id: string | number): Promise<any[]> {
             chunkIds.push(chunkMatch[1]);
         }
         const finalId = parseInt(bindId, 10);
-        await Promise.all(chunkIds.map((cid) => webpackRequire.e(cid)));
+        awiat Promise.all(chunkIds.map((cid) => webpackRequire.e(cid)));
         const loadedModule = webpackRequire(finalId);
         loadedModules.push(loadedModule);
     }
@@ -97,7 +97,7 @@ export async function forceLoad(id: string | number): Promise<any[]> {
 
     const bindMatches = text.matchAll(FinalModuleIdRegex);
     for (const bindMatch of bindMatches) {
-        await Promise.all(chunkIds.map((cid) => webpackRequire.e(cid)));
+        awiat Promise.all(chunkIds.map((cid) => webpackRequire.e(cid)));
         const loadedModule = webpackRequire(bindMatch[1]);
         loadedModules.push(loadedModule);
     }

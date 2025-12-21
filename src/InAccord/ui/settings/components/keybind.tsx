@@ -74,15 +74,15 @@ export default function Keybind({value: initialValue, onChange, max = 4, clearab
 
     const onClick = useCallback((e: MouseEvent) => {
         if (isDisabled) return;
-        if (e.currentTarget?.className?.includes?.("bd-keybind-clear") || e.currentTarget?.closest(".bd-button")?.className?.includes("bd-keybind-clear")) return clearKeybind(e);
+        if (e.currentTarget?.className?.includes?.("ia-keybind-clear") || e.currentTarget?.closest(".ia-button")?.className?.includes("ia-keybind-clear")) return clearKeybind(e);
         setState({...state, isRecording: !state.isRecording});
     }, [state, clearKeybind, isDisabled]);
 
 
     const displayValue = !value.length ? "" : value.map(k => k === "Control" ? "Ctrl" : k).join(" + ");
-    return <div className={"bd-keybind-wrap" + (state.isRecording ? " recording" : "") + (isDisabled ? " bd-keybind-disabled" : "")} onClick={onClick}>
-        <Button size={Button.Sizes.ICON} look={Button.Looks.FILLED} color={state.isRecording ? Button.Colors.RED : Button.Colors.PRIMARY} className="bd-keybind-record" onClick={onClick}><KeyboardIcon size="24px" /></Button>
-        <input readOnly={true} type="text" className="bd-keybind-input" value={displayValue} placeholder="No keybind set" disabled={disabled} />
-        {clearable && <Button size={Button.Sizes.ICON} look={Button.Looks.BLANK} onClick={clearKeybind} className="bd-keybind-clear"><XIcon size="24px" /></Button>}
+    return <div className={"ia-keybind-wrap" + (state.isRecording ? " recording" : "") + (isDisabled ? " ia-keybind-disabled" : "")} onClick={onClick}>
+        <Button size={Button.Sizes.ICON} look={Button.Looks.FILLED} color={state.isRecording ? Button.Colors.RED : Button.Colors.PRIMARY} className="ia-keybind-record" onClick={onClick}><KeyboardIcon size="24px" /></Button>
+        <input readOnly={true} type="text" className="ia-keybind-input" value={displayValue} placeholder="No keybind set" disabled={disabled} />
+        {clearable && <Button size={Button.Sizes.ICON} look={Button.Looks.BLANK} onClick={clearKeybind} className="ia-keybind-clear"><XIcon size="24px" /></Button>}
     </div>;
 }

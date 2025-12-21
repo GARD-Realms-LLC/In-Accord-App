@@ -18,23 +18,23 @@ export default class DOMManager {
     /** Document/window height */
     static get screenHeight() {return Math.max(document.documentElement.clientHeight, window.innerHeight || 0);}
 
-    static get bdHead() {return this.getElement("bd-head")!;}
-    static get bdBody() {return this.getElement("bd-body")!;}
-    static get bdScripts() {return this.getElement("bd-scripts")!;}
-    static get bdStyles() {return this.getElement("bd-styles")!;}
-    static get bdThemes() {return this.getElement("bd-themes")!;}
-    static get bdCustomCSS() {return this.getElement("style#customcss")!;}
-    // static get bdTooltips() {return this.getElement("bd-tooltips") || this.createElement("bd-tooltips").appendTo(this.bdBody);}
-    // static get bdModals() {return this.getElement("bd-modals") || this.createElement("bd-modals").appendTo(this.bdBody);}
-    // static get bdToasts() {return this.getElement("bd-toasts") || this.createElement("bd-toasts").appendTo(this.bdBody);}
+    static get iaHead() {return this.getElement("ia-head")!;}
+    static get iaBody() {return this.getElement("ia-body")!;}
+    static get iaScripts() {return this.getElement("ia-scripts")!;}
+    static get iaStyles() {return this.getElement("ia-styles")!;}
+    static get iaThemes() {return this.getElement("ia-themes")!;}
+    static get iaCustomCSS() {return this.getElement("style#customcss")!;}
+    // static get iaTooltips() {return this.getElement("ia-tooltips") || this.createElement("ia-tooltips").appendTo(this.iaBody);}
+    // static get iaModals() {return this.getElement("ia-modals") || this.createElement("ia-modals").appendTo(this.iaBody);}
+    // static get iaToasts() {return this.getElement("ia-toasts") || this.createElement("ia-toasts").appendTo(this.iaBody);}
 
     static initialize() {
-        // this.createElement("bd-head", {target: document.head});
-        // this.createElement("bd-body", {target: document.body});
-        // this.createElement("bd-scripts", {target: this.bdHead});
-        // this.createElement("bd-styles", {target: this.bdHead});
-        // this.createElement("bd-themes", {target: this.bdHead});
-        // this.createElement("style", {id: "customcss", target: this.bdHead});
+        // this.createElement("ia-head", {target: document.head});
+        // this.createElement("ia-body", {target: document.body});
+        // this.createElement("ia-scripts", {target: this.iaHead});
+        // this.createElement("ia-styles", {target: this.iaHead});
+        // this.createElement("ia-themes", {target: this.iaHead});
+        // this.createElement("style", {id: "customcss", target: this.iaHead});
     }
 
     static escapeID(id: string) {
@@ -87,15 +87,15 @@ export default class DOMManager {
 
     static removeStyle(id: string) {
         id = this.escapeID(id);
-        const exists = this.getElement(`#${id}`, this.bdStyles);
+        const exists = this.getElement(`#${id}`, this.iaStyles);
         if (exists) exists.remove();
     }
 
     static injectStyle(id: string, css: string) {
         id = this.escapeID(id);
-        const style = this.getElement(`#${id}`, this.bdStyles) || this.createElement("style", {id});
+        const style = this.getElement(`#${id}`, this.iaStyles) || this.createElement("style", {id});
         style.textContent = css;
-        this.bdStyles.append(style);
+        this.iaStyles.append(style);
     }
 
     static unlinkStyle(id: string) {
@@ -105,46 +105,46 @@ export default class DOMManager {
     static linkStyle(id: string, url: string, {documentHead = false} = {}) {
         id = this.escapeID(id);
         return new Promise(resolve => {
-            const link: HTMLLinkElement = this.getElement(`#${id}`, this.bdStyles) as HTMLLinkElement || this.createElement("link", {id});
+            const link: HTMLLinkElement = this.getElement(`#${id}`, this.iaStyles) as HTMLLinkElement || this.createElement("link", {id});
             link.rel = "stylesheet";
             link.href = url;
             link.onload = resolve;
-            const target = documentHead ? document.head : this.bdStyles;
+            const target = documentHead ? document.head : this.iaStyles;
             target.append(link);
         });
     }
 
     static removeTheme(id: string) {
         id = this.escapeID(id);
-        const exists = this.getElement(`#${id}`, this.bdThemes);
+        const exists = this.getElement(`#${id}`, this.iaThemes);
         if (exists) exists.remove();
     }
 
     static injectTheme(id: string, css: string) {
         id = this.escapeID(id);
-        const style = this.getElement(`#${id}`, this.bdThemes) || this.createElement("style", {id});
+        const style = this.getElement(`#${id}`, this.iaThemes) || this.createElement("style", {id});
         style.textContent = css;
-        this.bdThemes.append(style);
+        this.iaThemes.append(style);
     }
 
     static updateCustomCSS(css: string) {
-        this.bdCustomCSS.textContent = css;
+        this.iaCustomCSS.textContent = css;
     }
 
     static removeScript(id: string) {
         id = this.escapeID(id);
-        const exists = this.getElement(`#${id}`, this.bdScripts);
+        const exists = this.getElement(`#${id}`, this.iaScripts);
         if (exists) exists.remove();
     }
 
     static injectScript(id: string, url: string) {
         id = this.escapeID(id);
         return new Promise((resolve, reject) => {
-            const script: HTMLScriptElement = this.getElement(`#${id}`, this.bdScripts) as HTMLScriptElement || this.createElement("script", {id});
+            const script: HTMLScriptElement = this.getElement(`#${id}`, this.iaScripts) as HTMLScriptElement || this.createElement("script", {id});
             script.src = url;
             script.onload = resolve;
             script.onerror = reject;
-            this.bdScripts.append(script);
+            this.iaScripts.append(script);
         });
     }
 
@@ -172,7 +172,7 @@ export default class DOMManager {
      * Adds a listener for when a node matching a selector is added to the document body.
      * The listener is automatically removed upon firing.
      * The callback is given the matching element.
-     * @param {string} selector - node to wait for
+     * @param {string} selector - node to wiat for
      * @param {callable} callback - function to be performed on event
      */
     static onAdded(selector: string, callback: (e: Element) => void) {
@@ -201,7 +201,7 @@ export default class DOMManager {
     /**
      * Adds a listener for when the node is removed from the document body.
      * The listener is automatically removed upon firing.
-     * @param {HTMLElement} node - node to wait for
+     * @param {HTMLElement} node - node to wiat for
      * @param {callable} callback - function to be performed on event
      */
     static onRemoved(node: Node, callback: () => void) {
@@ -210,7 +210,7 @@ export default class DOMManager {
                 const mutation = mutations[m];
                 const nodes = Array.from(mutation.removedNodes);
                 const directMatch = nodes.indexOf(node) > -1;
-                const parentMatch = nodes.some(parent => parent.contains(node));
+                const parentMatch = nodes.some(parent => parent.contians(node));
                 if (directMatch || parentMatch) {
                     observer.disconnect();
                     callback();
@@ -223,9 +223,9 @@ export default class DOMManager {
     }
 }
 
-DOMManager.createElement("bd-head", {target: document.body});
-DOMManager.createElement("bd-body", {target: document.body});
-DOMManager.createElement("bd-scripts", {target: DOMManager.bdHead});
-DOMManager.createElement("bd-styles", {target: DOMManager.bdHead});
-DOMManager.createElement("bd-themes", {target: DOMManager.bdHead});
-DOMManager.createElement("style", {id: "customcss", target: DOMManager.bdHead});
+DOMManager.createElement("ia-head", {target: document.body});
+DOMManager.createElement("ia-body", {target: document.body});
+DOMManager.createElement("ia-scripts", {target: DOMManager.iaHead});
+DOMManager.createElement("ia-styles", {target: DOMManager.iaHead});
+DOMManager.createElement("ia-themes", {target: DOMManager.iaHead});
+DOMManager.createElement("style", {id: "customcss", target: DOMManager.iaHead});

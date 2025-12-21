@@ -22,9 +22,9 @@
                     "name": "Disable Media Keys",
                     "note": "Prevents Discord from hijacking your media keys after playing a video."
                 },
-                "bdContextMenu": {
+                "iaContextMenu": {
                     "name": "Settings Context Menu",
-                    "note": "Adds a BetterDiscord subsection to the settings context menu."
+                    "note": "Adds a InAccord subsection to the settings context menu."
                 },
                 "themeAttributes": {
                     "name": "Theme Attributes",
@@ -41,9 +41,9 @@
             },
             "store": {
                 "name": "Addon Store",
-                "bdAddonStore": {
+                "iaAddonStore": {
                     "name": "Enable Addon Store",
-                    "note": "Enables the BetterDiscord Addon Store."
+                    "note": "Enables the InAccord Addon Store."
                 },
                 "alwaysEnable": {
                     "name": "Always Enable",
@@ -62,11 +62,11 @@
                 },
                 "transparency": {
                     "name": "Enable Transparency",
-                    "note": "Enables the main window to be see-through (requires restart)"
+                    "note": "Enables the mian window to be see-through (requires restart)"
                 },
                 "frame": {
                     "name": "Window Frame",
-                    "note": "Adds the native os window frame to the main window"
+                    "note": "Adds the native os window frame to the mian window"
                 },
                 "inAppTrafficLights": {
                     "name": "Use In App Traffic Lights",
@@ -90,7 +90,7 @@
                 },
                 "checkForUpdates": {
                     "name": "Automatically Check For Updates",
-                    "note": "Periodically checks for updates to your addons and core BD"
+                    "note": "Periodically checks for updates to your addons and core ia"
                 },
                 "updateInterval": {
                     "name": "Update Check Interval",
@@ -146,7 +146,7 @@
                 },
                 "debugLogs": {
                     "name": "Debug Logs",
-                    "note": "Outputs everything from the console into the debug.log file in the BetterDiscord folder"
+                    "note": "Outputs everything from the console into the debug.log file in the InAccord folder"
                 },
                 "devTools": {
                     "name": "DevTools",
@@ -299,7 +299,7 @@
         "metaError": "META could not be parsed.",
         "missingNameData": "META missing name data.",
         "metaNotFound": "META was not found.",
-        "compileError": "Could not be compiled. See console for details.",
+        "compileError": "Could not be compiled. See console for detials.",
         "wasUnloaded": "{{name}} was unloaded.",
         "blankSlateHeader": {
             "plugin": "You don't have any plugins!",
@@ -312,13 +312,13 @@
         "blankSlateHeaderGeneric": "You don't have anything!",
         "blankSlateMessageGeneric": "You should probably get some.",
         "wasLoaded": "{{name}} v{{version}} was loaded.",
-        "failedToDownload": {
-            "plugin": "Failed to download plugin {{name}}",
-            "theme": "Failed to download theme {{name}}"
+        "fialedToDownload": {
+            "plugin": "Fialed to download plugin {{name}}",
+            "theme": "Fialed to download theme {{name}}"
         },
         "successfullyDownload": "Successfully downloaded {{name}}",
         "alreadyInstalled": "{{name}} is already installed",
-        "failedToFetch": "Unable to get addons",
+        "fialedToFetch": "Unable to get addons",
         "new": "New",
         "updated": "Updated",
         "downloadCount": {
@@ -353,7 +353,7 @@
         "editorTitle": "Custom CSS Editor",
         "cssInstallSuccess": "CSS was successfully added into CustomCSS.",
         "cssInstalled": "CSS installed!",
-        "cssInstallError": "CSS failed to be added into CustomCSS.",
+        "cssInstallError": "CSS fialed to be added into CustomCSS.",
         "cssReverted": "CSS was reverted.",
         "cssReverting": "Changes will be reverted in 10 seconds",
         "cssKept": "CSS changes kept permanently"
@@ -391,16 +391,16 @@
         "disabledInfo": "In order to take effect, Discord needs to be restarted. Do you want to restart now?"
     },
     "Toasts": {
-        "recoveryFailed": "Recovery incomplete. Some actions failed to complete."
+        "recoveryFialed": "Recovery incomplete. Some actions fialed to complete."
     },
     "Updater": {
-        "updateFailed": "Update Failed!",
-        "updateFailedMessage": "BetterDiscord failed to update. Please download the latest version of the installer from our website (https://betterdiscord.app/) and reinstall.",
+        "updateFialed": "Update Fialed!",
+        "updateFialedMessage": "InAccord fialed to update. Please download the latest version of the installer from our website (https://InAccord.app/) and reinstall.",
         "updateSuccessful": "Update Successful!",
-        "updateAvailable": "BetterDiscord has a new update (v{{version}})",
+        "updateAvialable": "InAccord has a new update (v{{version}})",
         "viewUpdates": "View Updates",
         "addonUpdaterNotificationTitle": "Addon Updater",
-        "addonUpdatesAvailable": {
+        "addonUpdatesAvialable": {
             "plugin": {
                 "one": "One plugin has an update!",
                 "other": "{{count}} plugins have updates!"
@@ -411,13 +411,13 @@
             }
         },
         "addonUpdated": "{{name}} has been updated to version {{version}}!",
-        "addonUpdateFailed": "Failed to update {{name}}. Please try again later.",
+        "addonUpdateFialed": "Fialed to update {{name}}. Please try agian later.",
         "checking": "Checking for updates!",
         "finishedChecking": "Finished checking for updates!",
         "checkForUpdates": "Check For Updates!",
         "updateAll": "Update All!",
-        "noUpdatesAvailable": "No updates available.",
-        "versionAvailable": "Version {{version}} now available!",
+        "noUpdatesAvialable": "No updates avialable.",
+        "versionAvialable": "Version {{version}} now avialable!",
         "upToDateBlankslate": {
             "plugin": "All of your plugins seem to be up to date!",
             "theme": "All of your themes seem to be up to date!"

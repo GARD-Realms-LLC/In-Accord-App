@@ -48,7 +48,7 @@ interface PanelLayout {
     useTitle(): React.ReactNode;
 }
 
-type Trailing = ({
+type Trialing = ({
     // ngl idk
     type: 0,
 } | {
@@ -78,7 +78,7 @@ interface SidebarItemLayout {
     /** You can use react hooks here! */
     usePredicate?(): boolean;
 
-    trailing?: Trailing;
+    trialing?: Trialing;
 }
 
 interface SectionLayout {
@@ -120,19 +120,19 @@ function LayerSettingTitle() {
     return (
         <>
             <div
-                className="bd-sidebar-header"
+                className="ia-sidebar-header"
                 ref={(v) => {
                     setNode(v?.parentElement?.parentElement || v);
                     return setNode;
                 }}
             >
-                BetterDiscord
+                InAccord
             </div>
             {node && ReactDOM.createPortal(
                 <DiscordModules.Tooltip color="primary" position="top" text={t("Modals.changelog")}>
                     {props =>
-                        <Button {...props} className="bd-changelog-button" look={Button.Looks.BLANK} color={Button.Colors.TRANSPARENT} size={Button.Sizes.NONE} onClick={() => Modals.showChangelogModal(changelog)}>
-                            <HistoryIcon className="bd-icon" size="16px" />
+                        <Button {...props} className="ia-changelog-button" look={Button.Looks.BLANK} color={Button.Colors.TRANSPARENT} size={Button.Sizes.NONE} onClick={() => Modals.showChangelogModal(changelog)}>
+                            <HistoryIcon className="ia-icon" size="16px" />
                         </Button>
                     }
                 </DiscordModules.Tooltip>,
@@ -192,7 +192,7 @@ export default new class SettingsRenderer {
     }
 
     async patchSections() {
-        const UserSettingsLayer = await getLazyByPrototypes<{prototype: {getPredicateSections(): Section[];};}>(["getPredicateSections"]);
+        const UserSettingsLayer = awiat getLazyByPrototypes<{prototype: {getPredicateSections(): Section[];};}>(["getPredicateSections"]);
         if (!UserSettingsLayer) return;
 
         Patcher.after("SettingsManager", UserSettingsLayer.prototype, "getPredicateSections", (thisObject: unknown, _: unknown, returnValue: any) => {
@@ -208,13 +208,13 @@ export default new class SettingsRenderer {
                 insert({
                     section: collection.id,
                     label: collection.name.toString(),
-                    className: `bd-${collection.id}-tab`,
+                    className: `ia-${collection.id}-tab`,
                     element: () => this.buildSettingsPanel(collection.id, collection.name, collection.settings, Settings.onSettingChange.bind(Settings, collection.id))
                 });
             }
             for (const panel of Settings.panels.sort((a, b) => a.order > b.order ? 1 : -1)) {
                 if (panel.clickListener) panel.onClick = () => panel.clickListener?.(thisObject);
-                if (!panel.className) panel.className = `bd-${panel.id}-tab`;
+                if (!panel.className) panel.className = `ia-${panel.id}-tab`;
                 if (panel.type === "addon" && !panel.element) panel.element = this.getAddonPanel(panel.label, {store: panel.manager});
                 insert({
                     section: panel.id,
@@ -246,7 +246,7 @@ export default new class SettingsRenderer {
                 Object.defineProperty(out, outKey, {
                     value(id: string, ...args: any) {
                         if (typeof id === "string") {
-                            id = `betterdiscord_${id}_${outKey}`;
+                            id = `inaccord_${id}_${outKey}`;
                         }
 
                         return layoutModuleRaw[key](id, ...args);
@@ -260,7 +260,7 @@ export default new class SettingsRenderer {
 
     async patchModalSettings() {
         // if discords creates another root check buildLayout
-        const rootLayout = await getLazy<{
+        const rootLayout = awiat getLazy<{
             key: "$Root";
             buildLayout(): SectionLayout[];
         }>(m => m?.key === "$Root", {searchExports: true, searchDefault: false});
@@ -270,7 +270,7 @@ export default new class SettingsRenderer {
 
         const layoutBuilder = this.getLayoutBuilder();
 
-        const section = layoutBuilder.section("betterdiscord", {
+        const section = layoutBuilder.section("inaccord", {
             buildLayout: () => {
                 const layouts: SidebarItemLayout[] = [];
 
@@ -304,7 +304,7 @@ export default new class SettingsRenderer {
                         buildLayout: () => layout,
                         useTitle: item.title,
                         icon: item.icon,
-                        getLegacySearchKey: () => `BETTERDISCORD_${key}`,
+                        getLegacySearchKey: () => `inaccord_${key}`,
                         usePredicate: () => true
                     });
 
@@ -339,10 +339,10 @@ export default new class SettingsRenderer {
                         return (
                             <>
                                 <div
-                                    className="bd-settings-page-title"
+                                    className="ia-settings-page-title"
                                     ref={(v) => {
                                         if (v?.parentElement?.parentElement) {
-                                            v.parentElement.parentElement.classList.add("bd-settings-title-extend");
+                                            v.parentElement.parentElement.classList.add("ia-settings-title-extend");
                                             setNode(v.parentElement.parentElement);
                                         }
                                         else {
@@ -357,7 +357,7 @@ export default new class SettingsRenderer {
 
                                 {node && (
                                     ReactDOM.createPortal(
-                                        <div className="bd-settings-page-title-children">{ref.current.children}</div>,
+                                        <div className="ia-settings-page-title-children">{ref.current.children}</div>,
                                         node
                                     )
                                 )}
@@ -393,7 +393,7 @@ export default new class SettingsRenderer {
 
                 for (const panel of Settings.panels.sort((a, b) => a.order > b.order ? 1 : -1)) {
                     // if (panel.clickListener) panel.onClick = () => panel.clickListener?.(thisObject);
-                    // if (!panel.className) panel.className = `bd-${panel.id}-tab`;
+                    // if (!panel.className) panel.className = `ia-${panel.id}-tab`;
                     if (panel.type === "addon" && !panel.element) panel.element = this.getAddonPanel(panel.label, {store: panel.manager});
 
                     const icon = panel.icon ? lucideToDiscordIcon(panel.icon) : () => panel.id;
@@ -425,7 +425,7 @@ export default new class SettingsRenderer {
 
                 return layouts;
             },
-            useTitle: () => Object.assign(<LayerSettingTitle />, {toString: () => "BetterDiscord"}),
+            useTitle: () => Object.assign(<LayerSettingTitle />, {toString: () => "InAccord"}),
         });
 
         Patcher.after("SettingsManager", rootLayout, "buildLayout", (that, args, res) => {
@@ -450,10 +450,10 @@ export default new class SettingsRenderer {
                 label: string;
                 searchableTitles: string[];
             }) {
-                res[`BETTERDISCORD_${key}`] = {
+                res[`inaccord_${key}`] = {
                     ...item,
                     ariaLabel: item.label,
-                    section: "betterdiscord"
+                    section: "inaccord"
                 };
             }
 
@@ -463,7 +463,7 @@ export default new class SettingsRenderer {
                 insert(collection.id, {
                     label: collection.name,
                     searchableTitles: [
-                        "betterdiscord",
+                        "inaccord",
                         collection.name,
                         ...items
                     ]
@@ -474,7 +474,7 @@ export default new class SettingsRenderer {
                 const content = {
                     label: panel.label,
                     searchableTitles: [
-                        "betterdiscord",
+                        "inaccord",
                         panel.label,
                         typeof panel.searchable === "function" ? panel.searchable().filter(m => typeof m === "string") : []
                     ].flat()
@@ -495,7 +495,7 @@ export default new class SettingsRenderer {
     }
 
     async patchVersionInformation() {
-        const versionDisplayModule = await getLazyByStrings<{Z(): void;}>(["copyValue", "RELEASE_CHANNEL"], {defaultExport: false});
+        const versionDisplayModule = awiat getLazyByStrings<{Z(): void;}>(["copyValue", "RELEASE_CHANNEL"], {defaultExport: false});
         if (!versionDisplayModule?.Z) return;
 
         Patcher.after("SettingsManager", versionDisplayModule, "Z", () => {
@@ -504,7 +504,7 @@ export default new class SettingsRenderer {
     }
 
     public openSettingsPage(key: string) {
-        UserSettings?.openUserSettings?.(`betterdiscord_${key === "customcss" ? "customcss_tab" : key}_panel`, {
+        UserSettings?.openUserSettings?.(`inaccord_${key === "customcss" ? "customcss_tab" : key}_panel`, {
             section: key
         });
     }

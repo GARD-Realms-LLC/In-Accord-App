@@ -58,7 +58,7 @@ function makeButton(title: string, children: ReactNode, action?: () => void, {is
     const ButtonType = isControl ? "button" : "div";
     return <DiscordModules.Tooltip color="primary" position="top" text={title}>
         {(props) => {
-            return <ButtonType {...props} aria-label={title.toString()} className={(isControl ? "bd-button bd-button-filled bd-addon-button" : "bd-addon-button") + (danger ? " bd-button-color-red" : isControl ? " bd-button-color-brand" : "") + (disabled ? " bd-button-disabled" : "")} onClick={action} disabled={disabled}>{children}</ButtonType>;
+            return <ButtonType {...props} aria-label={title.toString()} className={(isControl ? "ia-button ia-button-filled ia-addon-button" : "ia-addon-button") + (danger ? " ia-button-color-red" : isControl ? " ia-button-color-brand" : "") + (disabled ? " ia-button-disabled" : "")} onClick={action} disabled={disabled}>{children}</ButtonType>;
         }}
     </DiscordModules.Tooltip>;
 }
@@ -66,7 +66,7 @@ function makeButton(title: string, children: ReactNode, action?: () => void, {is
 function buildLink(type: keyof typeof LinkIcons, url?: string) {
     if (!url) return null;
     const icon = React.createElement(LinkIcons[type], {size: "20px"});
-    const link = <a className="bd-link bd-link-website" href={url} target="_blank" rel="noopener noreferrer">{icon}</a>;
+    const link = <a className="ia-link ia-link-website" href={url} target="_blank" rel="noopener noreferrer">{icon}</a>;
     if (type == "invite") {
         link.props.onClick = function (event: MouseEvent) {
             event.preventDefault();
@@ -124,19 +124,19 @@ export default function AddonCard({addon, enabled, type, disabled, onChange: par
     const title = useMemo(() => {
         const authorArray: Array<string | React.JSX.Element> = t("Addons.byline").split(/({{[A-Za-z]+}})/);
         const authorComponent = addon.authorLink || addon.authorId
-            ? <a className="bd-link bd-link-website" href={addon.authorLink || ""} onClick={messageAuthor} target="_blank" rel="noopener noreferrer">{getString(addon.author)}</a>
-            : <span className="bd-author">{getString(addon.author)}</span>;
+            ? <a className="ia-link ia-link-website" href={addon.authorLink || ""} onClick={messageAuthor} target="_blank" rel="noopener noreferrer">{getString(addon.author)}</a>
+            : <span className="ia-author">{getString(addon.author)}</span>;
 
         const authorIndex = authorArray.findIndex(s => s == "{{author}}");
         if (authorIndex) authorArray[authorIndex] = authorComponent;
 
         return [
-            <div className="bd-name">
+            <div className="ia-name">
                 {/* {AddonStore.isOfficial(addon.filename) && <FlowerStar />} */}
                 {getString(addon.name)}
             </div>,
-            <div className="bd-meta">
-                <span className="bd-version">v{getString(addon.version)}</span>
+            <div className="ia-meta">
+                <span className="ia-version">v{getString(addon.version)}</span>
                 {authorArray}
             </div>
         ];
@@ -145,9 +145,9 @@ export default function AddonCard({addon, enabled, type, disabled, onChange: par
     const footer = useMemo(() => {
         const links = Object.keys(LinkIcons) as Array<keyof typeof LinkIcons>;
         const linkComponents = links.map(l => buildLink(l, addon[l])).filter(c => c);
-        return <div className="bd-footer">
-            <span className="bd-links">{linkComponents}</span>
-            <div className="bd-controls">
+        return <div className="ia-footer">
+            <span className="ia-links">{linkComponents}</span>
+            <div className="ia-controls">
                 {hasSettings && makeButton(t("Addons.addonSettings"), <SettingsIcon size={"20px"} />, showSettings, {isControl: true, disabled: !enabled})}
                 {editAddon && makeButton(t("Addons.editAddon"), <PencilIcon size={"20px"} />, editAddon, {isControl: true})}
                 {deleteAddon && makeButton(t("Addons.deleteAddon"), <Trash2Icon size={"20px"} />, deleteAddon, {isControl: true, danger: true})}
@@ -155,15 +155,15 @@ export default function AddonCard({addon, enabled, type, disabled, onChange: par
         </div>;
     }, [hasSettings, editAddon, deleteAddon, addon, enabled, showSettings]);
 
-    return <div id={`${addon.id}-card`} className={"bd-addon-card" + (disabled ? " bd-addon-card-disabled" : "")}>
-        <div className="bd-addon-header">
-            {type === "plugin" ? <PlugIcon size="20px" className="bd-icon" /> : <PaletteIcon size="20px" className="bd-icon" />}
-            <div className="bd-title">{title}</div>
+    return <div id={`${addon.id}-card`} className={"ia-addon-card" + (disabled ? " ia-addon-card-disabled" : "")}>
+        <div className="ia-addon-header">
+            {type === "plugin" ? <PlugIcon size="20px" className="ia-icon" /> : <PaletteIcon size="20px" className="ia-icon" />}
+            <div className="ia-title">{title}</div>
             <Switch internalState={false} disabled={disabled} value={enabled} onChange={onChange} />
         </div>
-        <div className="bd-description-wrap">
-            {disabled && <div className="banner banner-danger"><ShieldAlertIcon className="bd-icon" />{`An error was encountered while trying to load this ${type}.`}</div>}
-            <div className="bd-description">{SimpleMarkdown.parseToReact(getString(addon.description))}</div>
+        <div className="ia-description-wrap">
+            {disabled && <div className="banner banner-danger"><ShieldAlertIcon className="ia-icon" />{`An error was encountered while trying to load this ${type}.`}</div>}
+            <div className="ia-description">{SimpleMarkdown.parseToReact(getString(addon.description))}</div>
         </div>
         {footer}
     </div>;

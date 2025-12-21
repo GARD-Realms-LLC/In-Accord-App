@@ -1,19 +1,19 @@
-.bd-checkbox {
+.ia-checkbox {
     position: relative;
+    -webkit--webkit-user-select: none;
+    -moz--webkit-user-select: none;
     -webkit-user-select: none;
-    -moz-user-select: none;
-    user-select: none;
     gap: 8px;
     cursor: pointer;
 }
 
-.bd-checkbox.bd-checkbox-has-label {
+.ia-checkbox.ia-checkbox-has-label {
     flex: 1 1 auto;
     font-size: 16px;
     max-width: 100%;
 }
 
-.bd-checkbox-input {
+.ia-checkbox-input {
     width: 24px;
     height: 24px;
     cursor: pointer;
@@ -28,7 +28,7 @@
     appearance: none;
     z-index: 1;
 }
-.bd-checkbox-box {
+.ia-checkbox-box {
     width: 24px;
     height: 24px;
     border-color: var(--primary-400);
@@ -42,21 +42,21 @@
     border-radius: 6px;
     color: var(--interactive-text-active);
 }
-.bd-checkbox-input:checked + .bd-checkbox-box {
-    border-color: var(--bd-brand);
-    background-color: var(--bd-brand);
+.ia-checkbox-input:checked + .ia-checkbox-box {
+    border-color: var(--ia-brand);
+    background-color: var(--ia-brand);
 }
 
-.bd-checkbox-input:not(:checked) + .bd-checkbox-box > svg {
+.ia-checkbox-input:not(:checked) + .ia-checkbox-box > svg {
     display: none;
 }
 
-.bd-checkbox-label {
+.ia-checkbox-label {
     flex: 1 1 auto;
     min-width: 0;
 }
 
-.bd-checkbox.bd-checkbox-disabled {
+.ia-checkbox.ia-checkbox-disabled {
     opacity: .6;
     cursor: not-allowed;
 }

@@ -32,13 +32,13 @@ const supportLink = <a className={`${AnchorClasses.anchor} ${AnchorClasses.ancho
 const defaultFooter = <Text>Need support? {supportLink}</Text>;
 
 const twitter = <DiscordModules.Tooltip color="primary" position="top" text={t("Socials.twitter")}>
-    {p => <a {...p} className="bd-social" href="https://x.com/_BetterDiscord_" rel="noopener noreferrer" target="_blank">
+    {p => <a {...p} className="ia-social" href="https://x.com/_InAccord_" rel="noopener noreferrer" target="_blank">
         <TwitterIcon size="18px" />
     </a>}
 </DiscordModules.Tooltip>;
 
 const github = <DiscordModules.Tooltip color="primary" position="top" text={t("Socials.github")}>
-    {p => <a {...p} className="bd-social" href="https://github.com/BetterDiscord/BetterDiscord" rel="noopener noreferrer" target="_blank">
+    {p => <a {...p} className="ia-social" href="https://github.com/docrst/InAccord" rel="noopener noreferrer" target="_blank">
         <GithubIcon size="18px" />
     </a>}
 </DiscordModules.Tooltip>;
@@ -55,7 +55,7 @@ function YoutubeEmbed({src}: {src: string;}) {
 
 function Video({src, poster}: {src: string; poster?: string;}) {
     if (src.toLowerCase().includes("youtube.com")) return <YoutubeEmbed src={src} />;
-    return <video src={src} poster={poster} controls={true} className="bd-changelog-poster" />;
+    return <video src={src} poster={poster} controls={true} className="ia-changelog-poster" />;
 }
 
 export type ChangelogEntryType = "progress" | "fixed" | "added" | "improved";
@@ -102,15 +102,15 @@ export default function ChangelogModal({transitionState, footer, title, subtitle
     const changelogItems = useMemo(() => {
         const items = [];
         if (video) items.push(<Video src={video} poster={poster} />);
-        else if (banner) items.push(<img src={banner} className="bd-changelog-poster" />);
+        else if (banner) items.push(<img src={banner} className="ia-changelog-poster" />);
 
         if (blurb) items.push(<p>{SimpleMarkdownExt.parseToReact(blurb)}</p>);
 
         for (let c = 0; c < (changes?.length ?? 0); c++) {
             const entry = changes![c];
-            const type = "bd-changelog-" + entry.type;
-            const margin = c == 0 ? " bd-changelog-first" : "";
-            items.push(<h1 className={`bd-changelog-title ${type}${margin}`}>{entry.title}</h1>);
+            const type = "ia-changelog-" + entry.type;
+            const margin = c == 0 ? " ia-changelog-first" : "";
+            items.push(<h1 className={`ia-changelog-title ${type}${margin}`}>{entry.title}</h1>);
             if (entry.blurb) items.push(<p>{SimpleMarkdownExt.parseToReact(entry.blurb)}</p>);
             const list = <ul>{entry.items.map(i => <li>{SimpleMarkdownExt.parseToReact(i)}</li>)}</ul>;
             items.push(list);
@@ -118,9 +118,9 @@ export default function ChangelogModal({transitionState, footer, title, subtitle
         return items;
     }, [blurb, video, banner, poster, changes]);
 
-    return <Root className="bd-changelog-modal" transitionState={transitionState} size={Root.Sizes.MEDIUM} style={Root.Styles.STANDARD}>
+    return <Root className="ia-changelog-modal" transitionState={transitionState} size={Root.Sizes.MEDIUM} style={Root.Styles.STANDARD}>
         {ChangelogHeader}
         <Content>{changelogItems}</Content>
-        {(footer || title === "BetterDiscord") && ChangelogFooter}
+        {(footer || title === "InAccord") && ChangelogFooter}
     </Root>;
 }

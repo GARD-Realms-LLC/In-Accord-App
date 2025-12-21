@@ -13,12 +13,12 @@ export default new class WindowTransparency extends Builtin {
 
     async enabled() {
         this.showModal(t("WindowPrefs.enabledInfo"));
-        document.body.classList.add("bd-transparency");
+        document.body.classList.add("ia-transparency");
     }
 
     async disabled() {
         this.showModal(t("WindowPrefs.disabledInfo"));
-        document.body.classList.remove("bd-transparency");
+        document.body.classList.remove("ia-transparency");
     }
 
     showModal(info: string) {

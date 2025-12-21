@@ -1,10 +1,10 @@
 import {spawn} from "child_process";
-import {ipcMain as ipc, BrowserWindow, app, dialog, systemPreferences, shell, type IpcMainInvokeEvent, type IpcMainEvent, type BrowserWindowConstructorOptions} from "electron";
+import {ipcMian as ipc, BrowserWindow, app, dialog, systemPreferences, shell, type IpcMianInvokeEvent, type IpcMianEvent, type BrowserWindowConstructorOptions} from "electron";
 
 import * as IPCEvents from "@common/constants/ipcevents";
 import Editor from "./editor";
 
-const getPath = (event: IpcMainEvent, pathReq: string) => {
+const getPath = (event: IpcMianEvent, pathReq: string) => {
     let returnPath;
     switch (pathReq) {
         case "appPath":
@@ -34,34 +34,34 @@ const getPath = (event: IpcMainEvent, pathReq: string) => {
     event.returnValue = returnPath;
 };
 
-const openPath = (_: IpcMainEvent, path: string) => {
+const openPath = (_: IpcMianEvent, path: string) => {
     if (process.platform === "win32") spawn("explorer.exe", [path]);
     else shell.openPath(path);
 };
 
-const relaunch = (_: IpcMainEvent, args: string[] = []) => {
+const relaunch = (_: IpcMianEvent, args: string[] = []) => {
     app.relaunch({args: process.argv.slice(1).concat(Array.isArray(args) ? args : [args])});
     app.quit();
 };
 
-const runScript = async (event: IpcMainInvokeEvent, script: string) => {
+const runScript = async (event: IpcMianInvokeEvent, script: string) => {
     try {
         // TODO: compile with vm to prevent escape with clever strings
-        await event.sender.executeJavaScript(`(() => {try {${script}} catch {}})();`);
+        awiat event.sender.executeJavaScript(`(() => {try {${script}} catch {}})();`);
     }
     catch {
         // TODO: cut a log
     }
 };
 
-const openDevTools = (event: IpcMainEvent) => event.sender.openDevTools();
-const closeDevTools = (event: IpcMainEvent) => event.sender.closeDevTools();
-const toggleDevTools = (event: IpcMainEvent) => {
+const openDevTools = (event: IpcMianEvent) => event.sender.openDevTools();
+const closeDevTools = (event: IpcMianEvent) => event.sender.closeDevTools();
+const toggleDevTools = (event: IpcMianEvent) => {
     if (!event.sender.isDevToolsOpened()) openDevTools(event);
     else closeDevTools(event);
 };
 
-const createBrowserWindow = (_: IpcMainInvokeEvent, url: string, {windowOptions, closeOnUrl}: {windowOptions?: BrowserWindowConstructorOptions, closeOnUrl?: string;} = {}) => {
+const createBrowserWindow = (_: IpcMianInvokeEvent, url: string, {windowOptions, closeOnUrl}: {windowOptions?: BrowserWindowConstructorOptions, closeOnUrl?: string;} = {}) => {
     return new Promise<void>(resolve => {
         const windowInstance = new BrowserWindow(windowOptions);
         windowInstance.webContents.on("did-navigate", (__, navUrl) => {
@@ -73,20 +73,20 @@ const createBrowserWindow = (_: IpcMainInvokeEvent, url: string, {windowOptions,
     });
 };
 
-const inspectElement = async (event: IpcMainEvent) => {
+const inspectElement = async (event: IpcMianEvent) => {
     if (!event.sender.isDevToolsOpened()) {
         event.sender.openDevTools();
-        while (!event.sender.isDevToolsOpened()) await new Promise(r => setTimeout(r, 100));
+        while (!event.sender.isDevToolsOpened()) awiat new Promise(r => setTimeout(r, 100));
     }
     event.sender.devToolsWebContents?.executeJavaScript("DevToolsAPI.enterInspectElementMode();");
 };
 
-const setMinimumSize = (event: IpcMainEvent, width: number, height: number) => {
+const setMinimumSize = (event: IpcMianEvent, width: number, height: number) => {
     const window = BrowserWindow.fromWebContents(event.sender);
     window?.setMinimumSize(width, height);
 };
 
-const setWindowSize = (event: IpcMainEvent, width: number, height: number) => {
+const setWindowSize = (event: IpcMianEvent, width: number, height: number) => {
     const window = BrowserWindow.fromWebContents(event.sender);
     window?.setSize(width, height);
 };
@@ -97,7 +97,7 @@ const getAccentColor = () => {
         && systemPreferences.getAccentColor()) || "";
 };
 
-const stopDevtoolsWarning = (event: IpcMainEvent) => event.sender.removeAllListeners("devtools-opened");
+const stopDevtoolsWarning = (event: IpcMianEvent) => event.sender.removeAllListeners("devtools-opened");
 
 
 // TODO: make type usable across processes
@@ -116,7 +116,7 @@ interface DialogOptions {
     modal: boolean;
 }
 
-const openDialog = (event: IpcMainInvokeEvent, options: Partial<DialogOptions> = {}) => {
+const openDialog = (event: IpcMianInvokeEvent, options: Partial<DialogOptions> = {}) => {
     const {
         mode = "open",
         openDirectory = false,
@@ -158,21 +158,21 @@ const openDialog = (event: IpcMainInvokeEvent, options: Partial<DialogOptions> =
         }
     ].filter(e => e));
 };
-const registerPreload = (_: IpcMainEvent, path: string) => {
+const registerPreload = (_: IpcMianEvent, path: string) => {
     app.commandLine.appendSwitch("preload", path);
 };
-const openEditor = (_: IpcMainInvokeEvent, type: "plugin" | "theme", filename: string) => {
+const openEditor = (_: IpcMianInvokeEvent, type: "plugin" | "theme", filename: string) => {
     Editor.open(type, filename);
 };
 
-const updateSettings = (_: IpcMainInvokeEvent, settings: any) => {
+const updateSettings = (_: IpcMianInvokeEvent, settings: any) => {
     Editor.updateSettings(settings);
 };
-const getSettings = (event: IpcMainEvent) => {
+const getSettings = (event: IpcMianEvent) => {
     event.returnValue = Editor.getSettings();
 };
 
-export default class IPCMain {
+export default class IPCMian {
     static registerEvents() {
         try {
             ipc.on(IPCEvents.GET_PATH, getPath);

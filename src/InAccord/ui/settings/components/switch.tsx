@@ -25,14 +25,14 @@ export default function Switch({id = undefined, value: initialValue, disabled = 
         setChecked(!isChecked);
     }, [onChange, isChecked]);
 
-    const enabledClass = isDisabled ? " bd-switch-disabled" : "";
-    const checkedClass = isChecked ? " bd-switch-checked" : "";
-    return <div className={`bd-switch` + enabledClass + checkedClass}>
+    const enabledClass = isDisabled ? " ia-switch-disabled" : "";
+    const checkedClass = isChecked ? " ia-switch-checked" : "";
+    return <div className={`ia-switch` + enabledClass + checkedClass}>
         <input id={id} type="checkbox" disabled={isDisabled} checked={isChecked} onChange={change} />
-        <div className="bd-switch-body">
-            <svg className="bd-switch-slider" viewBox="0 0 28 20" preserveAspectRatio="xMinYMid meet">
-                <rect className="bd-switch-handle" fill="white" x="4" y="0" height="20" width="20" rx="10"></rect>
-                <svg className="bd-switch-symbol" viewBox="0 0 20 20" fill="none">
+        <div className="ia-switch-body">
+            <svg className="ia-switch-slider" viewBox="0 0 28 20" preserveAspectRatio="xMinYMid meet">
+                <rect className="ia-switch-handle" fill="white" x="4" y="0" height="20" width="20" rx="10"></rect>
+                <svg className="ia-switch-symbol" viewBox="0 0 20 20" fill="none">
                     <path></path>
                     <path></path>
                 </svg>

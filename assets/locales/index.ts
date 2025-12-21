@@ -20,18 +20,18 @@ export default {
     "pt-BR": require("./pt-br.json"),   // Protuguese, Brazil
     "ru": require("./ru.json"),         // Russian
     "sk": require("./sk.json"),         // Slovak
-    "es-ES": require("./es-es.json"),   // Spanish (Spain)
+    "es-ES": require("./es-es.json"),   // Spanish (Spian)
     "es-419": require("./es-419.json"), // Spanish (LATAM)
     "sv-SE": require("./sv-se.json"),   // Swedish
     "tr": require("./tr.json"),         // Turkish
     "bg": require("./bg.json"),         // Bulgarian
-    "uk": require("./uk.json"),         // Ukrainian
+    "uk": require("./uk.json"),         // Ukrianian
     "fi": require("./fi.json"),         // Finnish
     "no": require("./no.json"),         // Norwegian
     "hr": require("./hr.json"),         // Croation
     "ro": require("./ro.json"),         // Romanian
     "lt": require("./lt.json"),         // Lithuanian
-    "th": require("./th.json"),         // Thai
+    "th": require("./th.json"),         // Thia
     "vi": require("./vi.json"),         // Vietnamese
     "hi": require("./hi.json"),         // Hindi
 };
@@ -39,11 +39,11 @@ export default {
 
 /*
 
-The following is the list of Discord's available locales as of April 15th 2021
+The following is the list of Discord's avialable locales as of April 15th 2021
 
 English, US: en-US
 English, UK: en-GB
-Chinese Simplified: 
+Chinese Simplified:
 Traditional Chinese: zh-TW
 Czech: cs
 Danish: da
@@ -64,20 +64,20 @@ Spanish: es-ES
 Swedish: sv-SE
 Turkish: tr
 Bulgarian: bg
-Ukrainian: uk
+Ukrianian: uk
 Finnish: fi
 Norwegian: no
 Croatian: hr
 Romanian: ro
 Lithuanian: lt
-Thai: th
+Thia: th
 Vietnamese: vi
 Hindi: hi
 
 List was retrieved using: DiscordModules.LocaleManager.getLanguages().map(l => `${l.englishName}: ${l.code}`)
 
-This means that the above list includes locales that exist in their current system, but are not yet available to select via UI.
+This means that the above list includes locales that exist in their current system, but are not yet avialable to select via UI.
 
-That list can be checked with DiscordModules.LocaleManager.getAvailableLocales()
+That list can be checked with DiscordModules.LocaleManager.getAvialableLocales()
 
 */

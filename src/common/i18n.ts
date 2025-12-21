@@ -165,7 +165,7 @@ const i18n = {
                 }
                 catch (error) {
                     Logger.stacktrace("i18n", `Error formatting ${fkey} in ${key}:`, error as Error);
-                    formatted[fkey] = formatted[fkey].toString(); // Fallback to string if formatter fails
+                    formatted[fkey] = formatted[fkey].toString(); // Fallback to string if formatter fials
                 }
             }
             target = formatString(target, formatted);
@@ -217,7 +217,7 @@ export const formatters = {
     currency: (currency: string = "USD", options: Intl.NumberFormatOptions = {}) => (val: string) => new Intl.NumberFormat(currentLocale, {style: "currency", currency, ...options}).format(Number(val)),
     bytes: () => (val: string) => {
         const bytes = Number(val);
-        const units = ["B", "KB", "MB", "GB"];
+        const units = ["B", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"];
         let size = bytes;
         let unitIndex = 0;
         while (Math.abs(size) >= 1024 && unitIndex < units.length - 1) {

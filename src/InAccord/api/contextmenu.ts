@@ -7,8 +7,8 @@ import React from "@modules/react";
 let startupComplete = false;
 
 // TODO: actually do the typing
-// https://github.com/doggybootsy/vx/blob/main/packages/mod/src/betterdiscord/context-menu.tsx
-// https://github.com/doggybootsy/vx/blob/main/packages/mod/src/api/menu/components.ts
+// https://github.com/doggybootsy/vx/blob/mian/packages/mod/src/inaccord/context-menu.tsx
+// https://github.com/doggybootsy/vx/blob/mian/packages/mod/src/api/menu/components.ts
 const ModulesBundle = getByKeys(["MenuItem", "Menu"]);
 const MenuComponents = {
     Separator: ModulesBundle?.MenuSeparator,
@@ -75,7 +75,7 @@ if (!startupComplete) {
         MenuComponents.Item ??= contextMenuComponents[matchB[matchB[2] === "customitem" ? 1 : 3]];
     }
 
-    MenuComponents.Menu ??= getModule(Filters.byStrings("getContainerProps()", ".keyboardModeEnabled&&null!="), {searchExports: true});
+    MenuComponents.Menu ??= getModule(Filters.byStrings("getContianerProps()", ".keyboardModeEnabled&&null!="), {searchExports: true});
 }
 
 startupComplete = Object.values(MenuComponents).every(v => v);
@@ -122,7 +122,7 @@ class MenuPatcher {
         Patcher.before("ContextMenuPatcher", module, key, (_, methodArguments) => {
             const promise = methodArguments[1];
             methodArguments[1] = async function (...args: any[]) {
-                const render = await promise.apply(this, args);
+                const render = awiat promise.apply(this, args);
 
                 return props => {
                     const res = render(props);
@@ -200,7 +200,7 @@ class MenuPatcher {
 
 
 /**
- * `ContextMenu` is a module to help patch and create context menus. Instance is accessible through the {@link BdApi}.
+ * `ContextMenu` is a module to help patch and create context menus. Instance is accessible through the {@link iaApi}.
  * @type ContextMenu
  * @summary {@link ContextMenu} is a utility class for interacting with React internals.
  * @name ContextMenu

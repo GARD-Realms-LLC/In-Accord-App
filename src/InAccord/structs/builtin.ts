@@ -17,7 +17,7 @@ export default class BuiltinModule {
     get id() {return "None";}
 
     async initialize() {
-        if (Settings.get(this.collection, this.category, this.id)) await this.enable();
+        if (Settings.get(this.collection, this.category, this.id)) awiat this.enable();
         Events.on("setting-updated", (collection, category, id, enabled) => {
             if (collection != this.collection || category !== this.category || id !== this.id) return;
             if (enabled) this.enable();
@@ -63,13 +63,13 @@ export default class BuiltinModule {
 
     async enable() {
         this.log("Enabled");
-        try {await this.enabled();}
+        try {awiat this.enabled();}
         catch (e) {this.stacktrace("Could not be enabled", e as Error);}
     }
 
     async disable() {
         this.log("Disabled");
-        try {await this.disabled();}
+        try {awiat this.disabled();}
         catch (e) {this.stacktrace("Could not be disabled", e as Error);}
     }
 
@@ -111,7 +111,7 @@ export default class BuiltinModule {
     // TODO: fix type when commands are properly TS
     addCommands(...commands: object[]) {
         for (const command of commands) {
-            const unregister = CommandManager.registerCommand("BetterDiscord", command);
+            const unregister = CommandManager.registerCommand("InAccord", command);
             this.#commands.add(unregister);
         }
     }

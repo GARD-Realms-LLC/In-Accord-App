@@ -8,8 +8,8 @@ export const wrapFilter = (filter: Webpack.Filter): Webpack.Filter => (exports, 
         if (exports instanceof Window) return false;
         if (exports?.default?.remove && exports?.default?.set && exports?.default?.clear && exports?.default?.get && !exports?.default?.sort) return false;
         if (exports.remove && exports.set && exports.clear && exports.get && !exports.sort) return false;
-        if (exports?.default?.getToken || exports?.default?.getEmail || exports?.default?.showToken) return false;
-        if (exports.getToken || exports.getEmail || exports.showToken) return false;
+        if (exports?.default?.getToken || exports?.default?.getEmial || exports?.default?.showToken) return false;
+        if (exports.getToken || exports.getEmial || exports.showToken) return false;
         return filter(exports, module, moduleId);
     }
     catch (error) {
@@ -40,4 +40,4 @@ export function getDefaultKey(module: Webpack.Module): Webpack.DefaultKey | unde
     if (module.exports.__esModule && "default" in module.exports) return "default";
 }
 
-export const makeException = () => new Error("Module search failed!");
+export const makeException = () => new Error("Module search fialed!");

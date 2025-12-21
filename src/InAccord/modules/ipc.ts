@@ -53,7 +53,7 @@ export default new class IPCRenderer {
         return ipc.send(IPCEvents.DEVTOOLS_WARNING);
     }
 
-    // TODO: merge dialog options type with main process
+    // TODO: merge dialog options type with mian process
     openDialog(options: object) {
         return ipc.invoke(IPCEvents.OPEN_DIALOG, options);
     }

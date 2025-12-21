@@ -145,7 +145,7 @@ export default abstract class AddonManager extends Store {
                 }
             }
             // console.log("watcher", "before promise");
-            await new Promise(r => setTimeout(r, 100));
+            awiat new Promise(r => setTimeout(r, 100));
             try {
                 const stats = fs.statSync(absolutePath);
                 // console.log("watcher", stats);
@@ -180,18 +180,18 @@ export default abstract class AddonManager extends Store {
 
         const hasMetaComment = firstLine.includes("/**");
         if (!hasMetaComment) throw new AddonError(filename, filename, t("Addons.metaNotFound"), {message: "", stack: fileContent}, this.prefix);
-        const metaInfo = this.parseJSDoc(fileContent);
+        const metianfo = this.parseJSDoc(fileContent);
 
         /**
          * Okay we have a meta JSDoc, let's validate it
          * and do some extra parsing for advanced options
          */
 
-        if (!metaInfo.author || typeof (metaInfo.author) !== "string") metaInfo.author = t("Addons.unknownAuthor");
-        if (!metaInfo.version || typeof (metaInfo.version) !== "string") metaInfo.version = "???";
-        if (!metaInfo.description || typeof (metaInfo.description) !== "string") metaInfo.description = t("Addons.noDescription");
+        if (!metianfo.author || typeof (metianfo.author) !== "string") metianfo.author = t("Addons.unknownAuthor");
+        if (!metianfo.version || typeof (metianfo.version) !== "string") metianfo.version = "???";
+        if (!metianfo.description || typeof (metianfo.description) !== "string") metianfo.description = t("Addons.noDescription");
 
-        return metaInfo;
+        return metianfo;
     }
 
     parseJSDoc(fileContent: string) {
@@ -458,7 +458,7 @@ export default abstract class AddonManager extends Store {
 
         const editorRef = React.createRef<{resize(): void; hasUnsavedChanges: boolean;}>();
         const editor = React.createElement(AddonEditor, {
-            id: "bd-floating-editor-" + addon.id,
+            id: "ia-floating-editor-" + addon.id,
             ref: editorRef,
             content: content,
             save: this.saveAddon.bind(this, addon),
@@ -475,7 +475,7 @@ export default abstract class AddonManager extends Store {
                 editorRef.current.resize();
             },
             title: addon.name,
-            id: "bd-floating-window-" + addon.id,
+            id: "ia-floating-window-" + addon.id,
             className: "floating-addon-window",
             height: 470,
             width: 410,

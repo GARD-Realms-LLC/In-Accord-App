@@ -1,36 +1,36 @@
-.bd-notice-success {
+.ia-notice-success {
     --color: #3BA55D;
 }
 
-.bd-notice-error {
+.ia-notice-error {
     --color: #ED4245;
 }
 
-.bd-notice-info {
+.ia-notice-info {
     --color: #4A8FE1;
 }
 
-.bd-notice-warning {
+.ia-notice-warning {
     --color: #FAA81A;
 }
 
-.bd-notice-closing {
+.ia-notice-closing {
     transition: height 400ms ease;
     height: 0 !important;
 }
 
-@keyframes bd-open-notice {
+@keyframes ia-open-notice {
     from {
         height: 0;
     }
 }
 
-#bd-notices {
+#ia-notices {
     grid-area: notice;
 }
 
-.bd-notice {
-    animation: bd-open-notice 400ms ease;
+.ia-notice {
+    animation: ia-open-notice 400ms ease;
     overflow: hidden;
     height: 36px;
     font-size: 14px;
@@ -48,11 +48,11 @@
     background: var(--color, var(--brand-experiment-600, #3C45A5));
 }
 
-.bd-notice:first-child {
+.ia-notice:first-child {
     border-radius: 8px 0 0;
 }
 
-.bd-notice-close {
+.ia-notice-close {
     position: absolute;
     top: 0;
     right: 0;
@@ -67,7 +67,7 @@
     -webkit-app-region: no-drag;
 }
 
-.bd-notice-button {
+.ia-notice-button {
     font-size: 14px;
     font-weight: 500;
     position: relative;
@@ -88,11 +88,11 @@
     background: transparent;
 }
 
-.bd-notice-button:hover {
+.ia-notice-button:hover {
     color: var(--color, var(--background-mobile-secondary));
     background: #FFFFFF;
 }
 
-.bd-notice-close:hover {
+.ia-notice-close:hover {
     opacity: 1;
 }

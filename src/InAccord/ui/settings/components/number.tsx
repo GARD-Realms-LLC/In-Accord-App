@@ -44,9 +44,9 @@ export default function Number({value: initialValue, min, max, step = 1, onChang
         setValue(decrementedValue);
     }, [onChange, value, min, step]);
 
-    return <div className={`bd-number-input-wrapper ${isDisabled ? "bd-number-input-disabled" : ""}`}>
-        <Button size={Button.Sizes.ICON} look={Button.Looks.FILLED} color={Button.Colors.PRIMARY} className="bd-number-input-decrement" onClick={decrement}><Minus size="24px" /></Button>
-        <input onChange={change} type="number" className="bd-number-input" min={min} max={max} step={step} value={value} disabled={isDisabled} />
-        <Button size={Button.Sizes.ICON} look={Button.Looks.FILLED} color={Button.Colors.PRIMARY} className="bd-number-input-increment" onClick={increment}><Plus size="24px" /></Button>
+    return <div className={`ia-number-input-wrapper ${isDisabled ? "ia-number-input-disabled" : ""}`}>
+        <Button size={Button.Sizes.ICON} look={Button.Looks.FILLED} color={Button.Colors.PRIMARY} className="ia-number-input-decrement" onClick={decrement}><Minus size="24px" /></Button>
+        <input onChange={change} type="number" className="ia-number-input" min={min} max={max} step={step} value={value} disabled={isDisabled} />
+        <Button size={Button.Sizes.ICON} look={Button.Looks.FILLED} color={Button.Colors.PRIMARY} className="ia-number-input-increment" onClick={increment}><Plus size="24px" /></Button>
     </div>;
 }

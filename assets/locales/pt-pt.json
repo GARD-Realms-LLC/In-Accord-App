@@ -92,7 +92,7 @@
                 },
                 "inspectElement": {
                     "name": "Tecla de Inspecionar Elemento",
-                    "note": "Ativa a tecla de inspecionar elemento (ctrl + shift + c) que é comum na maioria dos navegadores browser"
+                    "note": "Ativa a tecla de inspecionar elemento (ctrl + shift + c) que é comum na miaoria dos navegadores browser"
                 },
                 "devToolsWarning": {
                     "name": "Pára o aviso de DevTools",
@@ -100,7 +100,7 @@
                 },
                 "debugLogs": {
                     "name": "Debug Logs",
-                    "note": "Saída de tudo da consola para o ficheiro debug.log na pasta BetterDiscord"
+                    "note": "Saída de tudo da consola para o ficheiro debug.log na pasta InAccord"
                 }
             }
         }
@@ -162,7 +162,7 @@
         "addonErrors": "Erro de extensão",
         "restartRequired": "Necessário Reniciar",
         "restartNow": "Reniciar Agora",
-        "restartLater": "Reniciar Mais Tarde",
+        "restartLater": "Reniciar Mias Tarde",
         "additionalInfo": "Informação Adicional",
         "restartPrompt": "Para ter efeito, o Discord precisa ser reiniciado. Deseja reiniciar agora?"
     },

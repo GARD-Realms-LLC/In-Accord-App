@@ -72,7 +72,7 @@ function mapObject<T extends object>(module: any, mappers: Record<keyof T, Webpa
         }
     }
 
-    Object.defineProperty(mapped, Symbol("betterdiscord.getMangled"), {
+    Object.defineProperty(mapped, Symbol("inaccord.getMangled"), {
         value: module,
         configurable: false
     });

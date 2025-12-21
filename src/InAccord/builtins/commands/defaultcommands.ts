@@ -16,6 +16,7 @@ export default new class DefaultCommands extends Builtin {
 
     async initialize() {
         this.addCommands(
+            buildAddonCommand("backup"),
             buildAddonCommand("plugin"),
             buildAddonCommand("theme"),
             DebugCommand,

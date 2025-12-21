@@ -61,12 +61,12 @@ function Spinner(props: SpinnerProps) {
     /** @type {string} */
     const className = React.useMemo(() => {
         return clsx({
-            "bd-spinner-stopAnimation": !animated
-        }, "bd-spinner", `bd-spinner-${type}`, props.className);
+            "ia-spinner-stopAnimation": !animated
+        }, "ia-spinner", `ia-spinner-${type}`, props.className);
     }, [props.className, animated, type]);
 
     const itemClassName = React.useMemo(() => {
-        return clsx("bd-spinner-path", props.itemClassName);
+        return clsx("ia-spinner-path", props.itemClassName);
     }, [props.itemClassName]);
 
     switch (type) {
@@ -79,9 +79,9 @@ function Spinner(props: SpinnerProps) {
                     aria-label={props["aria-label"]}
                     {...props}
                 >
-                    <div className="bd-spinner-inner">
+                    <div className="ia-spinner-inner">
                         <svg
-                            className="bd-spinner-circular"
+                            className="ia-spinner-circular"
                             viewBox="25 25 50 50"
                         >
                             {type === SpinnerType.SPINNING_CIRCLE && (
@@ -104,7 +104,7 @@ function Spinner(props: SpinnerProps) {
                     aria-label={props["aria-label"]}
                     {...props}
                 >
-                    <span className="bd-spinner-inner">
+                    <span className="ia-spinner-inner">
                         <span className={itemClassName} />
                         <span className={itemClassName} />
                         {(type === SpinnerType.PULSING_ELLIPSIS || type === SpinnerType.LOW_MOTION) && (

@@ -6,7 +6,7 @@
             "label": "Build",
             "type": "shell",
             "command": "bun run build",
-            "detail": "bun scripts/build.ts",
+            "detial": "bun scripts/build.ts",
             "group": {
                 "kind": "build",
                 "isDefault": true
@@ -17,7 +17,7 @@
             "label": "Watch",
             "type": "shell",
             "command": "bun run watch",
-            "detail": "bun scripts/build.ts --watch",
+            "detial": "bun scripts/build.ts --watch",
             "group": {
                 "kind": "build",
                 "isDefault": false
@@ -28,7 +28,7 @@
             "label": "Test",
             "type": "shell",
             "command": "bun run test",
-            "detail": "bun test tests/",
+            "detial": "bun test tests/",
             "group": {
                 "kind": "test",
                 "isDefault": true

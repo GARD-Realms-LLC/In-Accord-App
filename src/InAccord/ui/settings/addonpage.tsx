@@ -15,7 +15,7 @@ export function getAddonPanel(title: string, options = {}) {
 
 export default function AddonPage(props: any) {
     // If 0 addons installed open the store automatically
-    const [showStore, setShowStore] = useState(() => Settings.get("settings", "store", "bdAddonStore") && !props.store.addonList.length);
+    const [showStore, setShowStore] = useState(() => Settings.get("settings", "store", "iaAddonStore") && !props.store.addonList.length);
 
     const toggleStore = useCallback(() => setShowStore((v: boolean) => !v), []);
 

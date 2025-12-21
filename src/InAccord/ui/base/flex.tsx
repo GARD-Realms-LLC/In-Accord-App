@@ -4,37 +4,37 @@ import type {CSSProperties, MouseEventHandler, PropsWithChildren} from "react";
 
 
 export const Direction = Object.freeze({
-    VERTICAL: "bd-flex-vertical",
-    HORIZONTAL: "bd-flex-horizontal",
-    HORIZONTAL_REVERSE: "bd-flex-reverse"
+    VERTICAL: "ia-flex-vertical",
+    HORIZONTAL: "ia-flex-horizontal",
+    HORIZONTAL_REVERSE: "ia-flex-reverse"
 });
 
 export const Justify = Object.freeze({
-    START: "bd-flex-justify-start",
-    END: "bd-flex-justify-end",
-    CENTER: "bd-flex-justify-center",
-    BETWEEN: "bd-flex-justify-between",
-    AROUND: "bd-flex-justify-around"
+    START: "ia-flex-justify-start",
+    END: "ia-flex-justify-end",
+    CENTER: "ia-flex-justify-center",
+    BETWEEN: "ia-flex-justify-between",
+    AROUND: "ia-flex-justify-around"
 });
 
 export const Align = Object.freeze({
-    START: "bd-flex-align-start",
-    END: "bd-flex-align-end",
-    CENTER: "bd-flex-align-center",
-    STRETCH: "bd-flex-align-stretch",
-    BASELINE: "bd-flex-align-baseline"
+    START: "ia-flex-align-start",
+    END: "ia-flex-align-end",
+    CENTER: "ia-flex-align-center",
+    STRETCH: "ia-flex-align-stretch",
+    BASELINE: "ia-flex-align-baseline"
 });
 
 export const Wrap = Object.freeze({
-    NO_WRAP: "bd-flex-no-wrap",
-    WRAP: "bd-flex-wrap",
-    WRAP_REVERSE: "bd-flex-wrap-reverse"
+    NO_WRAP: "ia-flex-no-wrap",
+    WRAP: "ia-flex-wrap",
+    WRAP_REVERSE: "ia-flex-wrap-reverse"
 });
 
 
 export function Child(props: {className?: string;[x: string]: any;}) {
     if (!props.className) props.className = "";
-    props.className = clsx(props.className, "bd-flex-child");
+    props.className = clsx(props.className, "ia-flex-child");
     return <Flex {...props} />;
 }
 
@@ -68,7 +68,7 @@ export default function Flex({
     return <div
         {...props}
         className={clsx(
-            "bd-flex",
+            "ia-flex",
             direction,
             justify,
             align,

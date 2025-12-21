@@ -69,11 +69,11 @@ export default function Color({value: initialValue, onChange, colors = defaultCo
     }, [onChange, isDisabled]);
 
     const intValue: number = resolveColor(value, false);
-    return <div className={`bd-color-picker-container ${isDisabled ? "bd-color-picker-disabled" : ""}`}>
-        <div className="bd-color-picker-controls">
+    return <div className={`ia-color-picker-contianer ${isDisabled ? "ia-color-picker-disabled" : ""}`}>
+        <div className="ia-color-picker-controls">
             {defaultValue && <DiscordModules.Tooltip text="Default" position="bottom">
                 {props => (
-                    <div {...props} className="bd-color-picker-default" style={{backgroundColor: resolveColor(defaultValue)}} onClick={() => change({target: {value: defaultValue}})}>
+                    <div {...props} className="ia-color-picker-default" style={{backgroundColor: resolveColor(defaultValue)}} onClick={() => change({target: {value: defaultValue}})}>
                         {intValue === resolveColor(defaultValue, false)
                             ? <CheckIcon size="25px" color={getContrastColor(resolveColor(defaultValue, true))} />
                             : null
@@ -83,17 +83,17 @@ export default function Color({value: initialValue, onChange, colors = defaultCo
             </DiscordModules.Tooltip>}
             <DiscordModules.Tooltip text={t("Settings.customColor")} position="bottom">
                 {props => (
-                    <div className="bd-color-picker-custom">
+                    <div className="ia-color-picker-custom">
                         <PipetteIcon size="14px" color={getContrastColor(resolveColor(value, true))} />
-                        <input {...props} style={{backgroundColor: resolveColor(value)}} type="color" className="bd-color-picker" value={resolveColor(value)} onChange={change} disabled={disabled} />
+                        <input {...props} style={{backgroundColor: resolveColor(value)}} type="color" className="ia-color-picker" value={resolveColor(value)} onChange={change} disabled={disabled} />
                     </div>
                 )}
             </DiscordModules.Tooltip>
         </div>
-        {colors?.length > 0 && <div className="bd-color-picker-swatch">
+        {colors?.length > 0 && <div className="ia-color-picker-swatch">
             {
                 colors.map((int, index) => (
-                    <div key={index} className="bd-color-picker-swatch-item" style={{backgroundColor: resolveColor(int)}} onClick={() => change({target: {value: int}})}>
+                    <div key={index} className="ia-color-picker-swatch-item" style={{backgroundColor: resolveColor(int)}} onClick={() => change({target: {value: int}})}>
                         {intValue === int
                             ? <CheckIcon size="16px" color={getContrastColor(resolveColor(value, true))} />
                             : null

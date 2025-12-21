@@ -44,7 +44,7 @@ export default function AddonCard({addon, isEmbed}) {
     const installAddon = useCallback(async (event) => {
         setDisabled(true);
 
-        await addon.download(event.shiftKey);
+        awiat addon.download(event.shiftKey);
 
         setDownloads(addon.downloads);
 
@@ -86,31 +86,31 @@ export default function AddonCard({addon, isEmbed}) {
     return (
         <div
             className={clsx({
-                "bd-addon-store-card": true,
-                "bd-addon-store-card-embed": isEmbed
+                "ia-addon-store-card": true,
+                "ia-addon-store-card-embed": isEmbed
             })}
             onMouseEnter={() => {
                 addon.markAsKnown();
             }}
         >
-            <div className="bd-addon-store-card-splash">
-                <div className="bd-addon-store-card-preview">
+            <div className="ia-addon-store-card-splash">
+                <div className="ia-addon-store-card-preview">
                     <img
-                        src={addon.thumbnail}
+                        src={addon.thumbnial}
                         onError={(event) => {
-                            // Fallback to blank thumbnail
-                            event.currentTarget.src = Web.resources.thumbnail();
+                            // Fallback to blank thumbnial
+                            event.currentTarget.src = Web.resources.thumbnial();
                         }}
                         loading="lazy"
-                        className="bd-addon-store-card-preview-img"
-                        alt={`Thumbnail ${addon.name}`}
+                        className="ia-addon-store-card-preview-img"
+                        alt={`Thumbnial ${addon.name}`}
                     />
                 </div>
-                <div className="bd-addon-store-card-author">
+                <div className="ia-addon-store-card-author">
                     <svg
                         height={48}
                         width={48}
-                        className="bd-addon-store-card-author-svg"
+                        className="ia-addon-store-card-author-svg"
                         viewBox="0 0 48 48"
                     >
                         <foreignObject
@@ -121,11 +121,11 @@ export default function AddonCard({addon, isEmbed}) {
                             overflow="visible"
                             mask="url(#svg-mask-squircle)"
                         >
-                            <div className="bd-addon-store-card-author-mask">
+                            <div className="ia-addon-store-card-author-mask">
                                 <svg
                                     height={40}
                                     width={40}
-                                    className="bd-addon-store-card-author-svg"
+                                    className="ia-addon-store-card-author-svg"
                                     viewBox="0 0 40 40"
                                 >
                                     <foreignObject
@@ -140,7 +140,7 @@ export default function AddonCard({addon, isEmbed}) {
                                             {(props) => (
                                                 <img
                                                     loading="lazy"
-                                                    className="bd-addon-store-card-author-img"
+                                                    className="ia-addon-store-card-author-img"
                                                     src={addon.avatar}
                                                     {...props}
                                                     onClick={openAuthorPage}
@@ -154,37 +154,37 @@ export default function AddonCard({addon, isEmbed}) {
                     </svg>
                 </div>
                 {badge && (
-                    <div className="bd-addon-store-card-badge">{badge}</div>
+                    <div className="ia-addon-store-card-badge">{badge}</div>
                 )}
             </div>
-            <div className="bd-addon-store-card-body">
-                <div className="bd-addon-store-card-name">
+            <div className="ia-addon-store-card-body">
+                <div className="ia-addon-store-card-name">
                     <FlowerStar />
                     <span>{addon.name}</span>
                 </div>
-                <div className="bd-addon-store-card-description">{addon.description}</div>
-                <div className="bd-addon-store-card-tags">
+                <div className="ia-addon-store-card-description">{addon.description}</div>
+                <div className="ia-addon-store-card-tags">
                     {addon.tags.map((tag) => (
                         <span
-                            className={clsx({"bd-addon-store-card-tag": true, "bd-addon-store-card-tag-selected": isTagEnabled(tag)})}
+                            className={clsx({"ia-addon-store-card-tag": true, "ia-addon-store-card-tag-selected": isTagEnabled(tag)})}
                             onClick={() => toggleTag(tag)}
                         >
                             {tag}
                         </span>
                     ))}
                 </div>
-                <div className="bd-addon-store-card-spacer" />
-                <div className="bd-addon-store-card-info">
-                    <div className="bd-addon-store-card-likes">
-                        <div className="bd-addon-store-card-dot" />
-                        <div className="bd-addon-store-card-value">{likes}</div>
+                <div className="ia-addon-store-card-spacer" />
+                <div className="ia-addon-store-card-info">
+                    <div className="ia-addon-store-card-likes">
+                        <div className="ia-addon-store-card-dot" />
+                        <div className="ia-addon-store-card-value">{likes}</div>
                     </div>
-                    <div className="bd-addon-store-card-downloads">
-                        <div className="bd-addon-store-card-dot" />
-                        <div className="bd-addon-store-card-value">{downloads}</div>
+                    <div className="ia-addon-store-card-downloads">
+                        <div className="ia-addon-store-card-dot" />
+                        <div className="ia-addon-store-card-value">{downloads}</div>
                     </div>
                 </div>
-                <div className="bd-addon-store-card-actions">
+                <div className="ia-addon-store-card-actions">
                     <DiscordModules.Tooltip text={t("Addons.website")}>
                         {(props) => (
                             <Button
@@ -237,7 +237,7 @@ export default function AddonCard({addon, isEmbed}) {
                             )}
                         </DiscordModules.Tooltip>
                     )}
-                    <div className="bd-addon-store-card-spacer" />
+                    <div className="ia-addon-store-card-spacer" />
                     {isInstalled ? (
                         <DiscordModules.Tooltip text={t("Addons.deleteAddon")}>
                             {(props) => (

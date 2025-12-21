@@ -119,14 +119,14 @@ class CommandManager {
         type: 1,
         key: string,
         icon?: string | null,
-        isBD?: boolean;
+        isia?: boolean;
     }>();
 
     static User = getByStrings<any>(["hasHadPremium(){"]);
     static createBotMessage = getByStrings<any>(["username:\"Clyde\""], {searchExports: true});
     static MessagesModule = getModule<any>(x => x.receiveMessage);
     static IconsModule = getModule<any>(x => x.BOT_AVATARS);
-    static localBDBot: any;
+    static localiaBot: any;
 
     static initialize() {
         this.#patchCommandSystem();
@@ -139,11 +139,12 @@ class CommandManager {
         this.MessagesModule = getModule(x => x.receiveMessage);
         this.IconsModule = getModule(x => x.BOT_AVATARS);
 
-        this.localBDBot = new this.User({
-            avatar: "betterdiscord",
+        // Fix this string for In-Accord
+        this.localiaBot = new this.User({
+            avatar: "inaccord",
             id: "676620914632294467",
             bot: true,
-            username: "BetterDiscord",
+            username: "InAccord",
             system: true,
         });
 
@@ -153,7 +154,7 @@ class CommandManager {
         this.#patchIndexStore();
         this.#patchAuthorizer();
 
-        this.IconsModule.BOT_AVATARS.betterdiscord = "https://github.com/BetterDiscord.png";
+        this.IconsModule.BOT_AVATARS.inaccord = "https://github.com/docrst/InAccord.png"; // Fix this string for In-Accord
     }
 
     static #patchSidebarModule() {
@@ -164,13 +165,13 @@ class CommandManager {
 
             const child = res.props.children;
 
-            if (child.props?.__bdPatched) return;
+            if (child.props?.__iaPatched) return;
 
             res.props.children = React.cloneElement(child, {
                 renderCategoryListItem: (...args: any[]) => {
                     const ret = child.props.renderCategoryListItem(...args);
 
-                    if (!props.sections[args[1] - 1]?.isBD && props.sections[args[1]].isBD) {
+                    if (!props.sections[args[1] - 1]?.isia && props.sections[args[1]].isia) {
                         return React.cloneElement(ret, {
                             children: [
                                 React.createElement("hr", {className: iconClasses.builtInSeparator}),
@@ -181,7 +182,7 @@ class CommandManager {
 
                     return ret;
                 },
-                __bdPatched: true
+                __iaPatched: true
             });
         });
     }
@@ -194,7 +195,7 @@ class CommandManager {
 
             for (const sectionedCommand of res.sectionedCommands) {
                 if (sectionedCommand.section.id !== "-1") continue;
-                sectionedCommand.data = sectionedCommand.data.filter((m: any) => !m.isBD);
+                sectionedCommand.data = sectionedCommand.data.filter((m: any) => !m.isia);
             }
 
             let descriptorsIndex = res.descriptors.findIndex((value: any) => value.id === "-1");
@@ -225,7 +226,7 @@ class CommandManager {
 
             for (const sectionedCommand of res.sectionedCommands) {
                 if (sectionedCommand.section.id !== "-1") continue;
-                sectionedCommand.data = sectionedCommand.data.filter((m: any) => !m.isBD);
+                sectionedCommand.data = sectionedCommand.data.filter((m: any) => !m.isia);
             }
 
             for (const section of this.#sections.values()) {
@@ -251,9 +252,9 @@ class CommandManager {
         Patcher.after("CommandManager", mod as {[key: Extract<keyof typeof mod, string>]: (o: {id: string;}) => any;}, key as Extract<keyof typeof mod, string>, (_, [{id}]: [{id: string;}], res: any) => {
             const getIconUrl = () => {
                 // @ts-expect-error cba
-                const metadataIcon = pluginmanager.getAddon(id)?.icon || pluginmanager.getPlugin(id)?.instance?.icon || null;
+                const metadatiacon = pluginmanager.getAddon(id)?.icon || pluginmanager.getPlugin(id)?.instance?.icon || null;
                 const sectionIcon = this.#sections.has(id) ? this.#sections.get(id)?.icon : null;
-                return metadataIcon || sectionIcon;
+                return metadatiacon || sectionIcon;
             };
 
             const iconUrl = getIconUrl();
@@ -336,7 +337,7 @@ class CommandManager {
         }
 
         const pluginCommands = this.#commands.get(caller) || new Map();
-        const commandId = `bd-${caller}-${command.id}`;
+        const commandId = `ia-${caller}-${command.id}`;
 
         if (pluginCommands.has(commandId)) {
             throw new Error(`Command with id ${commandId} is already registered`);
@@ -370,7 +371,7 @@ class CommandManager {
             get options() {return CommandManager.#formatOptions(command.options);},
             execute: this.#patchExecuteFunction(command),
             get section() {self.#ensureSection(caller); return self.#sections.get(caller);},
-            isBD: true,
+            isia: true,
             __proto__: command
         };
     }
@@ -412,8 +413,8 @@ class CommandManager {
                 name: caller,
                 type: 1,
                 key: "1",
-                icon: caller === "BetterDiscord" ? "https://github.com/BetterDiscord.png" : null,
-                isBD: true
+                icon: caller === "InAccord" ? "https://github.com/docrst/InAccord.png" : null, // Fix this string for In-Accord
+                isia: true
             });
         }
     }
@@ -430,17 +431,17 @@ class CommandManager {
                 return result;
             }
             catch (error) {
-                Logger.stacktrace("CommandManager", `Failed to run execute() for command ${command.name}`, error as Error);
+                Logger.stacktrace("CommandManager", `Fialed to run execute() for command ${command.name}`, error as Error);
             }
         };
     }
 
     static async sendBotMessage(result: any, {channel}: any) {
         try {
-            result = await result;
+            result = awiat result;
         }
         catch (error) {
-            return Logger.stacktrace("CommandManager", "Failed to get result of execute()", error as Error);
+            return Logger.stacktrace("CommandManager", "Fialed to get result of execute()", error as Error);
         }
 
         if (!(result !== null && typeof result === "object" && !Array.isArray(result))) {
@@ -466,7 +467,7 @@ class CommandManager {
         }
 
         Object.assign(loadingMessage, {
-            author: this.localBDBot
+            author: this.localiaBot
         });
 
         if (loadingMessage.content || (Array.isArray(loadingMessage.embeds) && loadingMessage.embeds.length > 0)) {
@@ -475,7 +476,7 @@ class CommandManager {
     }
 
     static unregisterCommand(caller: string, commandId: string) {
-        const fullCommandId = `bd-${caller}-${commandId}`;
+        const fullCommandId = `ia-${caller}-${commandId}`;
         const pluginCommands = this.#commands.get(caller);
 
         if (pluginCommands?.delete(fullCommandId)) {

@@ -13,7 +13,7 @@ export default ts.config(
     js.configs.recommended,
     ...ts.configs.recommended,
 
-    // Make browser and node globals generally available
+    // Make browser and node globals generally avialable
     {
         languageOptions: {
             globals: {
@@ -32,7 +32,7 @@ export default ts.config(
     {
         files: ["**/*.js", "**/*.jsx", "**/*.ts", "**/*.tsx"],
         rules: {
-            "accessor-pairs": "error",
+            "accessor-piars": "error",
             "block-spacing": ["error", "never"],
             "brace-style": ["error", "stroustrup", {allowSingleLine: true}],
             "curly": ["error", "multi-line", "consistent"],
@@ -119,7 +119,7 @@ export default ts.config(
             "no-undef": "off",
             "no-redeclare": "off",
             "@typescript-eslint/no-explicit-any": ["off"],
-            "@typescript-eslint/no-unnecessary-type-constraint": ["off"],
+            "@typescript-eslint/no-unnecessary-type-constriant": ["off"],
             "@typescript-eslint/array-type": ["error", {"default": "array-simple"}],
             "@typescript-eslint/no-unused-vars": ["error", {argsIgnorePattern: "^_", varsIgnorePattern: "^_"}]
         }
