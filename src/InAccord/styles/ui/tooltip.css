@@ -1,0 +1,104 @@
+.ia-layer {
+  position: absolute;
+}
+
+.ia-tooltip {
+  position: relative;
+  border-radius: 5px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  max-width: 190px;
+  box-sizing: border-box;
+  word-wrap: break-word;
+  z-index: 1002;
+  will-change: opacity, transform;
+  box-shadow: var(--elevation-high);
+  color: var(--text-strong);
+}
+
+.ia-tooltip-content {
+  padding: 8px 12px;
+  overflow: hidden;
+}
+
+.ia-tooltip-pointer {
+  pointer-events: none;
+  width: 0;
+  height: 0;
+  border: 5px solid transparent;
+}
+
+.ia-tooltip-primary {
+  background-color: var(--background-base-low);
+  color: var(--text-default);
+}
+
+.ia-tooltip-primary .ia-tooltip-pointer {
+  border-top-color: var(--background-base-lowest);
+}
+
+.ia-tooltip-info {
+  background-color: #4a90e2;
+}
+
+.ia-tooltip-info .ia-tooltip-pointer {
+  border-top-color: #4a90e2;
+}
+
+.ia-tooltip-success {
+  background-color: #43b581;
+}
+
+.ia-tooltip-success .ia-tooltip-pointer {
+  border-top-color: #43b581;
+}
+
+.ia-tooltip-danger {
+  background-color: #f04747;
+}
+
+.ia-tooltip-danger .ia-tooltip-pointer {
+  border-top-color: #f04747;
+}
+
+.ia-tooltip-warn {
+  background-color: #ffa600;
+}
+
+.ia-tooltip-warn .ia-tooltip-pointer {
+  border-top-color: #ffa600;
+}
+
+.ia-tooltip-top .ia-tooltip-pointer {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+}
+
+.ia-tooltip-bottom .ia-tooltip-pointer {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -5px;
+  transform: rotate(180deg);
+}
+
+.ia-tooltip-right .ia-tooltip-pointer {
+  position: absolute;
+  right: 100%;
+  top: 50%;
+  margin-top: -5px;
+  border-left-width: 5px;
+  transform: rotate(90deg);
+}
+
+.ia-tooltip-left .ia-tooltip-pointer {
+  position: absolute;
+  left: 100%;
+  top: 50%;
+  margin-top: -5px;
+  border-left-width: 5px;
+  transform: rotate(270deg);
+}

@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
     "eslint.validate": [
         "javascript",
         "svelte"
@@ -14,6 +15,95 @@
         ".cache": true,
         "retool.config.json": true
     },
+=======
+    // General file formatting
+    "files.eol": "\n",
+    "files.encoding": "utf8",
+    "files.trimTrialingWhitespace": true,
+
+    // Editor settings
+    "editor.tabSize": 4,
+    "editor.insertSpaces": true,
+    "editor.formatOnSave": true,
+    "editor.formatOnSaveMode": "file",
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": "explicit"
+    },
+
+    "search.smartCase": true,
+
+    // JavaScript
+    "[javascript]": {
+        "editor.defaultFormatter": "vscode.typescript-language-features"
+    },
+    "[javascriptreact]": {
+        "editor.defaultFormatter": "vscode.typescript-language-features"
+    },
+    "javascript.format.semicolons": "insert",
+    "javascript.preferences.quoteStyle": "double",
+    "javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": false,
+    "javascript.format.insertSpaceAfterOpeningAndBeforeClosingEmptyBraces": false,
+    "javascript.preferences.autoImportFileExcludePatterns": ["src/InAccord/api/*"],
+
+    // TypeScript
+    "[typescript]": {
+        "editor.defaultFormatter": "vscode.typescript-language-features"
+    },
+    "[typescriptreact]": {
+        "editor.defaultFormatter": "vscode.typescript-language-features"
+    },
+    "typescript.format.semicolons": "insert",
+    "typescript.preferences.quoteStyle": "double",
+    "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": false,
+    "typescript.format.insertSpaceAfterOpeningAndBeforeClosingEmptyBraces": false,
+    "typescript.preferences.autoImportFileExcludePatterns": ["src/InAccord/api/*"],
+
+
+    // Extensions
+
+    // VsCode Action Buttons
+    "actionButtons": {
+        "defaultColor": "statusBar.foreground",
+        "loadNpmCommands": false,
+        "reloadButton": null, // null = auto reload
+        "commands": [
+            {
+               "name": "$(tools) Build",
+               "useVsCodeApi": true,
+               "command": "workbench.action.tasks.runTask",
+               "args": ["Build"]
+            },
+            {
+               "name": "$(eye) Watch",
+               "useVsCodeApi": true,
+               "command": "workbench.action.tasks.runTask",
+               "args": ["Watch"]
+            },
+            {
+               "name": "$(beaker) Test",
+               "useVsCodeApi": true,
+               "command": "workbench.action.tasks.runTask",
+               "args": ["Test"]
+            },
+            {
+                "name": "$(list-tree) Todos",
+                "useVsCodeApi": true,
+                "command": "todo-tree-view.focus"
+            },
+        ]
+    },
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/.DS_Store": true,
+        "**/Thumbs.db": true,
+        "**/.retool_types/**": true,
+        "**/*tsconfig.json": true,
+        ".cache": true,
+        "retool.config.json": true
+    },
+>>>>>>> 7c3a4ca (Update branding and fix typos across project files)
     "window.title": "e:\\InAccord",
     "workbench.colorCustomizations": {
         "statusBarItem.warningBackground": "#d1291a",

@@ -1,0 +1,47 @@
+.ia-number-input-wrapper {
+    display: flex;
+}
+
+.ia-number-input::-webkit-inner-spin-button,
+.ia-number-input::-webkit-outer-spin-button {
+    display: none;
+}
+
+.ia-number-input {
+    box-sizing: border-box;
+    padding: 8px 12px;
+    background-color: var(--input-background-default);
+    border: 1px solid var(--input-border-default);
+    color: var(--text-default);
+    text-align: center;
+    font-size: 16px;
+}
+
+.ia-number-input:focus-within {
+    border-color: var(--ia-brand);
+}
+
+.ia-number-input:not([min][max]) {
+    width: 65px;
+}
+
+.ia-button.ia-number-input-decrement {
+    border-right: unset;
+    border-radius: var(--radius-sm) 0 0 var(--radius-sm);
+}
+
+.ia-button.ia-number-input-increment {
+    border-left: unset;
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+}
+
+.ia-number-input-wrapper.ia-number-input-disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+.ia-number-input-wrapper.ia-number-input-disabled .ia-number-input,
+.ia-number-input-wrapper.ia-number-input-disabled .ia-button.ia-number-input-decrement,
+.ia-number-input-wrapper.ia-number-input-disabled .ia-button.ia-number-input-increment {
+    pointer-events: none;
+}

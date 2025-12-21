@@ -1,0 +1,80 @@
+.ia-keybind-wrap {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    position: relative;
+    min-width: 250px;
+    box-sizing: border-box;
+    border-radius: var(--radius-sm);
+    background-color: var(--input-background-default);
+    border: 1px solid var(--input-border-default);
+    padding: 0 4px;
+    height: 40px;
+    cursor: pointer;
+}
+
+.ia-keybind-wrap.ia-keybind-disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+.ia-keybind-wrap.ia-keybind-disabled .ia-keybind-record,
+.ia-keybind-wrap.ia-keybind-disabled .ia-keybind-clear,
+.ia-keybind-wrap.ia-keybind-disabled .ia-keybind-input {
+    pointer-events: none;
+}
+
+.ia-keybind-wrap input {
+    flex: 1;
+    outline: none;
+    border: none;
+    pointer-events: none;
+    color: var(--text-default);
+    background: none;
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.ia-keybind-wrap input::placeholder {
+    text-transform: capitalize;
+}
+
+.ia-keybind-wrap.recording,
+.ia-keybind-wrap:not(.ia-keybind-disabled):hover {
+    border-color: hsl(var(--red-400-hsl)/.3);
+}
+
+.ia-keybind-wrap.recording {
+    box-shadow: 0 0 6px hsl(var(--red-400-hsl)/.3);
+}
+
+.ia-keybind-wrap.recording input {
+    color: var(--status-danger)
+}
+
+.ia-keybind-wrap .ia-keybind-record {
+    padding: 3px 8px;
+}
+
+.ia-keybind-wrap .ia-keybind-record.ia-button-color-red svg {
+    color: var(--interactive-text-active);
+}
+
+.ia-keybind-clear {
+    margin-left: 5px;
+    /* background: none!important; */
+    opacity: 0.5;
+    padding-right: 4px!important;
+}
+
+.ia-keybind-clear:hover {
+    /* background: none; */
+    opacity: 1;
+}
+
+.ia-keybind-clear svg {
+    width: 18px !important;
+    height: 18px !important;
+}
+

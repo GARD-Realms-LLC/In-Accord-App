@@ -1,0 +1,86 @@
+.ia-text-normal {
+  color: var(--text-default);
+}
+
+.ia-text-muted {
+  color: var(--text-muted);
+}
+
+.ia-text-error {
+  color: var(--red-400);
+}
+
+.ia-text-brand {
+  color: var(--text-brand);
+}
+
+.ia-text-link {
+  color: var(--text-link);
+}
+
+.ia-header-primary {
+  color: var(--text-strong);
+}
+
+.ia-header-secondary {
+  color: var(--text-default);
+}
+
+.ia-text-yellow {
+  color: var(--text-feedback-warning);
+}
+
+.ia-text-green {
+  color: var(--text-feedback-positive);
+}
+
+.ia-text-red {
+  color: var(--status-danger);
+}
+
+.ia-text-white {
+  color: var(--white-500);
+}
+
+.ia-text-10 {
+  font-size: 10px;
+  line-height: 12px;
+}
+
+.ia-text-12 {
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.ia-text-14 {
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.ia-text-16 {
+  font-size: 16px;
+  line-height: 20px;
+}
+
+.ia-text-20 {
+  font-size: 20px;
+  line-height: 24px;
+}
+
+.ia-text-24 {
+  font-size: 24px;
+  line-height: 30px;
+}
+
+.ia-text-32 {
+  font-size: 32px;
+  line-height: 40px;
+}
+
+.ia-text-strong {
+  font-weight: 600;
+}
+
+.ia-selectable {
+  user-select: text;
+}

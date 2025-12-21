@@ -1,0 +1,74 @@
+.ia-file-input-wrap {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    position: relative;
+    min-width: 250px;
+    box-sizing: border-box;
+    border-radius: var(--radius-sm);
+    background-color: var(--input-background-default);
+    border: 1px solid var(--input-border-default);
+    padding: 0 4px;
+    height: 40px;
+}
+
+.ia-file-input-wrap:hover {
+    border-color: var(--ia-brand);
+}
+
+.ia-setting-item.inline .ia-file-input-wrap {
+    max-width: 300px;
+}
+
+.ia-file-input {
+    flex: 1;
+    outline: none;
+    color: var(--text-default);
+    font-size: 16px;
+    font-weight: 600;
+    width: 100%;
+    cursor: pointer;
+}
+
+.ia-file-input::-webkit-file-upload-button {
+    height: 0;
+    width: 0;
+    padding: 0 !important;
+    margin: 0;
+    visibility: hidden;
+    -webkit-user-select: none;
+    pointer-events: none;
+}
+
+.ia-file-input-wrap .ia-file-input-browse {
+    padding: 7px 16px;
+}
+
+.ia-file-input-wrap .ia-file-input-clear {
+    margin-left: 5px;
+
+    /* background: none!important; */
+    opacity: 0.5;
+    padding-right: 4px !important;
+}
+
+.ia-file-input-wrap .ia-file-input-clear:hover {
+    /* background: none; */
+    opacity: 1;
+}
+
+.ia-file-input-wrap .ia-file-input-clear svg {
+    width: 18px !important;
+    height: 18px !important;
+}
+
+.ia-file-input-wrap.ia-file-input-disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+.ia-file-input-wrap.ia-file-input-disabled .ia-file-input-browse,
+.ia-file-input-wrap.ia-file-input-disabled .ia-file-input,
+.ia-file-input-wrap.ia-file-input-disabled .ia-file-input-clear {
+    pointer-events: none;
+}

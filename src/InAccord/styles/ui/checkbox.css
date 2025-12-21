@@ -1,0 +1,62 @@
+.ia-checkbox {
+    position: relative;
+    -webkit--webkit-user-select: none;
+    -moz--webkit-user-select: none;
+    -webkit-user-select: none;
+    gap: 8px;
+    cursor: pointer;
+}
+
+.ia-checkbox.ia-checkbox-has-label {
+    flex: 1 1 auto;
+    font-size: 16px;
+    max-width: 100%;
+}
+
+.ia-checkbox-input {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    margin: 0;
+    padding: 0;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    z-index: 1;
+}
+.ia-checkbox-box {
+    width: 24px;
+    height: 24px;
+    border-color: var(--primary-400);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 0 0 auto;
+    border-width: 1px;
+    border-style: solid;
+    box-sizing: border-box;
+    border-radius: 6px;
+    color: var(--interactive-text-active);
+}
+.ia-checkbox-input:checked + .ia-checkbox-box {
+    border-color: var(--ia-brand);
+    background-color: var(--ia-brand);
+}
+
+.ia-checkbox-input:not(:checked) + .ia-checkbox-box > svg {
+    display: none;
+}
+
+.ia-checkbox-label {
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+.ia-checkbox.ia-checkbox-disabled {
+    opacity: .6;
+    cursor: not-allowed;
+}

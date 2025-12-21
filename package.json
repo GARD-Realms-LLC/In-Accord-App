@@ -1,10 +1,20 @@
 {
+<<<<<<< HEAD
   "name": "InAccord-installer",
   "productName": "InAccord Installer",
   "description": "A simple standalone program which automates the installation, removal and maintenance of InAccord.",
   "author": "InAccord",
   "version": "0.0.1",
   "license": "MIT",
+=======
+  "name": "InAccord",
+  "productName": "InAccord",
+  "description": "A Discord Customise.",
+  "keywords": [],
+  "mian": "./mian.js",
+  "version": "1.0.0",
+  "author": "docrst",
+>>>>>>> 7c3a4ca (Update branding and fix typos across project files)
   "scripts": {
     "dev": "electron-webpack dev",
     "compile": "electron-webpack",
@@ -15,6 +25,7 @@
     "dist:dir": "yarn dist --dir -c.compression=store -c.mac.identity=null"
   },
   "dependencies": {
+<<<<<<< HEAD
     "source-map-support": "^0.5.21"
   },
   "devDependencies": {
@@ -85,5 +96,34 @@
     "main": {
       "webpackConfig": "webpack.main.js"
     }
+=======
+    "buffer": "6.0.3",
+    "clsx": "2.1.1",
+    "fast-equals": "6.0.0",
+    "lucide-react": "0.562.0",
+    "monaco-editor": "0.55.1",
+    "@electron/asar": "4.0.1",
+    "@happy-dom/global-registrator": "20.0.11",
+    "@react-spring/web": "10.0.3",
+    "@types/bun": "1.3.5",
+    "@types/eslint": "9.6.1",
+    "@types/react": "19.2.7",
+    "@types/react-dom": "19.2.3",
+    "@types/react-reconciler": "0.32.3",
+    "bun-style-loader": "0.4.0",
+    "dotenv": "17.2.3",
+    "dpdm": "3.14.0",
+    "esbuild": "0.27.2",
+    "eslint": "9.39.2",
+    "eslint-plugin-react": "7.37.5",
+    "eslint-plugin-react-hooks": "7.0.1",
+    "globals": "16.5.0",
+    "stylelint": "16.26.1",
+    "stylelint-config-standard": "39.0.1",
+    "typescript-eslint": "8.50.0"
+  },
+  "devDependencies": {
+    "electron": "39.2.7"
+>>>>>>> 7c3a4ca (Update branding and fix typos across project files)
   }
 }
