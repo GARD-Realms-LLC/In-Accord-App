@@ -1,0 +1,13 @@
+{
+    "displayNumber": 1,
+    "toggleStreamShortcut": [],
+    "toggleGameOrScreenShortcut": [],
+    "toggleAudioShortcut": [],
+    "startStreamShortcut": [],
+    "stopStreamShortcut": [],
+    "disablePreview": false,
+    "shareAudio": true,
+    "shareAlwaysScreen": false,
+    "showToast": true,
+    "version": "1.1.16"
+}

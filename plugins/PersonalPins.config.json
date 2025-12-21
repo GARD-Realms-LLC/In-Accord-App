@@ -1,0 +1,12 @@
+{
+	"all": {
+		"choices": {
+			"defaultFilter": "channel",
+			"defaultSort": "notetime",
+			"defaultOrder": "ascending"
+		},
+		"general": {
+			"addQuickTranslateButton": true
+		}
+	}
+}

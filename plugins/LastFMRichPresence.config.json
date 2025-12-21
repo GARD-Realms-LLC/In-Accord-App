@@ -1,0 +1,13 @@
+{
+    "settings": {
+        "disableWhenSpotify": true,
+        "listeningTo": false,
+        "artistActivityName": false,
+        "lastfmButton": true,
+        "youtubeButton": true,
+        "assetIcon": true,
+        "artistBeforeAlbum": true,
+        "disableWhenActivity": false,
+        "userPlatform": null
+    }
+}

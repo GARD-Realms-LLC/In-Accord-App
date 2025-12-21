@@ -1,0 +1,97 @@
+{
+    "455498559903760385": {
+        "tabs": [
+            {
+                "id": "d3fe735f-8c24-41e3-a0fe-16ee33b033dd",
+                "path": "/channels/1418648743544094871/1450653191116030053/",
+                "guildId": "1418648743544094871",
+                "channelId": "1450653191116030053",
+                "type": "CHANNEL"
+            },
+            {
+                "id": "9457aebb-a775-4f84-adc1-814bfa6809ad",
+                "path": "/channels/1133931541874086041/1226004509763960842/",
+                "guildId": "1133931541874086041",
+                "channelId": "1226004509763960842",
+                "type": "CHANNEL"
+            },
+            {
+                "id": "76e04a86-4c77-453b-8662-5e90a651c59e",
+                "path": "/channels/1395777519369588806/1395777521475256322/",
+                "guildId": "1395777519369588806",
+                "channelId": "1395777521475256322",
+                "type": "CHANNEL"
+            },
+            {
+                "id": "201e2f2a-7119-4919-8d34-3a113c3b1ae8",
+                "path": "/channels/1424408922583863401/1424408923829567710/",
+                "guildId": "1424408922583863401",
+                "channelId": "1424408923829567710",
+                "type": "CHANNEL"
+            },
+            {
+                "id": "7cc1ec90-474c-4fa5-a78c-12687c15b40b",
+                "path": "/channels/1441973839742369814/1441973841634132020/",
+                "guildId": "1441973839742369814",
+                "channelId": "1441973841634132020",
+                "type": "CHANNEL"
+            },
+            {
+                "id": "dabc22c2-feb2-44aa-9ad5-3dbb28ef1739",
+                "path": "/channels/1083902847114022993/1393036811860705281/",
+                "guildId": "1083902847114022993",
+                "channelId": "1393036811860705281",
+                "type": "CHANNEL"
+            },
+            {
+                "id": "9e651b0d-11ff-40c6-b0f8-8c5d2ff2e39a",
+                "path": "/channels/@me",
+                "title": "Home",
+                "type": "HOME"
+            }
+        ],
+        "selectedId": "9457aebb-a775-4f84-adc1-814bfa6809ad",
+        "lastSelectedIdAfterNewTab": null,
+        "folders": [],
+        "bookmarks": []
+    },
+    "settings": {
+        "size": 24,
+        "tabMinWidth": 100,
+        "tabWidth": 201,
+        "showSettingsButton": true,
+        "showTabbar": true,
+        "showBookmarkbar": false,
+        "keepTitle": true,
+        "privacyMode": false,
+        "bookmarkOverflowWrap": false,
+        "ctrlClickChannel": true,
+        "showTabUnreads": true,
+        "showTabPings": true,
+        "showTabTyping": true,
+        "highlightTabUnread": true,
+        "showBookmarkUnreads": true,
+        "showBookmarkPings": true,
+        "showBookmarkTyping": true,
+        "highlightBookmarkUnread": true,
+        "showFolderUnreads": true,
+        "showFolderPings": true,
+        "showFolderTyping": true,
+        "highlightFolderUnread": true
+    },
+    "1173623635106332713": {
+        "tabs": [
+            {
+                "id": "1ee65091-ee02-4f0b-94be-d3aebc6b6578",
+                "path": "/channels/86004744966914048/178208945410801665/",
+                "guildId": "86004744966914048",
+                "channelId": "178208945410801665",
+                "type": "CHANNEL"
+            }
+        ],
+        "selectedId": "1ee65091-ee02-4f0b-94be-d3aebc6b6578",
+        "lastSelectedIdAfterNewTab": null,
+        "folders": [],
+        "bookmarks": []
+    }
+}

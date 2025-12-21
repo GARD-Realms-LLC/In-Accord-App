@@ -1,0 +1,16 @@
+{
+	"all": {
+		"configs": {
+			"case": false,
+			"exact": true,
+			"regex": false
+		},
+		"general": {
+			"addContextMenu": true
+		},
+		"places": {
+			"normal": true,
+			"edit": true
+		}
+	}
+}

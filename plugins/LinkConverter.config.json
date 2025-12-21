@@ -1,0 +1,58 @@
+{
+    "settings": [
+        {
+            "type": "reddit",
+            "replacements": [
+                "https://rxddit.com",
+                "https://vxreddit.com"
+            ],
+            "selected": 0,
+            "enabled": true
+        },
+        {
+            "type": "x",
+            "replacements": [
+                "https://fxtwitter.com",
+                "https://fixupx.com",
+                "https://vxtwitter.com",
+                "https://fixvx.com",
+                "https://twittpr.com"
+            ],
+            "selected": 0,
+            "enabled": true
+        },
+        {
+            "type": "instagram",
+            "replacements": [
+                "https://vxinstagram.com"
+            ],
+            "selected": 0,
+            "enabled": true
+        },
+        {
+            "type": "tiktok",
+            "replacements": [
+                "https://tnktok.com",
+                "https://tfxktok.com"
+            ],
+            "selected": 0,
+            "enabled": true
+        },
+        {
+            "type": "youtube",
+            "replacements": [
+                "https://yout-ube.com"
+            ],
+            "selected": 0,
+            "enabled": true
+        },
+        {
+            "type": "bluesky",
+            "replacements": [
+                "https://fxbsky.app"
+            ],
+            "selected": 0,
+            "enabled": true
+        }
+    ]
+}

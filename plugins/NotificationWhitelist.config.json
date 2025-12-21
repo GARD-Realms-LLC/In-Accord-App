@@ -1,0 +1,13 @@
+{
+    "currentVersion": "1.2.0",
+    "settings": {
+        "folderWhitelist": [],
+        "serverWhitelist": [],
+        "serverBlacklist": [],
+        "channelWhitelist": [],
+        "channelBlacklist": [],
+        "enableWhitelisting": true,
+        "filterDMs": true,
+        "allowNonMessageNotifications": false
+    }
+}
