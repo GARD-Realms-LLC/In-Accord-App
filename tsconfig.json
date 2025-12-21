@@ -1,0 +1,53 @@
+{
+  "compilerOptions": {
+    // Enable latest features
+    "lib": ["ESNext", "DOM", "DOM.Iterable"],
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleDetection": "force",
+    "jsx": "react",
+    "jsxFactory": "React.createElement",
+    "jsxFragmentFactory": "React.Fragment",
+    "allowJs": false,
+
+    // Bundler mode
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "verbatimModuleSyntax": true,
+    "noEmit": true,
+
+    // Best practices
+    "strict": true,
+    "skipLibCheck": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitAny": true,
+
+    // Some stricter flags
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noPropertyAccessFromIndexSignature": false,
+
+    // Import aliases
+    "paths": {
+        "@assets/*": ["./assets/*"],
+        "@common/*": ["./src/common/*"],
+        "@builtins/*": ["./src/InAccord/builtins/*"],
+        "@data/*": ["./src/InAccord/data/*"],
+        "@api/*": ["./src/InAccord/api/*"],
+        "@modules/*": ["./src/InAccord/modules/*"],
+        "@polyfill/*": ["./src/InAccord/polyfill/*"],
+        "@stores/*": ["./src/InAccord/stores/*"],
+        "@structs/*": ["./src/InAccord/structs/*"],
+        "@styles/*": ["./src/InAccord/styles/*"],
+        "@ui/*": ["./src/InAccord/ui/*"],
+        "@utils/*": ["./src/InAccord/utils/*"],
+        "@webpack": ["./src/InAccord/webpack"],
+    },
+    "typeRoots": ["node_modules/@types", "src/InAccord/types"]
+  },
+  "include": [
+    "src/**/*",
+    "scripts/*",
+    "tests/**/*"
+  ],
+}
