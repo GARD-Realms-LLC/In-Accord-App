@@ -10,13 +10,14 @@ describe('In-Accord App', () => {
     expect(typeof main).toBe('function');
   });
 
-  test('main function should execute without errors', () => {
+  test('main function should execute and log expected messages', () => {
     // Capture console output
     const consoleSpy = jest.spyOn(console, 'log').mockImplementation();
     
     main();
     
-    expect(consoleSpy).toHaveBeenCalled();
+    expect(consoleSpy).toHaveBeenCalledWith('Application is running successfully!');
+    expect(consoleSpy).toHaveBeenCalledWith('Ready to help you achieve harmony in your digital workflows.');
     
     consoleSpy.mockRestore();
   });

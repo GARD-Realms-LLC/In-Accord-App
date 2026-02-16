@@ -5,8 +5,10 @@
  * Main entry point for the application
  */
 
+const { version } = require('../package.json');
+
 console.log('Welcome to In-Accord App!');
-console.log('Version: 0.1.0');
+console.log(`Version: ${version}`);
 console.log('');
 console.log('The In-Accord App suite is initializing...');
 
