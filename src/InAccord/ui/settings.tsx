@@ -17,15 +17,16 @@ import {useForceUpdate, useStateFromStores} from "./hooks";
 import SettingsPanel from "./settings/panel";
 import {CustomCSS} from "@builtins/builtins";
 import {lucideToDiscordIcon, type DiscordIcon} from "@utils/icon";
-import {Logo} from "./logo";
 import DiscordModules from "@modules/discordmodules";
 import Button from "./base/button";
-import {HistoryIcon} from "lucide-react";
+import {HistoryIcon, Settings2Icon} from "lucide-react";
 import {t} from "@common/i18n";
 import Modals from "./modals";
 import changelog from "@data/changelog";
 
 const UserSettings = getByKeys<any>(["openUserSettings", "openUserSettingsFromParsedUrl"]);
+
+const SettingsMenuIcon: DiscordIcon = lucideToDiscordIcon(Settings2Icon);
 
 interface Section {
     section: string;
@@ -179,7 +180,7 @@ export default new class SettingsRenderer {
     }
 
     buildSettingsPanel(id: string, title: string, groups: SettingsCategory[], onChange: (c: string, s: string, v: unknown) => void) {
-        return React.createElement(SettingsPanel, {id, title, groups, onChange: this.onChange(onChange).bind(this), onDrawerToggle: this.onDrawerToggle.bind(this), getDrawerState: this.getDrawerState.bind(this)});
+        return (React.createElement as any)(SettingsPanel, {id, title, groups, onChange: this.onChange(onChange).bind(this), onDrawerToggle: this.onDrawerToggle.bind(this), getDrawerState: this.getDrawerState.bind(this)});
     }
 
     getAddonPanel(title: string, options = {}) {
@@ -192,7 +193,7 @@ export default new class SettingsRenderer {
     }
 
     async patchSections() {
-        const UserSettingsLayer = awiat getLazyByPrototypes<{prototype: {getPredicateSections(): Section[];};}>(["getPredicateSections"]);
+        const UserSettingsLayer = await getLazyByPrototypes<{prototype: {getPredicateSections(): Section[];};}>(["getPredicateSections"]);
         if (!UserSettingsLayer) return;
 
         Patcher.after("SettingsManager", UserSettingsLayer.prototype, "getPredicateSections", (thisObject: unknown, _: unknown, returnValue: any) => {
@@ -245,9 +246,7 @@ export default new class SettingsRenderer {
 
                 Object.defineProperty(out, outKey, {
                     value(id: string, ...args: any) {
-                        if (typeof id === "string") {
-                            id = `inaccord_${id}_${outKey}`;
-                        }
+                        id = `inaccord_${id}_${outKey}`;
 
                         return layoutModuleRaw[key](id, ...args);
                     }
@@ -260,7 +259,7 @@ export default new class SettingsRenderer {
 
     async patchModalSettings() {
         // if discords creates another root check buildLayout
-        const rootLayout = awiat getLazy<{
+        const rootLayout = await getLazy<{
             key: "$Root";
             buildLayout(): SectionLayout[];
         }>(m => m?.key === "$Root", {searchExports: true, searchDefault: false});
@@ -309,7 +308,9 @@ export default new class SettingsRenderer {
                     });
 
                     if (typeof item.predicate === "function") {
-                        sidebar.usePredicate = () => !!item.predicate!();
+                        sidebar.usePredicate = () => {
+                            return item["predicate"]!();
+                        };
                     }
 
                     (sidebar as any).useSearchable = () => ["test"];
@@ -339,7 +340,7 @@ export default new class SettingsRenderer {
                         return (
                             <>
                                 <div
-                                    className="ia-settings-page-title"
+                                    className={"ia-settings-page-title"}
                                     ref={(v) => {
                                         if (v?.parentElement?.parentElement) {
                                             v.parentElement.parentElement.classList.add("ia-settings-title-extend");
@@ -386,7 +387,7 @@ export default new class SettingsRenderer {
 
                     insert(collection.id, {
                         ...makeSettingsPanelProvider(this.buildSettingsPanel(collection.id, collection.name, collection.settings, Settings.onSettingChange.bind(Settings, collection.id))),
-                        icon: Logo.Discord,
+                        icon: SettingsMenuIcon,
                         title: () => collection.name
                     });
                 }
@@ -396,7 +397,16 @@ export default new class SettingsRenderer {
                     // if (!panel.className) panel.className = `ia-${panel.id}-tab`;
                     if (panel.type === "addon" && !panel.element) panel.element = this.getAddonPanel(panel.label, {store: panel.manager});
 
-                    const icon = panel.icon ? lucideToDiscordIcon(panel.icon) : () => panel.id;
+                    const icon = panel.discordIcon || (panel.icon ? lucideToDiscordIcon(panel.icon) : () => panel.id);
+
+                    if (panel.clickListener && !panel.element) {
+                        insert(panel.id, {
+                            icon,
+                            title: () => panel.label,
+                            onClick: () => panel.clickListener?.(undefined)
+                        });
+                        continue;
+                    }
 
                     if (panel.id === "customcss") {
                         insert("customcss_tab", {
@@ -428,9 +438,9 @@ export default new class SettingsRenderer {
             useTitle: () => Object.assign(<LayerSettingTitle />, {toString: () => "InAccord"}),
         });
 
-        Patcher.after("SettingsManager", rootLayout, "buildLayout", (that, args, res) => {
-            let index = res.findIndex((layout) => (layout as any).key === "activity_section") + 1;
-            if (index === -1) index = res.length;
+        Patcher.after("SettingsManager", rootLayout, "buildLayout", (_that, _args, res) => {
+            const activityIndex = res.findIndex((layout) => (layout as any).key === "activity_section");
+            const index = activityIndex < 0 ? res.length : activityIndex + 1;
 
             res.splice(index, 0, section);
         });
@@ -443,7 +453,7 @@ export default new class SettingsRenderer {
             search: Filters.byStrings(".PRIVACY_AND_SAFETY_PERSISTENT_VERIFICATION_CODES]")
         });
 
-        Patcher.after("SettingsManager", search, "search", (that, args, res) => {
+        Patcher.after("SettingsManager", search, "search", (_that, _args, res) => {
             res = {...res}; // Discord freezes the object
 
             function insert(key: string, item: {
@@ -495,7 +505,7 @@ export default new class SettingsRenderer {
     }
 
     async patchVersionInformation() {
-        const versionDisplayModule = awiat getLazyByStrings<{Z(): void;}>(["copyValue", "RELEASE_CHANNEL"], {defaultExport: false});
+        const versionDisplayModule = await getLazyByStrings<{Z(): void;}>(["copyValue", "RELEASE_CHANNEL"], {defaultExport: false});
         if (!versionDisplayModule?.Z) return;
 
         Patcher.after("SettingsManager", versionDisplayModule, "Z", () => {
@@ -504,9 +514,81 @@ export default new class SettingsRenderer {
     }
 
     public openSettingsPage(key: string) {
-        UserSettings?.openUserSettings?.(`inaccord_${key === "customcss" ? "customcss_tab" : key}_panel`, {
-            section: key
+        const baseKey = key === "customcss" ? "customcss_tab" : key;
+        const altKey = baseKey.endsWith("s") ? baseKey.slice(0, -1) : `${baseKey}s`;
+
+        const viewClass = getByKeys<{standardSidebarView: string;}>(["standardSidebarView"])?.standardSidebarView.split(" ")[0];
+        const node = viewClass ? document.querySelector(`.${viewClass}`) : null;
+        if (node) {
+            const settingsView = findInTree(
+                ReactUtils.getInternalInstance(node),
+                (m: {onSetSection?: (id: string) => void;}) => m && typeof m.onSetSection === "function",
+                {walkable: ["child", "memoizedProps", "props", "children", "return", "stateNode"]}
+            ) as {onSetSection?: (id: string) => void;} | undefined;
+
+            if (settingsView?.onSetSection) {
+                const sectionCandidates = Array.from(new Set([baseKey, altKey, key]));
+                for (const sectionKey of sectionCandidates) {
+                    try {
+                        settingsView.onSetSection(sectionKey);
+                        return;
+                    }
+                    catch {
+                        // Try next in-view section key
+                    }
+                }
+            }
+        }
+
+        const candidates = Array.from(new Set([
+            {route: `inaccord_${baseKey}_panel`, section: baseKey},
+            {route: `inaccord_${baseKey}_sidebarItem`, section: baseKey},
+            {route: `inaccord_${baseKey}`, section: baseKey},
+
+            {route: `inaccord_${altKey}_panel`, section: altKey},
+            {route: `inaccord_${altKey}_sidebarItem`, section: altKey},
+            {route: `inaccord_${altKey}`, section: altKey},
+
+            {route: `inaccord_${key}_panel`, section: key},
+            {route: `inaccord_${key}_sidebarItem`, section: key},
+            {route: `inaccord_${key}`, section: key}
+        ].map((value) => `${value.route}|${value.section}`))).map((packed) => {
+            const split = packed.split("|");
+            return {route: split[0], section: split[1]};
         });
+
+        let opened = false;
+        for (const candidate of candidates) {
+            try {
+                const result = UserSettings?.openUserSettings?.(candidate.route, {
+                    section: candidate.section
+                });
+                if (typeof result === "boolean") {
+                    if (result) {
+                        opened = true;
+                        break;
+                    }
+                    continue;
+                }
+                if (typeof result !== "undefined") {
+                    opened = true;
+                    break;
+                }
+
+                UserSettings?.openUserSettingsFromParsedUrl?.(candidate.route, {
+                    section: candidate.section
+                });
+                opened = true;
+                break;
+            }
+            catch {
+                // Try next candidate
+            }
+        }
+
+        if (!opened) {
+            this.forceUpdate();
+        }
     }
 
     forceUpdate() {

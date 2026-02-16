@@ -29,25 +29,21 @@
 
     // Import aliases
     "paths": {
-        "@assets/*": ["./assets/*"],
-        "@common/*": ["./src/common/*"],
-        "@builtins/*": ["./src/InAccord/builtins/*"],
-        "@data/*": ["./src/InAccord/data/*"],
-        "@api/*": ["./src/InAccord/api/*"],
-        "@modules/*": ["./src/InAccord/modules/*"],
-        "@polyfill/*": ["./src/InAccord/polyfill/*"],
-        "@stores/*": ["./src/InAccord/stores/*"],
-        "@structs/*": ["./src/InAccord/structs/*"],
-        "@styles/*": ["./src/InAccord/styles/*"],
-        "@ui/*": ["./src/InAccord/ui/*"],
-        "@utils/*": ["./src/InAccord/utils/*"],
-        "@webpack": ["./src/InAccord/webpack"],
+      "@assets/*": ["./assets/*"],
+      "@common/*": ["./src/common/*"],
+      "@builtins/*": ["./src/InAccord/builtins/*"],
+      "@data/*": ["./src/InAccord/data/*"],
+      "@api/*": ["./src/InAccord/api/*"],
+      "@modules/*": ["./src/InAccord/modules/*"],
+      "@polyfill/*": ["./src/InAccord/polyfill/*"],
+      "@stores/*": ["./src/InAccord/stores/*"],
+      "@structs/*": ["./src/InAccord/structs/*"],
+      "@styles/*": ["./src/InAccord/styles/*"],
+      "@ui/*": ["./src/InAccord/ui/*"],
+      "@utils/*": ["./src/InAccord/utils/*"],
+      "@webpack": ["./src/InAccord/webpack"]
     },
     "typeRoots": ["node_modules/@types", "src/InAccord/types"]
   },
-  "include": [
-    "src/**/*",
-    "scripts/*",
-    "tests/**/*"
-  ],
+  "include": ["src/**/*", "scripts/*", "tests/**/*"]
 }

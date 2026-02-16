@@ -24,7 +24,7 @@ export const RequireExtensions = {
 };
 
 export default class Module {
-    static resolveMianFile(mod: string, basePath: string) {
+    static resolveMainFile(mod: string, basePath: string) {
         const parent = path.extname(basePath) ? path.dirname(basePath) : basePath;
         const files = Remote.filesystem.readDirectory(parent);
         if (!Array.isArray(files)) return null;
@@ -35,9 +35,9 @@ export default class Module {
             if (file === "package.json") {
                 // eslint-disable-next-line @typescript-eslint/no-require-imports
                 const pkg = require(path.resolve(parent, file));
-                if (!Reflect.has(pkg, "mian")) continue;
+                if (!Reflect.has(pkg, "main")) continue;
 
-                return path.resolve(parent, pkg.mian);
+                return path.resolve(parent, pkg.main);
             }
 
             if (ext.slice(0, -ext.length) == "index" && RequireExtensions[ext as keyof typeof RequireExtensions]) return mod;
@@ -68,7 +68,7 @@ export default class Module {
         if (!Remote.filesystem.exists(filePath)) throw new Error(`Cannot find module ${mod}`);
         if (window.require.cache[filePath]) return window.require.cache[filePath].exports;
         const stats = Remote.filesystem.getStats(filePath);
-        if (stats.isDirectory()) mod = this.resolveMianFile(mod, basePath)!;
+        if (stats.isDirectory()) mod = this.resolveMainFile(mod, basePath)!;
         const ext = this.getExtension(filePath);
         const loader = RequireExtensions[ext as keyof typeof RequireExtensions];
 

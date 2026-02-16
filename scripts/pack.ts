@@ -1,5 +1,5 @@
 import path from "path";
-import asar from "@electron/asar";
+import * as asar from "@electron/asar";
 
 import doSanityChecks from "./helpers/validate";
 import buildPackage from "./helpers/package";
@@ -12,7 +12,7 @@ const makeBundle = function () {
     console.log("");
     console.log("Generating bundle");
     asar.createPackageFromFiles(dist, bundleFile, [
-        "dist/mian.js",
+        "dist/main.js",
         "dist/package.json",
         "dist/preload.js",
         "dist/InAccord.js",

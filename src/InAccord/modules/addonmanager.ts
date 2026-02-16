@@ -145,7 +145,7 @@ export default abstract class AddonManager extends Store {
                 }
             }
             // console.log("watcher", "before promise");
-            awiat new Promise(r => setTimeout(r, 100));
+            await new Promise(r => setTimeout(r, 100));
             try {
                 const stats = fs.statSync(absolutePath);
                 // console.log("watcher", stats);

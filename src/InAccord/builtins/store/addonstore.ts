@@ -137,111 +137,111 @@ export default new class AddonStoreBuiltin extends Builtin {
     private linkOpener?: Generator;
     async patchLinkOpener() {
         const [module, key] = this.linkOpener ??= getWithKey((m) => String(m).includes(".trackAnnouncementMessageLinkClicked("), {
-            target: awiat getLazyBySource([".trackAnnouncementMessageLinkClicked("]);
-    });
+            target: await getLazyBySource([".trackAnnouncementMessageLinkClicked("])
+        });
 
         this.before(module, key, (_, args) => {
-        if (args[0].href) {
-            const url = new URL(args[0].href, location.href);
+            if (args[0].href) {
+                const url = new URL(args[0].href, location.href);
 
-            const id = Number(url.searchParams.get("id"));
-            if (url.host === Web.hostname && url.pathname.toLowerCase() === "/download" && !isNaN(id)) {
-                (args[1] || window.event)?.preventDefault?.();
+                const id = Number(url.searchParams.get("id"));
+                if (url.host === Web.hostname && url.pathname.toLowerCase() === "/download" && !isNaN(id)) {
+                    (args[1] || window.event)?.preventDefault?.();
 
-                args[0].href = `inaccord://store/${id}`;
-                args[0].shouldConfirm = true;
+                    args[0].href = `inaccord://store/${id}`;
+                    args[0].shouldConfirm = true;
+                }
             }
-        }
-    });
+        });
     }
 
     private protocolList: string[] | undefined;
     private extractDiscordProtocolList() {
-    if (this.protocolList) return this.protocolList;
+        if (this.protocolList) return this.protocolList;
 
-    let protocols: string[] = [];
+        let protocols: string[] = [];
 
-    const link = getModule<any>(m => m.html && m.requiredFirstCharacters?.[0] === "[")!;
+        const link = getModule<any>(m => m.html && m.requiredFirstCharacters?.[0] === "[")!;
 
-    const includes = Array.prototype.includes;
-    Array.prototype.includes = function (...args) {
-        if (includes.call(this, "discord:")) {
-            Array.prototype.includes = includes;
-            protocols = this as string[];
+        const includes = Array.prototype.includes;
+        Array.prototype.includes = function (...args) {
+            if (includes.call(this, "discord:")) {
+                Array.prototype.includes = includes;
+                protocols = this as string[];
 
-            return false;
-        }
-
-        return includes.apply(this, args);
-    };
-
-    link.parse(["", "link", "inaccord://foo/bar"]);
-
-    return this.protocolList = protocols;
-}
-
-    async patchEmbeds() {
-    MessageAccessories ??= awiat getLazy(Filters.byPrototypeKeys(["renderEmbeds"]), {searchExports: true});
-
-    this.after(MessageAccessories.prototype, "renderEmbeds", (_, [message], res) => {
-        if (!Settings.get(this.collection, this.category, "addonEmbeds")) {
-            return res;
-        }
-
-        res ??= [];
-
-        let type = Web.getReleaseChannelType(message.channel_id);
-        // Allow for forwarded messages
-        if (!type && message.messageReference?.type === 1 && !message.messageSnapshots.length) type = Web.getReleaseChannelType(message.messageReference.channel_id);
-
-        if (type) {
-            const id = message.embeds[0].rawDescription?.split?.("\n")?.at?.(-1)?.match?.(/\?id=(\d+)/);
-
-            if (id) return React.createElement(ErrorBoundary, null, React.createElement(AddonEmbed, {id: id[1], original: res}));
-
-            return res;
-        }
-
-        const matches = extractAddonLinks(message.content, MAX_EMBEDS);
-
-        // Go through and either replace a prexisting embed or add a new one
-        if (matches.length) {
-            const embeds = [...res];
-
-            for (let key = 0; key < matches.length; key++) {
-                const {match, id} = matches[key];
-                let shouldAdd = embeds.length < MAX_EMBEDS;
-
-                for (let embedIndex = 0; embedIndex < res.length; embedIndex++) {
-                    const embed = embeds[embedIndex]?.props?.children?.props?.embed;
-
-                    if (embed?.url === match) {
-                        shouldAdd = false;
-                        embeds[embedIndex] = React.createElement(ErrorBoundary, {key}, React.createElement(AddonEmbed, {id, original: embeds[embedIndex]}));
-                        break;
-                    }
-                }
-
-                if (shouldAdd) embeds.push(React.createElement(ErrorBoundary, {key}, React.createElement(AddonEmbed, {id})));
+                return false;
             }
 
-            return embeds;
-        }
+            return includes.apply(this, args);
+        };
 
-        return res;
-    });
+        link.parse(["", "link", "inaccord://foo/bar"]);
 
-    this.forceUpdateChat();
-}
-
-    async disabled() {
-    const list = this.extractDiscordProtocolList();
-    const index = list.indexOf("inaccord:");
-    if (index !== -1) {
-        list.splice(index, 1);
+        return this.protocolList = protocols;
     }
 
-    this.unpatchAll();
-    this.forceUpdateChat();
-}
+    async patchEmbeds() {
+        MessageAccessories ??= await getLazy(Filters.byPrototypeKeys(["renderEmbeds"]), {searchExports: true});
+
+        this.after(MessageAccessories.prototype, "renderEmbeds", (_, [message], res) => {
+            if (!Settings.get(this.collection, this.category, "addonEmbeds")) {
+                return res;
+            }
+
+            res ??= [];
+
+            let type = Web.getReleaseChannelType(message.channel_id);
+            // Allow for forwarded messages
+            if (!type && message.messageReference?.type === 1 && !message.messageSnapshots.length) type = Web.getReleaseChannelType(message.messageReference.channel_id);
+
+            if (type) {
+                const id = message.embeds[0].rawDescription?.split?.("\n")?.at?.(-1)?.match?.(/\?id=(\d+)/);
+
+                if (id) return React.createElement(ErrorBoundary, null, React.createElement(AddonEmbed, {id: id[1], original: res}));
+
+                return res;
+            }
+
+            const matches = extractAddonLinks(message.content, MAX_EMBEDS);
+
+            // Go through and either replace a prexisting embed or add a new one
+            if (matches.length) {
+                const embeds = [...res];
+
+                for (let key = 0; key < matches.length; key++) {
+                    const {match, id} = matches[key];
+                    let shouldAdd = embeds.length < MAX_EMBEDS;
+
+                    for (let embedIndex = 0; embedIndex < res.length; embedIndex++) {
+                        const embed = embeds[embedIndex]?.props?.children?.props?.embed;
+
+                        if (embed?.url === match) {
+                            shouldAdd = false;
+                            embeds[embedIndex] = React.createElement(ErrorBoundary, {key}, React.createElement(AddonEmbed, {id, original: embeds[embedIndex]}));
+                            break;
+                        }
+                    }
+
+                    if (shouldAdd) embeds.push(React.createElement(ErrorBoundary, {key}, React.createElement(AddonEmbed, {id})));
+                }
+
+                return embeds;
+            }
+
+            return res;
+        });
+
+        this.forceUpdateChat();
+    }
+
+    async disabled() {
+        const list = this.extractDiscordProtocolList();
+        const index = list.indexOf("inaccord:");
+        if (index !== -1) {
+            list.splice(index, 1);
+        }
+
+        this.unpatchAll();
+        this.forceUpdateChat();
+    }
 };

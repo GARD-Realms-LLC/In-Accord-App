@@ -35,7 +35,7 @@ export default new class EditorStore extends Store {
 
                 const manager: typeof import("@modules/backupmanager")["default"] | typeof import("@modules/thememanager")["default"] | typeof import("@modules/pluginmanager")["default"] = (
                     // eslint-disable-next-line @typescript-eslint/no-require-imports
-                    match[1] === "theme" ? require("@modules/backupmanager") : require("@modules/thememanager") : require("@modules/pluginmanager")
+                    match[1] === "backup" ? require("@modules/backupmanager") : match[1] === "theme" ? require("@modules/thememanager") : require("@modules/pluginmanager")
                 ).default;
 
                 if (manager.isLoaded(match[2])) {

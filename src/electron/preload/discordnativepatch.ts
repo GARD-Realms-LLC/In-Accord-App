@@ -24,7 +24,7 @@ function getSetting(category: string, key: string) {
     }
 }
 
-const {exposeInMianWorld} = electron.contextBridge;
+const {exposeInMainWorld} = electron.contextBridge;
 
 // Hold the listeners
 let /** @type {Function} */ onOpened: () => void, /** @type {Function} */ onClosed: () => void;
@@ -36,7 +36,7 @@ if (typeof patchDevtoolsCallbacks !== "boolean") patchDevtoolsCallbacks = false;
 
 const contextBridge = {
     ...electron.contextBridge,
-    exposeInMianWorld(apiKey: string, api: any) {
+    exposeInMainWorld(apiKey: string, api: any) {
         if (apiKey === "DiscordNative") {
             // On macOS check if native frame is enabled
             // every other os say false
@@ -59,7 +59,7 @@ const contextBridge = {
             };
         }
 
-        exposeInMianWorld(apiKey, api);
+        exposeInMainWorld(apiKey, api);
     }
 };
 

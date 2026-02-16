@@ -1,7 +1,7 @@
 import electron, {type BrowserWindowConstructorOptions} from "electron";
 import path from "path";
 
-import InAccord from "./InAccord";
+import InAccord from "./inaccord";
 import Editor from "./editor";
 import * as IPCEvents from "@common/constants/ipcevents";
 

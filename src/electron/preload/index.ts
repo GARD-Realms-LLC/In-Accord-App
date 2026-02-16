@@ -10,8 +10,8 @@ patchDefine();
 DiscordNativePatch.init();
 
 let hasInitialized = false;
-contextBridge.exposeInMianWorld("process", newProcess);
-contextBridge.exposeInMianWorld("InAccordPreload", () => {
+contextBridge.exposeInMainWorld("process", newProcess);
+contextBridge.exposeInMainWorld("InAccordPreload", () => {
     if (hasInitialized) return null;
     hasInitialized = true;
     return iaApi;

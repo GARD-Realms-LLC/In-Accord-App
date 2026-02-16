@@ -10,6 +10,7 @@ import Store from "./base";
 import type {ComponentType} from "react";
 import type AddonManager from "@modules/addonmanager";
 import {PaletteIcon, PlugIcon, type LucideIcon} from "lucide-react";
+import type {DiscordIcon} from "@utils/icon";
 
 export interface SettingsCollection {
     type: "collection";
@@ -28,6 +29,7 @@ export interface SettingsPanel {
     onClick?: (event: MouseEvent) => void;
     element?: ComponentType;
     icon?: LucideIcon;
+    discordIcon?: DiscordIcon;
     type?: "addon" | "settings";
     manager?: AddonManager;
     searchable?(): string[];
@@ -62,7 +64,7 @@ export default new class SettingsManager extends Store {
         this.collections.splice(location, 1);
     }
 
-    registerPanel(id: string, name: string, options: {onClick?: (o: any) => void; element?: ComponentType; order: number; type?: "addon" | "settings"; manager?: AddonManager; icon?: LucideIcon; searchable?(): string[];}) {
+    registerPanel(id: string, name: string, options: {onClick?: (o: any) => void; element?: ComponentType; order: number; type?: "addon" | "settings"; manager?: AddonManager; icon?: LucideIcon; discordIcon?: DiscordIcon; searchable?(): string[];}) {
         if (this.panels.find(p => p.id == id)) return Logger.error("Settings", "Already have a panel with id " + id);
         const {element, onClick, order = 1, type = "settings"} = options;
         const section: SettingsPanel = {
@@ -72,6 +74,7 @@ export default new class SettingsManager extends Store {
             get label() {return t(`Panels.${id}`) || name;},
             section: id,
             icon: options.icon,
+            discordIcon: options.discordIcon,
             searchable: options.searchable
         };
         if (options.manager) section.manager = options.manager;

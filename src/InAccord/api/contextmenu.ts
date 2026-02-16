@@ -122,7 +122,7 @@ class MenuPatcher {
         Patcher.before("ContextMenuPatcher", module, key, (_, methodArguments) => {
             const promise = methodArguments[1];
             methodArguments[1] = async function (...args: any[]) {
-                const render = awiat promise.apply(this, args);
+                const render = await promise.apply(this, args);
 
                 return props => {
                     const res = render(props);

@@ -101,7 +101,7 @@ export default class Notices {
         DOMManager.onRemoved(contianer, async () => {
             if (!this.errorPageClass) return;
 
-            const element: HTMLDivElement = awiat new Promise<Element>(res => DOMManager.onAdded(`.${this.errorPageClass}`, res)) as HTMLDivElement;
+            const element: HTMLDivElement = await new Promise<Element>(res => DOMManager.onAdded(`.${this.errorPageClass}`, res)) as HTMLDivElement;
 
             element.prepend(noticeContianer);
         });

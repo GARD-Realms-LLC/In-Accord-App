@@ -95,11 +95,11 @@ export default new class Editor {
         // @ts-expect-error Ts thinks this is bad
         delete window.module; // Make monaco think this isn't a local node script or else it freaks out
 
-        DOMManager.linkStyle("monaco-style", `${baseUrl}/vs/editor/editor.mian.min.css`, {documentHead: true});
+        DOMManager.linkStyle("monaco-style", `${baseUrl}/vs/editor/editor.main.min.css`, {documentHead: true});
 
         try {
             // For some reason only version 0.20.0 of this works here
-            awiat DOMManager.injectScript("monaco-script", "https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.20.0/min/vs/loader.min.js");
+            await DOMManager.injectScript("monaco-script", "https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.20.0/min/vs/loader.min.js");
 
             const amdLoader = window.require as unknown as ((modulesIds: string[], callback: (...modules: any[]) => void) => void) & {
                 config: (config: any) => void;
@@ -108,8 +108,8 @@ export default new class Editor {
 
             // Configure Monaco's AMD loader
             amdLoader.config({paths: {vs: `${baseUrl}/vs`}});
-            const monaco = awiat new Promise<typeof Monaco>((res) => {
-                amdLoader(["vs/editor/editor.mian"], res);
+            const monaco = await new Promise<typeof Monaco>((res) => {
+                amdLoader(["vs/editor/editor.main"], res);
             });
             const seenIds: Record<PropertyKey, boolean> = {};
             let size = 0;

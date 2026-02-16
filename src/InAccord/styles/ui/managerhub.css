@@ -1,0 +1,64 @@
+.ia-manager-hub {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.ia-manager-hub-heading {
+    margin: 0;
+    font-size: 24px;
+    line-height: 1.2;
+    font-weight: 700;
+    color: var(--header-primary);
+}
+
+.ia-manager-hub-description {
+    margin-bottom: 2px;
+}
+
+.ia-manager-hub-grid {
+    display: grid;
+    gap: 10px;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.ia-manager-hub-card {
+    border: 1px solid var(--app-border-frame);
+    border-radius: 8px;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    background: var(--background-surface-high);
+}
+
+.ia-manager-hub-card-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.ia-manager-hub-icon {
+    color: var(--interactive-normal);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ia-manager-hub-card-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.ia-manager-hub-backup {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    border: 1px solid var(--app-border-frame);
+    border-radius: 8px;
+    padding: 10px 12px;
+    background: var(--background-surface-high);
+}

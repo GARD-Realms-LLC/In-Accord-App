@@ -1,159 +1,116 @@
 {
-<<<<<<< HEAD
-<<<<<<< HEAD
-  "name": "InAccord-installer",
-  "productName": "InAccord Installer",
-  "description": "A simple standalone program which automates the installation, removal and maintenance of InAccord.",
-  "author": "InAccord",
-  "version": "0.0.1",
-  "license": "MIT",
-=======
-=======
->>>>>>> origin/Development
-  "name": "InAccord",
-  "productName": "InAccord",
-  "description": "A Discord Customise.",
-  "keywords": [],
-  "mian": "./mian.js",
-  "version": "1.0.0",
-  "author": "docrst",
-<<<<<<< HEAD
->>>>>>> 7c3a4ca (Update branding and fix typos across project files)
-=======
->>>>>>> origin/Development
-  "scripts": {
-    "start": "electron ."
-  },
-  "dependencies": {
-<<<<<<< HEAD
-<<<<<<< HEAD
-    "source-map-support": "^0.5.21"
-  },
-  "devDependencies": {
-    "electron": "^39.2.7",
-    "electron-builder": "^26.0.12",
-    "electron-webpack": "^2.8.2",
-    "eslint": "^9.39.2",
-    "eslint-plugin-svelte3": "^4.0.0",
-    "find-process": "https://github.com/InAccord/find-process",
-    "focus-visible": "^5.2.1",
-    "phin": "^3.7.1",
-    "rimraf": "^6.1.2",
-    "semver": "^7.7.3",
-    "svelte": "^5.46.0",
-    "svelte-loader": "^3.2.4",
-    "svelte-spa-router": "^4.0.1",
-    "tree-kill": "^1.2.2",
-    "webpack": "~5.104.0",
-    "webpack-bundle-analyzer": "^5.1.0"
-  },
-  "build": {
-    "appId": "app.InAccord.installer",
-    "productName": "InAccord",
-    "copyright": "Copyright © 2026 InAccord",
-    "afterAllArtifactBuild": "scripts/fixmac.js",
-    "win": {
-      "artifactName": "${productName}-Windows.${ext}",
-      "icon": "assets/icon.ico",
-      "target": {
-        "target": "portable",
-        "arch": [
-          "ia32"
-        ]
-      }
-    },
-    "portable": {
-      "requestExecutionLevel": "user",
-      "useZip": true,
-      "splashImage": "assets/images/splash.bmp"
-    },
-    "mac": {
-      "artifactName": "${productName}-Mac.${ext}",
-      "icon": "assets/icon.icns",
-      "category": "public.app-category.social-networking",
-      "target": {
-        "target": "zip",
-        "arch": [
-          "x64"
-        ]
-      }
-    },
-    "linux": {
-      "artifactName": "${productName}-Linux.${ext}",
-      "category": "Utility",
-      "target": {
-        "target": "AppImage",
-        "arch": [
-          "x64"
-        ]
-      }
-    }
-  },
-  "electronWebpack": {
-    "staticSourceDirectory": "assets",
-    "renderer": {
-      "webpackConfig": "webpack.renderer.js"
-    },
-    "main": {
-      "webpackConfig": "webpack.main.js"
-    }
-=======
-    "buffer": "6.0.3",
-    "clsx": "2.1.1",
-    "fast-equals": "6.0.0",
-    "lucide-react": "0.562.0",
-    "monaco-editor": "0.55.1",
-    "@electron/asar": "4.0.1",
-    "@happy-dom/global-registrator": "20.0.11",
-    "@react-spring/web": "10.0.3",
-    "@types/bun": "1.3.5",
-    "@types/eslint": "9.6.1",
-    "@types/react": "19.2.7",
-    "@types/react-dom": "19.2.3",
-    "@types/react-reconciler": "0.32.3",
-    "bun-style-loader": "0.4.0",
-    "dotenv": "17.2.3",
-    "dpdm": "3.14.0",
-    "esbuild": "0.27.2",
-    "eslint": "9.39.2",
-    "eslint-plugin-react": "7.37.5",
-    "eslint-plugin-react-hooks": "7.0.1",
-    "globals": "16.5.0",
-    "stylelint": "16.26.1",
-    "stylelint-config-standard": "39.0.1",
-    "typescript-eslint": "8.50.0"
-  },
-  "devDependencies": {
-    "electron": "39.2.7"
->>>>>>> 7c3a4ca (Update branding and fix typos across project files)
-=======
-    "buffer": "6.0.3",
-    "clsx": "2.1.1",
-    "fast-equals": "6.0.0",
-    "lucide-react": "0.562.0",
-    "monaco-editor": "0.55.1",
-    "@electron/asar": "4.0.1",
-    "@happy-dom/global-registrator": "20.0.11",
-    "@react-spring/web": "10.0.3",
-    "@types/bun": "1.3.5",
-    "@types/eslint": "9.6.1",
-    "@types/react": "19.2.7",
-    "@types/react-dom": "19.2.3",
-    "@types/react-reconciler": "0.32.3",
-    "bun-style-loader": "0.4.0",
-    "dotenv": "17.2.3",
-    "dpdm": "3.14.0",
-    "esbuild": "0.27.2",
-    "eslint": "9.39.2",
-    "eslint-plugin-react": "7.37.5",
-    "eslint-plugin-react-hooks": "7.0.1",
-    "globals": "16.5.0",
-    "stylelint": "16.26.1",
-    "stylelint-config-standard": "39.0.1",
-    "typescript-eslint": "8.50.0"
-  },
-  "devDependencies": {
-    "electron": "39.2.7"
->>>>>>> origin/Development
-  }
+	"name": "InAccord",
+	"productName": "InAccord Installer",
+	"description": "A simple standalone program which automates the installation, removal and maintenance of InAccord.",
+	"author": "InAccord",
+	"version": "0.0.1",
+	"license": "GPL-3.0 license",
+	"keywords": [],
+	"main": "/InAccord/src/App.tsx",
+	"scripts": {
+		"start": "bun scripts/build.ts --watch",
+		"build": "bun scripts/build.ts",
+		"run:discord": "node scripts/run-discord.js",
+		"run:stable": "node scripts/run-discord.js stable",
+		"run:ptb": "node scripts/run-discord.js ptb",
+		"run:canary": "node scripts/run-discord.js canary",
+		"run:stable:release": "node scripts/run-discord.js stable --release",
+		"run:ptb:release": "node scripts/run-discord.js ptb --release",
+		"run:canary:release": "node scripts/run-discord.js canary --release",
+		"lint": "eslint .",
+		"test": "bun test tests/"
+	},
+	"dependencies": {
+		"@electron/asar": "4.0.1",
+		"@happy-dom/global-registrator": "^20.6.1",
+		"@react-spring/web": "10.0.3",
+		"@types/bun": "^1.3.9",
+		"@types/eslint": "9.6.1",
+		"@types/react": "^19.2.14",
+		"@types/react-dom": "19.2.3",
+		"@types/react-reconciler": "^0.33.0",
+		"buffer": "6.0.3",
+		"bun-style-loader": "0.4.0",
+		"clsx": "2.1.1",
+		"dotenv": "^17.3.1",
+		"dpdm": "3.14.0",
+		"electron": "39.2.7",
+		"electron-builder": "^26.0.12",
+		"electron-webpack": "^2.8.2",
+		"esbuild": "^0.27.3",
+		"eslint": "^9.39.2",
+		"eslint-plugin-react": "7.37.5",
+		"eslint-plugin-react-hooks": "7.0.1",
+		"eslint-plugin-svelte3": "^4.0.0",
+		"fast-equals": "6.0.0",
+		"find-process": "^1.4.10",
+		"focus-visible": "^5.2.1",
+		"globals": "^17.3.0",
+		"lucide-react": "^0.564.0",
+		"monaco-editor": "0.55.1",
+		"phin": "^3.7.1",
+		"rimraf": "^6.1.2",
+		"semver": "^7.7.3",
+		"source-map-support": "^0.5.21",
+		"stylelint": "16.26.1",
+		"stylelint-config-standard": "39.0.1",
+		"svelte": "^5.46.0",
+		"svelte-loader": "^3.2.4",
+		"svelte-spa-router": "^4.0.1",
+		"tree-kill": "^1.2.2",
+		"typescript-eslint": "^8.55.0",
+		"webpack": "^5.105.2",
+		"webpack-bundle-analyzer": "^5.1.0"
+	},
+	"build": {
+		"appId": "app.InAccord.installer",
+		"productName": "InAccord",
+		"copyright": "Copyright © 2026 InAccord",
+		"afterAllArtifactBuild": "scripts/fixmac.js",
+		"win": {
+			"artifactName": "${productName}-Windows.${ext}",
+			"icon": "assets/icon.ico",
+			"target": {
+				"target": "portable",
+				"arch": [
+					"ia32"
+				]
+			}
+		},
+		"portable": {
+			"requestExecutionLevel": "user",
+			"useZip": true,
+			"splashImage": "assets/images/splash.bmp"
+		},
+		"mac": {
+			"artifactName": "${productName}-Mac.${ext}",
+			"icon": "assets/icon.icns",
+			"category": "public.app-category.social-networking",
+			"target": {
+				"target": "zip",
+				"arch": [
+					"x64"
+				]
+			}
+		},
+		"linux": {
+			"artifactName": "${productName}-Linux.${ext}",
+			"category": "Utility",
+			"target": {
+				"target": "AppImage",
+				"arch": [
+					"x64"
+				]
+			}
+		}
+	},
+	"electronWebpack": {
+		"staticSourceDirectory": "assets",
+		"renderer": {
+			"webpackConfig": "webpack.renderer.js"
+		},
+		"main": {
+			"webpackConfig": "webpack.main.js"
+		}
+	}
 }

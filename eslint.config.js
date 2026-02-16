@@ -4,16 +4,13 @@ import ts from "typescript-eslint";
 import react from "eslint-plugin-react";
 import reactHooks from "eslint-plugin-react-hooks";
 
-
 // Make sure typescript rules only affect typescript for now
 ts.configs.recommended.forEach(r => r.files = ["**/*.ts", "**/*.tsx"]);
 
 export default ts.config(
-    // Globally apply recommended js rules
     js.configs.recommended,
     ...ts.configs.recommended,
 
-    // Make browser and node globals generally avialable
     {
         languageOptions: {
             globals: {
@@ -23,16 +20,14 @@ export default ts.config(
         }
     },
 
-    // Global ignore dirs
     {
         ignores: ["dist/", "assets/"]
     },
-
     // Setup general JS rules
     {
         files: ["**/*.js", "**/*.jsx", "**/*.ts", "**/*.tsx"],
         rules: {
-            "accessor-piars": "error",
+            "accessor-pairs": "error",
             "block-spacing": ["error", "never"],
             "brace-style": ["error", "stroustrup", {allowSingleLine: true}],
             "curly": ["error", "multi-line", "consistent"],
@@ -119,7 +114,7 @@ export default ts.config(
             "no-undef": "off",
             "no-redeclare": "off",
             "@typescript-eslint/no-explicit-any": ["off"],
-            "@typescript-eslint/no-unnecessary-type-constriant": ["off"],
+            "@typescript-eslint/no-unnecessary-type-constraint": ["off"],
             "@typescript-eslint/array-type": ["error", {"default": "array-simple"}],
             "@typescript-eslint/no-unused-vars": ["error", {argsIgnorePattern: "^_", varsIgnorePattern: "^_"}]
         }
@@ -137,13 +132,7 @@ export default ts.config(
     {
         files: ["src/InAccord/**/*"],
         ...react.configs.flat.recommended,
-    },
-    {
-        files: ["src/InAccord/**/*"],
-        ...reactHooks.configs["recommended-latest"]
-    },
-    {
-        files: ["src/InAccord/**/*"],
+        ...reactHooks.configs["recommended-latest"],
         settings: {
             react: {
                 version: "18.3"

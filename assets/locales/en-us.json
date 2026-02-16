@@ -3,7 +3,13 @@
         "plugins": "Plugins",
         "themes": "Themes",
         "customcss": "Custom CSS",
-        "updates": "Updates"
+        "updates": "Updates",
+        "managerhub": "Manager Hub",
+        "backup": "Backup",
+        "backups": "Backups",
+        "tools": "Tools",
+        "github": "GitHub",
+        "ourserver": "Our Server"
     },
     "Collections": {
         "settings": {

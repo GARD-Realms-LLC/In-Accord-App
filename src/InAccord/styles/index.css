@@ -5,7 +5,7 @@
 @import "./builtins/customcss.css";
 @import "./ui/addonlist.css";
 @import "./ui/addonstore.css";
-@import "./ui/iasettings.css";
+@import "./ui/bdsettings.css";
 @import "./ui/changelog.css";
 @import "./ui/checkbox.css";
 @import "./ui/colorpicker.css";
@@ -15,6 +15,7 @@
 @import "./ui/floatingwindow.css";
 @import "./ui/installmodal.css";
 @import "./ui/keybind.css";
+@import "./ui/managerhub.css";
 @import "./ui/modal.css";
 @import "./ui/notices.css";
 @import "./ui/notifications.css";

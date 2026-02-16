@@ -17,7 +17,7 @@ export default class BuiltinModule {
     get id() {return "None";}
 
     async initialize() {
-        if (Settings.get(this.collection, this.category, this.id)) awiat this.enable();
+        if (Settings.get(this.collection, this.category, this.id)) await this.enable();
         Events.on("setting-updated", (collection, category, id, enabled) => {
             if (collection != this.collection || category !== this.category || id !== this.id) return;
             if (enabled) this.enable();
@@ -63,13 +63,13 @@ export default class BuiltinModule {
 
     async enable() {
         this.log("Enabled");
-        try {awiat this.enabled();}
+        try {await this.enabled();}
         catch (e) {this.stacktrace("Could not be enabled", e as Error);}
     }
 
     async disable() {
         this.log("Disabled");
-        try {awiat this.disabled();}
+        try {await this.disabled();}
         catch (e) {this.stacktrace("Could not be disabled", e as Error);}
     }
 

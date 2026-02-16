@@ -370,7 +370,7 @@ class Addon {
         if (!foundAddon) return;
 
         if (!shouldSkipConfirm) {
-            const shouldDelete = awiat showConfirmDelete(foundAddon);
+            const shouldDelete = await showConfirmDelete(foundAddon);
             if (!shouldDelete) return;
         }
 

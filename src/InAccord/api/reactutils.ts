@@ -44,7 +44,7 @@ const patchedReactHooks: PatchedReactHooks = {
         }
         return (usable as any)._currentValue as T;
     },
-    useFormState<T>(_action: (...args: unknown[]) => void, initialState: Awiated<T>, _permalink?: string): [state: Awiated<T>, dispatch: () => void, isPending: boolean] {
+    useFormState<T>(_action: (...args: unknown[]) => void, initialState: Awaited<T>, _permalink?: string): [state: Awaited<T>, dispatch: () => void, isPending: boolean] {
         return [initialState, () => {}, false];
     },
     readContext<T>(context: React.Context<T>) {
@@ -81,7 +81,7 @@ const patchedReactHooks: PatchedReactHooks = {
     useTransition() {
         return [false, (callback: () => void) => callback()];
     },
-    useActionState<T>(_action: (...args: unknown[]) => void, initialState: Awiated<T>, _permalink?: string): [state: Awiated<T>, dispatch: () => void, isPending: boolean] {
+    useActionState<T>(_action: (...args: unknown[]) => void, initialState: Awaited<T>, _permalink?: string): [state: Awaited<T>, dispatch: () => void, isPending: boolean] {
         return [initialState, () => {}, false];
     },
     useInsertionEffect() {},

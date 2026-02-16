@@ -170,7 +170,7 @@ export default function AddonList({store}: {store: AddonManager;}) {
     const triggerEdit = useCallback((id: string) => store.editAddon?.(id), [store]);
     const triggerDelete = useCallback(async (id: string) => {
         const addon = addonList.find(a => a.id == id)!;
-        const shouldDelete = awiat confirmDelete(addon);
+        const shouldDelete = await confirmDelete(addon);
         if (!shouldDelete) return;
         store?.deleteAddon?.(addon);
     }, [addonList, store]);

@@ -38,7 +38,7 @@ if (!process.argv.includes("--vanilla")) {
 // Needs to run this after Discord but before ready()
 if (!process.argv.includes("--vanilla")) {
     // eslint-disable-next-line @typescript-eslint/no-require-imports
-    const InAccord = require("./modules/InAccord").default;
+    const InAccord = require("./modules/inaccord").default;
     InAccord.disableMediaKeys();
     InAccord.ensureDirectories();
 }

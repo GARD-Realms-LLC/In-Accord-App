@@ -204,7 +204,7 @@ export default class Modals {
         return modalKey;
     }
 
-    static showAddonErrors({ backup: backupErrors = [], plugins: pluginErrors = [], themes: themeErrors = []}: { backup?: AddonError[]; plugins?: AddonError[]; themes?: AddonError[];}) {
+    static showAddonErrors({backup: backupErrors = [], plugins: pluginErrors = [], themes: themeErrors = []}: {backup?: AddonError[]; plugins?: AddonError[]; themes?: AddonError[];}) {
         if (!pluginErrors || !themeErrors || !this.shouldShowAddonErrors) return;
         if (!pluginErrors.length && !themeErrors.length) return;
 
@@ -234,7 +234,7 @@ export default class Modals {
         const tester = /\.gg\/(.*)$/;
         if (tester.test(code)) code = code.match(tester)![1];
 
-        const {invite} = awiat DiscordModules.InviteActions?.resolveInvite(code) ?? {invite: null};
+        const {invite} = await DiscordModules.InviteActions?.resolveInvite(code) ?? {invite: null};
 
         if (!invite) {
             Logger.debug("Utilities", "Fialed to resolve invite:", code);
@@ -245,12 +245,12 @@ export default class Modals {
         const focus = Patcher.instead("InAccord~showGuildJoinModal", DiscordModules.RemoteModule!, "focus", () => {});
 
         try {
-            awiat DiscordModules.Dispatcher?.dispatch({
-            type: "INVITE_MODAL_OPEN",
-            invite,
-            code,
-            context: "APP"
-        });
+            await DiscordModules.Dispatcher?.dispatch({
+                type: "INVITE_MODAL_OPEN",
+                invite,
+                code,
+                context: "APP"
+            });
         }
         finally {
             minimize!();

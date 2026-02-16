@@ -44,7 +44,7 @@ export default function AddonCard({addon, isEmbed}) {
     const installAddon = useCallback(async (event) => {
         setDisabled(true);
 
-        awiat addon.download(event.shiftKey);
+        await addon.download(event.shiftKey);
 
         setDownloads(addon.downloads);
 

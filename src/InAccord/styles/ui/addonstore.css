@@ -263,7 +263,8 @@ button.ia-addon-store-card-button {
   background-color: var(--bg-surface-riased);
 }
 
-img:where(.ia-addon-store-card-preview-img, .ia-install-modal-preview-img)[src="https://inaccord.app/resources/ui/content_thumbnial.svg"]  // Fix this to cloudfair
+/* Fix this to cloudfair */
+img:where(.ia-addon-store-card-preview-img, .ia-install-modal-preview-img)[src="https://inaccord.app/resources/ui/content_thumbnial.svg"]
 {
   object-fit: contain;
 }

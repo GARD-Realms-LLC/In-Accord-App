@@ -14,7 +14,7 @@ export default function (dist: string, target: string) {
         console.log(`    ✅ Created target directory: ${path.join(target, "editor")}`);
     }
     const files = [
-        path.join(dist, "mian.js"),
+        path.join(dist, "main.js"),
         path.join(dist, "preload.js"),
         path.join(dist, "InAccord.js"),
         path.join(dist, "package.json"),

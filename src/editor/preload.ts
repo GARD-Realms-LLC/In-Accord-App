@@ -22,7 +22,7 @@ else {
     filepath = path.join(dataPath, `${type}s`, filename);
 }
 
-electron.contextBridge.exposeInMianWorld("Editor", {
+electron.contextBridge.exposeInMainWorld("Editor", {
     type,
     filename,
     filepath,

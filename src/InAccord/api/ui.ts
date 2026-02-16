@@ -174,11 +174,11 @@ const UI = {
      */
     // TODO: merge types with other 2 processes
     async openDialog(options: any) {
-        const data = awiat ipc.openDialog(options);
-    if(data.error) throw new Error(data.error);
+        const data = await ipc.openDialog(options);
+        if (data.error) throw new Error(data.error);
 
-    return data;
-},
+        return data;
+    },
 
     /**
      * Creates a single setting wrapped in a setting item that has a name and note.
@@ -200,60 +200,60 @@ const UI = {
         return buildSetting(setting);
     },
 
-        /**
-         * Creates a settings panel (react element) based on json-like data.
-         *
-         * The `settings` array here is an array of the same settings types described in `buildSetting` above.
-         * However, this API allows one additional setting "type" called `category`. This has the same properties
-         * as the Group React Component found under the `Components` API.
-         *
-         * `onChange` will always be given 3 arguments: category id, setting id, and setting value. In the case
-         * that you have settings on the "root" of the panel, the category id is `null`. Any `onChange`
-         * listeners attached to individual settings will fire before the panel-level change listener.
-         *
-         * `onDrawerToggle` is given 2 arguments: category id, and the current shown state. You can use this to
-         * save drawer states.
-         *
-         * `getDrawerState` is given 2 arguments: category id, and the default shown state. You can use this to
-         * recall a saved drawer state.
-         *
-         * @param {object} props
-         * @param {Array<object>} props.settings Array of settings to show
-         * @param {CallableFunction} props.onChange Function called on every change
-         * @param {CallableFunction} [props.onDrawerToggle] Optionally used to save drawer states
-         * @param {CallableFunction} [props.getDrawerState] Optionially used to recall drawer states
-         * @returns React element usable for a settings panel
-         */
-        // TODO: remove any
-        buildSettingsPanel({settings, onChange, onDrawerToggle, getDrawerState}: any) {
-    if (!settings?.length) throw new Error("No settings provided!");
+    /**
+     * Creates a settings panel (react element) based on json-like data.
+     *
+     * The `settings` array here is an array of the same settings types described in `buildSetting` above.
+     * However, this API allows one additional setting "type" called `category`. This has the same properties
+     * as the Group React Component found under the `Components` API.
+     *
+     * `onChange` will always be given 3 arguments: category id, setting id, and setting value. In the case
+     * that you have settings on the "root" of the panel, the category id is `null`. Any `onChange`
+     * listeners attached to individual settings will fire before the panel-level change listener.
+     *
+     * `onDrawerToggle` is given 2 arguments: category id, and the current shown state. You can use this to
+     * save drawer states.
+     *
+     * `getDrawerState` is given 2 arguments: category id, and the default shown state. You can use this to
+     * recall a saved drawer state.
+     *
+     * @param {object} props
+     * @param {Array<object>} props.settings Array of settings to show
+     * @param {CallableFunction} props.onChange Function called on every change
+     * @param {CallableFunction} [props.onDrawerToggle] Optionally used to save drawer states
+     * @param {CallableFunction} [props.getDrawerState] Optionially used to recall drawer states
+     * @returns React element usable for a settings panel
+     */
+    // TODO: remove any
+    buildSettingsPanel({settings, onChange, onDrawerToggle, getDrawerState}: any) {
+        if (!settings?.length) throw new Error("No settings provided!");
 
-    return React.createElement(ErrorBoundary, {
-        id: "buildSettingsPanel",
-        name: "iaApi.UI"
-    }, settings.map((setting: any) => {
-        if (!setting.id || !setting.type) throw new Error(`Setting item missing id or type`);
+        return React.createElement(ErrorBoundary, {
+            id: "buildSettingsPanel",
+            name: "iaApi.UI"
+        }, settings.map((setting: any) => {
+            if (!setting.id || !setting.type) throw new Error(`Setting item missing id or type`);
 
-        if (setting.type === "category") {
-            const shownByDefault = setting.hasOwnProperty("shown") ? setting.shown : true;
+            if (setting.type === "category") {
+                const shownByDefault = setting.hasOwnProperty("shown") ? setting.shown : true;
 
-            return React.createElement(Group, {
-                ...setting,
-                onChange: onChange,
-                onDrawerToggle: (state: any) => onDrawerToggle?.(setting.id, state),
-                shown: getDrawerState?.(setting.id, shownByDefault) ?? shownByDefault
-            });
-        }
-
-        return buildSetting({
-            ...setting,
-            onChange: (value: any) => {
-                setting?.onChange?.(value);
-                onChange(null, setting.id, value);
+                return React.createElement(Group, {
+                    ...setting,
+                    onChange: onChange,
+                    onDrawerToggle: (state: any) => onDrawerToggle?.(setting.id, state),
+                    shown: getDrawerState?.(setting.id, shownByDefault) ?? shownByDefault
+                });
             }
-        });
-    }));
-}
+
+            return buildSetting({
+                ...setting,
+                onChange: (value: any) => {
+                    setting?.onChange?.(value);
+                    onChange(null, setting.id, value);
+                }
+            });
+        }));
+    }
 
 };
 

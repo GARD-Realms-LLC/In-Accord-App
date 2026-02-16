@@ -3,7 +3,7 @@ import ReactDOM from "@modules/reactdom";
 import Events from "@modules/emitter";
 import DOMManager from "@modules/dommanager";
 
-import FloatingWindowContianer from "./floating/contianer";
+import FloatingWindowContianer from "./floating/container";
 import {getByDisplayName} from "@webpack";
 import type {FloatingWindowProps} from "./floating/window";
 

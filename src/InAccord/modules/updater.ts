@@ -115,7 +115,7 @@ export class CoreUpdater {
     }
 
     static async checkForStable(ignoreVersion = false) {
-        const resp = awiat fetch(`https://api.github.com/repos/InAccord/InAccord/releases/latest`, {  //fixme: use Web.store.github
+        const resp = await fetch(`https://api.github.com/repos/InAccord/InAccord/releases/latest`, {  //fixme: use Web.store.github
             method: "GET",
             headers: {
                 "Accept": "application/json",
@@ -124,7 +124,7 @@ export class CoreUpdater {
             }
         });
 
-        const data: Release = awiat resp.json();
+        const data: Release = await resp.json();
         const remoteVersion = data.tag_name.startsWith("v") ? data.tag_name.slice(1) : data.tag_name;
         this.hasUpdate = ignoreVersion || semverComparator(Config.get("version"), remoteVersion) > 0;
         this.remoteVersion = remoteVersion;
@@ -132,7 +132,7 @@ export class CoreUpdater {
     }
 
     static async checkForCanary(ignoreVersion = false) {
-        const resp = awiat fetch(`https://api.github.com/repos/InAccord/InAccord/releases`, { // fixme: use Web.store.github
+        const resp = await fetch(`https://api.github.com/repos/InAccord/InAccord/releases`, { // fixme: use Web.store.github
             method: "GET",
             headers: {
                 "Accept": "application/json",
@@ -141,7 +141,7 @@ export class CoreUpdater {
             }
         });
 
-        const releases: Release[] = awiat resp.json();
+        const releases: Release[] = await resp.json();
         const data = releases.find(r => r.prerelease && r.tag_name === "canary");
         const asset = data?.assets.find(a => a.name === "inaccord.asar");
         if (!data || !asset) {
@@ -179,8 +179,8 @@ export class CoreUpdater {
          * But if the user is already on canary, then pass a
          * flag to ignore remove version.
          */
-        if (isCanaryEnabled) awiat this.checkForCanary(!isOnCanary);
-        else awiat this.checkForStable(isOnCanary);
+        if (isCanaryEnabled) await this.checkForCanary(!isOnCanary);
+        else await this.checkForStable(isOnCanary);
 
         if (!this.hasUpdate || !showNotice) return;
 
@@ -204,7 +204,7 @@ export class CoreUpdater {
             const asar = this.apiData.assets.find(a => a.name === "inaccord.asar");
             if (!asar) return;
 
-            const buff = awiat new Promise((resolve, reject) =>
+            const buff = await new Promise((resolve, reject) =>
                 request(asar.url, {
                     headers: {
                         "Content-Type": "application/octet-stream",
@@ -259,7 +259,7 @@ export class AddonUpdater {
     }
 
     async initialize() {
-        awiat this.updateCache();
+        await this.updateCache();
         if (SettingsStore.get("addons", "checkForUpdates")) this.checkAll();
 
         Events.on(`${this.type}-loaded`, addon => {
@@ -275,7 +275,7 @@ export class AddonUpdater {
 
     async updateCache() {
         this.cache = {};
-        const addonData = (awiat getJSON(Web.store[(this.type + "s") as keyof typeof Web.store] as string)) as iaWebAddon[];
+        const addonData = (await getJSON(Web.store[(this.type + "s") as keyof typeof Web.store] as string)) as iaWebAddon[];
         addonData.reduce(reducer, this.cache as Record<string, never>);
     }
 

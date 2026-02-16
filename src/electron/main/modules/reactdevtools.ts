@@ -67,7 +67,7 @@ export default class ReactDevTools {
         if (!extPath) return; // TODO: cut a log
 
         try {
-            const ext = awiat session.defaultSession.loadExtension(extPath);
+            const ext = await session.defaultSession.loadExtension(extPath);
             if (!ext) return; // TODO: cut a log
         }
         catch {
@@ -80,7 +80,7 @@ export default class ReactDevTools {
         if (!extPath) return; // TODO: cut a log
 
         try {
-            awiat session.defaultSession.removeExtension(extPath);
+            await session.defaultSession.removeExtension(extPath);
         }
         catch {
             // TODO: cut a log

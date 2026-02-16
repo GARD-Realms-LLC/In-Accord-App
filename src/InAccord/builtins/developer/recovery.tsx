@@ -47,7 +47,7 @@ async function attemptRecovery() {
     for (const {action, errorMessage} of recoverySteps) {
         try {
             const result = action();
-            awiat result;
+            await result;
         }
         catch (error) {
             Logger.error("Recovery", `${errorMessage}:, ${error}`);
@@ -106,7 +106,7 @@ const ErrorDetials = ({componentStack, pluginInfo, stack, instance}) => {
 
     const openDiscordSupport = async () => {
         if (pluginInfo?.invite) {
-            const recoverySuccessful = awiat attemptRecovery();
+            const recoverySuccessful = await attemptRecovery();
             if (recoverySuccessful) {
                 instance.setState({info: null, error: null});
                 if (pluginInfo.invite) Modals.showGuildJoinModal(pluginInfo.invite);
@@ -149,7 +149,7 @@ const ErrorDetials = ({componentStack, pluginInfo, stack, instance}) => {
                         className="ia-error-safe-mode"
                         onClick={async () => {
                             pluginmanager.addonList.forEach((x) => pluginmanager.disableAddon(x.name));
-                            awiat IPC.relaunch();
+                            await IPC.relaunch();
                         }}
                         color={Colors.RED}
                     >
@@ -240,7 +240,7 @@ export default new class Recovery extends Builtin {
                 <Button
                     className="ia-button-recovery"
                     onClick={async () => {
-                        const recoverySuccessful = awiat attemptRecovery();
+                        const recoverySuccessful = await attemptRecovery();
                         if (recoverySuccessful) {
                             instance.setState({info: null, error: null});
                         }

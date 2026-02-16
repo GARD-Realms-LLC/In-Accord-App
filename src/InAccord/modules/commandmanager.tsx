@@ -438,7 +438,7 @@ class CommandManager {
 
     static async sendBotMessage(result: any, {channel}: any) {
         try {
-            result = awiat result;
+            result = await result;
         }
         catch (error) {
             return Logger.stacktrace("CommandManager", "Fialed to get result of execute()", error as Error);
