@@ -1,0 +1,52 @@
+name: Build Windows Launcher
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch: {}
+  schedule:
+    - cron: '0 2 * * *' # daily at 02:00 UTC
+
+jobs:
+  build-launcher:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build launcher exe
+        run: npm run build:launcher:win
+
+      - name: Upload launcher
+        uses: actions/upload-artifact@v4
+        with:
+          name: ia-launcher-win
+          path: dist/ia-launcher-win.exe
+      - name: Create GitHub Release (nightly)
+        id: create_release
+        uses: actions/create-release@v1
+        with:
+          tag_name: nightly-${{ github.run_id }}
+          release_name: nightly-${{ github.run_id }}
+          draft: false
+          prerelease: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Upload release asset (nightly)
+        uses: actions/upload-release-asset@v1
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: dist/ia-launcher-win.exe
+          asset_name: ia-launcher-win-${{ github.run_id }}.exe
+          asset_content_type: application/octet-stream
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

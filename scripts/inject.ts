@@ -12,6 +12,8 @@ const useiaRelease = args[0]?.toLowerCase() === "release";
 const releaseInput = (useiaRelease ? args[1] : args[0])?.toLowerCase();
 const release = releaseInput === "canary" ? "Discord Canary" : releaseInput === "ptb" ? "Discord PTB" : "Discord";
 
+const restoreMode = args.includes("restore") || args.includes("uninject") || args.includes("undo");
+
 const iaPath = useiaRelease
     ? path.resolve(__dirname, "..", "dist", "InAccord.asar")
     : path.resolve(__dirname, "..", "dist");
@@ -85,7 +87,41 @@ async function getDiscordCorePath() {
     console.log(`    ✅ Found ${release} in ${discordPath}`);
 
     const indexJs = path.join(discordPath, "index.js");
-    if (fs.existsSync(indexJs)) fs.unlinkSync(indexJs);
+    const backupJs = indexJs + ".ia.bak";
+
+    if (restoreMode) {
+        // Restore backup if present
+        if (fs.existsSync(backupJs)) {
+            try {
+                fs.copyFileSync(backupJs, indexJs);
+                fs.unlinkSync(backupJs);
+                console.log(`    ✅ Restored original index.js from ${backupJs}`);
+            }
+            catch (err) {
+                throw new Error(`Failed to restore backup: ${err && err.message || err}`);
+            }
+        }
+        else {
+            throw new Error(`No backup found to restore at ${backupJs}`);
+        }
+
+        console.log(`\nRestore complete for ${release}. Please restart Discord.`);
+        return;
+    }
+
+    // Create a backup of any existing index.js before modifying
+    if (fs.existsSync(indexJs)) {
+        if (!fs.existsSync(backupJs)) {
+            try {
+                fs.copyFileSync(indexJs, backupJs);
+                console.log(`    ✅ Backed up existing index.js to ${backupJs}`);
+            }
+            catch (err) {
+                console.warn(`    ⚠️ Failed to create backup of index.js: ${err && err.message || err}`);
+            }
+        }
+        try { fs.unlinkSync(indexJs); } catch {}
+    }
 
     if (process.env.WSL_DISTRO_NAME) {
         copyFiles(iaPath, path.join(discordPath, "InAccord"));

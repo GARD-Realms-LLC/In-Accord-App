@@ -1,0 +1,25 @@
+{
+  "name": "inaccord-launcher-test",
+  "version": "0.0.1",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder --win portable"
+  },
+  "build": {
+    "appId": "com.inaccord.launcher.test",
+    "productName": "InAccord Launcher Test",
+    "files": [
+      "**/*",
+      "../../Images/**"
+    ],
+    "directories": {
+      "output": "../../dist/launcher-test-build"
+    },
+    "win": { "target": ["portable"] }
+  },
+  "devDependencies": {
+    "electron": "^39.2.7",
+    "electron-builder": "^26.8.1"
+  }
+}

@@ -6,6 +6,22 @@ import {spawn} from "child_process";
 import ReactDevTools from "./reactdevtools";
 import * as IPCEvents from "@common/constants/ipcevents";
 
+// Small safe logger to help diagnose startup/injection issues when Discord exits too fast to read
+function safeLog(message: string) {
+    try {
+        const logPath = path.join(__dirname, "fatal_crash.log");
+        try { fs.appendFileSync(logPath, `\n[${new Date().toISOString()}] ${message}`); } catch {}
+        try {
+            // Also attempt to write into the InAccord data folder (userData sibling) so users can access logs
+            const alt = path.join(iaFolder || (electron.app.getPath("userData") + "/.."), "InAccord", "fatal_crash.log");
+            fs.appendFileSync(alt, `\n[${new Date().toISOString()}] ${message}`);
+        } catch {}
+    }
+    catch {
+        // ignore
+    }
+}
+
 // Build info file only exists for non-linux (for current injection)
 const appPath = electron.app.getAppPath();
 const buildInfoFile = path.resolve(appPath, "..", "build_info.json");
@@ -17,6 +33,8 @@ else iaFolder = process.env.XDG_CONFIG_HOME ? process.env.XDG_CONFIG_HOME : path
 iaFolder = path.join(iaFolder, "InAccord") + "/";
 
 let hasCrashed = false;
+// Track injection attempts per BrowserWindow to avoid infinite retry loops
+const injectionAttempts: WeakMap<BrowserWindow, number> = new WeakMap();
 export default class InAccord {
     static _settings: Record<string, Record<string, any>>;
 
@@ -30,10 +48,12 @@ export default class InAccord {
 
             // eslint-disable-next-line @typescript-eslint/no-require-imports
             this._settings = require(settingsFile) ?? {};
+            safeLog(`Loaded settings file for channel=${buildInfo.releaseChannel}: ${settingsFile}`);
             return this._settings[category]?.[key];
         }
         catch {
             this._settings = {};
+            safeLog(`Failed to load settings for category=${category} key=${key}; falling back to defaults`);
             return this._settings[category]?.[key];
         }
     }
@@ -57,22 +77,81 @@ export default class InAccord {
 
     static async injectRenderer(browserWindow: BrowserWindow) {
         const location = path.join(__dirname, "InAccord.js");
-        if (!fs.existsSync(location)) return; // TODO: cut a fatal log
-        const content = fs.readFileSync(location).toString();
-        const success = await browserWindow.webContents.executeJavaScript(`
-            (() => {
-                try {
-                    ${content}
-                    return true;
-                } catch(error) {
-                    console.error(error);
-                    return false;
-                }
-            })();
-            //# sourceURL=InAccord/InAccord.js
-        `);
+        if (!fs.existsSync(location)) {
+            safeLog(`InAccord renderer bundle not found at ${location}`);
+            return;
+        }
 
-        if (!success) return; // TODO: cut a fatal log
+        let content: string;
+        try {
+            content = fs.readFileSync(location).toString();
+        }
+        catch (err) {
+            safeLog(`Failed to read InAccord renderer bundle at ${location}: ${err && err.stack || err}`);
+            return;
+        }
+
+        safeLog(`Injecting renderer bundle into window id=${(browserWindow as any).id || 'unknown'}`);
+
+        // Before injecting, check whether the renderer has its webpack chunk array
+        // available. If not, retry a few times with a delay.
+        try {
+            const attempts = injectionAttempts.get(browserWindow) ?? 0;
+            const ready = await browserWindow.webContents.executeJavaScript("typeof window !== 'undefined' && !!window.webpackChunkdiscord_app && typeof window.webpackChunkdiscord_app.push === 'function'", true).catch(() => false);
+            const hasPreloadFn = await browserWindow.webContents.executeJavaScript("typeof window !== 'undefined' && typeof window.InAccordPreload === 'function'", true).catch(() => false);
+            if (!ready || !hasPreloadFn) {
+                if (!hasPreloadFn) safeLog('Renderer missing InAccordPreload function, will retry');
+                if (!ready) {
+                    if (attempts < 10) {
+                        injectionAttempts.set(browserWindow, attempts + 1);
+                        safeLog(`Renderer not ready for injection (attempt ${attempts + 1}), scheduling retry`);
+                        setTimeout(() => this.injectRenderer(browserWindow), 1000);
+                        return;
+                    }
+                    safeLog(`Renderer not ready after ${attempts} attempts, aborting inject`);
+                    return;
+                }
+                // If only preload function is missing but webpack is ready, retry briefly
+                injectionAttempts.set(browserWindow, attempts + 1);
+                if ((injectionAttempts.get(browserWindow) ?? 0) <= 10) {
+                    safeLog(`Preload function missing, retrying injection (attempt ${injectionAttempts.get(browserWindow)})`);
+                    setTimeout(() => this.injectRenderer(browserWindow), 500);
+                    return;
+                }
+                safeLog(`Preload function not available after retries, aborting inject`);
+                return;
+            }
+        } catch (checkErr) {
+            safeLog(`Error while checking renderer readiness: ${checkErr && checkErr.stack || checkErr}`);
+        }
+
+        try {
+            // Encode the renderer bundle as base64 to avoid breaking the wrapper when the bundle
+            // contains template literals or backticks. The renderer will decode and eval it.
+            const b64 = Buffer.from(content, 'utf8').toString('base64');
+            const wrapper = `
+                (function(){
+                    try {
+                        const src = atob('${b64}');
+                        (function(){ eval(src); }).call(window);
+                        return { success: true };
+                    } catch(error) {
+                        try { console.error(error); } catch {}
+                        return { success: false, message: (error && (error.message || String(error))) || 'unknown', stack: (error && error.stack) || null };
+                    }
+                })();
+                //# sourceURL=InAccord/InAccord.js
+            `;
+            const result = await browserWindow.webContents.executeJavaScript(wrapper, true);
+            if (!result || !result.success) {
+                safeLog(`Injection of renderer bundle returned failure: ${result && (result.message || JSON.stringify(result))}`);
+                if (result && result.stack) safeLog(`Injection stack: ${result.stack}`);
+                return;
+            }
+        } catch (err) {
+            safeLog(`Execution error while injecting renderer bundle: ${err && err.stack || err}`);
+            return;
+        }
     }
 
     static setup(browserWindow: BrowserWindow) {
@@ -81,9 +160,11 @@ export default class InAccord {
         try {
             // eslint-disable-next-line @typescript-eslint/no-require-imports
             process.env.DISCORD_RELEASE_CHANNEL = require(buildInfoFile).releaseChannel;
+            safeLog(`Detected release channel: ${process.env.DISCORD_RELEASE_CHANNEL}`);
         }
         catch {
             process.env.DISCORD_RELEASE_CHANNEL = "stable";
+            safeLog(`build_info.json missing, defaulting release channel to stable`);
         }
 
         // @ts-expect-error adding new property, don't want to override object
@@ -127,6 +208,7 @@ export default class InAccord {
 
         browserWindow.webContents.on("render-process-gone", () => {
             hasCrashed = true;
+            safeLog(`Renderer process gone for window (hasCrashed set).`);
         });
 
         // Seems to be windows exclusive. MacOS requires a build plist change

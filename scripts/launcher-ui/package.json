@@ -1,0 +1,39 @@
+{
+  "name": "inaccord-launcher-ui",
+  "version": "0.0.1",
+  "description": "InAccord Launcher UI - packaged with electron-builder",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder --win portable"
+  },
+  "build": {
+    "appId": "com.inaccord.launcher",
+    "productName": "InAccord Launcher",
+    "files": [
+      "**/*",
+      "../**",
+      "../../dist/**",
+      "../../Images/**",
+      "!node_modules/*/{CHANGELOG.md,README.md,readme.md,license,LICENSE*}"
+    ],
+    "directories": {
+      "output": "../../dist/launcher-build"
+    },
+    "extraFiles": [
+      "../launcher.js"
+    ],
+    "win": {
+      "target": [
+        "portable"
+      ]
+    },
+    "portable": {
+      "requestExecutionLevel": "user"
+    }
+  },
+  "devDependencies": {
+    "electron": "^39.2.7",
+    "electron-builder": "^26.8.1"
+  }
+}

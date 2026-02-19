@@ -3,6 +3,8 @@ import {ipcMain as ipc, BrowserWindow, app, dialog, systemPreferences, shell, ty
 
 import * as IPCEvents from "@common/constants/ipcevents";
 import Editor from "./editor";
+import * as fs from "fs";
+import * as path from "path";
 
 const getPath = (event: IpcMainEvent, pathReq: string) => {
     let returnPath;
@@ -161,6 +163,82 @@ const openDialog = (event: IpcMainInvokeEvent, options: Partial<DialogOptions> =
 const registerPreload = (_: IpcMainEvent, path: string) => {
     app.commandLine.appendSwitch("preload", path);
 };
+
+const launchDiscord = async (event: IpcMainInvokeEvent, opts: {channel?: string; patchStable?: boolean;} = {}) => {
+    const channel = opts.channel === "canary" ? "canary" : opts.channel === "ptb" ? "ptb" : "stable";
+    try {
+        // Windows launcher
+        if (process.platform === "win32") {
+            const baseDir = path.join(process.env.LOCALAPPDATA || "", (channel === "canary" ? "DiscordCanary" : channel === "ptb" ? "DiscordPTB" : "Discord"));
+            const updateExe = path.join(baseDir, "Update.exe");
+            if (!fs.existsSync(updateExe)) throw new Error(`Update.exe not found: ${updateExe}`);
+
+            let appPath: string | null = null;
+            if (fs.existsSync(baseDir)) {
+                const versions = fs.readdirSync(baseDir).filter((f) => fs.lstatSync(path.join(baseDir, f)).isDirectory() && f.startsWith("app-")).sort().reverse();
+                if (versions.length) appPath = path.join(baseDir, versions[0]);
+            }
+
+            const cmdParts: string[] = [];
+            if (channel !== "stable") cmdParts.push(`set "DISCORD_PRELOAD=${path.resolve(__dirname, "..", "..", "dist", "preload.js").replace(/"/g, '\\"')}"`);
+            if (opts.patchStable && appPath) cmdParts.push(`set "DISCORD_APP_PATH=${appPath.replace(/"/g, '\\"')}"`);
+            const processName = channel === "canary" ? "DiscordCanary.exe" : channel === "ptb" ? "DiscordPTB.exe" : "Discord.exe";
+            const startCmd = `start "" "${updateExe.replace(/"/g, '\\"')}" --processStart "${processName}"`;
+            const cmd = cmdParts.length ? `${cmdParts.join(' && ')} && ${startCmd}` : startCmd;
+            spawn("cmd.exe", ["/c", cmd], {detached: true, stdio: "ignore"}).unref();
+            return {ok: true};
+        }
+
+        // macOS
+        if (process.platform === "darwin") {
+            const appName = channel === "canary" ? "Discord Canary" : channel === "ptb" ? "Discord PTB" : "Discord";
+            const env = Object.assign({}, process.env);
+            if (channel !== "stable") env.DISCORD_PRELOAD = path.resolve(__dirname, "..", "..", "dist", "preload.js");
+            spawn("open", ["-a", appName], {env, detached: true, stdio: "ignore"}).unref();
+            return {ok: true};
+        }
+
+        // Linux
+        const homedir = process.env.XDG_CONFIG_HOME || (process.env.HOME ? path.join(process.env.HOME, ".config") : "");
+        const base = path.join(homedir, (channel === "canary" ? "discordcanary" : channel === "ptb" ? "discordptb" : "discord"));
+        if (!fs.existsSync(base)) throw new Error(`Cannot find Discord directory: ${base}`);
+        const versions = fs.readdirSync(base).filter((f) => fs.lstatSync(path.join(base, f)).isDirectory() && f.startsWith("app-")).sort().reverse();
+        if (!versions.length) throw new Error(`No app-* versions found in ${base}`);
+        const bin = path.join(base, versions[0], "Discord");
+        if (!fs.existsSync(bin)) throw new Error(`Discord binary not found at ${bin}`);
+        const env = Object.assign({}, process.env);
+        if (channel !== "stable") env.DISCORD_PRELOAD = path.resolve(__dirname, "..", "..", "dist", "preload.js");
+        spawn(bin, {env, detached: true, stdio: "ignore"}).unref();
+        return {ok: true};
+    }
+    catch (err) {
+        return {ok: false, error: err && err.message ? err.message : String(err)};
+    }
+};
+
+const restoreInjection = async (event: IpcMainInvokeEvent, opts: {channel?: string;} = {}) => {
+    const channel = opts.channel === "canary" ? "canary" : opts.channel === "ptb" ? "ptb" : "stable";
+    try {
+        if (process.platform !== "win32") return {ok: false, error: "restore only implemented on Windows in this helper"};
+        const baseDir = path.join(process.env.LOCALAPPDATA || "", (channel === "canary" ? "DiscordCanary" : channel === "ptb" ? "DiscordPTB" : "Discord"));
+        let appPath: string | null = null;
+        if (fs.existsSync(baseDir)) {
+            const versions = fs.readdirSync(baseDir).filter((f) => fs.lstatSync(path.join(baseDir, f)).isDirectory() && f.startsWith("app-")).sort().reverse();
+            if (versions.length) appPath = path.join(baseDir, versions[0]);
+        }
+        if (!appPath) return {ok: false, error: `Could not locate ${channel} app-* directory`};
+
+        const injector = path.join(__dirname, "..", "..", "..", "scripts", "inject.js");
+        if (!fs.existsSync(injector)) return {ok: false, error: `injector script not found: ${injector}`};
+
+        const child = spawn(process.execPath, [injector, '--restore', '--app', appPath], {stdio: 'ignore', detached: true});
+        child.unref();
+        return {ok: true};
+    }
+    catch (err) {
+        return {ok: false, error: err && err.message ? err.message : String(err)};
+    }
+};
 const openEditor = (_: IpcMainInvokeEvent, type: "plugin" | "theme", filename: string) => {
     Editor.open(type, filename);
 };
@@ -189,6 +267,8 @@ export default class IPCMain {
             ipc.on(IPCEvents.EDITOR_SETTINGS_GET, getSettings);
             ipc.handle(IPCEvents.GET_ACCENT_COLOR, getAccentColor);
             ipc.handle(IPCEvents.RUN_SCRIPT, runScript);
+            ipc.handle(IPCEvents.LAUNCH_DISCORD, launchDiscord);
+            ipc.handle(IPCEvents.INJECTOR_RESTORE, restoreInjection);
             ipc.handle(IPCEvents.OPEN_DIALOG, openDialog);
             ipc.handle(IPCEvents.OPEN_WINDOW, createBrowserWindow);
             ipc.handle(IPCEvents.EDITOR_OPEN, openEditor);

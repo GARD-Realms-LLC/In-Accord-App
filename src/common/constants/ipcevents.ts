@@ -24,3 +24,5 @@ export const EDITOR_OPEN                = "ia-editor-open";
 export const EDITOR_SHOULD_SHOW_WARNING = "ia-editor-show-warning";
 export const EDITOR_SETTINGS_GET        = "ia-editor-settings-get";
 export const EDITOR_SETTINGS_UPDATE     = "ia-editor-settings-update";
+export const LAUNCH_DISCORD             = "ia-launch-discord";
+export const INJECTOR_RESTORE          = "ia-injector-restore";

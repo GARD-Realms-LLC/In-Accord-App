@@ -15,8 +15,10 @@ class BrowserWindow extends electron.BrowserWindow {
      * @returns
      */
     constructor(options: BrowserWindowConstructorOptions) {
-        if (!options || !options.webPreferences || !options.webPreferences.preload || !options.title) return super(options);
-        const originalPreload = options.webPreferences.preload;
+        if (!options) return super(options);
+        // Ensure webPreferences exists so we can inject our preload even when Discord doesn't provide one
+        if (!options.webPreferences) options.webPreferences = {} as any;
+        const originalPreload = options.webPreferences.preload ?? null;
         options.webPreferences.preload = path.join(__dirname, "preload.js");
 
         // Don't allow just "truthy" values

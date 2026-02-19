@@ -33,6 +33,14 @@ export default new class IPCRenderer {
         return ipc.invoke(IPCEvents.RUN_SCRIPT, script);
     }
 
+    launchDiscord(channel: string = "stable", options: {patchStable?: boolean} = {}) {
+        return ipc.invoke(IPCEvents.LAUNCH_DISCORD, {channel, patchStable: !!options.patchStable});
+    }
+
+    restoreInjection(channel: string = "stable") {
+        return ipc.invoke(IPCEvents.INJECTOR_RESTORE, {channel});
+    }
+
     openWindow(url: string, options: {windowOptions: object; closeOnUrl: boolean;}) {
         return ipc.invoke(IPCEvents.OPEN_WINDOW, url, options);
     }

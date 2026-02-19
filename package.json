@@ -11,12 +11,18 @@
 		"start": "bun scripts/build.ts --watch",
 		"build": "bun scripts/build.ts",
 		"run:discord": "node scripts/run-discord.js",
+		"launcher": "node scripts/launcher.js",
+		"launcher:ui": "electron scripts/launcher-ui/main.js",
+		"inject:apply": "node scripts/inject.js --apply",
+		"inject:restore": "node scripts/inject.js --restore",
 		"run:stable": "node scripts/run-discord.js stable",
 		"run:ptb": "node scripts/run-discord.js ptb",
 		"run:canary": "node scripts/run-discord.js canary",
 		"run:stable:release": "node scripts/run-discord.js stable --release",
 		"run:ptb:release": "node scripts/run-discord.js ptb --release",
 		"run:canary:release": "node scripts/run-discord.js canary --release",
+		"build:launcher:win": "npx pkg scripts/launcher_pkg.js --targets node18-win-x64 --output dist/ia-launcher-win.exe",
+		"build:launcher:electron": "cd scripts/launcher-ui && npx electron-builder --win portable",
 		"lint": "eslint .",
 		"test": "bun test tests/"
 	},
@@ -62,6 +68,13 @@
 		"webpack": "^5.105.2",
 		"webpack-bundle-analyzer": "^5.1.0"
 	},
+	"devDependencies": {
+		"pkg": "^5.8.1"
+	},
+	"pkg": {
+		"assets": ["dist/preload.js", "dist/**/*"],
+		"scripts": ["scripts/launcher.js"]
+	},
 	"build": {
 		"appId": "app.InAccord.installer",
 		"productName": "InAccord",
@@ -80,7 +93,7 @@
 		"portable": {
 			"requestExecutionLevel": "user",
 			"useZip": true,
-			"splashImage": "assets/images/splash.bmp"
+			"splashImage": "Images/splash.jpg"
 		},
 		"mac": {
 			"artifactName": "${productName}-Mac.${ext}",
