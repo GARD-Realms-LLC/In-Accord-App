@@ -1,6 +1,6 @@
-# InAccord Installer
+# In-Accord APP - Installer/Launcher
 
-A standalone installer and integration toolkit for InAccord.
+A standalone Installer/Launcher and integration toolkit for Discord..
 
 ## Requirements
 
