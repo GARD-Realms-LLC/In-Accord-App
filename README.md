@@ -1,5 +1,5 @@
 <div align="center">
-  <img alt="In-Accord Logo" width="180" src="http://pub-7d4119dd86a04c7bbdbcc230a9d161e7.r2.dev/Images/In-Accord%20working.png" />
+  <img alt="In-Accord Logo" width="180" src="http://https://pub-7d4119dd86a04c7bbdbcc230a9d161e7.r2.dev/Images/Installer.png" />
   <h1>In-Accord APP</h1>
   A standalone Installer/Launcher and integration toolkit for Discord..
 
