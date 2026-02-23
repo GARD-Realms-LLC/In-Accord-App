@@ -1,70 +1,64 @@
-# In-Accord App
+<div align="center">
+  <img alt="In-Accord APP" width="180" src="https://pub-7d4119dd86a04c7bbdbcc230a9d161e7.r2.dev/Images/Installer.png" />
+  <h1>In-Accord APP</h1>
+  A standalone Installer/Launcher and integration toolkit for Discord..
 
-Welcome to the In-Accord App repository! This is a comprehensive application suite designed to help users achieve harmony and agreement in their digital workflows.
+## Requirements
 
-## Overview
+- [Bun](https://bun.sh/) (latest stable recommended)
+- Node.js (for helper scripts that run via `node`)
+- Discord Stable/PTB/Canary (optional, for injection workflow)
 
-The In-Accord App is a suite of tools and applications that work together to provide a seamless user experience.
+## Development
 
-## Project Structure
+From the repository root (`E:\InAccord-Apps`):
 
-```
-In-Accord-App/
-├── docs/               # Documentation
-├── src/                # Source code
-├── tests/              # Test suites
-├── config/             # Configuration files
-└── scripts/            # Utility scripts
-```
+- Build once:
+  - `bun run build`
+- Build in watch mode:
+  - `bun run start`
 
-## Getting Started
+## Run / Inject into Discord
 
-### Prerequisites
+Quick commands:
 
-- Node.js (v18 or higher)
-- npm or yarn
+- Stable: `bun run run:stable`
+- PTB: `bun run run:ptb`
+- Canary: `bun run run:canary`
 
-### Installation
+Release bundle variants:
 
-```bash
-# Clone the repository
-git clone https://github.com/GARD-Realms-LLC/In-Accord-App.git
+- Stable: `bun run run:stable:release`
+- PTB: `bun run run:ptb:release`
+- Canary: `bun run run:canary:release`
 
-# Navigate to the project directory
-cd In-Accord-App
+These commands:
 
-# Install dependencies
-npm install
-```
+1. Build the project
+2. Optionally pack `.asar` (release variants)
+3. Inject into the selected Discord channel
 
-### Development
+After injection, fully quit Discord (including tray/background) and reopen it.
 
-```bash
-# Run development server
-npm run dev
+## Platform Compatibility
 
-# Build for production
-npm run build
+| Platform | Status | Notes |
+|---|---|---|
+| Windows | ✅ Supported | Primary injection path is implemented and tested in this repo. |
+| macOS | ✅ Supported | Desktop-only support through Electron/Discord desktop integration. |
+| Linux | ✅ Supported* | Supported for desktop Discord; behavior can vary by packaging (native, Flatpak, Snap, etc.). |
+| Web (browser Discord) | ❌ Not supported | This project relies on Electron main/preload injection and cannot run in browser Discord as-is. |
 
-# Run tests
-npm test
-```
+\* Linux support may require environment/path adjustments depending on distro and Discord install method.
 
-## Features
+## Quality Checks
 
-- Modern and responsive design
-- Modular architecture
-- Comprehensive test coverage
-- Easy to extend and customize
+- Lint: `bun run lint`
+- Test: `bun run test`
 
-## Contributing
+> Note: this repository may not include active tests in all environments.
 
-Contributions are welcome! Please read our contributing guidelines before submitting pull requests.
+## Notes
 
-## License
-
-This project is licensed under the GNU General Public License v3.0 - see the [LICENSE](LICENSE) file for details.
-
-## Support
-
-For support, please open an issue in the GitHub repository or contact the maintainers.
+- Source structure includes Electron main/preload and InAccord runtime modules under `src/`.
+- Build outputs are written to `dist/`.

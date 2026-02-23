@@ -1,0 +1,36 @@
+.ia-scroller-base {
+    position: relative;
+    box-sizing: border-box;
+    min-height: 0;
+    flex: 1 1 auto;
+}
+
+@supports not selector(::-webkit-scrollbar) {
+    .ia-scroller-thin {
+        scrollbar-width: thin;
+        scrollbar-color: var(--scrollbar-thin-thumb) var(--scrollbar-thin-track);
+    }
+}
+
+.ia-scroller-thin::-webkit-scrollbar-track {
+    border-color: var(--scrollbar-thin-track);
+    background-color: var(--scrollbar-thin-track);
+    border: 2px solid var(--scrollbar-thin-track);
+}
+
+.ia-scroller-thin::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+.ia-scroller-thin::-webkit-scrollbar-corner {
+    background-color: transparent;
+}
+
+.ia-scroller-thin::-webkit-scrollbar-thumb {
+    background-clip: padding-box;
+    border: 2px solid transparent;
+    border-radius: 4px;
+    background-color: var(--scrollbar-thin-thumb);
+    min-height: 40px;
+}

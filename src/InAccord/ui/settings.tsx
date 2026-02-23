@@ -1,0 +1,557 @@
+import React, {ReactDOM} from "@modules/react";
+import Settings from "@stores/settings";
+import JsonStore from "@stores/json";
+import {Filters, getByKeys, getBySource, getLazy, getLazyByPrototypes, getLazyByStrings, getMangled} from "@webpack";
+import Patcher from "@modules/patcher";
+
+import ReactUtils from "@api/reactutils";
+
+import AddonPage from "@ui/settings/addonpage";
+import Header from "@ui/settings/sidebarheader";
+
+import type {SettingsCategory} from "@data/settings";
+import type {ComponentType, ReactNode} from "react";
+import VersionInfo from "./misc/versioninfo";
+import {findInTree} from "@common/utils";
+import {useForceUpdate, useStateFromStores} from "./hooks";
+import SettingsPanel from "./settings/panel";
+import {CustomCSS} from "@builtins/builtins";
+import {lucideToDiscordIcon, type DiscordIcon} from "@utils/icon";
+import DiscordModules from "@modules/discordmodules";
+import Button from "./base/button";
+import {HistoryIcon, Settings2Icon} from "lucide-react";
+import {t} from "@common/i18n";
+import Modals from "./modals";
+import changelog from "@data/changelog";
+
+const UserSettings = getByKeys<any>(["openUserSettings", "openUserSettingsFromParsedUrl"]);
+
+const SettingsMenuIcon: DiscordIcon = lucideToDiscordIcon(Settings2Icon);
+
+interface Section {
+    section: string;
+    element?: (ComponentType | (() => ReactNode));
+    label?: string;
+    className?: string;
+    onClick?: (t: any) => void;
+    tabPredicate?: () => boolean;
+}
+
+interface PaneLayout {
+    buildLayout(): [];
+    StronglyDiscouragedCustomComponent(): React.ReactNode;
+
+    useTitle?(): React.ReactNode;
+}
+interface PanelLayout {
+    buildLayout(): [] | [pane: PaneLayout];
+    StronglyDiscouragedCustomComponent(): React.ReactNode;
+    useTitle(): React.ReactNode;
+}
+
+type Trialing = ({
+    type: 0,
+} | {
+    type: 1,
+    badgeComponent?: unknown;
+} | {
+    type: 2,
+    useCount(): number;
+} | {
+    type: 3,
+    useDecoration(x: unknown, y: unknown): React.ReactNode;
+}) & {
+    getDismissibleContentTypes?(): unknown[];
+};
+
+interface SidebarItemLayout {
+    icon: DiscordIcon;
+    useTitle(): React.ReactNode;
+    getLegacySearchKey(): string;
+    buildLayout(): [] | [panel: PanelLayout];
+
+    onClick?(): void;
+    usePredicate?(): boolean;
+
+    trialing?: Trialing;
+}
+
+interface SectionLayout {
+    useTitle(): React.ReactNode;
+    buildLayout(): SidebarItemLayout[];
+    usePredicate?(): boolean;
+}
+
+interface LayoutBuilder {
+    pane?(key: string, panel: PaneLayout): PaneLayout;
+    panel(key: string, panel: PanelLayout): PanelLayout;
+    sidebarItem(key: string, panel: SidebarItemLayout): SidebarItemLayout;
+    section(key: string, panel: SectionLayout): SectionLayout;
+}
+
+type LayoutConstructor = {
+    title(): React.ReactNode;
+    icon: DiscordIcon;
+
+    predicate?(): boolean;
+} & ({
+    header(): React.ReactNode;
+    render(): React.ReactNode;
+} | {
+    onClick(): void;
+});
+
+const useCustomCSSClickable = () => {
+    const state = useStateFromStores(Settings, () => Settings.get<string>("settings", "customcss", "openAction"));
+
+    return ["detached", "external", "system"].includes(state);
+};
+const useCustomCSSViewable = () => !useCustomCSSClickable();
+
+function LayerSettingTitle() {
+    const [node, setNode] = React.useState<HTMLElement | undefined | null | void>();
+
+    return (
+        <>
+            <div
+                className="ia-sidebar-header"
+                ref={(v) => {
+                    setNode(v?.parentElement?.parentElement || v);
+                    return setNode;
+                }}
+            >
+                InAccord
+            </div>
+            {node && ReactDOM.createPortal(
+                <DiscordModules.Tooltip color="primary" position="top" text={t("Modals.changelog")}>
+                    {props =>
+                        <Button {...props} className="ia-changelog-button" look={Button.Looks.BLANK} color={Button.Colors.TRANSPARENT} size={Button.Sizes.NONE} onClick={() => Modals.showChangelogModal(changelog)}>
+                            <HistoryIcon className="ia-icon" size="16px" />
+                        </Button>
+                    }
+                </DiscordModules.Tooltip>,
+                node
+            )}
+        </>
+    );
+}
+
+export const SettingsTitleContext = React.createContext((v: React.ReactNode) => v);
+
+export default new class SettingsRenderer {
+    initialize() {
+        this.patchSections();
+        this.patchModalSettings();
+        this.patchVersionInformation();
+    }
+
+    onDrawerToggle(collection: string, group: string, state: boolean) {
+        const drawerStates: Partial<Record<string, Record<string, boolean>>> = JsonStore.get("misc", "drawerStates") || {};
+        if (!drawerStates[collection]) drawerStates[collection] = {};
+        drawerStates[collection][group] = state;
+        JsonStore.set("misc", "drawerStates", drawerStates);
+    }
+
+    getDrawerState(collection: string, group: string, defaultValue: boolean) {
+        const drawerStates: Partial<Record<string, Record<string, boolean>>> = JsonStore.get("misc", "drawerStates") || {};
+        if (!drawerStates[collection]) return defaultValue;
+        if (!drawerStates[collection].hasOwnProperty(group)) return defaultValue;
+        return drawerStates[collection][group];
+    }
+
+    onChange(onChange: (c: string, s: string, v: unknown) => void) {
+        return (categoryId: string, settingId: string, value: unknown) => {
+            onChange(categoryId, settingId, value);
+            if (settingId === "customcss") {
+                setTimeout(this.forceUpdate.bind(this), 250);
+            }
+        };
+    }
+
+    buildSettingsPanel(id: string, title: string, groups: SettingsCategory[], onChange: (c: string, s: string, v: unknown) => void) {
+        return (React.createElement as any)(SettingsPanel, {id, title, groups, onChange: this.onChange(onChange).bind(this), onDrawerToggle: this.onDrawerToggle.bind(this), getDrawerState: this.getDrawerState.bind(this)});
+    }
+
+    getAddonPanel(title: string, options = {}) {
+        return (props: any) => {
+            return React.createElement(AddonPage, Object.assign({}, {
+                title: title,
+                ...props
+            }, options));
+        };
+    }
+
+    async patchSections() {
+        // Discord changes this layer frequently on Canary.
+        // Try several known method names so the InAccord settings section doesn't disappear.
+        const UserSettingsLayer =
+            await getLazyByPrototypes<any>(["getPredicateSections"]).catch(() => null)
+            || await getLazyByPrototypes<any>(["getSections"]).catch(() => null)
+            || await getLazyByPrototypes<any>(["getVisibleSections"]).catch(() => null);
+
+        if (!UserSettingsLayer || !UserSettingsLayer.prototype) return;
+
+        const methodName = (typeof UserSettingsLayer.prototype.getPredicateSections === "function")
+            ? "getPredicateSections"
+            : (typeof UserSettingsLayer.prototype.getSections === "function")
+                ? "getSections"
+                : (typeof UserSettingsLayer.prototype.getVisibleSections === "function")
+                    ? "getVisibleSections"
+                    : null;
+
+        if (!methodName) return;
+
+        Patcher.after("SettingsManager", UserSettingsLayer.prototype, methodName as any, (thisObject: unknown, _: unknown, returnValue: any) => {
+            let location = returnValue.findIndex((s: Section) => s.section.toLowerCase() == "changelog") - 1;
+            if (location < 0) return;
+            const insert = (section: Section) => {
+                returnValue.splice(location, 0, section);
+                location++;
+            };
+            insert({section: "DIVIDER"});
+            insert({section: "CUSTOM", element: Header});
+            for (const collection of Settings.collections) {
+                insert({
+                    section: collection.id,
+                    label: collection.name.toString(),
+                    className: `ia-${collection.id}-tab`,
+                    element: () => this.buildSettingsPanel(collection.id, collection.name, collection.settings, Settings.onSettingChange.bind(Settings, collection.id))
+                });
+            }
+            for (const panel of Settings.panels.sort((a, b) => a.order > b.order ? 1 : -1)) {
+                if (panel.clickListener) panel.onClick = () => panel.clickListener?.(thisObject);
+                if (!panel.className) panel.className = `ia-${panel.id}-tab`;
+                if (panel.type === "addon" && !panel.element) panel.element = this.getAddonPanel(panel.label, {store: panel.manager});
+                insert({
+                    section: panel.id,
+                    label: panel.label.toString(),
+                    className: panel.className,
+                    element: panel.element,
+                    onClick: panel.onClick
+                });
+            }
+        });
+    }
+
+    private layoutBuilder?: LayoutBuilder;
+    private getLayoutBuilder() {
+        if (this.layoutBuilder) return this.layoutBuilder;
+
+        const layoutModuleRaw = getBySource<Record<string, any>>(["$Root", "buildLayout"], {searchDefault: false})!;
+
+        const out: Partial<LayoutBuilder> = {};
+        for (const key in layoutModuleRaw) {
+            if (!Object.hasOwn(layoutModuleRaw, key)) continue;
+
+            const match = String(layoutModuleRaw[key]).match(/\..{1,3}\.(.+?),/);
+
+            if (match) {
+                const outKey = match[1].toLowerCase().replace(/_([a-z])/gi, (_, letter) => letter.toUpperCase());
+
+                Object.defineProperty(out, outKey, {
+                    value(id: string, ...args: any) {
+                        id = `inaccord_${id}_${outKey}`;
+
+                        return layoutModuleRaw[key](id, ...args);
+                    }
+                });
+            }
+        }
+
+        return this.layoutBuilder = out as LayoutBuilder;
+    }
+
+    async patchModalSettings() {
+        const rootLayout = await getLazy<{ key: "$Root"; buildLayout(): SectionLayout[]; }>(m => m?.key === "$Root", {searchExports: true, searchDefault: false});
+        if (!rootLayout) return;
+
+        this.patchSettingsSearch();
+
+        const layoutBuilder = this.getLayoutBuilder();
+
+        const section = layoutBuilder.section("inaccord", {
+            buildLayout: () => {
+                const layouts: SidebarItemLayout[] = [];
+
+                const insert = (key: string, item: LayoutConstructor) => {
+                    let layout: [] | [panel: PanelLayout] = [];
+
+                    if ("render" in item) {
+                        let panelLayout: [] | [pane: PaneLayout] = [];
+
+                        if (layoutBuilder.pane) {
+                            const pane = layoutBuilder.pane(key, {
+                                buildLayout: () => [],
+                                StronglyDiscouragedCustomComponent: item.render,
+                                useTitle: item.header
+                            });
+
+                            panelLayout = [pane];
+                        }
+
+                        const panel = layoutBuilder.panel(key, {
+                            buildLayout: () => panelLayout,
+                            StronglyDiscouragedCustomComponent: item.render,
+                            useTitle: item.header
+                        });
+
+                        layout = [panel];
+                    }
+
+                    const sidebar = layoutBuilder.sidebarItem(key, {
+                        buildLayout: () => layout,
+                        useTitle: item.title,
+                        icon: item.icon,
+                        getLegacySearchKey: () => `inaccord_${key}`,
+                        usePredicate: () => true
+                    });
+
+                    if (typeof item.predicate === "function") {
+                        sidebar.usePredicate = () => item.predicate!();
+                    }
+
+                    if ("onClick" in item) {
+                        sidebar.onClick = item.onClick;
+                    }
+
+                    layouts.push(sidebar);
+                };
+
+                const makeSettingsPanelProvider = (children: React.ReactNode) => {
+                    const ref: { current: { text?: React.ReactNode; children?: React.ReactNode; }; } = { current: {} };
+
+                    let forceUpdate: () => void;
+                    function PanelHeader() {
+                        const [node, setNode] = React.useState<HTMLElement | undefined>();
+                        forceUpdate = useForceUpdate()[1];
+
+                        return (
+                            <>
+                                <div className="ia-settings-page-title" ref={(v) => {
+                                    if (v?.parentElement?.parentElement) {
+                                        v.parentElement.parentElement.classList.add("ia-settings-title-extend");
+                                        setNode(v.parentElement.parentElement);
+                                    }
+                                    else {
+                                        setNode(v!);
+                                    }
+
+                                    return () => setNode(undefined);
+                                }}>
+                                    {ref.current.text}
+                                </div>
+
+                                {node && ReactDOM.createPortal(
+                                    <div className="ia-settings-page-title-children">{ref.current.children}</div>,
+                                    node
+                                )}
+                            </>
+                        );
+                    }
+
+                    return {
+                        header: () => <PanelHeader />,
+                        render: () => (
+                            <SettingsTitleContext value={(value) => {
+                                ref.current = (value as {props: typeof ref["current"];}).props;
+                                forceUpdate();
+                                return null;
+                            }}>
+                                {children}
+                            </SettingsTitleContext>
+                        )
+                    };
+                };
+
+                for (const collection of Settings.collections) {
+                    insert(collection.id, {
+                        ...makeSettingsPanelProvider(this.buildSettingsPanel(collection.id, collection.name, collection.settings, Settings.onSettingChange.bind(Settings, collection.id))),
+                        icon: SettingsMenuIcon,
+                        title: () => collection.name
+                    });
+                }
+
+                for (const panel of Settings.panels.sort((a, b) => a.order > b.order ? 1 : -1)) {
+                    if (panel.type === "addon" && !panel.element) panel.element = this.getAddonPanel(panel.label, {store: panel.manager});
+
+                    const icon = panel.discordIcon || (panel.icon ? lucideToDiscordIcon(panel.icon) : () => panel.id);
+
+                    if (panel.clickListener && !panel.element) {
+                        insert(panel.id, {
+                            icon,
+                            title: () => panel.label,
+                            onClick: () => panel.clickListener?.(undefined)
+                        });
+                        continue;
+                    }
+
+                    if (panel.id === "customcss") {
+                        insert("customcss_tab", {
+                            ...makeSettingsPanelProvider(React.createElement(panel.element!)),
+                            icon,
+                            title: () => panel.label,
+                            predicate: useCustomCSSViewable
+                        });
+                        insert("customcss_clickable", {
+                            icon,
+                            title: () => panel.label,
+                            predicate: useCustomCSSClickable,
+                            onClick: () => CustomCSS.open()
+                        });
+
+                        continue;
+                    }
+
+                    insert(panel.id, {
+                        ...makeSettingsPanelProvider(React.createElement(panel.element!)),
+                        icon,
+                        title: () => panel.label,
+                    });
+                }
+
+                return layouts;
+            },
+            useTitle: () => Object.assign(<LayerSettingTitle />, {toString: () => "InAccord"}),
+        });
+
+        Patcher.after("SettingsManager", rootLayout, "buildLayout", (_that, _args, res) => {
+            const activityIndex = res.findIndex((layout) => (layout as any).key === "activity_section");
+            const index = activityIndex < 0 ? res.length : activityIndex + 1;
+
+            res.splice(index, 0, section);
+        });
+    }
+
+    patchSettingsSearch() {
+        const search = getMangled<{ search(): Record<string, any>; }>(".PRIVACY_AND_SAFETY_PERSISTENT_VERIFICATION_CODES]", {
+            search: Filters.byStrings(".PRIVACY_AND_SAFETY_PERSISTENT_VERIFICATION_CODES]")
+        });
+
+        Patcher.after("SettingsManager", search, "search", (_that, _args, res) => {
+            res = {...res};
+
+            function insert(key: string, item: {label: string; searchableTitles: string[];}) {
+                res[`inaccord_${key}`] = {
+                    ...item,
+                    ariaLabel: item.label,
+                    section: "inaccord"
+                };
+            }
+
+            for (const collection of Settings.collections) {
+                const items = collection.settings.map(m => [m.name, m.settings.map(setting => setting.name)]).flat(2) as string[];
+
+                insert(collection.id, {
+                    label: collection.name,
+                    searchableTitles: ["inaccord", collection.name, ...items]
+                });
+            }
+
+            for (const panel of Settings.panels.sort((a, b) => a.order > b.order ? 1 : -1)) {
+                const content = {
+                    label: panel.label,
+                    searchableTitles: [
+                        "inaccord",
+                        panel.label,
+                        typeof panel.searchable === "function" ? panel.searchable().filter(m => typeof m === "string") : []
+                    ].flat()
+                };
+
+                if (panel.id === "customcss") {
+                    insert("customcss_tab", content);
+                    insert("customcss_clickable", content);
+                    continue;
+                }
+
+                insert(panel.id, content);
+            }
+
+            return Object.freeze(res);
+        });
+    }
+
+    async patchVersionInformation() {
+        const versionDisplayModule = await getLazyByStrings<{Z(): void;}>(["copyValue", "RELEASE_CHANNEL"], {defaultExport: false});
+        if (!versionDisplayModule?.Z) return;
+
+        Patcher.after("SettingsManager", versionDisplayModule, "Z", () => {
+            return React.createElement(VersionInfo);
+        });
+    }
+
+    public openSettingsPage(key: string) {
+        const baseKey = key === "customcss" ? "customcss_tab" : key;
+        const altKey = baseKey.endsWith("s") ? baseKey.slice(0, -1) : `${baseKey}s`;
+
+        const viewClass = getByKeys<{standardSidebarView: string;}>(["standardSidebarView"])?.standardSidebarView.split(" ")[0];
+        const node = viewClass ? document.querySelector(`.${viewClass}`) : null;
+        if (node) {
+            const settingsView = findInTree(
+                ReactUtils.getInternalInstance(node),
+                (m: {onSetSection?: (id: string) => void;}) => m && typeof m.onSetSection === "function",
+                {walkable: ["child", "memoizedProps", "props", "children", "return", "stateNode"]}
+            ) as {onSetSection?: (id: string) => void;} | undefined;
+
+            if (settingsView?.onSetSection) {
+                const sectionCandidates = Array.from(new Set([baseKey, altKey, key]));
+                for (const sectionKey of sectionCandidates) {
+                    try {
+                        settingsView.onSetSection(sectionKey);
+                        return;
+                    }
+                    catch {}
+                }
+            }
+        }
+
+        const candidates = Array.from(new Set([
+            {route: `inaccord_${baseKey}_panel`, section: baseKey},
+            {route: `inaccord_${baseKey}_sidebarItem`, section: baseKey},
+            {route: `inaccord_${baseKey}`, section: baseKey},
+
+            {route: `inaccord_${altKey}_panel`, section: altKey},
+            {route: `inaccord_${altKey}_sidebarItem`, section: altKey},
+            {route: `inaccord_${altKey}`, section: altKey},
+
+            {route: `inaccord_${key}_panel`, section: key},
+            {route: `inaccord_${key}_sidebarItem`, section: key},
+            {route: `inaccord_${key}`, section: key}
+        ].map((value) => `${value.route}|${value.section}`))).map((packed) => {
+            const split = packed.split("|");
+            return {route: split[0], section: split[1]};
+        });
+
+        let opened = false;
+        for (const candidate of candidates) {
+            try {
+                const result = UserSettings?.openUserSettings?.(candidate.route, {section: candidate.section});
+                if (typeof result === "boolean") {
+                    if (result) {
+                        opened = true;
+                        break;
+                    }
+                    continue;
+                }
+                if (typeof result !== "undefined") {
+                    opened = true;
+                    break;
+                }
+
+                UserSettings?.openUserSettingsFromParsedUrl?.(candidate.route, {section: candidate.section});
+                opened = true;
+                break;
+            }
+            catch {}
+        }
+
+        if (!opened) this.forceUpdate();
+    }
+
+    forceUpdate() {
+        const viewClass = getByKeys<{standardSidebarView: string;}>(["standardSidebarView"])?.standardSidebarView.split(" ")[0];
+        const node = document.querySelector(`.${viewClass}`);
+        if (!node) return;
+        const stateNode = findInTree(ReactUtils.getInternalInstance(node), (m: {getPredicateSections: any;}) => m && m.getPredicateSections, {walkable: ["return", "stateNode"]});
+        if (stateNode) stateNode.forceUpdate();
+    }
+};

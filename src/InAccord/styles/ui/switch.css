@@ -1,0 +1,114 @@
+/* Switches */
+
+.ia-switch {
+    position: relative;
+    transition: 250ms cubic-bezier(0, 0.3, 0.7, 1) filter, 250ms cubic-bezier(0, 0.3, 0.7, 1) opacity;
+}
+
+.ia-switch-body {
+    --switch-color: rgb(114, 118, 125);
+    --symbol1path: path('M5.13231 6.72963L6.7233 5.13864L14.855 13.2704L13.264 14.8614L5.13231 6.72963Z');
+    --symbol2path: path('M13.2704 5.13864L14.8614 6.72963L6.72963 14.8614L5.13864 13.2704L13.2704 5.13864Z');
+
+    border-radius: 14px;
+    width: 40px;
+    height: 24px;
+    background-color: var(--switch-color);
+    transition: 250ms cubic-bezier(0, 0.3, 0.7, 1) background-color;
+    position: relative;
+}
+
+.ia-switch input:active + .ia-switch-body {
+    --switch-color: var(--ia-brand);
+}
+
+.ia-switch input:checked + .ia-switch-body {
+    --switch-color: var(--ia-brand);
+    --symbol1path: path('M7.89561 14.8538L6.30462 13.2629L14.3099 5.25755L15.9009 6.84854L7.89561 14.8538Z');
+    --symbol2path: path('M4.08643 11.0903L5.67742 9.49929L9.4485 13.2704L7.85751 14.8614L4.08643 11.0903Z');
+}
+
+.full-motion .ia-switch input:active + .ia-switch-body {
+    --symbol1path: path('M6.56666 11.0013L6.56666 8.96683L13.5667 8.96683L13.5667 11.0013L6.56666 11.0013Z');
+    --symbol2path: path('M13.5582 8.96683L13.5582 11.0013L6.56192 11.0013L6.56192 8.96683L13.5582 8.96683Z');
+}
+
+.ia-switch input:checked:active + .ia-switch-body {
+    --switch-color: var(--ia-brand);
+}
+
+.full-motion .ia-switch input:checked:active + .ia-switch-body {
+    --symbol1path: path('M6.56666 11.0013L6.56666 8.96683L13.5667 8.96683L13.5667 11.0013L6.56666 11.0013Z');
+    --symbol2path: path('M13.5582 8.96683L13.5582 11.0013L6.56192 11.0013L6.56192 8.96683L13.5582 8.96683Z');
+}
+
+.ia-switch .ia-switch-symbol path {
+    fill: var(--switch-color);
+    transition: 250ms cubic-bezier(0, 0.3, 0.7, 1);
+}
+
+.ia-switch .ia-switch-symbol path:first-child {
+    d: var(--symbol1path);
+}
+
+.ia-switch .ia-switch-symbol path:last-child {
+    d: var(--symbol2path);
+}
+
+.ia-switch input {
+    position: absolute;
+    z-index: 1;
+    opacity: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 100px;
+    cursor: pointer;
+}
+
+.ia-switch-body .ia-switch-slider {
+    display: block;
+    position: absolute;
+    left: -3px;
+    width: 28px;
+    height: 18px;
+    margin: 3px;
+    transition: 250ms cubic-bezier(0, 0.3, 0.7, 1);
+}
+
+.ia-switch input:active + .ia-switch-body .ia-switch-slider {
+    left: 1px;
+}
+
+.ia-switch input:checked + .ia-switch-body .ia-switch-slider {
+    left: 12px;
+}
+
+.ia-switch input:active:checked + .ia-switch-body .ia-switch-slider {
+    left: 8px;
+}
+
+.ia-switch-body .ia-switch-slider .ia-switch-handle {
+    transition: 250ms cubic-bezier(0, 0.3, 0.7, 1);
+    position: relative;
+}
+
+.ia-switch input:active + .ia-switch-body .ia-switch-handle {
+    width: 28px;
+    height: 18px;
+    y: 1;
+    x: 0;
+}
+
+.ia-switch input:checked:active + .ia-switch-body .ia-switch-handle {
+    x: 0;
+}
+
+.ia-switch-disabled {
+    opacity: 0.5;
+    filter: grayscale(1);
+}
+
+.ia-switch-disabled input {
+    cursor: not-allowed;
+}

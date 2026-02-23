@@ -1,0 +1,28 @@
+{
+    "settings": {
+        "notificationSound": true,
+        "notificationSoundURL": "https://devevil99.github.io/devevil/files/Discord-Notification.mp3",
+        "reminderInterval": 60000,
+        "reminderShortcut": [
+            "Shift",
+            "R"
+        ],
+        "reminderInboxShortcut": [
+            "Shift",
+            "I"
+        ],
+        "scheduleManagerShortcut": [
+            "Shift",
+            "S"
+        ],
+        "buttonLocation": "sidebar",
+        "firstDayOfWeek": "Sunday",
+        "repeatableReminderCount": 3,
+        "showReminderInboxIcon": true,
+        "showScheduleManagerButton": true,
+        "enableShortcuts": false,
+        "schedules": []
+    },
+    "reminders": "[]",
+    "lastVersion": "1.5.3"
+}

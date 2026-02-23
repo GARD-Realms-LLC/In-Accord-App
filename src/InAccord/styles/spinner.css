@@ -1,0 +1,221 @@
+.ia-spinner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ia-spinner-inner {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    contian: piant;
+}
+
+.ia-spinner-spinning-circle,
+.ia-spinner-spinning-circle-simple {
+    width: 100%;
+}
+
+:where(.ia-spinner-spinning-circle, .ia-spinner-spinning-circle-simple) .ia-spinner-inner {
+    transform: rotate(280deg);
+}
+
+.ia-spinner-circular {
+    animation: ia-spinner-spinning-circle-rotate 2s linear infinite;
+    height: 100%;
+    width: 100%;
+}
+
+.ia-spinner-circular .ia-spinner-path {
+    animation: ia-spinner-spinning-circle-dash 2s ease-in-out infinite;
+    stroke-dasharray: 1, 200;
+    stroke-dashoffset: 0;
+    fill: none;
+    stroke-width: 6;
+    stroke-miterlimit: 10;
+    stroke-linecap: round;
+    stroke: var(--brand-500);
+}
+
+.ia-spinner-circular .ia-spinner-path:nth-last-child(3) {
+    animation-delay: 0.23s;
+    stroke: var(--text-brand);
+}
+
+.ia-spinner-circular .ia-spinner-path:nth-last-child(2) {
+    animation-delay: 0.15s;
+    stroke: var(--text-brand);
+    opacity: 0.6;
+}
+
+.ia-spinner-low-motion .ia-spinner-path {
+    animation: ia-spinner-low-motion 1.4s infinite ease-in-out;
+    width: 6px;
+    height: 6px;
+    margin-right: 2px;
+    background-color: var(--interactive-text-normal);
+    border-radius: 3px;
+    display: inline-block;
+    opacity: 0.3;
+}
+
+.ia-spinner-low-motion .ia-spinner-path:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.ia-spinner-low-motion .ia-spinner-path:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+.ia-spinner-chasing-dots .ia-spinner-inner {
+    animation: ia-spinner-chasing-dots-rotate 2s infinite linear;
+}
+
+.ia-spinner-chasing-dots .ia-spinner-path {
+    width: 60%;
+    height: 60%;
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    background-color: var(--brand-500);
+    border-radius: 100%;
+    animation: ia-spinner-chasing-dots-bounce 2s infinite ease-in-out;
+}
+
+.ia-spinner-chasing-dots .ia-spinner-path:last-child {
+    top: auto;
+    bottom: 0;
+    animation-delay: -1s;
+}
+
+.ia-spinner-wandering-cubes .ia-spinner-path {
+    background-color: var(--brand-400);
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    animation: ia-spinner-wandering-cubes 1.8s infinite ease-in-out;
+}
+
+.ia-spinner-wandering-cubes .ia-spinner-path:last-child {
+    animation-delay: 0.9s;
+}
+
+.ia-spinner-pulsing-ellipsis .ia-spinner-inner {
+    height: auto;
+    width: 28px;
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.ia-spinner-pulsing-ellipsis .ia-spinner-path {
+    animation: ia-spinner-pulsing-ellipsis 1.4s infinite ease-in-out;
+    width: 6px;
+    height: 6px;
+    margin-right: 2px;
+    background-color: var(--primary-100);
+    border-radius: 3px;
+    display: inline-block;
+    opacity: 0.3;
+}
+
+.ia-spinner-pulsing-ellipsis .ia-spinner-path:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.ia-spinner-pulsing-ellipsis .ia-spinner-path:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes ia-spinner-low-motion {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.6;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes ia-spinner-spinning-circle-rotate {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes ia-spinner-spinning-circle-dash {
+    0% {
+        stroke-dasharray: 1, 200;
+        stroke-dashoffset: 0;
+    }
+
+    50% {
+        stroke-dasharray: 130, 200;
+    }
+
+    to {
+        stroke-dasharray: 130, 200;
+        stroke-dashoffset: -124;
+    }
+}
+
+@keyframes ia-spinner-chasing-dots-rotate {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes ia-spinner-chasing-dots-bounce {
+    0%,
+    to {
+        transform: scale(0);
+    }
+
+    50% {
+        transform: scale(1);
+    }
+}
+
+@keyframes ia-spinner-wandering-cubes {
+    25% {
+        transform: translateX(22px) rotate(-90deg) scale(0.5);
+    }
+
+    50% {
+        transform: translateX(22px) translateY(22px) rotate(-180deg);
+    }
+
+    75% {
+        transform: translateX(0) translateY(22px) rotate(-270deg) scale(0.5);
+    }
+
+    to {
+        transform: rotate(-360deg);
+    }
+}
+
+@keyframes ia-spinner-pulsing-ellipsis {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(0.8);
+        opacity: 0.3;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}

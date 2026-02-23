@@ -1,0 +1,41 @@
+.ia-search-wrapper {
+    padding: 3px;
+    border-radius: 3px;
+    outline: none;
+    border: 0;
+    background-color: var(--background-base-lowest);
+    color: var(--text-default);
+    display: flex;
+    align-items: center;
+}
+
+.ia-search {
+    padding: 2px 3px;
+    background: none;
+    border: 0;
+    color: var(--text-default);
+    flex: 1;
+}
+
+.ia-search::-webkit-input-placeholder {
+    color: var(--text-default);
+}
+
+.ia-search-wrapper > svg {
+    margin-right: 2px;
+    color: var(--interactive-text-default);
+}
+
+.ia-search-wrapper > .ia-button {
+    margin-right: 2px;
+    background: none;
+    padding: 0;
+}
+
+.ia-search-wrapper > .ia-button > svg .fill {
+    fill: var(--interactive-text-default);
+}
+
+.ia-search-wrapper > .ia-button:hover > svg .fill {
+    fill: var(--interactive-text-hover);
+}

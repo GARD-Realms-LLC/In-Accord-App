@@ -1,0 +1,92 @@
+{
+    "version": "0.0.1",
+    "settings": [
+        {
+            "type": "category",
+            "id": "settings",
+            "name": "Settings",
+            "collapsible": true,
+            "settings": [
+                {
+                    "type": "switch",
+                    "id": "newActivitiesHidden",
+                    "name": "Auto Hide",
+                    "note": "Automatically hide newly added activities from your activity status.",
+                    "value": false
+                }
+            ]
+        },
+        {
+            "type": "category",
+            "id": "playing",
+            "name": "Playing",
+            "collapsible": true,
+            "settings": [
+                {
+                    "type": "switch",
+                    "id": "No Man's Sky",
+                    "name": "No Man's Sky",
+                    "value": true
+                },
+                {
+                    "type": "switch",
+                    "id": "Visual Studio Code",
+                    "name": "Visual Studio Code",
+                    "value": true
+                },
+                {
+                    "type": "switch",
+                    "id": "Code",
+                    "name": "Code",
+                    "value": true
+                },
+                {
+                    "type": "switch",
+                    "id": "VSCode Leaderboards",
+                    "name": "VSCode Leaderboards",
+                    "value": true
+                },
+                {
+                    "type": "switch",
+                    "id": "Code Bro",
+                    "name": "Code Bro",
+                    "value": true
+                },
+                {
+                    "type": "switch",
+                    "id": "Coding",
+                    "name": "Coding",
+                    "value": true
+                }
+            ]
+        },
+        {
+            "type": "category",
+            "id": "listening",
+            "name": "Listening",
+            "collapsible": true,
+            "settings": []
+        },
+        {
+            "type": "category",
+            "id": "streaming",
+            "name": "Streaming",
+            "collapsible": true,
+            "settings": []
+        },
+        {
+            "type": "category",
+            "id": "watching",
+            "name": "Watching",
+            "collapsible": true,
+            "settings": []
+        },
+        {
+            "type": "category",
+            "id": "competing",
+            "name": "Competing",
+            "collapsible": true,
+            "settings": []
+        }
+    ]
+}

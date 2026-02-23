@@ -1,0 +1,52 @@
+{
+    "name": "inaccord-launcher-ui",
+    "version": "0.0.1",
+    "description": "InAccord Launcher UI - packaged with electron-builder",
+    "author": "GARD Realms LLC",
+    "main": "main.js",
+    "private": true,
+    "scripts": {
+        "build": "bun install && bun x electron-builder --dir",
+        "build:win": "bun install && bun x electron-builder --win --dir"
+    },
+    "dependencies": {
+        "asar": "^3.2.0"
+    },
+    "devDependencies": {
+        "png-to-ico": "^3.0.1",
+        "rcedit": "^5.0.2",
+        "sharp": "^0.34.5"
+    },
+    "build": {
+        "appId": "com.inaccord.launcher",
+        "productName": "InAccord Launcher",
+        "electronVersion": "40.4.1",
+        "electronDownload": {
+            "cache": "../../dist/_cache/electron"
+        },
+        "asar": true,
+        "icon": "build/icon.ico",
+        "files": [
+            "**/*"
+        ],
+        "directories": {
+            "output": "../../dist/launcher-build-win32-latest",
+            "buildResources": "build"
+        },
+        "win": {
+            "icon": "build/icon.ico",
+            "requestedExecutionLevel": "asInvoker",
+            "signAndEditExecutable": false
+        },
+        "nsis": {
+            "oneClick": true,
+            "perMachine": false,
+            "allowElevation": false,
+            "installerIcon": "build/icon.ico",
+            "uninstallerIcon": "build/icon.ico",
+            "installerHeaderIcon": "build/splashHeader.ico"
+        },
+        "beforePack": "build/beforePack.cjs",
+        "afterAllArtifactBuild": "build/afterAllArtifactBuild.cjs"
+    }
+}

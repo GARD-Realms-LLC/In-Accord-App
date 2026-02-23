@@ -1,0 +1,38 @@
+import React from "@modules/react";
+import ReactDOM from "@modules/reactdom";
+import Events from "@modules/emitter";
+import DOMManager from "@modules/dommanager";
+
+import FloatingWindowContianer from "./floating/container";
+import {getByDisplayName} from "@webpack";
+import type {FloatingWindowProps} from "./floating/window";
+
+
+const AppLayerProvider = getByDisplayName<any>("AppLayerProvider");
+
+let hasInitialized = false;
+export default class FloatingWindows {
+    static initialize() {
+        const contianer = <FloatingWindowContianer />;
+        const wrapped = AppLayerProvider
+            ? React.createElement(AppLayerProvider().props.layerContext.Provider, {value: [document.querySelector("#app-mount > .layerContianer-2v_Sit")]}, contianer)
+            : contianer;
+        const div = DOMManager.parseHTML(`<div id="floating-windows-layer">`) as HTMLDivElement;
+        DOMManager.iaBody.append(div);
+
+        const anyDOM: any = ReactDOM as any;
+        const root = (typeof anyDOM?.createRoot === "function") ? anyDOM.createRoot(div) : null;
+        if (root && typeof root.render === "function") {
+            root.render(wrapped);
+        }
+        else if (typeof anyDOM?.render === "function") {
+            anyDOM.render(wrapped, div);
+        }
+        hasInitialized = true;
+    }
+
+    static open(window: FloatingWindowProps) {
+        if (!hasInitialized) this.initialize();
+        return Events.emit("open-window", window);
+    }
+}

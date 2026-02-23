@@ -1,0 +1,9 @@
+{
+    "notifyWhenDeafen": true,
+    "notifyServerMuted": false,
+    "audioUrl": "https://raw.githubusercontent.com/nicola02nb/BetterDiscord-Stuff/main/Plugins/NotifyWhenMuted/stop_talking.wav",
+    "audioVolume": 100,
+    "delayBetweenNotifications": 5000,
+    "showToggleButton": true,
+    "version": "1.4.16"
+}

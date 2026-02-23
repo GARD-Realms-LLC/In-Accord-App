@@ -1,0 +1,65 @@
+{
+	"all": {
+		"changeLogs": {
+			"BDFDB": "4.4.3",
+			"BetterFriendList": "1.6.7",
+			"BetterNsfwTag": "1.3.3",
+			"BetterSearchPage": "1.2.8",
+			"CharCounter": "1.7.1",
+			"ChatAliases": "2.5.1",
+			"ChatFilter": "3.6.2",
+			"ClickableMentions": "1.0.7",
+			"CompleteTimestamps": "1.7.4",
+			"CustomQuoter": "1.4.0",
+			"CustomStatusPresets": "1.3.5",
+			"EditChannels": "4.6.3",
+			"EditRoles": "1.2.6",
+			"EditServers": "2.4.8",
+			"EditUsers": "5.0.9",
+			"EmojiStatistics": "3.0.4",
+			"FriendNotifications": "2.1.4",
+			"GameActivityToggle": "1.3.8",
+			"GoogleSearchReplace": "1.4.1",
+			"HideMutedCategories": "1.1.4",
+			"ImageUtilities": "5.6.5",
+			"LastMessageDate": "1.5.4",
+			"MessageUtilities": "2.0.0",
+			"NotificationSounds": "4.0.5",
+			"OpenSteamLinksInApp": "1.1.8",
+			"PersonalPins": "2.3.2",
+			"PinDMs": "2.0.7",
+			"QuickMention": "1.0.9",
+			"ReadAllNotificationsButton": "1.8.4",
+			"RemoveBlockedUsers": "1.8.1",
+			"RevealAllSpoilers": "1.1.2",
+			"ServerCounter": "1.1.1",
+			"ServerDetails": "1.3.4",
+			"ServerFolders": "7.4.4",
+			"ServerHider": "6.3.4",
+			"ShowBadgesInChat": "2.1.5",
+			"ShowConnections": "1.3.1",
+			"SpellCheck": "1.7.2",
+			"SplitLargeMessages": "1.8.7",
+			"SpotifyControls": "1.5.2",
+			"StaffTag": "1.7.0",
+			"TopRoleEverywhere": "3.2.3",
+			"Translator": "2.7.8",
+			"UserNotes": "1.1.2",
+			"WriteUpperCase": "1.4.5"
+		},
+		"choices": {
+			"toastPosition": "right"
+		},
+		"general": {
+			"shareData": true,
+			"showToasts": true,
+			"checkForUpdates": false,
+			"showSupportBadges": false,
+			"useChromium": false
+		},
+		"hashes": {
+			"0BDFDB.data.json": "15bd71089a08c0e897cdc69e4057ab24c1967119",
+			"0BDFDB.raw.css": "efcb2210ffdac1b0874818b718062cc175f96519"
+		}
+	}
+}

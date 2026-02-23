@@ -1,0 +1,41 @@
+{
+    "settings": {
+        "hideUnsortedMedias": true,
+        "hideThumbnail": false,
+        "allowCaching": true,
+        "mediaVolume": 10,
+        "maxMediasPerPage": 50,
+        "gif": {
+            "enabled": true,
+            "alwaysSendInstantly": true,
+            "alwaysUploadFile": false
+        },
+        "image": {
+            "enabled": true,
+            "showBtn": true,
+            "showStar": true,
+            "alwaysSendInstantly": true,
+            "alwaysUploadFile": false
+        },
+        "video": {
+            "enabled": true,
+            "showBtn": true,
+            "showStar": true,
+            "alwaysSendInstantly": true,
+            "alwaysUploadFile": false
+        },
+        "audio": {
+            "enabled": true,
+            "showBtn": true,
+            "showStar": true
+        },
+        "file": {
+            "enabled": true,
+            "showBtn": true,
+            "showStar": true,
+            "alwaysSendInstantly": true,
+            "alwaysUploadFile": false
+        }
+    },
+    "version": "1.13.19"
+}

@@ -1,0 +1,709 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>InAccord Launcher</title>
+    <style>
+      :root { --bg:#0f1220; --panel:#161724; --muted:#9aa0b4; --text:#e6eef8; --accent:#4f8ef7; --danger:#e06c75; }
+      html,body { height:100%; margin:0; }
+      :root, html, body { overflow: hidden !important; }
+      * { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+      *::-webkit-scrollbar { width: 0 !important; height: 0 !important; }
+      body { display:flex; flex-direction:column; align-items:center; justify-content:center; gap:18px; padding:24px; box-sizing:border-box; font-family:"Segoe UI", Arial, sans-serif; background: var(--bg); color: var(--text); }
+
+      /* Frameless window drag region (keeps the OS buttons gone, but still movable). */
+      #dragRegion {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 32px;
+        -webkit-app-region: drag;
+        z-index: 10000;
+        pointer-events: auto;
+        background: transparent;
+      }
+      .centered { max-width:720px; margin:0 auto; padding:20px; background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); border-radius:10px; box-shadow: 0 6px 24px rgba(0,0,0,0.6); text-align:center; }
+
+      .brand {
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        justify-content:center;
+        gap:6px;
+        margin-bottom: 14px;
+      }
+      .splashWrap { margin-bottom: 10px; }
+      .splash { max-width: 100%; height: 150px; object-fit: contain; border-radius: 8px; display:inline-block; box-shadow: 0 8px 24px rgba(0,0,0,0.35); }
+      .brandMark {
+        display:inline-flex;
+        align-items:center;
+        justify-content:center;
+        width: 64px;
+        height: 64px;
+        border-radius: 16px;
+        background: radial-gradient(circle at 30% 30%, rgba(79,142,247,0.35), rgba(79,142,247,0.06));
+        border: 1px solid rgba(255,255,255,0.06);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.45);
+      }
+      .brandMarkInner {
+        width: 28px;
+        height: 28px;
+        border-radius: 10px;
+        background: linear-gradient(180deg, var(--accent), #256bd6);
+        box-shadow: inset 0 0 0 1px rgba(255,255,255,0.2);
+      }
+      h1 {
+        margin: 0;
+        font-size: 28px;
+        letter-spacing: 0.3px;
+        line-height: 1.1;
+      }
+      h3 {
+        margin: 0;
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--muted);
+        letter-spacing: 1.2px;
+        text-transform: uppercase;
+      }
+      .row { margin: 8px 0; display:flex; align-items:center; justify-content:center; gap:10px; }
+      label { color: var(--muted); }
+      select { background: var(--panel); color: var(--text); border: 1px solid rgba(255,255,255,0.04); padding:6px 8px; border-radius:6px; }
+      .actions { margin-top: 16px; display:flex; gap:8px; justify-content:center; flex-wrap:wrap; }
+      button { padding: 8px 14px; border-radius:8px; border: none; background: linear-gradient(180deg,var(--accent), #256bd6); color: white; cursor: pointer; font-weight:600; }
+      button#cancelBtn { background: linear-gradient(180deg,var(--danger), #b43a42); }
+      button#launchBtn { background: linear-gradient(180deg,#3fd37a, #1f9a55); }
+      button#uninstallBtn { background: linear-gradient(180deg,var(--danger), #b43a42); }
+      .console { margin: 12px auto; width: 90%; min-height:200px; max-height:300px; background: #0b0d14; color: var(--muted); padding:12px; border-radius:8px; box-sizing:border-box; overflow:auto; text-align:left; white-space:pre-wrap; }
+      .consoleActions { width: 90%; margin: 6px auto 0 auto; display:flex; justify-content:flex-end; }
+      .btn-copy { padding:6px 10px; border-radius:6px; border:none; background: rgba(255,255,255,0.03); color: var(--muted); cursor:pointer; }
+
+      .footer {
+        width: 90%;
+        max-width: 860px;
+        margin: 6px auto 0 auto;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        gap: 10px;
+        color: rgba(154,160,180,0.92);
+        font-size: 12px;
+        user-select:none;
+      }
+      .footerSep { opacity: 0.5; }
+
+      .iconBar { width: 90%; max-width: 860px; margin: 10px auto 0 auto; display:flex; justify-content:center; gap:12px; align-items:center; }
+      .icon-link { color: var(--muted); display:inline-flex; align-items:center; justify-content:center; width:36px; height:36px; border-radius:8px; background: rgba(255,255,255,0.02); text-decoration:none; cursor:pointer; }
+      .icon-link:hover { color: var(--accent); background: rgba(79,142,247,0.08); }
+      .icon-svg { width:20px; height:20px; }
+      .overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.6); display: none; align-items: center; justify-content: center; z-index: 9999; pointer-events: none; }
+      .overlay.show { display: flex; }
+      .hourglass { width:120px; height:160px; display:flex; flex-direction:column; align-items:center; gap:12px; }
+      .hourglass svg { width: 120px; height:120px; fill: none; stroke: #e6eef8; stroke-width:1.5; }
+      .hourglass .label { color: var(--text); font-weight:600; }
+      .sand-top, .sand-bottom { fill: var(--accent); opacity: 0.9; }
+      @keyframes sand-flow { 0% { transform: translateY(0); opacity:1 } 50% { transform: translateY(6px); opacity:0.6 } 100% { transform: translateY(0); opacity:1 } }
+      .sand-top { animation: sand-flow 1.2s linear infinite; }
+      .sand-bottom { animation: sand-flow 1.2s linear infinite reverse; }
+
+      /* Confirmation modal overlay (Yes/No) */
+      .modalOverlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(0,0,0,0.62);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        z-index: 10001;
+        pointer-events: auto;
+        -webkit-app-region: no-drag;
+      }
+      .modalOverlay.show { display: flex; }
+      .modal {
+        width: min(520px, calc(100vw - 48px));
+        background: #0b0d14;
+        border: 1px solid rgba(255,255,255,0.06);
+        border-radius: 12px;
+        box-shadow: 0 16px 48px rgba(0,0,0,0.65);
+        padding: 16px 16px 14px 16px;
+      }
+      .modalTitle { font-size: 15px; font-weight: 700; margin: 0 0 8px 0; color: var(--text); }
+      .modalBody { font-size: 13px; line-height: 1.35; color: rgba(230,238,248,0.9); white-space: pre-wrap; }
+      .modalBtns { display:flex; justify-content:flex-end; gap: 8px; margin-top: 14px; }
+      .modalBtn { padding: 8px 12px; border-radius: 8px; border: none; font-weight: 700; cursor: pointer; }
+      .modalBtn.no { background: rgba(255,255,255,0.06); color: var(--muted); }
+      .modalBtn.yes { background: linear-gradient(180deg,#3fd37a, #1f9a55); color: #fff; }
+    </style>
+  </head>
+  <body>
+    <div id="dragRegion" aria-hidden="true"></div>
+    <div class="centered">
+      <div class="brand">
+        <div class="splashWrap">
+          <img id="splash" alt="InAccord" class="splash" src="./assets/splash.png" />
+        </div>
+        <h1>In‑Accord</h1>
+        <h3>Launcher v1.0.01</h3>
+      </div>
+      <div class="row">
+        <label for="channel">Select Discord:</label>
+        <select id="channel">
+          <option value="stable" selected>Stable</option>
+          <option value="ptb">PTB</option>
+          <option value="canary">Canary</option>
+          <option value="development">Development</option>
+        </select>
+      </div>
+      <div class="actions">
+        <button id="installBtn">Install</button>
+        <button id="uninstallBtn">Uninstall</button>
+        <button id="launchBtn">Launch Client</button>
+        <button id="cancelBtn">Quit</button>
+      </div>
+    </div>
+
+    <div class="consoleActions">
+      <button id="copyBtn" class="btn-copy">Copy</button>
+      <button id="changelogBtn" class="btn-copy" title="Open changelog">Changelog</button>
+    </div>
+    <pre id="output" class="console"></pre>
+
+    <div class="iconBar">
+      <a class="icon-link" data-url="https://github.com/GARD-Realms-LLC/In-Accord-App" title="GitHub" aria-label="GitHub">
+        <svg class="icon-svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.73.5.75 5.48.75 11.77c0 4.93 3.19 9.11 7.61 10.59.56.1.76-.24.76-.53 0-.26-.01-.95-.01-1.86-3.09.67-3.74-.73-3.98-1.4-.13-.34-.7-1.4-1.2-1.68-.41-.22-1-.77-.01-.79.93-.02 1.6.86 1.82 1.22 1.06 1.82 2.75 1.3 3.42.99.11-.78.41-1.3.75-1.6-2.77-.31-5.68-1.39-5.68-6.17 0-1.36.49-2.47 1.3-3.34-.13-.32-.57-1.61.12-3.35 0 0 1.06-.34 3.48 1.28 1.01-.28 2.09-.42 3.16-.42 1.07 0 2.15.14 3.16.42 2.42-1.62 3.48-1.28 3.48-1.28.69 1.74.25 3.03.12 3.35.81.87 1.3 1.98 1.3 3.34 0 4.79-2.92 5.85-5.7 6.16.42.36.8 1.07.8 2.16 0 1.56-.01 2.82-.01 3.2 0 .29.2.64.77.53 4.42-1.49 7.61-5.66 7.61-10.59C23.25 5.48 18.27.5 12 .5z"/></svg>
+      </a>
+      <a class="icon-link" data-url="https://discord.com/channels/1418648743544094871" title="Discord Server" aria-label="Discord">
+        <svg class="icon-svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.317 4.369a19.791 19.791 0 00-4.885-1.515.07.07 0 00-.075.037c-.21.375-.444.864-.608 1.249-1.844-.276-3.68-.276-5.486 0-.164-.396-.418-.874-.628-1.249a.07.07 0 00-.075-.037 19.736 19.736 0 00-4.885 1.515.064.064 0 00-.03.027C2.99 9.045 2.17 13.57 2.67 18.053c.042.27.17.54.387.73a19.9 19.9 0 005.993 3.02.07.07 0 00.078-.027c.463-.63.873-1.297 1.219-1.994a.07.07 0 00-.038-.098 13.06 13.06 0 01-1.872-.892.07.07 0 01-.007-.116c.126-.094.252-.19.374-.287a.07.07 0 01.076-.007c3.93 1.78 8.18 1.78 12.032 0a.07.07 0 01.078.007c.122.097.248.193.374.287a.07.07 0 01-.007.116c-.57.36-1.176.7-1.872.892a.07.07 0 00-.038.098c.36.695.77 1.364 1.219 1.994a.07.07 0 00.078.027 19.9 19.9 0 005.993-3.02c.217-.19.345-.46.387-.73.5-4.484-.32-9.009-2.927-13.657a.063.063 0 00-.03-.027zM8.02 15.331c-1.182 0-2.156-1.085-2.156-2.419 0-1.333.955-2.418 2.156-2.418 1.21 0 2.183 1.095 2.156 2.418 0 1.334-.955 2.419-2.156 2.419zm7.975 0c-1.182 0-2.156-1.085-2.156-2.419 0-1.333.955-2.418 2.156-2.418 1.21 0 2.183 1.095 2.156 2.418 0 1.334-.946 2.419-2.156 2.419z"/></svg>
+      </a>
+      <a class="icon-link" data-url="http://www.in-accord.net" title="Website" aria-label="Website">
+        <svg class="icon-svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm5.93 6h-3.02a15.9 15.9 0 00-1.16-3.02A8.02 8.02 0 0117.93 8zM12 4.07c.63 1.05 1.18 2.4 1.63 3.93H10.37c.45-1.53 1-2.88 1.63-3.93zM6.07 8A8.02 8.02 0 016.25 5.98 15.9 15.9 0 005.09 9H2.07A8.04 8.04 0 016.07 8zM4.07 12c0-.34.02-.67.06-1h3.06c-.03.33-.05.66-.05 1s.02.67.05 1H4.13c-.04-.33-.06-.66-.06-1zm1.98 4h3.02a15.9 15.9 0 001.16 3.02A8.02 8.02 0 016.05 16zM12 19.93c-.63-1.05-1.18-2.4-1.63-3.93h3.26c-.45 1.53-1 2.88-1.63 3.93zM17.93 16a8.02 8.02 0 01-3.02 2.02c-.45-1.05-1-2.4-1.63-3.93h3.02c.04.33.06.66.06 1z"/></svg>
+      </a>
+      <a class="icon-link" data-url="https://www.gofundme.com/" title="Donate" aria-label="Donate">
+        <svg class="icon-svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21s-7.5-4.35-9.5-7.5C.94 9.94 6 4.5 12 8c6-3.5 11.06 1.94 9 5.5C19.5 16.65 12 21 12 21z"/></svg>
+      </a>
+      <a class="icon-link" data-url="mailto:docrst@gmail.com" title="Email" aria-label="Email">
+        <svg class="icon-svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+      </a>
+    </div>
+
+    <div class="footer" aria-hidden="true">
+      <span>In‑Accord © 2025 / 2026</span>
+      <span class="footerSep">|</span>
+      <span>G.A.R.D. Realms LLC</span>
+    </div>
+
+    <div id="loadingOverlay" class="overlay" aria-hidden="true">
+      <div class="hourglass" role="status" aria-live="polite">
+        <svg viewBox="0 0 24 32" aria-hidden="true">
+          <path d="M6 2h12v2l-3 4v2.5c0 2.5 1.8 4 3 5-1.2 1-3 2.5-3 5V26l3 4v2H6v-2l3-4v-2.5c0-2.5-1.8-4-3-5 1.2-1 3-2.5 3-5V8L6 4V2z" stroke-linejoin="round" stroke-linecap="round"/>
+          <g class="sand-top"><circle cx="12" cy="9" r="2" /></g>
+          <g class="sand-bottom"><circle cx="12" cy="22" r="3" /></g>
+        </svg>
+        <div class="label">Working…</div>
+      </div>
+    </div>
+
+    <div id="confirmOverlay" class="modalOverlay" aria-hidden="true">
+      <div class="modal" role="dialog" aria-modal="true" aria-labelledby="confirmTitle" aria-describedby="confirmBody">
+        <div id="confirmTitle" class="modalTitle">Confirm</div>
+        <div id="confirmBody" class="modalBody"></div>
+        <div class="modalBtns">
+          <button id="confirmNo" class="modalBtn no">No</button>
+          <button id="confirmYes" class="modalBtn yes">Yes</button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const channelEl = document.getElementById('channel');
+      const installBtn = document.getElementById('installBtn');
+      const uninstallBtn = document.getElementById('uninstallBtn');
+      const launchBtn = document.getElementById('launchBtn');
+      const cancelBtn = document.getElementById('cancelBtn');
+      const copyBtn = document.getElementById('copyBtn');
+      const changelogBtn = document.getElementById('changelogBtn');
+      const output = document.getElementById('output');
+      const loadingOverlay = document.getElementById('loadingOverlay');
+      const confirmOverlay = document.getElementById('confirmOverlay');
+      const confirmTitle = document.getElementById('confirmTitle');
+      const confirmBody = document.getElementById('confirmBody');
+      const confirmYes = document.getElementById('confirmYes');
+      const confirmNo = document.getElementById('confirmNo');
+
+      // External links (footer icons)
+      for (const el of Array.from(document.querySelectorAll('[data-url]'))) {
+        el.addEventListener('click', async (ev) => {
+          ev.preventDefault();
+          const url = el.getAttribute('data-url') || '';
+          try {
+            if (window.iaLauncher && window.iaLauncher.openExternal) {
+              await window.iaLauncher.openExternal(url);
+            }
+          } catch {}
+        });
+      }
+
+      function append(text) { output.textContent += text + '\n'; output.scrollTop = output.scrollHeight; }
+
+      function summarizeSteps(steps) {
+        try {
+          if (!Array.isArray(steps) || !steps.length) return [];
+          const lines = ['Steps:'];
+          for (const s of steps) {
+            if (!s || typeof s !== 'object') continue;
+            const name = (s.name != null) ? String(s.name) : 'step';
+            const ok = (s.ok === false) ? 'FAIL' : 'OK';
+            const ms = (s.ms != null) ? ` (${String(s.ms)}ms)` : '';
+            const err = s.error ? ` - ${String(s.error).split('\n')[0]}` : '';
+            lines.push(` - ${name}: ${ok}${ms}${err}`);
+          }
+          return lines;
+        } catch { return []; }
+      }
+
+      function summarizeResult(res) {
+        try {
+          if (!res || typeof res !== 'object') return null;
+
+          // Download installer shape
+          if (res.ok === true && (res.downloadedTo || res.url) && (res.channel || res.channel === '')) {
+            const lines = [];
+            lines.push('Download: OK');
+            if (res.channel) lines.push('Channel: ' + String(res.channel));
+            if (res.url) lines.push('URL: ' + String(res.url));
+            if (res.downloadedTo) lines.push('Saved: ' + String(res.downloadedTo));
+            if (typeof res.explorerOpened !== 'undefined') lines.push('Explorer: ' + (res.explorerOpened ? 'opened' : 'not opened'));
+            return lines.join('\n');
+          }
+
+          // Install shape
+          if (res.ok === true && res.installed) {
+            const lines = [];
+            const dir = res.installed && res.installed.targetDir ? String(res.installed.targetDir) : '';
+            lines.push('Install: OK');
+            if (dir) lines.push('Target: ' + dir);
+
+            const core = res.corePatch || null;
+            if (core && typeof core === 'object') {
+              const coreMsg = (core.patched ? 'patched' : 'not patched') + (core.reason ? ` (${String(core.reason)})` : '');
+              lines.push('Core patch: ' + coreMsg);
+            }
+
+            const asar = res.asarPatch || null;
+            if (asar && typeof asar === 'object') {
+              const asarMsg = (asar.skipped ? 'skipped' : (asar.patched ? 'patched' : 'not patched')) + (asar.reason ? ` (${String(asar.reason)})` : '');
+              lines.push('app.asar patch: ' + asarMsg);
+            }
+
+            if (res.totalMs != null) lines.push('Time: ' + String(res.totalMs) + 'ms');
+            lines.push(...summarizeSteps(res.steps));
+            return lines.join('\n');
+          }
+
+          // Launch shape
+          if (res.success === true) {
+            const lines = [];
+            lines.push('Launch: OK');
+            if (res.exePath) lines.push('Exe: ' + String(res.exePath));
+            if (res.mode) lines.push('Mode: ' + String(res.mode));
+            if (res.appDir) lines.push('AppDir: ' + String(res.appDir));
+            if (res.totalMs != null) lines.push('Time: ' + String(res.totalMs) + 'ms');
+            lines.push(...summarizeSteps(res.steps));
+            return lines.join('\n');
+          }
+
+          // Generic error shapes
+          if (res.ok === false || res.success === false) {
+            const lines = [];
+            const tag = (res.success === false) ? 'Launch' : 'Result';
+            lines.push(tag + ': FAIL');
+            if (res.error) lines.push('Error: ' + String(res.error));
+
+            // If the failure came from auto-install, include the first line of installer output.
+            try {
+              const er = res.ensureResult;
+              if (er && typeof er === 'object') {
+                if (er.reason) lines.push('Install reason: ' + String(er.reason));
+                if (er.code != null) lines.push('Installer code: ' + String(er.code));
+                if (er.downloadedTo) lines.push('Downloaded: ' + String(er.downloadedTo));
+                if (er.downloadPath) lines.push('Download path: ' + String(er.downloadPath));
+                if (er.output) {
+                  const first = String(er.output).split('\n').filter(Boolean)[0] || '';
+                  if (first) lines.push('Installer: ' + first.slice(0, 220));
+                }
+              }
+            } catch {}
+
+            lines.push(...summarizeSteps(res.steps));
+            return lines.join('\n');
+          }
+
+          return null;
+        } catch {
+          return null;
+        }
+      }
+
+      function formatResult(res) {
+        // Prefer human-readable summaries (avoid dumping raw JSON into the UI).
+        const summary = summarizeResult(res);
+        if (summary) return summary;
+
+        // Old shape: { code, output } where output is either JSON or plain text.
+        if (res && typeof res === 'object' && typeof res.output === 'string') {
+          const out = res.output.trim();
+          if (out) {
+            try { return JSON.stringify(JSON.parse(out), null, 2); } catch { return out; }
+          }
+          return JSON.stringify(res, null, 2);
+        }
+
+        if (typeof res === 'string') return res;
+        // Fallback: keep it short.
+        try { return String(res); } catch { return 'Unknown result'; }
+      }
+
+      async function renderChangelog() {
+        try {
+          if (!window.iaLauncher || !window.iaLauncher.getChangelog) return;
+          const res = await window.iaLauncher.getChangelog();
+          if (!res || !res.url) return;
+
+          append('Changelog: ' + String(res.url));
+
+          const releases = Array.isArray(res.releases) ? res.releases : [];
+          if (releases.length) {
+            const first = releases[0] || null;
+            if (first) {
+              if (first.version) append('Version: ' + String(first.version));
+              if (first.date) append('Date: ' + String(first.date));
+              const changes = Array.isArray(first.changes) ? first.changes : [];
+              if (changes.length) {
+                append('');
+                append('Recent changes:');
+                for (const c of changes) append(' - ' + String(c));
+              }
+            }
+
+            // Show the next few release headers (keeps the status box short).
+            const more = releases.slice(1, 4).filter(Boolean);
+            if (more.length) {
+              append('');
+              append('More releases:');
+              for (const r of more) {
+                const v = r && r.version ? String(r.version) : 'unknown';
+                const d = r && r.date ? String(r.date).slice(0, 10) : '';
+                append(' - ' + v + (d ? (' (' + d + ')') : ''));
+              }
+            }
+
+            append('');
+            return;
+          }
+
+          // Fallback (older shape)
+          if (res.version) append('Version: ' + String(res.version));
+          if (res.date) append('Date: ' + String(res.date));
+          const changes = Array.isArray(res.changes) ? res.changes : [];
+          if (changes.length) {
+            append('');
+            append('Recent changes:');
+            for (const c of changes) append(' - ' + String(c));
+          }
+
+          append('');
+        } catch {}
+      }
+
+      function showLoading(text) {
+        try { const label = loadingOverlay.querySelector('.hourglass .label'); if (label && text) label.textContent = text; } catch {}
+        loadingOverlay.classList.add('show');
+        installBtn.disabled = true; uninstallBtn.disabled = true; launchBtn.disabled = true;
+      }
+      function hideLoading() {
+        loadingOverlay.classList.remove('show');
+        installBtn.disabled = false; uninstallBtn.disabled = false; launchBtn.disabled = false;
+      }
+
+      copyBtn.addEventListener('click', () => {
+        try { navigator.clipboard.writeText(output.textContent || ''); } catch {}
+      });
+
+      changelogBtn.addEventListener('click', async () => {
+        try {
+          // Prefer the latest release page if we have it; otherwise repo page.
+          const res = (window.iaLauncher && window.iaLauncher.getChangelog)
+            ? await window.iaLauncher.getChangelog()
+            : null;
+          const url = (res && res.releaseUrl) ? String(res.releaseUrl) : 'https://github.com/GARD-Realms-LLC/In-Accord-App/releases';
+          if (window.iaLauncher && window.iaLauncher.openExternal) {
+            await window.iaLauncher.openExternal(url);
+          }
+        } catch {}
+      });
+      cancelBtn.addEventListener('click', () => { try { window.close(); } catch {} });
+
+      function showConfirmModal(title, message) {
+        return new Promise((resolve) => {
+          try {
+            confirmTitle.textContent = String(title || 'Confirm');
+            confirmBody.textContent = String(message || '');
+            confirmOverlay.classList.add('show');
+            confirmOverlay.setAttribute('aria-hidden', 'false');
+
+            const cleanup = (value) => {
+              try { confirmOverlay.classList.remove('show'); } catch {}
+              try { confirmOverlay.setAttribute('aria-hidden', 'true'); } catch {}
+              try { confirmYes.onclick = null; confirmNo.onclick = null; } catch {}
+              resolve(!!value);
+            };
+
+            confirmYes.onclick = () => cleanup(true);
+            confirmNo.onclick = () => cleanup(false);
+          } catch {
+            resolve(false);
+          }
+        });
+      }
+
+      async function confirmDownloadIfMissing(channel, actionLabel) {
+        try {
+          const ch = String(channel || 'stable');
+          const s = await (window.iaLauncher && window.iaLauncher.getChannelStatus ? window.iaLauncher.getChannelStatus(ch) : null);
+          if (s && s.ok && s.appDir) return true;
+
+          const title = 'Discord channel not installed';
+          const msg = `${String(actionLabel || 'This action')} requires Discord ${ch} to be installed.\n\nDownload the official installer now?`;
+          const yes = await showConfirmModal(title, msg);
+          if (!yes) {
+            append('Download cancelled.');
+            return false;
+          }
+
+          showLoading('Downloading installer…');
+          append('Downloading installer for ' + ch + '...');
+          const dl = await (window.iaLauncher && window.iaLauncher.downloadDiscordInstaller ? window.iaLauncher.downloadDiscordInstaller(ch) : null);
+          append(formatResult(dl));
+          return false;
+        } catch (e) {
+          append('Download check failed: ' + String(e && e.stack ? e.stack : e));
+          return false;
+        } finally {
+          try { hideLoading(); } catch {}
+        }
+      }
+
+      (async () => {
+        try {
+          const info = await (window.iaLauncher && window.iaLauncher.getLauncherInfo ? window.iaLauncher.getLauncherInfo() : null);
+          if (info && info.ok) {
+            if (info.appName || info.appVersion) append('Launcher: ' + String(info.appName || 'InAccord Launcher') + (info.appVersion ? (' v' + String(info.appVersion)) : ''));
+            if (info.execPath) append('Launcher EXE: ' + String(info.execPath));
+          }
+          else if (info && info.ok === false) {
+            append('Launcher Info Error: ' + String(info.error || 'unknown'));
+          }
+        } catch (e) {
+          append('Launcher Info Error: ' + String((e && e.stack) ? e.stack : e));
+        }
+
+        try {
+          const res = await window.iaLauncher.getPlatform();
+          if (res && res.ok && res.platform) append('Detected OS: ' + res.platform);
+        } catch {}
+
+        try {
+          const hasFn = !!(window.iaLauncher && typeof window.iaLauncher.getDiscordVersions === 'function');
+          const v = hasFn ? await window.iaLauncher.getDiscordVersions() : null;
+
+          const fmt = (item) => {
+            try {
+              if (!item) return 'not found';
+              const versions = Array.isArray(item.versions) ? item.versions.filter(Boolean).map(String) : [];
+              const latestFolder = item.latest ? String(item.latest) : (versions[0] || '');
+              const latest = latestFolder.startsWith('app-') ? latestFolder.slice(4) : latestFolder;
+              if (!latest) return 'not found';
+              const extras = versions
+                .map(v => v.startsWith('app-') ? v.slice(4) : v)
+                .filter(v => v && v !== latest)
+                .slice(0, 3);
+              return extras.length ? (latest + ' (also: ' + extras.join(', ') + ')') : latest;
+            } catch {
+              return 'not found';
+            }
+          };
+
+          if (v && v.ok && v.channels) {
+            const ch = v.channels;
+            append('Discord Stable v' + fmt(ch.stable));
+            append('Discord PTB v' + fmt(ch.ptb));
+            append('Discord Canary v' + fmt(ch.canary));
+            append('Discord Development v' + fmt(ch.development));
+          }
+          else if (v && v.ok === false) {
+            append('Discord Versions Error: ' + String(v.error || 'unknown'));
+          }
+          else if (!hasFn) {
+            append('Discord Versions Error: getDiscordVersions() is missing');
+          }
+          else {
+            append('Discord Versions Error: unknown response');
+          }
+        } catch (e) {
+          append('Discord Versions Error: ' + String((e && e.stack) ? e.stack : e));
+        }
+
+        async function renderChannelStatus(ch) {
+          try {
+            const s = await (window.iaLauncher.getChannelStatus ? window.iaLauncher.getChannelStatus(ch) : null);
+            if (!s) return;
+            if (!s.ok) {
+              if (s.error) append('Channel Status Error: ' + String(s.error));
+              return;
+            }
+
+            append('');
+            append('Selected channel: ' + String(s.channel || ch));
+
+            if (s.appDir) append('App Dir: ' + String(s.appDir));
+            if (s.asarStatus) {
+              if (typeof s.asarStatus.patched !== 'undefined') append('Asar Patched: ' + String(!!s.asarStatus.patched));
+              if (s.asarStatus.asarPath) append('Asar Path: ' + String(s.asarStatus.asarPath));
+              if (s.asarStatus.reason) append('Asar Reason: ' + String(s.asarStatus.reason));
+            }
+
+            if (s.payload && typeof s.payload.ok !== 'undefined') {
+              append('Payload Installed: ' + String(!!s.payload.ok));
+              if (s.payload.details && Array.isArray(s.payload.details)) {
+                for (const it of s.payload.details) {
+                  if (!it) continue;
+                  const name = it.file || '';
+                  const exists = !!it.exists;
+                  const matches = !!it.matches;
+                  append('  - ' + String(name) + ': ' + (exists ? ('exists ' + (matches ? '(matches)' : '(mismatch)')) : 'missing'));
+                }
+              }
+            }
+
+            if (s.markerStats) {
+              const ms = s.markerStats;
+              const fmtStat = (st) => st && st.exists ? ('exists bytes=' + String(st.bytes || 0)) : 'missing';
+              append('Markers preload_loaded: ' + fmtStat(ms.preloadLoaded));
+              append('Markers mainhook_loaded: ' + fmtStat(ms.mainhookLoaded));
+              append('Markers running: ' + fmtStat(ms.running));
+              if (typeof ms.injectStatus !== 'undefined') append('Markers inject_status: ' + fmtStat(ms.injectStatus));
+            }
+
+            if (s.injectStatusJson) {
+              try {
+                append('');
+                append('Inject Status:');
+                const st = s.injectStatusJson;
+                if (st.status) append('  status: ' + String(st.status));
+                if (st.mode) append('  mode: ' + String(st.mode));
+                if (st.attempts || st.maxAttempts) append('  attempts: ' + String(st.attempts || 0) + '/' + String(st.maxAttempts || 0));
+                if (st.error) append('  error: ' + String(st.error));
+                if (st.result) append('  result: ' + String(st.result));
+                if (st.readyState) append('  readyState: ' + String(st.readyState));
+              } catch {}
+            }
+
+            if (Array.isArray(s.injectTail) && s.injectTail.length) {
+              append('');
+              append('Inject Log (tail):');
+              for (const ln of s.injectTail) append('  ' + String(ln));
+            }
+
+            if (Array.isArray(s.mainhookTail) && s.mainhookTail.length) {
+              append('');
+              append('Mainhook Log (tail):');
+              for (const ln of s.mainhookTail) append('  ' + String(ln));
+            }
+          } catch {}
+        }
+
+        try { await renderChannelStatus(channelEl.value); } catch {}
+
+        try {
+          channelEl.addEventListener('change', async () => {
+            try { await renderChannelStatus(channelEl.value); } catch {}
+          });
+        } catch {}
+
+        await renderChangelog();
+      })();
+
+      installBtn.addEventListener('click', async () => {
+        const ch = channelEl.value;
+        output.textContent = '';
+        try {
+          const ok = await confirmDownloadIfMissing(ch, 'Install');
+          if (!ok) return;
+
+          showLoading('Installing…');
+          append('Installing ' + ch + '...');
+          const res = await window.iaLauncher.install(ch);
+          append(formatResult(res));
+        } catch (e) {
+          append(String(e));
+        } finally {
+          hideLoading();
+        }
+      });
+
+      uninstallBtn.addEventListener('click', async () => {
+        const ch = channelEl.value;
+        output.textContent = '';
+        showLoading('Uninstalling…');
+        try {
+          append('Uninstalling ' + ch + '...');
+          const res = await window.iaLauncher.uninstall(ch);
+          append(formatResult(res));
+        } catch (e) {
+          append(String(e));
+        } finally {
+          hideLoading();
+        }
+      });
+
+      launchBtn.addEventListener('click', async () => {
+        const ch = channelEl.value;
+        try {
+          const ok = await confirmDownloadIfMissing(ch, 'Launch');
+          if (!ok) return;
+
+          showLoading('Launching…');
+          const res = await window.iaLauncher.launch(ch);
+          append(formatResult(res));
+
+          try {
+            const s = await (window.iaLauncher.getChannelStatus ? window.iaLauncher.getChannelStatus(ch) : null);
+            if (s && s.ok) {
+              append('');
+              append('--- Status After Launch ---');
+              if (s.injectStatusJson) {
+                try {
+                  append('Inject Status:');
+                  append(JSON.stringify(s.injectStatusJson, null, 2));
+                } catch {}
+              }
+              if (Array.isArray(s.injectTail) && s.injectTail.length) {
+                append('Inject Log (tail):');
+                for (const ln of s.injectTail) append('  ' + String(ln));
+              }
+              if (Array.isArray(s.mainhookTail) && s.mainhookTail.length) {
+                append('Mainhook Log (tail):');
+                for (const ln of s.mainhookTail) append('  ' + String(ln));
+              }
+            }
+          } catch {}
+        } catch (e) {
+          append(String(e));
+        } finally {
+          hideLoading();
+        }
+      });
+    </script>
+  </body>
+</html>

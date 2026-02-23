@@ -1,0 +1,60 @@
+.ia-sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ia-sidebar-header h2 {
+    padding: 6px 10px;
+    box-sizing: border-box;
+    color: #96989d;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    flex-shrink: 0;
+    display: flex;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .02em;
+    font-size: 12px;
+}
+
+.ia-sidebar-header .ia-changelog-button {
+    height: 16px;
+    padding: 0;
+}
+
+.ia-sidebar-header .ia-icon {
+    cursor: pointer;
+    color: var(--interactive-text-default);
+}
+
+.ia-sidebar-header .ia-changelog-button:hover .ia-icon {
+    color: var(--interactive-text-hover);
+}
+
+.ia-settings-page-title-children .ia-sidebar-position-control {
+    margin-left: 8px;
+}
+
+.ia-sidebar-position-control .ia-pos-select {
+    background: transparent;
+    color: var(--interactive-muted);
+    border: 1px solid rgba(0,0,0,0.05);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 12px;
+}
+
+.ia-settings-h1 {
+    font-size: 28px !important; /* half of previous 56px */
+    font-weight: 800 !important;
+    margin: 0 12px 20px 0 !important; /* adjusted gap */
+    color: var(--interactive-muted) !important;
+    line-height: 1.1 !important;
+    letter-spacing: 0.01em !important;
+    display: block !important;
+    width: 100% !important;
+    text-transform: none !important;
+    font-family: var(--font-primary), system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}

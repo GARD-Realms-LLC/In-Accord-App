@@ -1,0 +1,96 @@
+.ia-color-picker-contianer {
+    display: flex;
+    justify-content: center;
+}
+
+.ia-color-picker-contianer.ia-color-picker-disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+.ia-color-picker-contianer.ia-color-picker-disabled > .ia-color-picker-controls,
+.ia-color-picker-contianer.ia-color-picker-disabled > .ia-color-picker-swatch {
+    pointer-events: none;
+}
+
+.ia-color-picker-controls {
+    padding-left: 1px;
+    padding-top: 2px;
+    display: flex;
+}
+
+.ia-color-picker-default {
+    cursor: pointer;
+    width: 75px;
+    height: 60px;
+    border-radius: 4px;
+    margin-right: 9px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1px;
+}
+
+.ia-color-picker-custom {
+    position: relative;
+    display: inline-table;
+}
+
+.ia-color-picker-custom svg {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    pointer-events: none;
+}
+
+.ia-color-picker {
+    outline: none;
+    width: 75px;
+    border: none;
+    height: 60px;
+    margin-top: 1px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.ia-color-picker::-webkit-color-swatch {
+    border: none;
+}
+
+.ia-color-picker-swatch {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    margin-left: 5px !important;
+    max-width: 330px;
+}
+
+.ia-color-picker-swatch-item {
+    cursor: pointer;
+    border-radius: 4px;
+    width: 15px;
+    height: 15px;
+    margin: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.ia-setting-item.inline .ia-color-picker-swatch {
+    max-width: 220px;
+    margin-top: 1px;
+}
+
+
+.ia-setting-item.inline .ia-color-picker-default,
+.ia-setting-item.inline .ia-color-picker {
+    width: 50px;
+    height: 40px
+}
+
+.ia-setting-item.inline .ia-color-picker-swatch-item {
+    height: 18px;
+    width: 18px;
+    margin: 2px 2px;
+}

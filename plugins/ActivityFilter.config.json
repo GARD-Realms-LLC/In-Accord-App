@@ -1,0 +1,62 @@
+{
+    "version": "1.1.1",
+    "settings": [
+        {
+            "type": "category",
+            "id": "settings",
+            "name": "Settings",
+            "collapsible": true,
+            "settings": [
+                {
+                    "type": "switch",
+                    "id": "newActivitiesHidden",
+                    "name": "Auto Hide",
+                    "note": "Automatically hide newly added activities from your activity status.",
+                    "value": false
+                }
+            ]
+        },
+        {
+            "type": "category",
+            "id": "playing",
+            "name": "Playing",
+            "collapsible": true,
+            "settings": []
+        },
+        {
+            "type": "category",
+            "id": "listening",
+            "name": "Listening",
+            "collapsible": true,
+            "settings": [
+                {
+                    "type": "switch",
+                    "id": "Spotify",
+                    "name": "Spotify",
+                    "value": true
+                }
+            ]
+        },
+        {
+            "type": "category",
+            "id": "streaming",
+            "name": "Streaming",
+            "collapsible": true,
+            "settings": []
+        },
+        {
+            "type": "category",
+            "id": "watching",
+            "name": "Watching",
+            "collapsible": true,
+            "settings": []
+        },
+        {
+            "type": "category",
+            "id": "competing",
+            "name": "Competing",
+            "collapsible": true,
+            "settings": []
+        }
+    ]
+}

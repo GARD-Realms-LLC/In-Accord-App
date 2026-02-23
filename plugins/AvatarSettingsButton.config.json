@@ -1,0 +1,10 @@
+{
+    "settings": {
+        "showTooltip": true,
+        "hideSettingsButton": true,
+        "click": 1,
+        "contextmenu": 3,
+        "middleclick": 2
+    },
+    "changelogVersion": "2.3.1"
+}

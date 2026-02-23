@@ -1,0 +1,58 @@
+.ia-filled-checkmark {
+  background: #43b581;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3px;
+  margin-right: 4px; /* Align with other icons */
+  color: var(--interactive-text-active);
+}
+
+.ia-empty-updates {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: var(--text-strong);
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.ia-empty-updates svg {
+  color: #43b581;
+  margin-bottom: 20px;
+}
+
+.ia-button.ia-button-icon svg {
+  color: var(--interactive-text-default);
+}
+
+.ia-button.ia-button-icon:hover svg {
+  color: var(--interactive-text-hover);
+}
+
+.ia-button.ia-button-icon.animate {
+  animation: 500ms linear infinite ia-update-spin;
+}
+
+.ia-button.ia-button-icon.no-animate {
+  animation: none !important;
+}
+
+.ia-settings-group-title .ia-button-icon {
+  margin-left: 3px;
+  margin-right: -8px;
+}
+
+@keyframes ia-update-spin {
+  0% {
+    transform: rotate(0);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

@@ -1,0 +1,48 @@
+.ia-tab-bar {
+    display: flex;
+    flex-direction: row;
+}
+
+.ia-tab-item {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-width: 40px;
+    display: flex;
+    border-radius: 4px;
+    margin-right: 16px;
+    padding: 2px 8px;
+    -webkit-app-region: no-drag;
+    cursor: pointer;
+    position: relative;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    color: var(--interactive-text-default);
+    flex-shrink: 0;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+}
+
+.ia-tab-item:last-child {
+    margin: 0;
+}
+
+.ia-tab-item:hover,
+.ia-tab-item.selected {
+    color: var(--interactive-text-active);
+}
+
+.ia-tab-item.selected {
+    cursor: default;
+    background-color: var(--interactive-background-selected);
+}
+
+.ia-tab-item:hover {
+    background-color: var(--interactive-background-hover);
+}
+
+.ia-tab-item:active {
+    background-color: var(--interactive-background-active);
+}
