@@ -24,6 +24,7 @@ import Styles from "@styles/index.css";
 import Modals from "@ui/modals";
 import FloatingWindows from "@ui/floatingwindows";
 import Toasts from "@ui/toasts";
+import ToastStore from "@stores/toasts";
 import SettingsRenderer from "@ui/settings";
 import ManagerHubPanel from "@ui/settings/managerhub";
 import CommandManager from "./commandmanager";
@@ -139,6 +140,15 @@ export default new class Core {
 
         Logger.log("Startup", "Initializing Toasts");
         Toasts.initialize();
+
+        // BetterDiscord-style confirmation: always show a visible toast once we reach
+        // the point where the UI toast container is mounted.
+        try {
+            ToastStore.success("In-Accord loaded", {forceShow: true, timeout: 5000});
+        }
+        catch {
+            // ignore
+        }
 
         Logger.log("Startup", "Initializing Builtins");
         for (const module in Builtins) {

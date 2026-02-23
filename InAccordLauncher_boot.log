@@ -1,0 +1,14 @@
+2026-02-21T19:22:54.090Z [boot] pid=45884 argv=["E:\\InAccord-Apps\\scripts\\launcher-ui\\node_modules\\electron\\dist\\electron.exe","scripts\\launcher-ui","--no-sandbox","--disable-gpu","--disable-software-rasterizer"]
+2026-02-21T19:22:54.092Z [boot] cwd=E:\InAccord-Apps
+2026-02-21T19:22:54.092Z [boot] execPath=E:\InAccord-Apps\scripts\launcher-ui\node_modules\electron\dist\electron.exe
+2026-02-21T19:22:54.129Z [app] whenReady
+2026-02-21T19:22:54.130Z [ui] createWindow
+2026-02-21T19:22:54.200Z [ui] loading E:\InAccord-Apps\scripts\launcher-ui\index.html exists=true
+2026-02-21T19:22:54.339Z [renderer-console] level=2 node:electron/js2c/sandbox_bundle:2 %cElectron Security Warning (Insecure Content-Security-Policy) font-weight: bold; This renderer process has either no Content Security
+  Policy set or a policy with "unsafe-eval" enabled. This exposes users of
+  this app to unnecessary security risks.
+
+For more information and help, consult
+https://electronjs.org/docs/tutorial/security.
+This warning will not show up
+once the app is packaged.

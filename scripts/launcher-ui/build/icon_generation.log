@@ -1,0 +1,325 @@
+2026-02-22T16:10:07.614Z sharp path failed: TypeError: Cannot read properties of undefined (reading 'length')
+    at getDib (file:///E:/InAccord-Apps/scripts/launcher-ui/node_modules/png-to-ico/index.js:122:27)
+    at file:///E:/InAccord-Apps/scripts/launcher-ui/node_modules/png-to-ico/index.js:46:15
+    at Array.forEach (<anonymous>)
+    at imagesToIco (file:///E:/InAccord-Apps/scripts/launcher-ui/node_modules/png-to-ico/index.js:43:9)
+    at beforePack (E:\InAccord-Apps\scripts\launcher-ui\build\beforePack.cjs:53:28)
+    at emitInternal (E:\InAccord-Apps\scripts\launcher-ui\node_modules\app-builder-lib\src\util\asyncEventEmitter.ts:61:9)
+    at AsyncEventEmitter.emit (E:\InAccord-Apps\scripts\launcher-ui\node_modules\app-builder-lib\src\util\asyncEventEmitter.ts:68:26)
+    at Packager.emitBeforePack (E:\InAccord-Apps\scripts\launcher-ui\node_modules\app-builder-lib\src\packager.ts:343:5)
+    at WinPackager.doPack (E:\InAccord-Apps\scripts\launcher-ui\node_modules\app-builder-lib\src\platformPackager.ts:232:5)
+    at WinPackager.pack (E:\InAccord-Apps\scripts\launcher-ui\node_modules\app-builder-lib\src\platformPackager.ts:161:5)
+2026-02-22T16:10:07.616Z fallback png-to-ico failed: TypeError: Cannot read properties of undefined (reading 'length')
+    at getDib (file:///E:/InAccord-Apps/scripts/launcher-ui/node_modules/png-to-ico/index.js:122:27)
+    at file:///E:/InAccord-Apps/scripts/launcher-ui/node_modules/png-to-ico/index.js:46:15
+    at Array.forEach (<anonymous>)
+    at imagesToIco (file:///E:/InAccord-Apps/scripts/launcher-ui/node_modules/png-to-ico/index.js:43:9)
+    at beforePack (E:\InAccord-Apps\scripts\launcher-ui\build\beforePack.cjs:59:32)
+    at emitInternal (E:\InAccord-Apps\scripts\launcher-ui\node_modules\app-builder-lib\src\util\asyncEventEmitter.ts:61:9)
+    at AsyncEventEmitter.emit (E:\InAccord-Apps\scripts\launcher-ui\node_modules\app-builder-lib\src\util\asyncEventEmitter.ts:68:26)
+    at Packager.emitBeforePack (E:\InAccord-Apps\scripts\launcher-ui\node_modules\app-builder-lib\src\packager.ts:343:5)
+    at WinPackager.doPack (E:\InAccord-Apps\scripts\launcher-ui\node_modules\app-builder-lib\src\platformPackager.ts:232:5)
+    at WinPackager.pack (E:\InAccord-Apps\scripts\launcher-ui\node_modules\app-builder-lib\src\platformPackager.ts:161:5)
+2026-02-22T16:10:57.997Z png-to-ico failed: Error: Please give me a square PNG image.
+    at file:///E:/InAccord-Apps/scripts/launcher-ui/node_modules/png-to-ico/index.js:7:13
+    at ModuleJob.run (node:internal/modules/esm/module_job:413:25)
+    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:660:26)
+    at beforePack (E:\InAccord-Apps\scripts\launcher-ui\build\beforePack.cjs:31:25)
+    at emitInternal (E:\InAccord-Apps\scripts\launcher-ui\node_modules\app-builder-lib\src\util\asyncEventEmitter.ts:61:9)
+    at AsyncEventEmitter.emit (E:\InAccord-Apps\scripts\launcher-ui\node_modules\app-builder-lib\src\util\asyncEventEmitter.ts:68:26)
+    at Packager.emitBeforePack (E:\InAccord-Apps\scripts\launcher-ui\node_modules\app-builder-lib\src\packager.ts:343:5)
+    at WinPackager.doPack (E:\InAccord-Apps\scripts\launcher-ui\node_modules\app-builder-lib\src\platformPackager.ts:232:5)
+    at WinPackager.pack (E:\InAccord-Apps\scripts\launcher-ui\node_modules\app-builder-lib\src\platformPackager.ts:161:5)
+    at Packager.doBuild (E:\InAccord-Apps\scripts\launcher-ui\node_modules\app-builder-lib\src\packager.ts:538:11)
+2026-02-22T16:11:27.709Z generated ico via png-to-ico (square padded) size=481
+2026-02-22T16:11:27.712Z wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-22T17:11:50.588Z synced launcher splash asset E:\InAccord-Apps\scripts\launcher-ui\assets\splash.png bytes=64782
+2026-02-22T17:11:50.659Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-22T17:11:50.661Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-22T17:11:50.707Z splashHeader generated ico via png-to-ico (square padded) size=550
+2026-02-22T17:11:50.709Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-22T18:03:49.788Z synced launcher splash asset E:\InAccord-Apps\scripts\launcher-ui\assets\splash.png bytes=65184
+2026-02-22T18:03:49.863Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-22T18:03:49.865Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-22T18:03:49.911Z splashHeader generated ico via png-to-ico (square padded) size=550
+2026-02-22T18:03:49.914Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-22T18:13:25.511Z synced launcher splash asset E:\InAccord-Apps\scripts\launcher-ui\assets\splash.png bytes=65184
+2026-02-22T18:13:25.585Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-22T18:13:25.588Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-22T18:13:25.637Z splashHeader generated ico via png-to-ico (square padded) size=550
+2026-02-22T18:13:25.639Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-22T18:13:33.789Z synced launcher splash asset E:\InAccord-Apps\scripts\launcher-ui\assets\splash.png bytes=65184
+2026-02-22T18:13:33.861Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-22T18:13:33.864Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-22T18:13:33.911Z splashHeader generated ico via png-to-ico (square padded) size=550
+2026-02-22T18:13:33.913Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-22T18:44:38.036Z synced launcher splash asset E:\InAccord-Apps\scripts\launcher-ui\assets\splash.png bytes=65184
+2026-02-22T18:44:38.123Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-22T18:44:38.125Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-22T18:44:38.170Z splashHeader generated ico via png-to-ico (square padded) size=550
+2026-02-22T18:44:38.172Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-22T18:52:13.256Z synced launcher splash asset E:\InAccord-Apps\scripts\launcher-ui\assets\splash.png bytes=65184
+2026-02-22T18:52:13.334Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-22T18:52:13.336Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-22T18:52:13.384Z splashHeader generated ico via png-to-ico (square padded) size=550
+2026-02-22T18:52:13.386Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-22T20:30:26.787Z synced launcher splash asset E:\InAccord-Apps\scripts\launcher-ui\assets\splash.png bytes=65184
+2026-02-22T20:30:26.862Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-22T20:30:26.864Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-22T20:30:26.911Z splashHeader generated ico via png-to-ico (square padded) size=550
+2026-02-22T20:30:26.913Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-22T20:32:28.806Z synced launcher splash asset E:\InAccord-Apps\scripts\launcher-ui\assets\splash.png bytes=65184
+2026-02-22T20:32:28.883Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-22T20:32:28.885Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-22T20:32:28.927Z splashHeader generated ico via png-to-ico (square padded) size=550
+2026-02-22T20:32:28.929Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-22T20:47:50.360Z synced launcher splash asset E:\InAccord-Apps\scripts\launcher-ui\assets\splash.png bytes=65184
+2026-02-22T20:47:50.435Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-22T20:47:50.437Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-22T20:47:50.485Z splashHeader generated ico via png-to-ico (square padded) size=550
+2026-02-22T20:47:50.487Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-22T20:48:42.527Z synced launcher splash asset E:\InAccord-Apps\scripts\launcher-ui\assets\splash.png bytes=65184
+2026-02-22T20:48:42.601Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-22T20:48:42.603Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-22T20:48:42.652Z splashHeader generated ico via png-to-ico (square padded) size=550
+2026-02-22T20:48:42.654Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-22T20:49:50.948Z synced launcher splash asset E:\InAccord-Apps\scripts\launcher-ui\assets\splash.png bytes=65184
+2026-02-22T20:49:51.019Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-22T20:49:51.021Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-22T20:49:51.072Z splashHeader generated ico via png-to-ico (square padded) size=550
+2026-02-22T20:49:51.074Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-22T20:50:55.731Z synced launcher splash asset E:\InAccord-Apps\scripts\launcher-ui\assets\splash.png bytes=65184
+2026-02-22T20:50:55.807Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-22T20:50:55.808Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-22T20:50:55.860Z splashHeader generated ico via png-to-ico (square padded) size=550
+2026-02-22T20:50:55.862Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-22T21:19:17.301Z synced launcher splash asset E:\InAccord-Apps\scripts\launcher-ui\assets\splash.png bytes=65184
+2026-02-22T21:19:17.426Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-22T21:19:17.428Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-22T21:19:17.481Z splashHeader generated ico via png-to-ico (square padded) size=550
+2026-02-22T21:19:17.483Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-22T21:22:53.650Z synced launcher splash asset E:\InAccord-Apps\scripts\launcher-ui\assets\splash.png bytes=65184
+2026-02-22T21:22:53.723Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-22T21:22:53.726Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-22T21:22:53.761Z splashHeader generated ico via png-to-ico (square padded) size=481
+2026-02-22T21:22:53.763Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-22T21:28:29.183Z synced launcher splash asset E:\InAccord-Apps\scripts\launcher-ui\assets\splash.png bytes=65184
+2026-02-22T21:28:29.261Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-22T21:28:29.263Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-22T21:28:29.302Z splashHeader generated ico via png-to-ico (square padded) size=481
+2026-02-22T21:28:29.304Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-22T21:29:43.699Z synced launcher splash asset E:\InAccord-Apps\scripts\launcher-ui\assets\splash.png bytes=65184
+2026-02-22T21:29:43.777Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-22T21:29:43.780Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-22T21:29:43.819Z splashHeader generated ico via png-to-ico (square padded) size=481
+2026-02-22T21:29:43.821Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-22T21:30:50.626Z synced launcher splash asset E:\InAccord-Apps\scripts\launcher-ui\assets\splash.png bytes=65184
+2026-02-22T21:30:50.705Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-22T21:30:50.707Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-22T21:30:50.742Z splashHeader generated ico via png-to-ico (square padded) size=481
+2026-02-22T21:30:50.744Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-22T21:33:04.076Z synced launcher splash asset E:\InAccord-Apps\scripts\launcher-ui\assets\splash.png bytes=65184
+2026-02-22T21:33:04.151Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-22T21:33:04.152Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-22T21:33:04.185Z splashHeader generated ico via png-to-ico (square padded) size=481
+2026-02-22T21:33:04.188Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-22T21:39:56.415Z synced launcher splash asset E:\InAccord-Apps\scripts\launcher-ui\assets\splash.png bytes=65184
+2026-02-22T21:39:56.489Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-22T21:39:56.491Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-22T21:39:56.528Z splashHeader generated ico via png-to-ico (square padded) size=481
+2026-02-22T21:39:56.530Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-22T21:49:12.725Z synced launcher splash asset E:\InAccord-Apps\scripts\launcher-ui\assets\splash.png bytes=65184
+2026-02-22T21:49:12.800Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-22T21:49:12.802Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-22T21:49:12.838Z splashHeader generated ico via png-to-ico (square padded) size=481
+2026-02-22T21:49:12.841Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-22T21:49:38.445Z synced launcher splash asset E:\InAccord-Apps\scripts\launcher-ui\assets\splash.png bytes=65184
+2026-02-22T21:49:38.526Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-22T21:49:38.530Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-22T21:49:38.575Z splashHeader generated ico via png-to-ico (square padded) size=481
+2026-02-22T21:49:38.577Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-22T21:51:06.750Z synced launcher splash asset E:\InAccord-Apps\scripts\launcher-ui\assets\splash.png bytes=65184
+2026-02-22T21:51:06.827Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-22T21:51:06.829Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-22T21:51:06.866Z splashHeader generated ico via png-to-ico (square padded) size=481
+2026-02-22T21:51:06.868Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-22T21:57:20.372Z synced launcher splash asset E:\InAccord-Apps\scripts\launcher-ui\assets\splash.png bytes=65184
+2026-02-22T21:57:20.448Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-22T21:57:20.450Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-22T21:57:20.484Z splashHeader generated ico via png-to-ico (square padded) size=481
+2026-02-22T21:57:20.486Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-22T22:03:36.694Z synced launcher splash asset E:\InAccord-Apps\scripts\launcher-ui\assets\splash.png bytes=65184
+2026-02-22T22:03:36.768Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-22T22:03:36.770Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-22T22:03:36.804Z splashHeader generated ico via png-to-ico (square padded) size=481
+2026-02-22T22:03:36.806Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-22T22:04:09.613Z synced launcher splash asset E:\InAccord-Apps\scripts\launcher-ui\assets\splash.png bytes=65184
+2026-02-22T22:04:09.688Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-22T22:04:09.690Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-22T22:04:09.727Z splashHeader generated ico via png-to-ico (square padded) size=481
+2026-02-22T22:04:09.729Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-22T22:16:59.235Z synced launcher splash asset E:\InAccord-Apps\scripts\launcher-ui\assets\splash.png bytes=65184
+2026-02-22T22:16:59.310Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-22T22:16:59.312Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-22T22:16:59.348Z splashHeader generated ico via png-to-ico (square padded) size=481
+2026-02-22T22:16:59.350Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-22T22:22:52.983Z synced launcher splash asset E:\InAccord-Apps\scripts\launcher-ui\assets\splash.png bytes=65184
+2026-02-22T22:22:53.055Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-22T22:22:53.057Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-22T22:22:53.091Z splashHeader generated ico via png-to-ico (square padded) size=481
+2026-02-22T22:22:53.093Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-22T22:23:20.078Z synced launcher splash asset E:\InAccord-Apps\scripts\launcher-ui\assets\splash.png bytes=65184
+2026-02-22T22:23:20.167Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-22T22:23:20.169Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-22T22:23:20.208Z splashHeader generated ico via png-to-ico (square padded) size=481
+2026-02-22T22:23:20.211Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-22T22:28:45.964Z synced launcher splash asset E:\InAccord-Apps\scripts\launcher-ui\assets\splash.png bytes=65184
+2026-02-22T22:28:46.034Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-22T22:28:46.035Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-22T22:28:46.076Z splashHeader generated ico via png-to-ico (square padded) size=481
+2026-02-22T22:28:46.078Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-22T22:57:35.511Z synced launcher splash asset E:\InAccord-Apps\scripts\launcher-ui\assets\splash.png bytes=65184
+2026-02-22T22:57:35.610Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-22T22:57:35.612Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-22T22:57:35.654Z splashHeader generated ico via png-to-ico (square padded) size=481
+2026-02-22T22:57:35.655Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-22T23:04:18.647Z synced launcher splash asset E:\InAccord-Apps\scripts\launcher-ui\assets\splash.png bytes=65184
+2026-02-22T23:04:18.723Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-22T23:04:18.724Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-22T23:04:18.757Z splashHeader generated ico via png-to-ico (square padded) size=481
+2026-02-22T23:04:18.759Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-22T23:05:00.561Z synced launcher splash asset E:\InAccord-Apps\scripts\launcher-ui\assets\splash.png bytes=65184
+2026-02-22T23:05:00.641Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-22T23:05:00.643Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-22T23:05:00.683Z splashHeader generated ico via png-to-ico (square padded) size=481
+2026-02-22T23:05:00.685Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-22T23:09:47.883Z synced launcher splash asset E:\InAccord-Apps\scripts\launcher-ui\assets\splash.png bytes=65184
+2026-02-22T23:09:47.956Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-22T23:09:47.958Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-22T23:09:47.994Z splashHeader generated ico via png-to-ico (square padded) size=481
+2026-02-22T23:09:47.996Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-22T23:34:31.296Z synced launcher splash asset E:\InAccord-Apps\scripts\launcher-ui\assets\splash.png bytes=65184
+2026-02-22T23:34:31.370Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-22T23:34:31.372Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-22T23:34:31.409Z splashHeader generated ico via png-to-ico (square padded) size=481
+2026-02-22T23:34:31.411Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-22T23:40:25.580Z synced launcher splash asset E:\InAccord-Apps\scripts\launcher-ui\assets\splash.png bytes=65184
+2026-02-22T23:40:25.650Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-22T23:40:25.652Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-22T23:40:25.688Z splashHeader generated ico via png-to-ico (square padded) size=481
+2026-02-22T23:40:25.690Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-22T23:41:24.846Z synced launcher splash asset E:\InAccord-Apps\scripts\launcher-ui\assets\splash.png bytes=65184
+2026-02-22T23:41:24.919Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-22T23:41:24.921Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-22T23:41:24.950Z splashHeader generated ico via png-to-ico (square padded) size=481
+2026-02-22T23:41:24.951Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-23T12:40:56.328Z synced launcher splash asset E:\InAccord-Apps\scripts\launcher-ui\assets\splash.png bytes=65184
+2026-02-23T12:40:56.415Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-23T12:40:56.417Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-23T12:40:56.445Z splashHeader generated ico via png-to-ico (square padded) size=481
+2026-02-23T12:40:56.447Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-23T12:43:45.083Z synced launcher splash asset E:\InAccord-Apps\scripts\launcher-ui\assets\splash.png bytes=65184
+2026-02-23T12:43:45.157Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-23T12:43:45.159Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-23T12:43:45.195Z splashHeader generated ico via png-to-ico (square padded) size=481
+2026-02-23T12:43:45.197Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-23T12:44:29.107Z synced launcher splash asset E:\InAccord-Apps\scripts\launcher-ui\assets\splash.png bytes=65184
+2026-02-23T12:44:29.183Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-23T12:44:29.185Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-23T12:44:29.220Z splashHeader generated ico via png-to-ico (square padded) size=481
+2026-02-23T12:44:29.222Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-23T12:48:50.210Z synced launcher splash asset E:\InAccord-Apps\scripts\launcher-ui\assets\splash.png bytes=65184
+2026-02-23T12:48:50.286Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-23T12:48:50.288Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-23T12:48:50.326Z splashHeader generated ico via png-to-ico (square padded) size=481
+2026-02-23T12:48:50.328Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-23T12:52:51.962Z synced launcher splash asset E:\InAccord-Apps\scripts\launcher-ui\assets\splash.png bytes=65184
+2026-02-23T12:52:52.041Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-23T12:52:52.043Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-23T12:52:52.080Z splashHeader generated ico via png-to-ico (square padded) size=481
+2026-02-23T12:52:52.082Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-23T12:54:59.589Z synced launcher splash asset E:\InAccord-Apps\scripts\launcher-ui\assets\splash.png bytes=65184
+2026-02-23T12:54:59.671Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-23T12:54:59.673Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-23T12:54:59.712Z splashHeader generated ico via png-to-ico (square padded) size=481
+2026-02-23T12:54:59.714Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-23T12:57:21.095Z synced launcher splash asset E:\InAccord-Apps\scripts\launcher-ui\assets\splash.png bytes=65184
+2026-02-23T12:57:21.169Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-23T12:57:21.171Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-23T12:57:21.210Z splashHeader generated ico via png-to-ico (square padded) size=481
+2026-02-23T12:57:21.212Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-23T13:01:29.306Z synced launcher splash asset E:\InAccord-Apps\scripts\launcher-ui\assets\splash.png bytes=65184
+2026-02-23T13:01:29.379Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-23T13:01:29.381Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-23T13:01:29.420Z splashHeader generated ico via png-to-ico (square padded) size=481
+2026-02-23T13:01:29.422Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-23T13:03:02.174Z synced launcher splash asset E:\InAccord-Apps\scripts\launcher-ui\assets\splash.png bytes=65184
+2026-02-23T13:03:02.249Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-23T13:03:02.251Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-23T13:03:02.292Z splashHeader generated ico via png-to-ico (square padded) size=481
+2026-02-23T13:03:02.294Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-23T13:07:01.383Z synced launcher splash asset E:\InAccord-Apps\scripts\launcher-ui\assets\splash.png bytes=65184
+2026-02-23T13:07:01.459Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-23T13:07:01.461Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-23T13:07:01.496Z splashHeader generated ico via png-to-ico (square padded) size=481
+2026-02-23T13:07:01.498Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-23T13:09:10.946Z synced launcher splash asset E:\InAccord-Apps\scripts\launcher-ui\assets\splash.png bytes=65184
+2026-02-23T13:09:11.023Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-23T13:09:11.025Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-23T13:09:11.057Z splashHeader generated ico via png-to-ico (square padded) size=481
+2026-02-23T13:09:11.059Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-23T13:13:26.201Z synced launcher splash asset E:\InAccord-Apps\scripts\launcher-ui\assets\splash.png bytes=65184
+2026-02-23T13:13:26.273Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-23T13:13:26.275Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-23T13:13:26.313Z splashHeader generated ico via png-to-ico (square padded) size=481
+2026-02-23T13:13:26.315Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-23T13:20:54.206Z synced launcher splash asset E:\InAccord-Apps\scripts\launcher-ui\assets\splash.png bytes=65184
+2026-02-23T13:20:54.278Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-23T13:20:54.280Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-23T13:20:54.319Z splashHeader generated ico via png-to-ico (square padded) size=481
+2026-02-23T13:20:54.321Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-23T13:24:15.752Z synced launcher splash asset E:\InAccord-Apps\scripts\launcher-ui\assets\splash.png bytes=65184
+2026-02-23T13:24:15.827Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-23T13:24:15.829Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-23T13:24:15.867Z splashHeader generated ico via png-to-ico (square padded) size=481
+2026-02-23T13:24:15.870Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-23T13:26:10.398Z synced launcher splash asset E:\InAccord-Apps\scripts\launcher-ui\assets\splash.png bytes=65184
+2026-02-23T13:26:10.472Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-23T13:26:10.474Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-23T13:26:10.507Z splashHeader generated ico via png-to-ico (square padded) size=481
+2026-02-23T13:26:10.509Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-23T14:02:44.918Z synced launcher splash asset E:\InAccord-Apps\scripts\launcher-ui\assets\splash.png bytes=65184
+2026-02-23T14:02:44.995Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-23T14:02:44.997Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-23T14:02:45.033Z splashHeader generated ico via png-to-ico (square padded) size=481
+2026-02-23T14:02:45.035Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-23T15:15:01.391Z synced launcher splash asset E:\InAccord-Apps\scripts\launcher-ui\assets\splash.png bytes=65184
+2026-02-23T15:15:01.475Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-23T15:15:01.477Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-23T15:15:01.515Z splashHeader generated ico via png-to-ico (square padded) size=481
+2026-02-23T15:15:01.517Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-23T16:59:30.526Z synced launcher splash asset E:\InAccord-Apps\scripts\launcher-ui\assets\splash.png bytes=65184
+2026-02-23T16:59:30.600Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-23T16:59:30.602Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-23T16:59:30.637Z splashHeader generated ico via png-to-ico (square padded) size=481
+2026-02-23T16:59:30.639Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-23T17:29:45.196Z synced launcher splash asset E:\InAccord-Apps\scripts\launcher-ui\assets\splash.png bytes=65184
+2026-02-23T17:29:45.271Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-23T17:29:45.273Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-23T17:29:45.310Z splashHeader generated ico via png-to-ico (square padded) size=481
+2026-02-23T17:29:45.312Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-23T17:38:23.294Z synced launcher splash asset E:\InAccord-Apps\scripts\launcher-ui\assets\splash.png bytes=65184
+2026-02-23T17:38:23.371Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-23T17:38:23.375Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-23T17:38:23.411Z splashHeader generated ico via png-to-ico (square padded) size=481
+2026-02-23T17:38:23.413Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-23T17:38:45.911Z synced launcher splash asset E:\InAccord-Apps\scripts\launcher-ui\assets\splash.png bytes=65184
+2026-02-23T17:38:45.986Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-23T17:38:45.988Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-23T17:38:46.025Z splashHeader generated ico via png-to-ico (square padded) size=481
+2026-02-23T17:38:46.027Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-23T17:44:49.330Z synced launcher splash asset E:\InAccord-Apps\scripts\launcher-ui\assets\splash.png bytes=65184
+2026-02-23T17:44:49.427Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-23T17:44:49.429Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-23T17:44:49.469Z splashHeader generated ico via png-to-ico (square padded) size=481
+2026-02-23T17:44:49.470Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
