@@ -11,7 +11,7 @@
 
 ## Development
 
-From the repository root (`E:\InAccord-Apps`):
+From the repository root (`E:\In-Accord-Apps`):
 
 - Build once:
   - `bun run build`
