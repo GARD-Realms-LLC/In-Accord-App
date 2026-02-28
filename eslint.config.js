@@ -1,154 +1,162 @@
-// ESLint flat config (ESLint v9+)
-// Covers TS/TSX/JS in src/ and scripts/.
+import js from "@eslint/js";
+import globals from "globals";
+import ts from "typescript-eslint";
+import react from "eslint-plugin-react";
+import reactHooks from "eslint-plugin-react-hooks";
 
-const js = require("@eslint/js");
-const globals = require("globals");
-const tsParser = require("@typescript-eslint/parser");
-const tsPlugin = require("@typescript-eslint/eslint-plugin");
-const reactHooks = require("eslint-plugin-react-hooks");
+// Make sure typescript rules only affect typescript for now
+ts.configs.recommended.forEach(r => r.files = ["**/*.ts", "**/*.tsx"]);
 
-/** @type {import('eslint').Linter.FlatConfig[]} */
-module.exports = [
-  {
-    linterOptions: {
-      // This repo contains many legacy/intentional eslint-disable comments.
-      // Treating unused disables as warnings breaks CI when --max-warnings 0 is used.
-      reportUnusedDisableDirectives: "off",
+export default ts.config(
+    js.configs.recommended,
+    ...ts.configs.recommended,
+
+    {
+        languageOptions: {
+            globals: {
+                ...globals.browser,
+                ...globals.node
+            }
+        }
     },
-    ignores: [
-      // Not part of the app source; bundled/third-party BetterDiscord plugin files.
-      "plugins/**",
-      "Images/**",
-      "assets/**",
-      "**/*.plugin.js",
 
-      // Launcher UI build outputs / generated bundles
-      "scripts/launcher-ui/**",
-
-      "dist/**",
-      "**/node_modules/**",
-      "**/.bun/**",
-      "**/.cache/**",
-      "**/*.min.js",
-      // Build artifacts from electron-builder output
-      "dist/launcher-build-win32-latest/**",
-      "dist/ia-launcher-win.exe",
-    ],
-  },
-
-  // This config file itself is CommonJS and runs in Node.
-  {
-    files: ["eslint.config.js"],
-    languageOptions: {
-      ecmaVersion: "latest",
-      sourceType: "script",
-      globals: {
-        ...globals.node,
-      },
+    {
+        ignores: ["dist/", "assets/"]
     },
-    rules: {
-      "no-undef": "off",
+    // Setup general JS rules
+    {
+        files: ["**/*.js", "**/*.jsx", "**/*.ts", "**/*.tsx"],
+        rules: {
+            "accessor-pairs": "error",
+            "block-spacing": ["error", "never"],
+            "brace-style": ["error", "stroustrup", {allowSingleLine: true}],
+            "curly": ["error", "multi-line", "consistent"],
+            "dot-location": ["error", "property"],
+            "dot-notation": "error",
+            "func-call-spacing": "error",
+            "handle-callback-err": "error",
+            "key-spacing": "error",
+            "keyword-spacing": "error",
+            // "new-cap": ["error", {newIsCap: true}],
+            "no-array-constructor": "error",
+            "no-caller": "error",
+            "no-console": "error",
+            "no-duplicate-imports": "error",
+            "no-else-return": "error",
+            "no-eval": "error",
+            "no-floating-decimal": "error",
+            "no-implied-eval": "error",
+            "no-iterator": "error",
+            "no-label-var": "error",
+            "no-labels": "error",
+            "no-lone-blocks": "error",
+            "no-mixed-spaces-and-tabs": "error",
+            "no-multi-spaces": "error",
+            "no-multi-str": "error",
+            "no-new": "error",
+            "no-new-func": "error",
+            "no-new-object": "error",
+            "no-new-wrappers": "error",
+            "no-octal-escape": "error",
+            "no-path-concat": "error",
+            "no-proto": "error",
+            "no-prototype-builtins": "off",
+            "no-redeclare": ["error", {builtinGlobals: true}],
+            "no-self-compare": "error",
+            "no-sequences": "error",
+            "no-shadow": ["warn", {builtinGlobals: false, hoist: "functions"}],
+            "no-tabs": "error",
+            "no-template-curly-in-string": "error",
+            "no-throw-literal": "error",
+            "no-undef": "error",
+            "no-undef-init": "error",
+            "no-unmodified-loop-condition": "error",
+            "no-unneeded-ternary": "error",
+            "no-useless-call": "error",
+            "no-useless-computed-key": "error",
+            "no-useless-constructor": "error",
+            "no-useless-rename": "error",
+            "no-var": "error",
+            "no-whitespace-before-property": "error",
+            "object-curly-spacing": ["error", "never", {objectsInObjects: false}],
+            "object-property-newline": ["error", {allowAllPropertiesOnSameLine: true}],
+            "operator-linebreak": [
+                "error",
+                "none",
+                {overrides: {"?": "before", ":": "before", "&&": "before"}}
+            ],
+            "prefer-const": "error",
+            "quote-props": ["error", "consistent-as-needed", {keywords: true}],
+            "quotes": ["error", "double", {allowTemplateLiterals: true}],
+            "rest-spread-spacing": "error",
+            "semi": "error",
+            "semi-spacing": "error",
+            "space-before-blocks": "error",
+            "space-in-parens": "error",
+            "space-infix-ops": "error",
+            "space-unary-ops": [
+                "error",
+                {words: true, nonwords: false}
+            ],
+            "spaced-comment": ["error", "always", {exceptions: ["-", "*"]}],
+            "template-curly-spacing": "error",
+            "wrap-iife": ["error", "inside"],
+            "yield-star-spacing": "error",
+            "yoda": "error"
+        },
     },
-  },
 
-  // Base JS recommendations
-  js.configs.recommended,
-
-  // JS / JSX parsing defaults
-  {
-    files: ["**/*.{js,jsx,mjs,cjs}"],
-    languageOptions: {
-      ecmaVersion: "latest",
-      sourceType: "module",
-      parserOptions: {
-        ecmaFeatures: { jsx: true },
-      },
+    // Setup typescript-specific rules
+    {
+        files: ["**/*.ts", "**/*.tsx"],
+        rules: {
+            // typescript does these better and eslint can't detect most
+            "no-undef": "off",
+            "no-redeclare": "off",
+            "@typescript-eslint/no-explicit-any": ["off"],
+            "@typescript-eslint/no-unnecessary-type-constraint": ["off"],
+            "@typescript-eslint/array-type": ["error", {"default": "array-simple"}],
+            "@typescript-eslint/no-unused-vars": ["error", {argsIgnorePattern: "^_", varsIgnorePattern: "^_"}]
+        }
     },
-    rules: {
-      // This codebase intentionally uses empty blocks (especially catch blocks).
-      "no-empty": "off",
-      "no-console": "off",
-      "no-useless-escape": "off",
-      "no-unused-vars": "off",
+
+    // Setup rules for scripts
+    {
+        files: ["scripts/*", "scripts/**/*"],
+        rules: {
+            "no-console": "off"
+        }
     },
-  },
 
-  // Browser/renderer globals for app UI/runtime
-  {
-    files: ["src/**/*.{js,jsx,ts,tsx}", "assets/**/*.js"],
-    languageOptions: {
-      globals: {
-        ...globals.browser,
-      },
+    // Setup rules for renderer package
+    {
+        files: ["src/InAccord/**/*"],
+        ...react.configs.flat.recommended,
+        ...reactHooks.configs["recommended-latest"],
+        settings: {
+            react: {
+                version: "18.3"
+            }
+        },
+        languageOptions: {
+            globals: {
+                ...globals.browser,
+                ...globals.node,
+                DiscordNative: false,
+            },
+            parserOptions: {
+                ecmaFeatures: {
+                    jsx: true,
+                }
+            }
+        },
+        rules: {
+            "react/display-name": "off",
+            "react/prop-types": "off",
+            "react/jsx-key": "off",
+            "react/jsx-no-target-blank": "error",
+            "react/jsx-uses-react": "error",
+            "react/jsx-uses-vars": "error"
+        }
     },
-  },
-
-  // Node globals for scripts (build/inject helpers)
-  {
-    files: ["scripts/**/*.{js,cjs,mjs,ts,tsx}"],
-    languageOptions: {
-      globals: {
-        ...globals.node,
-      },
-    },
-  },
-
-  // TypeScript / TSX
-  {
-    files: ["**/*.{ts,tsx}"],
-    languageOptions: {
-      parser: tsParser,
-      parserOptions: {
-        ecmaVersion: "latest",
-        sourceType: "module",
-        ecmaFeatures: { jsx: true },
-      },
-    },
-    plugins: {
-      "@typescript-eslint": tsPlugin,
-      "react-hooks": reactHooks,
-    },
-    rules: {
-      // TypeScript handles undefined names/types better than ESLint core.
-      "no-undef": "off",
-      "no-redeclare": "off",
-      "no-prototype-builtins": "off",
-      "no-empty": "off",
-
-      // Prefer TS-aware unused vars.
-      "no-unused-vars": "off",
-      "@typescript-eslint/no-unused-vars": "off",
-
-      // TS code frequently uses any in Discord-internals.
-      "@typescript-eslint/no-explicit-any": "off",
-
-      // Keep the codebase pragmatic.
-      "@typescript-eslint/ban-ts-comment": "off",
-
-      // The project uses some require() calls in Electron contexts.
-      "@typescript-eslint/no-require-imports": "off",
-
-      // Do not enforce hooks rules globally (Discord internals + patchers).
-      "react-hooks/rules-of-hooks": "off",
-      "react-hooks/exhaustive-deps": "off",
-    },
-  },
-
-  // CommonJS scripts + Electron main
-  {
-    files: [
-      "scripts/**/*.{js,cjs,mjs}",
-      "src/electron/**/*.{js,cjs,mjs,ts,tsx}",
-    ],
-    languageOptions: {
-      ecmaVersion: "latest",
-      sourceType: "script",
-      globals: {
-        ...globals.node,
-      },
-    },
-    rules: {
-      "no-console": "off",
-    },
-  },
-];
+);
