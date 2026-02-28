@@ -2,7 +2,6 @@
     "Panels": {
         "plugins": "Plugins",
         "themes": "Themes",
-        "about": "About In-Accord",
         "customcss": "Custom CSS",
         "updates": "Updates",
         "managerhub": "Manager Hub",
@@ -46,23 +45,6 @@
                     "note": "Prevents or allows notifications to be shown on screen."
                 }
             },
-                "sidebarposition": {
-                    "name": "Sidebar",
-                    "sidebar": {
-                        "name": "Sidebar",
-                        "note": "Choose where the InAccord side-menu appears in Settings"
-                    },
-                    "sidebarPosition": {
-                        "name": "Sidebar",
-                        "note": "Choose where the InAccord side-menu appears in Settings"
-                    }
-                    ,
-                    "options": {
-                        "left": "Left",
-                        "top": "TOP",
-                        "bottom": "Bottom"
-                    }
-                },
             "store": {
                 "name": "Addon Store",
                 "iaAddonStore": {
@@ -182,33 +164,6 @@
                     "button": "Attempt to recover Discord",
                     "report": "Report on Github",
                     "safeMode": "Relaunch in Safe Mode"
-                }
-            },
-            "debug": {
-                "name": "Debug",
-                "texttest": {
-                    "name": "Text test",
-                    "note": "Just testing it"
-                },
-                "slidertest": {
-                    "name": "Slider test",
-                    "note": "Just testing it"
-                },
-                "radiotest": {
-                    "name": "Radio test",
-                    "note": "Just testing it"
-                },
-                "maxWidth": {
-                    "name": "Notification Width",
-                    "note": "Maximum width of notifications"
-                },
-                "keybindtest": {
-                    "name": "Keybind test",
-                    "note": "Just testing it"
-                },
-                "colortest": {
-                    "name": "Color test",
-                    "note": "Just testing it"
                 }
             },
             "editor": {
