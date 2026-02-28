@@ -1,0 +1,41 @@
+directories:
+  output: dist
+  buildResources: build
+appId: app.In-Accord.installer
+productName: In-Accord
+copyright: Copyright © 2026 In-Accord
+files:
+  - filter:
+      - dist/**/*
+      - assets/**/*
+      - Images/**/*
+      - plugins/**/*
+      - package.json
+afterAllArtifactBuild: scripts/fixmac.js
+win:
+  artifactName: ${productName}-Windows.${ext}
+  icon: assets/icon.ico
+  target:
+    target: portable
+    arch:
+      - ia32
+portable:
+  requestExecutionLevel: user
+  useZip: true
+  splashImage: Images/splash.jpg
+mac:
+  artifactName: ${productName}-Mac.${ext}
+  icon: assets/icon.icns
+  category: public.app-category.social-networking
+  target:
+    target: zip
+    arch:
+      - x64
+linux:
+  artifactName: ${productName}-Linux.${ext}
+  category: Utility
+  target:
+    target: AppImage
+    arch:
+      - x64
+electronVersion: 39.2.7
