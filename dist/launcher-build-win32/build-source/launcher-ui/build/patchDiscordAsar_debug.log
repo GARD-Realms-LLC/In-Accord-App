@@ -1,0 +1,24 @@
+2026-02-22T17:42:04.812Z start asarPath=C:\Users\docrs\AppData\Local\Discord\app-1.0.9225\resources\app.asar channel=stable
+2026-02-22T17:42:04.814Z backup path=C:\Users\docrs\AppData\Local\Discord\app-1.0.9225\resources\app.asar.inaccord.bak
+2026-02-22T17:42:04.815Z tmpRoot=C:\Users\docrs\AppData\Local\Temp\inaccord-asar-patch-RblCWN
+2026-02-22T17:42:05.351Z extractAll ok
+2026-02-22T17:42:05.352Z packageMain=app_bootstrap/index.js
+2026-02-22T17:42:05.352Z patching main app_bootstrap/index.js
+2026-02-22T17:42:05.358Z bootstrap scripts count=22
+2026-02-22T17:42:05.366Z after patch pass anyChanged=true patchedCount=22 errorCount=0
+2026-02-22T17:44:47.263Z start asarPath=C:\Users\docrs\AppData\Local\Discord\app-1.0.9225\resources\app.asar channel=stable
+2026-02-22T17:44:47.265Z backup path=C:\Users\docrs\AppData\Local\Discord\app-1.0.9225\resources\app.asar.inaccord.bak
+2026-02-22T17:44:47.266Z tmpRoot=C:\Users\docrs\AppData\Local\Temp\inaccord-asar-patch-vwzBG7
+2026-02-22T17:44:47.817Z extractAll ok
+2026-02-22T17:44:47.817Z packageMain=app_bootstrap/index.js
+2026-02-22T17:44:47.818Z patching main app_bootstrap/index.js
+2026-02-22T17:44:47.824Z bootstrap scripts count=22
+2026-02-22T17:44:47.832Z after patch pass anyChanged=true patchedCount=22 errorCount=0
+2026-02-22T17:46:34.683Z start asarPath=C:\Users\docrs\AppData\Local\Discord\app-1.0.9225\resources\app.asar channel=stable
+2026-02-22T17:46:34.684Z backup path=C:\Users\docrs\AppData\Local\Discord\app-1.0.9225\resources\app.asar.inaccord.bak
+2026-02-22T17:46:34.685Z tmpRoot=C:\Users\docrs\AppData\Local\Temp\inaccord-asar-patch-ERzNYy
+2026-02-22T17:46:35.384Z extractAll ok
+2026-02-22T17:46:35.385Z packageMain=app_bootstrap/index.js
+2026-02-22T17:46:35.385Z patching main app_bootstrap/index.js
+2026-02-22T17:46:35.391Z bootstrap scripts count=22
+2026-02-22T17:46:35.399Z after patch pass anyChanged=true patchedCount=22 errorCount=0

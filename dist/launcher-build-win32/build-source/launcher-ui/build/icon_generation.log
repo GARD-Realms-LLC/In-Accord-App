@@ -1,0 +1,789 @@
+2026-02-22T16:10:07.614Z sharp path failed: TypeError: Cannot read properties of undefined (reading 'length')
+    at getDib (file:///E:/InAccord-Apps/scripts/launcher-ui/node_modules/png-to-ico/index.js:122:27)
+    at file:///E:/InAccord-Apps/scripts/launcher-ui/node_modules/png-to-ico/index.js:46:15
+    at Array.forEach (<anonymous>)
+    at imagesToIco (file:///E:/InAccord-Apps/scripts/launcher-ui/node_modules/png-to-ico/index.js:43:9)
+    at beforePack (E:\InAccord-Apps\scripts\launcher-ui\build\beforePack.cjs:53:28)
+    at emitInternal (E:\InAccord-Apps\scripts\launcher-ui\node_modules\app-builder-lib\src\util\asyncEventEmitter.ts:61:9)
+    at AsyncEventEmitter.emit (E:\InAccord-Apps\scripts\launcher-ui\node_modules\app-builder-lib\src\util\asyncEventEmitter.ts:68:26)
+    at Packager.emitBeforePack (E:\InAccord-Apps\scripts\launcher-ui\node_modules\app-builder-lib\src\packager.ts:343:5)
+    at WinPackager.doPack (E:\InAccord-Apps\scripts\launcher-ui\node_modules\app-builder-lib\src\platformPackager.ts:232:5)
+    at WinPackager.pack (E:\InAccord-Apps\scripts\launcher-ui\node_modules\app-builder-lib\src\platformPackager.ts:161:5)
+2026-02-22T16:10:07.616Z fallback png-to-ico failed: TypeError: Cannot read properties of undefined (reading 'length')
+    at getDib (file:///E:/InAccord-Apps/scripts/launcher-ui/node_modules/png-to-ico/index.js:122:27)
+    at file:///E:/InAccord-Apps/scripts/launcher-ui/node_modules/png-to-ico/index.js:46:15
+    at Array.forEach (<anonymous>)
+    at imagesToIco (file:///E:/InAccord-Apps/scripts/launcher-ui/node_modules/png-to-ico/index.js:43:9)
+    at beforePack (E:\InAccord-Apps\scripts\launcher-ui\build\beforePack.cjs:59:32)
+    at emitInternal (E:\InAccord-Apps\scripts\launcher-ui\node_modules\app-builder-lib\src\util\asyncEventEmitter.ts:61:9)
+    at AsyncEventEmitter.emit (E:\InAccord-Apps\scripts\launcher-ui\node_modules\app-builder-lib\src\util\asyncEventEmitter.ts:68:26)
+    at Packager.emitBeforePack (E:\InAccord-Apps\scripts\launcher-ui\node_modules\app-builder-lib\src\packager.ts:343:5)
+    at WinPackager.doPack (E:\InAccord-Apps\scripts\launcher-ui\node_modules\app-builder-lib\src\platformPackager.ts:232:5)
+    at WinPackager.pack (E:\InAccord-Apps\scripts\launcher-ui\node_modules\app-builder-lib\src\platformPackager.ts:161:5)
+2026-02-22T16:10:57.997Z png-to-ico failed: Error: Please give me a square PNG image.
+    at file:///E:/InAccord-Apps/scripts/launcher-ui/node_modules/png-to-ico/index.js:7:13
+    at ModuleJob.run (node:internal/modules/esm/module_job:413:25)
+    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:660:26)
+    at beforePack (E:\InAccord-Apps\scripts\launcher-ui\build\beforePack.cjs:31:25)
+    at emitInternal (E:\InAccord-Apps\scripts\launcher-ui\node_modules\app-builder-lib\src\util\asyncEventEmitter.ts:61:9)
+    at AsyncEventEmitter.emit (E:\InAccord-Apps\scripts\launcher-ui\node_modules\app-builder-lib\src\util\asyncEventEmitter.ts:68:26)
+    at Packager.emitBeforePack (E:\InAccord-Apps\scripts\launcher-ui\node_modules\app-builder-lib\src\packager.ts:343:5)
+    at WinPackager.doPack (E:\InAccord-Apps\scripts\launcher-ui\node_modules\app-builder-lib\src\platformPackager.ts:232:5)
+    at WinPackager.pack (E:\InAccord-Apps\scripts\launcher-ui\node_modules\app-builder-lib\src\platformPackager.ts:161:5)
+    at Packager.doBuild (E:\InAccord-Apps\scripts\launcher-ui\node_modules\app-builder-lib\src\packager.ts:538:11)
+2026-02-22T16:11:27.709Z generated ico via png-to-ico (square padded) size=481
+2026-02-22T16:11:27.712Z wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-22T17:11:50.588Z synced launcher splash asset E:\InAccord-Apps\scripts\launcher-ui\assets\splash.png bytes=64782
+2026-02-22T17:11:50.659Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-22T17:11:50.661Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-22T17:11:50.707Z splashHeader generated ico via png-to-ico (square padded) size=550
+2026-02-22T17:11:50.709Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-22T18:03:49.788Z synced launcher splash asset E:\InAccord-Apps\scripts\launcher-ui\assets\splash.png bytes=65184
+2026-02-22T18:03:49.863Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-22T18:03:49.865Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-22T18:03:49.911Z splashHeader generated ico via png-to-ico (square padded) size=550
+2026-02-22T18:03:49.914Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-22T18:13:25.511Z synced launcher splash asset E:\InAccord-Apps\scripts\launcher-ui\assets\splash.png bytes=65184
+2026-02-22T18:13:25.585Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-22T18:13:25.588Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-22T18:13:25.637Z splashHeader generated ico via png-to-ico (square padded) size=550
+2026-02-22T18:13:25.639Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-22T18:13:33.789Z synced launcher splash asset E:\InAccord-Apps\scripts\launcher-ui\assets\splash.png bytes=65184
+2026-02-22T18:13:33.861Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-22T18:13:33.864Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-22T18:13:33.911Z splashHeader generated ico via png-to-ico (square padded) size=550
+2026-02-22T18:13:33.913Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-22T18:44:38.036Z synced launcher splash asset E:\InAccord-Apps\scripts\launcher-ui\assets\splash.png bytes=65184
+2026-02-22T18:44:38.123Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-22T18:44:38.125Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-22T18:44:38.170Z splashHeader generated ico via png-to-ico (square padded) size=550
+2026-02-22T18:44:38.172Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-22T18:52:13.256Z synced launcher splash asset E:\InAccord-Apps\scripts\launcher-ui\assets\splash.png bytes=65184
+2026-02-22T18:52:13.334Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-22T18:52:13.336Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-22T18:52:13.384Z splashHeader generated ico via png-to-ico (square padded) size=550
+2026-02-22T18:52:13.386Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-22T20:30:26.787Z synced launcher splash asset E:\InAccord-Apps\scripts\launcher-ui\assets\splash.png bytes=65184
+2026-02-22T20:30:26.862Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-22T20:30:26.864Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-22T20:30:26.911Z splashHeader generated ico via png-to-ico (square padded) size=550
+2026-02-22T20:30:26.913Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-22T20:32:28.806Z synced launcher splash asset E:\InAccord-Apps\scripts\launcher-ui\assets\splash.png bytes=65184
+2026-02-22T20:32:28.883Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-22T20:32:28.885Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-22T20:32:28.927Z splashHeader generated ico via png-to-ico (square padded) size=550
+2026-02-22T20:32:28.929Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-22T20:47:50.360Z synced launcher splash asset E:\InAccord-Apps\scripts\launcher-ui\assets\splash.png bytes=65184
+2026-02-22T20:47:50.435Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-22T20:47:50.437Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-22T20:47:50.485Z splashHeader generated ico via png-to-ico (square padded) size=550
+2026-02-22T20:47:50.487Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-22T20:48:42.527Z synced launcher splash asset E:\InAccord-Apps\scripts\launcher-ui\assets\splash.png bytes=65184
+2026-02-22T20:48:42.601Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-22T20:48:42.603Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-22T20:48:42.652Z splashHeader generated ico via png-to-ico (square padded) size=550
+2026-02-22T20:48:42.654Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-22T20:49:50.948Z synced launcher splash asset E:\InAccord-Apps\scripts\launcher-ui\assets\splash.png bytes=65184
+2026-02-22T20:49:51.019Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-22T20:49:51.021Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-22T20:49:51.072Z splashHeader generated ico via png-to-ico (square padded) size=550
+2026-02-22T20:49:51.074Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-22T20:50:55.731Z synced launcher splash asset E:\InAccord-Apps\scripts\launcher-ui\assets\splash.png bytes=65184
+2026-02-22T20:50:55.807Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-22T20:50:55.808Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-22T20:50:55.860Z splashHeader generated ico via png-to-ico (square padded) size=550
+2026-02-22T20:50:55.862Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-22T21:19:17.301Z synced launcher splash asset E:\InAccord-Apps\scripts\launcher-ui\assets\splash.png bytes=65184
+2026-02-22T21:19:17.426Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-22T21:19:17.428Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-22T21:19:17.481Z splashHeader generated ico via png-to-ico (square padded) size=550
+2026-02-22T21:19:17.483Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-22T21:22:53.650Z synced launcher splash asset E:\InAccord-Apps\scripts\launcher-ui\assets\splash.png bytes=65184
+2026-02-22T21:22:53.723Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-22T21:22:53.726Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-22T21:22:53.761Z splashHeader generated ico via png-to-ico (square padded) size=481
+2026-02-22T21:22:53.763Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-22T21:28:29.183Z synced launcher splash asset E:\InAccord-Apps\scripts\launcher-ui\assets\splash.png bytes=65184
+2026-02-22T21:28:29.261Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-22T21:28:29.263Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-22T21:28:29.302Z splashHeader generated ico via png-to-ico (square padded) size=481
+2026-02-22T21:28:29.304Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-22T21:29:43.699Z synced launcher splash asset E:\InAccord-Apps\scripts\launcher-ui\assets\splash.png bytes=65184
+2026-02-22T21:29:43.777Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-22T21:29:43.780Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-22T21:29:43.819Z splashHeader generated ico via png-to-ico (square padded) size=481
+2026-02-22T21:29:43.821Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-22T21:30:50.626Z synced launcher splash asset E:\InAccord-Apps\scripts\launcher-ui\assets\splash.png bytes=65184
+2026-02-22T21:30:50.705Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-22T21:30:50.707Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-22T21:30:50.742Z splashHeader generated ico via png-to-ico (square padded) size=481
+2026-02-22T21:30:50.744Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-22T21:33:04.076Z synced launcher splash asset E:\InAccord-Apps\scripts\launcher-ui\assets\splash.png bytes=65184
+2026-02-22T21:33:04.151Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-22T21:33:04.152Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-22T21:33:04.185Z splashHeader generated ico via png-to-ico (square padded) size=481
+2026-02-22T21:33:04.188Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-22T21:39:56.415Z synced launcher splash asset E:\InAccord-Apps\scripts\launcher-ui\assets\splash.png bytes=65184
+2026-02-22T21:39:56.489Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-22T21:39:56.491Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-22T21:39:56.528Z splashHeader generated ico via png-to-ico (square padded) size=481
+2026-02-22T21:39:56.530Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-22T21:49:12.725Z synced launcher splash asset E:\InAccord-Apps\scripts\launcher-ui\assets\splash.png bytes=65184
+2026-02-22T21:49:12.800Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-22T21:49:12.802Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-22T21:49:12.838Z splashHeader generated ico via png-to-ico (square padded) size=481
+2026-02-22T21:49:12.841Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-22T21:49:38.445Z synced launcher splash asset E:\InAccord-Apps\scripts\launcher-ui\assets\splash.png bytes=65184
+2026-02-22T21:49:38.526Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-22T21:49:38.530Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-22T21:49:38.575Z splashHeader generated ico via png-to-ico (square padded) size=481
+2026-02-22T21:49:38.577Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-22T21:51:06.750Z synced launcher splash asset E:\InAccord-Apps\scripts\launcher-ui\assets\splash.png bytes=65184
+2026-02-22T21:51:06.827Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-22T21:51:06.829Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-22T21:51:06.866Z splashHeader generated ico via png-to-ico (square padded) size=481
+2026-02-22T21:51:06.868Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-22T21:57:20.372Z synced launcher splash asset E:\InAccord-Apps\scripts\launcher-ui\assets\splash.png bytes=65184
+2026-02-22T21:57:20.448Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-22T21:57:20.450Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-22T21:57:20.484Z splashHeader generated ico via png-to-ico (square padded) size=481
+2026-02-22T21:57:20.486Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-22T22:03:36.694Z synced launcher splash asset E:\InAccord-Apps\scripts\launcher-ui\assets\splash.png bytes=65184
+2026-02-22T22:03:36.768Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-22T22:03:36.770Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-22T22:03:36.804Z splashHeader generated ico via png-to-ico (square padded) size=481
+2026-02-22T22:03:36.806Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-22T22:04:09.613Z synced launcher splash asset E:\InAccord-Apps\scripts\launcher-ui\assets\splash.png bytes=65184
+2026-02-22T22:04:09.688Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-22T22:04:09.690Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-22T22:04:09.727Z splashHeader generated ico via png-to-ico (square padded) size=481
+2026-02-22T22:04:09.729Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-22T22:16:59.235Z synced launcher splash asset E:\InAccord-Apps\scripts\launcher-ui\assets\splash.png bytes=65184
+2026-02-22T22:16:59.310Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-22T22:16:59.312Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-22T22:16:59.348Z splashHeader generated ico via png-to-ico (square padded) size=481
+2026-02-22T22:16:59.350Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-22T22:22:52.983Z synced launcher splash asset E:\InAccord-Apps\scripts\launcher-ui\assets\splash.png bytes=65184
+2026-02-22T22:22:53.055Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-22T22:22:53.057Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-22T22:22:53.091Z splashHeader generated ico via png-to-ico (square padded) size=481
+2026-02-22T22:22:53.093Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-22T22:23:20.078Z synced launcher splash asset E:\InAccord-Apps\scripts\launcher-ui\assets\splash.png bytes=65184
+2026-02-22T22:23:20.167Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-22T22:23:20.169Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-22T22:23:20.208Z splashHeader generated ico via png-to-ico (square padded) size=481
+2026-02-22T22:23:20.211Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-22T22:28:45.964Z synced launcher splash asset E:\InAccord-Apps\scripts\launcher-ui\assets\splash.png bytes=65184
+2026-02-22T22:28:46.034Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-22T22:28:46.035Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-22T22:28:46.076Z splashHeader generated ico via png-to-ico (square padded) size=481
+2026-02-22T22:28:46.078Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-22T22:57:35.511Z synced launcher splash asset E:\InAccord-Apps\scripts\launcher-ui\assets\splash.png bytes=65184
+2026-02-22T22:57:35.610Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-22T22:57:35.612Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-22T22:57:35.654Z splashHeader generated ico via png-to-ico (square padded) size=481
+2026-02-22T22:57:35.655Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-22T23:04:18.647Z synced launcher splash asset E:\InAccord-Apps\scripts\launcher-ui\assets\splash.png bytes=65184
+2026-02-22T23:04:18.723Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-22T23:04:18.724Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-22T23:04:18.757Z splashHeader generated ico via png-to-ico (square padded) size=481
+2026-02-22T23:04:18.759Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-22T23:05:00.561Z synced launcher splash asset E:\InAccord-Apps\scripts\launcher-ui\assets\splash.png bytes=65184
+2026-02-22T23:05:00.641Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-22T23:05:00.643Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-22T23:05:00.683Z splashHeader generated ico via png-to-ico (square padded) size=481
+2026-02-22T23:05:00.685Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-22T23:09:47.883Z synced launcher splash asset E:\InAccord-Apps\scripts\launcher-ui\assets\splash.png bytes=65184
+2026-02-22T23:09:47.956Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-22T23:09:47.958Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-22T23:09:47.994Z splashHeader generated ico via png-to-ico (square padded) size=481
+2026-02-22T23:09:47.996Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-22T23:34:31.296Z synced launcher splash asset E:\InAccord-Apps\scripts\launcher-ui\assets\splash.png bytes=65184
+2026-02-22T23:34:31.370Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-22T23:34:31.372Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-22T23:34:31.409Z splashHeader generated ico via png-to-ico (square padded) size=481
+2026-02-22T23:34:31.411Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-22T23:40:25.580Z synced launcher splash asset E:\InAccord-Apps\scripts\launcher-ui\assets\splash.png bytes=65184
+2026-02-22T23:40:25.650Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-22T23:40:25.652Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-22T23:40:25.688Z splashHeader generated ico via png-to-ico (square padded) size=481
+2026-02-22T23:40:25.690Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-22T23:41:24.846Z synced launcher splash asset E:\InAccord-Apps\scripts\launcher-ui\assets\splash.png bytes=65184
+2026-02-22T23:41:24.919Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-22T23:41:24.921Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-22T23:41:24.950Z splashHeader generated ico via png-to-ico (square padded) size=481
+2026-02-22T23:41:24.951Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-23T12:40:56.328Z synced launcher splash asset E:\InAccord-Apps\scripts\launcher-ui\assets\splash.png bytes=65184
+2026-02-23T12:40:56.415Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-23T12:40:56.417Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-23T12:40:56.445Z splashHeader generated ico via png-to-ico (square padded) size=481
+2026-02-23T12:40:56.447Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-23T12:43:45.083Z synced launcher splash asset E:\InAccord-Apps\scripts\launcher-ui\assets\splash.png bytes=65184
+2026-02-23T12:43:45.157Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-23T12:43:45.159Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-23T12:43:45.195Z splashHeader generated ico via png-to-ico (square padded) size=481
+2026-02-23T12:43:45.197Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-23T12:44:29.107Z synced launcher splash asset E:\InAccord-Apps\scripts\launcher-ui\assets\splash.png bytes=65184
+2026-02-23T12:44:29.183Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-23T12:44:29.185Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-23T12:44:29.220Z splashHeader generated ico via png-to-ico (square padded) size=481
+2026-02-23T12:44:29.222Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-23T12:48:50.210Z synced launcher splash asset E:\InAccord-Apps\scripts\launcher-ui\assets\splash.png bytes=65184
+2026-02-23T12:48:50.286Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-23T12:48:50.288Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-23T12:48:50.326Z splashHeader generated ico via png-to-ico (square padded) size=481
+2026-02-23T12:48:50.328Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-23T12:52:51.962Z synced launcher splash asset E:\InAccord-Apps\scripts\launcher-ui\assets\splash.png bytes=65184
+2026-02-23T12:52:52.041Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-23T12:52:52.043Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-23T12:52:52.080Z splashHeader generated ico via png-to-ico (square padded) size=481
+2026-02-23T12:52:52.082Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-23T12:54:59.589Z synced launcher splash asset E:\InAccord-Apps\scripts\launcher-ui\assets\splash.png bytes=65184
+2026-02-23T12:54:59.671Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-23T12:54:59.673Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-23T12:54:59.712Z splashHeader generated ico via png-to-ico (square padded) size=481
+2026-02-23T12:54:59.714Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-23T12:57:21.095Z synced launcher splash asset E:\InAccord-Apps\scripts\launcher-ui\assets\splash.png bytes=65184
+2026-02-23T12:57:21.169Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-23T12:57:21.171Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-23T12:57:21.210Z splashHeader generated ico via png-to-ico (square padded) size=481
+2026-02-23T12:57:21.212Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-23T13:01:29.306Z synced launcher splash asset E:\InAccord-Apps\scripts\launcher-ui\assets\splash.png bytes=65184
+2026-02-23T13:01:29.379Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-23T13:01:29.381Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-23T13:01:29.420Z splashHeader generated ico via png-to-ico (square padded) size=481
+2026-02-23T13:01:29.422Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-23T13:03:02.174Z synced launcher splash asset E:\InAccord-Apps\scripts\launcher-ui\assets\splash.png bytes=65184
+2026-02-23T13:03:02.249Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-23T13:03:02.251Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-23T13:03:02.292Z splashHeader generated ico via png-to-ico (square padded) size=481
+2026-02-23T13:03:02.294Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-23T13:07:01.383Z synced launcher splash asset E:\InAccord-Apps\scripts\launcher-ui\assets\splash.png bytes=65184
+2026-02-23T13:07:01.459Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-23T13:07:01.461Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-23T13:07:01.496Z splashHeader generated ico via png-to-ico (square padded) size=481
+2026-02-23T13:07:01.498Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-23T13:09:10.946Z synced launcher splash asset E:\InAccord-Apps\scripts\launcher-ui\assets\splash.png bytes=65184
+2026-02-23T13:09:11.023Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-23T13:09:11.025Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-23T13:09:11.057Z splashHeader generated ico via png-to-ico (square padded) size=481
+2026-02-23T13:09:11.059Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-23T13:13:26.201Z synced launcher splash asset E:\InAccord-Apps\scripts\launcher-ui\assets\splash.png bytes=65184
+2026-02-23T13:13:26.273Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-23T13:13:26.275Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-23T13:13:26.313Z splashHeader generated ico via png-to-ico (square padded) size=481
+2026-02-23T13:13:26.315Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-23T13:20:54.206Z synced launcher splash asset E:\InAccord-Apps\scripts\launcher-ui\assets\splash.png bytes=65184
+2026-02-23T13:20:54.278Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-23T13:20:54.280Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-23T13:20:54.319Z splashHeader generated ico via png-to-ico (square padded) size=481
+2026-02-23T13:20:54.321Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-23T13:24:15.752Z synced launcher splash asset E:\InAccord-Apps\scripts\launcher-ui\assets\splash.png bytes=65184
+2026-02-23T13:24:15.827Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-23T13:24:15.829Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-23T13:24:15.867Z splashHeader generated ico via png-to-ico (square padded) size=481
+2026-02-23T13:24:15.870Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-23T13:26:10.398Z synced launcher splash asset E:\InAccord-Apps\scripts\launcher-ui\assets\splash.png bytes=65184
+2026-02-23T13:26:10.472Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-23T13:26:10.474Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-23T13:26:10.507Z splashHeader generated ico via png-to-ico (square padded) size=481
+2026-02-23T13:26:10.509Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-23T14:02:44.918Z synced launcher splash asset E:\InAccord-Apps\scripts\launcher-ui\assets\splash.png bytes=65184
+2026-02-23T14:02:44.995Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-23T14:02:44.997Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-23T14:02:45.033Z splashHeader generated ico via png-to-ico (square padded) size=481
+2026-02-23T14:02:45.035Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-23T15:15:01.391Z synced launcher splash asset E:\InAccord-Apps\scripts\launcher-ui\assets\splash.png bytes=65184
+2026-02-23T15:15:01.475Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-23T15:15:01.477Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-23T15:15:01.515Z splashHeader generated ico via png-to-ico (square padded) size=481
+2026-02-23T15:15:01.517Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-23T16:59:30.526Z synced launcher splash asset E:\InAccord-Apps\scripts\launcher-ui\assets\splash.png bytes=65184
+2026-02-23T16:59:30.600Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-23T16:59:30.602Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-23T16:59:30.637Z splashHeader generated ico via png-to-ico (square padded) size=481
+2026-02-23T16:59:30.639Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-23T17:29:45.196Z synced launcher splash asset E:\InAccord-Apps\scripts\launcher-ui\assets\splash.png bytes=65184
+2026-02-23T17:29:45.271Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-23T17:29:45.273Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-23T17:29:45.310Z splashHeader generated ico via png-to-ico (square padded) size=481
+2026-02-23T17:29:45.312Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-23T17:38:23.294Z synced launcher splash asset E:\InAccord-Apps\scripts\launcher-ui\assets\splash.png bytes=65184
+2026-02-23T17:38:23.371Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-23T17:38:23.375Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-23T17:38:23.411Z splashHeader generated ico via png-to-ico (square padded) size=481
+2026-02-23T17:38:23.413Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-23T17:38:45.911Z synced launcher splash asset E:\InAccord-Apps\scripts\launcher-ui\assets\splash.png bytes=65184
+2026-02-23T17:38:45.986Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-23T17:38:45.988Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-23T17:38:46.025Z splashHeader generated ico via png-to-ico (square padded) size=481
+2026-02-23T17:38:46.027Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-23T17:44:49.330Z synced launcher splash asset E:\InAccord-Apps\scripts\launcher-ui\assets\splash.png bytes=65184
+2026-02-23T17:44:49.427Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-23T17:44:49.429Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-23T17:44:49.469Z splashHeader generated ico via png-to-ico (square padded) size=481
+2026-02-23T17:44:49.470Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-24T00:26:22.635Z launcher assets dir missing: E:\InAccord-Apps\scripts\launcher-ui\assets
+2026-02-24T00:26:22.711Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-24T00:26:22.713Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-24T00:26:22.749Z splashHeader generated ico via png-to-ico (square padded) size=481
+2026-02-24T00:26:22.752Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-24T00:31:27.616Z launcher assets dir missing: E:\InAccord-Apps\scripts\launcher-ui\assets
+2026-02-24T00:31:27.693Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-24T00:31:27.695Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-24T00:31:27.732Z splashHeader generated ico via png-to-ico (square padded) size=481
+2026-02-24T00:31:27.734Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-24T01:21:37.055Z launcher assets dir missing: E:\InAccord-Apps\scripts\launcher-ui\assets
+2026-02-24T01:21:37.143Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-24T01:21:37.146Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-24T01:21:37.185Z splashHeader generated ico via png-to-ico (square padded) size=481
+2026-02-24T01:21:37.187Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-24T01:27:24.652Z launcher assets dir missing: E:\InAccord-Apps\scripts\launcher-ui\assets
+2026-02-24T01:27:24.727Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-24T01:27:24.729Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-24T01:27:24.761Z splashHeader generated ico via png-to-ico (square padded) size=481
+2026-02-24T01:27:24.764Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-24T01:31:33.170Z launcher assets dir missing: E:\InAccord-Apps\scripts\launcher-ui\assets
+2026-02-24T01:31:33.246Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-24T01:31:33.248Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-24T01:31:33.289Z splashHeader generated ico via png-to-ico (square padded) size=481
+2026-02-24T01:31:33.291Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-24T01:36:36.797Z launcher assets dir missing: E:\InAccord-Apps\scripts\launcher-ui\assets
+2026-02-24T01:36:36.869Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-24T01:36:36.871Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-24T01:36:36.904Z splashHeader generated ico via png-to-ico (square padded) size=481
+2026-02-24T01:36:36.906Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-24T01:41:20.479Z launcher assets dir missing: E:\InAccord-Apps\scripts\launcher-ui\assets
+2026-02-24T01:41:20.553Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-24T01:41:20.556Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-24T01:41:20.589Z splashHeader generated ico via png-to-ico (square padded) size=481
+2026-02-24T01:41:20.592Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-24T01:52:02.567Z launcher assets dir missing: E:\InAccord-Apps\scripts\launcher-ui\assets
+2026-02-24T01:52:02.640Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-24T01:52:02.643Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-24T01:52:02.674Z splashHeader generated ico via png-to-ico (square padded) size=481
+2026-02-24T01:52:02.677Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-24T02:06:20.277Z launcher assets dir missing: E:\InAccord-Apps\scripts\launcher-ui\assets
+2026-02-24T02:06:20.351Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-24T02:06:20.353Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-24T02:06:20.384Z splashHeader generated ico via png-to-ico (square padded) size=481
+2026-02-24T02:06:20.386Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-24T02:10:29.633Z launcher assets dir missing: E:\InAccord-Apps\scripts\launcher-ui\assets
+2026-02-24T02:10:29.707Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-24T02:10:29.709Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-24T02:10:29.743Z splashHeader generated ico via png-to-ico (square padded) size=481
+2026-02-24T02:10:29.745Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-24T02:17:16.898Z launcher assets dir missing: E:\InAccord-Apps\scripts\launcher-ui\assets
+2026-02-24T02:17:16.970Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-24T02:17:16.972Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-24T02:17:17.009Z splashHeader generated ico via png-to-ico (square padded) size=481
+2026-02-24T02:17:17.011Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-24T02:23:09.153Z launcher assets dir missing: E:\InAccord-Apps\scripts\launcher-ui\assets
+2026-02-24T02:23:09.225Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-24T02:23:09.227Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-24T02:23:09.265Z splashHeader generated ico via png-to-ico (square padded) size=481
+2026-02-24T02:23:09.267Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-24T02:34:57.183Z launcher assets dir missing: E:\InAccord-Apps\scripts\launcher-ui\assets
+2026-02-24T02:34:57.254Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-24T02:34:57.256Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-24T02:34:57.294Z splashHeader generated ico via png-to-ico (square padded) size=481
+2026-02-24T02:34:57.296Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-24T02:52:34.996Z launcher assets dir missing: E:\InAccord-Apps\scripts\launcher-ui\assets
+2026-02-24T02:52:35.068Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-24T02:52:35.070Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-24T02:52:35.100Z splashHeader generated ico via png-to-ico (square padded) size=481
+2026-02-24T02:52:35.103Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-24T03:01:40.452Z launcher assets dir missing: E:\InAccord-Apps\scripts\launcher-ui\assets
+2026-02-24T03:01:40.524Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-24T03:01:40.527Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-24T03:01:40.560Z splashHeader generated ico via png-to-ico (square padded) size=481
+2026-02-24T03:01:40.563Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-24T03:03:58.180Z launcher assets dir missing: E:\InAccord-Apps\scripts\launcher-ui\assets
+2026-02-24T03:03:58.262Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-24T03:03:58.264Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-24T03:03:58.303Z splashHeader generated ico via png-to-ico (square padded) size=481
+2026-02-24T03:03:58.306Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-24T03:10:49.567Z launcher assets dir missing: E:\InAccord-Apps\scripts\launcher-ui\assets
+2026-02-24T03:10:49.643Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-24T03:10:49.646Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-24T03:10:49.679Z splashHeader generated ico via png-to-ico (square padded) size=481
+2026-02-24T03:10:49.681Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-24T03:18:44.452Z launcher assets dir missing: E:\InAccord-Apps\scripts\launcher-ui\assets
+2026-02-24T03:18:44.529Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-24T03:18:44.531Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-24T03:18:44.567Z splashHeader generated ico via png-to-ico (square padded) size=481
+2026-02-24T03:18:44.570Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-24T03:25:26.625Z launcher assets dir missing: E:\InAccord-Apps\scripts\launcher-ui\assets
+2026-02-24T03:25:26.700Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-24T03:25:26.702Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-24T03:25:26.735Z splashHeader generated ico via png-to-ico (square padded) size=481
+2026-02-24T03:25:26.737Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-24T03:32:42.307Z launcher assets dir missing: E:\InAccord-Apps\scripts\launcher-ui\assets
+2026-02-24T03:32:42.378Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-24T03:32:42.380Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-24T03:32:42.415Z splashHeader generated ico via png-to-ico (square padded) size=481
+2026-02-24T03:32:42.417Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-24T03:38:50.133Z launcher assets dir missing: E:\InAccord-Apps\scripts\launcher-ui\assets
+2026-02-24T03:38:50.209Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-24T03:38:50.211Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-24T03:38:50.245Z splashHeader generated ico via png-to-ico (square padded) size=481
+2026-02-24T03:38:50.247Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-24T03:51:49.905Z launcher assets dir missing: E:\InAccord-Apps\scripts\launcher-ui\assets
+2026-02-24T03:51:49.976Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-24T03:51:49.979Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-24T03:51:50.018Z splashHeader generated ico via png-to-ico (square padded) size=481
+2026-02-24T03:51:50.020Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-24T04:18:12.265Z launcher assets dir missing: E:\InAccord-Apps\scripts\launcher-ui\assets
+2026-02-24T04:18:12.341Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-24T04:18:12.344Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-24T04:18:12.376Z splashHeader generated ico via png-to-ico (square padded) size=481
+2026-02-24T04:18:12.378Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-24T04:24:29.290Z launcher assets dir missing: E:\InAccord-Apps\scripts\launcher-ui\assets
+2026-02-24T04:24:29.366Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-24T04:24:29.368Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-24T04:24:29.408Z splashHeader generated ico via png-to-ico (square padded) size=481
+2026-02-24T04:24:29.410Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-24T04:36:13.728Z launcher assets dir missing: E:\InAccord-Apps\scripts\launcher-ui\assets
+2026-02-24T04:36:13.805Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-24T04:36:13.808Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-24T04:36:13.844Z splashHeader generated ico via png-to-ico (square padded) size=481
+2026-02-24T04:36:13.846Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-24T14:22:39.815Z launcher assets dir missing: E:\InAccord-Apps\scripts\launcher-ui\assets
+2026-02-24T14:22:39.904Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-24T14:22:39.906Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-24T14:22:39.943Z splashHeader generated ico via png-to-ico (square padded) size=481
+2026-02-24T14:22:39.945Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-24T14:24:33.914Z launcher assets dir missing: E:\InAccord-Apps\scripts\launcher-ui\assets
+2026-02-24T14:24:33.989Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-24T14:24:33.991Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-24T14:24:34.032Z splashHeader generated ico via png-to-ico (square padded) size=481
+2026-02-24T14:24:34.035Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-24T14:38:37.269Z launcher assets dir missing: E:\InAccord-Apps\scripts\launcher-ui\assets
+2026-02-24T14:38:37.344Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-24T14:38:37.346Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-24T14:38:37.386Z splashHeader generated ico via png-to-ico (square padded) size=481
+2026-02-24T14:38:37.388Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-24T17:02:20.539Z launcher assets dir missing: E:\InAccord-Apps\scripts\launcher-ui\assets
+2026-02-24T17:02:20.611Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-24T17:02:20.614Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-24T17:02:20.652Z splashHeader generated ico via png-to-ico (square padded) size=481
+2026-02-24T17:02:20.654Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-24T17:07:15.325Z launcher assets dir missing: E:\InAccord-Apps\scripts\launcher-ui\assets
+2026-02-24T17:07:15.400Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-24T17:07:15.402Z appIcon wrote E:\InAccord-Apps\scripts\launcher-ui\build\icon.ico bytes=285478
+2026-02-24T17:07:15.442Z splashHeader generated ico via png-to-ico (square padded) size=481
+2026-02-24T17:07:15.444Z splashHeader wrote E:\InAccord-Apps\scripts\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-27T13:53:34.051Z splash src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\splash.png
+2026-02-27T13:53:34.052Z appIcon src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T13:53:34.174Z splashHeader src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T14:00:57.997Z launcher assets dir missing: E:\In-Accord-Apps\dist\launcher-build-win32\build-source\launcher-ui\assets
+2026-02-27T14:00:58.082Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-27T14:00:58.084Z appIcon wrote E:\In-Accord-Apps\dist\launcher-build-win32\build-source\launcher-ui\build\icon.ico bytes=285478
+2026-02-27T14:00:58.117Z splashHeader generated ico via png-to-ico (square padded) size=481
+2026-02-27T14:00:58.118Z splashHeader wrote E:\In-Accord-Apps\dist\launcher-build-win32\build-source\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-27T14:02:35.364Z launcher assets dir missing: E:\In-Accord-Apps\dist\launcher-build-win32\build-source\launcher-ui\assets
+2026-02-27T14:02:35.436Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-27T14:02:35.438Z appIcon wrote E:\In-Accord-Apps\dist\launcher-build-win32\build-source\launcher-ui\build\icon.ico bytes=285478
+2026-02-27T14:02:35.474Z splashHeader generated ico via png-to-ico (square padded) size=481
+2026-02-27T14:02:35.476Z splashHeader wrote E:\In-Accord-Apps\dist\launcher-build-win32\build-source\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-27T14:05:15.463Z launcher assets dir missing: E:\In-Accord-Apps\dist\launcher-build-win32\build-source\launcher-ui\assets
+2026-02-27T14:05:15.528Z appIcon generated ico via png-to-ico (square padded) size=481
+2026-02-27T14:05:15.530Z appIcon wrote E:\In-Accord-Apps\dist\launcher-build-win32\build-source\launcher-ui\build\icon.ico bytes=285478
+2026-02-27T14:05:15.565Z splashHeader generated ico via png-to-ico (square padded) size=481
+2026-02-27T14:05:15.567Z splashHeader wrote E:\In-Accord-Apps\dist\launcher-build-win32\build-source\launcher-ui\build\splashHeader.ico bytes=285478
+2026-02-27T14:57:56.408Z splash src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\splash.png
+2026-02-27T14:57:56.409Z appIcon src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T14:57:56.434Z splashHeader src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T15:03:49.397Z splash src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\splash.png
+2026-02-27T15:03:49.398Z appIcon src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T15:03:49.399Z splashHeader src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T15:05:31.950Z splash src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\splash.png
+2026-02-27T15:05:31.952Z appIcon src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T15:05:31.979Z splashHeader src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T15:10:48.338Z splash src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\splash.png
+2026-02-27T15:10:48.339Z appIcon src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T15:10:48.342Z splashHeader src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T15:17:32.224Z splash src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\splash.png
+2026-02-27T15:17:32.225Z appIcon src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T15:17:32.226Z splashHeader src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T15:42:46.042Z splash src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\splash.png
+2026-02-27T15:42:46.043Z appIcon src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T15:42:46.068Z splashHeader src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T15:48:17.527Z splash src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\splash.png
+2026-02-27T15:48:17.528Z appIcon src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T15:48:17.529Z splashHeader src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T15:50:29.428Z splash src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\splash.png
+2026-02-27T15:50:29.429Z appIcon src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T15:50:29.430Z splashHeader src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T15:55:09.538Z splash src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\splash.png
+2026-02-27T15:55:09.539Z appIcon src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T15:55:09.549Z splashHeader src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T15:59:26.180Z splash src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\splash.png
+2026-02-27T15:59:26.181Z appIcon src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T15:59:26.200Z splashHeader src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T16:02:01.984Z splash src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\splash.png
+2026-02-27T16:02:01.985Z appIcon src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T16:02:01.986Z splashHeader src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T16:04:47.095Z splash src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\splash.png
+2026-02-27T16:04:47.096Z appIcon src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T16:04:47.097Z splashHeader src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T16:12:29.079Z splash src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\splash.png
+2026-02-27T16:12:29.080Z appIcon src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T16:12:29.081Z splashHeader src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T16:19:43.022Z splash src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\splash.png
+2026-02-27T16:19:43.023Z appIcon src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T16:19:43.028Z splashHeader src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T16:22:52.125Z splash src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\splash.png
+2026-02-27T16:22:52.126Z appIcon src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T16:22:52.153Z splashHeader src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T16:34:31.530Z splash src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\splash.png
+2026-02-27T16:34:31.531Z appIcon src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T16:34:31.532Z splashHeader src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T16:54:30.555Z splash src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\splash.png
+2026-02-27T16:54:30.556Z appIcon src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T16:54:30.557Z splashHeader src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T16:56:20.427Z splash src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\splash.png
+2026-02-27T16:56:20.428Z appIcon src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T16:56:20.460Z splashHeader src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T17:20:12.404Z splash src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\splash.png
+2026-02-27T17:20:12.405Z appIcon src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T17:20:12.406Z splashHeader src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T17:34:29.796Z splash src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\splash.png
+2026-02-27T17:34:29.803Z appIcon src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T17:34:30.126Z splashHeader src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T18:15:30.935Z splash src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\splash.png
+2026-02-27T18:15:30.936Z appIcon src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T18:15:30.992Z splashHeader src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T18:34:46.067Z splash src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\splash.png
+2026-02-27T18:34:46.068Z appIcon src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T18:34:46.111Z splashHeader src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T18:40:45.619Z splash src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\splash.png
+2026-02-27T18:40:45.620Z appIcon src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T18:40:45.629Z splashHeader src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T18:50:36.244Z splash src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\splash.png
+2026-02-27T18:50:36.246Z appIcon src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T18:50:36.247Z splashHeader src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T18:52:57.366Z splash src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\splash.png
+2026-02-27T18:52:57.367Z appIcon src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T18:52:57.368Z splashHeader src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T19:07:15.923Z splash src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\splash.png
+2026-02-27T19:07:15.924Z appIcon src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T19:07:15.965Z splashHeader src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T19:19:19.661Z splash src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\splash.png
+2026-02-27T19:19:19.662Z appIcon src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T19:19:19.684Z splashHeader src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T19:24:53.813Z splash src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\splash.png
+2026-02-27T19:24:53.814Z appIcon src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T19:24:53.865Z splashHeader src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T19:31:17.545Z splash src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\splash.png
+2026-02-27T19:31:17.546Z appIcon src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T19:31:17.562Z splashHeader src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T19:43:37.065Z splash src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\splash.png
+2026-02-27T19:43:37.066Z appIcon src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T19:43:37.076Z splashHeader src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T19:49:17.397Z splash src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\splash.png
+2026-02-27T19:49:17.399Z appIcon src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T19:49:17.430Z splashHeader src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T19:52:08.952Z splash src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\splash.png
+2026-02-27T19:52:08.953Z appIcon src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T19:52:08.991Z splashHeader src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T20:03:46.270Z splash src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\splash.png
+2026-02-27T20:03:46.271Z appIcon src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T20:03:46.278Z splashHeader src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T20:06:58.395Z splash src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\splash.png
+2026-02-27T20:06:58.396Z appIcon src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T20:06:58.423Z splashHeader src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T20:17:34.991Z splash src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\splash.png
+2026-02-27T20:17:34.992Z appIcon src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T20:17:35.013Z splashHeader src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T20:27:04.183Z splash src missing: e:\In-Accord-Apps\dist\launcher-build-win32\Images\splash.png
+2026-02-27T20:27:04.184Z appIcon src missing: e:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T20:27:04.223Z splashHeader src missing: e:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T20:30:32.822Z splash src missing: e:\In-Accord-Apps\dist\launcher-build-win32\Images\splash.png
+2026-02-27T20:30:32.823Z appIcon src missing: e:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T20:30:32.863Z splashHeader src missing: e:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T20:36:30.192Z splash src missing: e:\In-Accord-Apps\dist\launcher-build-win32\Images\splash.png
+2026-02-27T20:36:30.193Z appIcon src missing: e:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T20:36:30.231Z splashHeader src missing: e:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T20:53:44.934Z splash src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\splash.png
+2026-02-27T20:53:44.935Z appIcon src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T20:53:44.940Z splashHeader src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T20:57:08.577Z splash src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\splash.png
+2026-02-27T20:57:08.578Z appIcon src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T20:57:08.581Z splashHeader src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T20:59:20.437Z splash src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\splash.png
+2026-02-27T20:59:20.438Z appIcon src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T20:59:20.479Z splashHeader src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T21:02:09.283Z splash src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\splash.png
+2026-02-27T21:02:09.284Z appIcon src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T21:02:09.333Z splashHeader src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T21:17:19.048Z splash src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\splash.png
+2026-02-27T21:17:19.049Z appIcon src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T21:17:19.053Z splashHeader src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T21:25:08.730Z splash src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\splash.png
+2026-02-27T21:25:08.731Z appIcon src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T21:25:08.732Z splashHeader src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T21:32:53.719Z splash src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\splash.png
+2026-02-27T21:32:53.720Z appIcon src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T21:32:53.722Z splashHeader src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T21:37:21.970Z splash src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\splash.png
+2026-02-27T21:37:21.971Z appIcon src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T21:37:21.994Z splashHeader src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T21:48:02.814Z splash src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\splash.png
+2026-02-27T21:48:02.815Z appIcon src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T21:48:02.865Z splashHeader src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T21:55:24.298Z splash src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\splash.png
+2026-02-27T21:55:24.299Z appIcon src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T21:55:24.301Z splashHeader src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T22:00:28.440Z splash src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\splash.png
+2026-02-27T22:00:28.441Z appIcon src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T22:00:28.472Z splashHeader src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T22:12:35.178Z splash src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\splash.png
+2026-02-27T22:12:35.179Z appIcon src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T22:12:35.181Z splashHeader src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T22:20:35.502Z splash src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\splash.png
+2026-02-27T22:20:35.504Z appIcon src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T22:20:35.551Z splashHeader src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T22:28:13.016Z splash src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\splash.png
+2026-02-27T22:28:13.017Z appIcon src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T22:28:13.045Z splashHeader src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T22:50:19.707Z splash src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\splash.png
+2026-02-27T22:50:19.708Z appIcon src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T22:50:19.710Z splashHeader src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T22:53:06.799Z splash src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\splash.png
+2026-02-27T22:53:06.800Z appIcon src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T22:53:06.809Z splashHeader src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T23:03:44.090Z splash src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\splash.png
+2026-02-27T23:03:44.091Z appIcon src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T23:03:44.139Z splashHeader src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T23:12:08.908Z splash src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\splash.png
+2026-02-27T23:12:08.909Z appIcon src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T23:12:09.002Z splashHeader src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T23:23:54.227Z splash src missing: e:\In-Accord-Apps\dist\launcher-build-win32\Images\splash.png
+2026-02-27T23:23:54.229Z appIcon src missing: e:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T23:23:54.275Z splashHeader src missing: e:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T23:31:30.900Z splash src missing: e:\In-Accord-Apps\dist\launcher-build-win32\Images\splash.png
+2026-02-27T23:31:30.901Z appIcon src missing: e:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T23:31:30.903Z splashHeader src missing: e:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T23:35:38.954Z splash src missing: e:\In-Accord-Apps\dist\launcher-build-win32\Images\splash.png
+2026-02-27T23:35:38.955Z appIcon src missing: e:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T23:35:38.956Z splashHeader src missing: e:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T23:42:52.430Z splash src missing: e:\In-Accord-Apps\dist\launcher-build-win32\Images\splash.png
+2026-02-27T23:42:52.431Z appIcon src missing: e:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T23:42:52.434Z splashHeader src missing: e:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T23:47:33.967Z splash src missing: e:\In-Accord-Apps\dist\launcher-build-win32\Images\splash.png
+2026-02-27T23:47:33.968Z appIcon src missing: e:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T23:47:33.969Z splashHeader src missing: e:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T23:51:18.101Z splash src missing: e:\In-Accord-Apps\dist\launcher-build-win32\Images\splash.png
+2026-02-27T23:51:18.102Z appIcon src missing: e:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T23:51:18.106Z splashHeader src missing: e:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T23:52:02.048Z splash src missing: e:\In-Accord-Apps\dist\launcher-build-win32\Images\splash.png
+2026-02-27T23:52:02.049Z appIcon src missing: e:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-27T23:52:02.059Z splashHeader src missing: e:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-28T00:12:38.249Z splash src missing: e:\In-Accord-Apps\dist\launcher-build-win32\Images\splash.png
+2026-02-28T00:12:38.250Z appIcon src missing: e:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-28T00:12:38.261Z splashHeader src missing: e:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-28T00:13:11.040Z splash src missing: e:\In-Accord-Apps\dist\launcher-build-win32\Images\splash.png
+2026-02-28T00:13:11.041Z appIcon src missing: e:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-28T00:13:11.060Z splashHeader src missing: e:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-28T00:13:56.541Z splash src missing: e:\In-Accord-Apps\dist\launcher-build-win32\Images\splash.png
+2026-02-28T00:13:56.542Z appIcon src missing: e:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-28T00:13:56.596Z splashHeader src missing: e:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-28T00:16:03.267Z splash src missing: e:\In-Accord-Apps\dist\launcher-build-win32\Images\splash.png
+2026-02-28T00:16:03.268Z appIcon src missing: e:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-28T00:16:03.307Z splashHeader src missing: e:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-28T00:30:29.813Z splash src missing: e:\In-Accord-Apps\dist\launcher-build-win32\Images\splash.png
+2026-02-28T00:30:29.814Z appIcon src missing: e:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-28T00:30:29.816Z splashHeader src missing: e:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-28T00:31:09.351Z splash src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\splash.png
+2026-02-28T00:31:09.352Z appIcon src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-28T00:31:09.399Z splashHeader src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-28T00:40:16.675Z splash src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\splash.png
+2026-02-28T00:40:16.676Z appIcon src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-28T00:40:16.730Z splashHeader src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-28T00:52:46.531Z splash src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\splash.png
+2026-02-28T00:52:46.532Z appIcon src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-28T00:52:46.579Z splashHeader src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-28T01:01:38.436Z splash src missing: e:\In-Accord-Apps\dist\launcher-build-win32\Images\splash.png
+2026-02-28T01:01:38.437Z appIcon src missing: e:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-28T01:01:38.438Z splashHeader src missing: e:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-28T01:03:00.148Z splash src missing: e:\In-Accord-Apps\dist\launcher-build-win32\Images\splash.png
+2026-02-28T01:03:00.149Z appIcon src missing: e:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-28T01:03:00.150Z splashHeader src missing: e:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-28T01:05:55.557Z splash src missing: e:\In-Accord-Apps\dist\launcher-build-win32\Images\splash.png
+2026-02-28T01:05:55.558Z appIcon src missing: e:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-28T01:05:55.561Z splashHeader src missing: e:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-28T01:08:38.052Z splash src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\splash.png
+2026-02-28T01:08:38.053Z appIcon src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-28T01:08:38.149Z splashHeader src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-28T01:36:26.966Z checking canonical seq at e:\In-Accord-Apps\dist\launcher-build-win32\build-source\In-Accord.Launcher.build-seq.txt
+2026-02-28T01:36:26.967Z package.json already in sync (0.0.4)
+2026-02-28T01:36:27.017Z wrote local build hint -> e:\In-Accord-Apps\dist\launcher-build-win32\build-source\launcher-ui\build\In-Accord.Launcher.build-seq.txt
+2026-02-28T01:36:27.082Z splash src missing: e:\In-Accord-Apps\dist\launcher-build-win32\Images\splash.png
+2026-02-28T01:36:27.083Z appIcon src missing: e:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-28T01:36:27.084Z splashHeader src missing: e:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-28T01:38:40.824Z checking canonical seq candidates -> ["e:\\In-Accord-Apps\\dist\\launcher-build-win32\\In-Accord.Launcher.build-seq.txt","e:\\In-Accord-Apps\\dist\\launcher-build-win32\\build-source\\In-Accord.Launcher.build-seq.txt","e:\\In-Accord-Apps\\dist\\In-Accord.Launcher.build-seq.txt"]
+2026-02-28T01:38:40.825Z using canonical seq at e:\In-Accord-Apps\dist\launcher-build-win32\In-Accord.Launcher.build-seq.txt
+2026-02-28T01:38:40.846Z synced package.json version 0.0.4 -> 0.0.39
+2026-02-28T01:38:40.847Z wrote local build hint -> e:\In-Accord-Apps\dist\launcher-build-win32\build-source\launcher-ui\build\In-Accord.Launcher.build-seq.txt
+2026-02-28T01:38:40.849Z splash src missing: e:\In-Accord-Apps\dist\launcher-build-win32\Images\splash.png
+2026-02-28T01:38:40.850Z appIcon src missing: e:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-28T01:38:40.851Z splashHeader src missing: e:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-28T01:49:01.386Z checking canonical seq candidates -> ["E:\\In-Accord-Apps\\dist\\launcher-build-win32\\In-Accord.Launcher.build-seq.txt","E:\\In-Accord-Apps\\dist\\launcher-build-win32\\build-source\\In-Accord.Launcher.build-seq.txt","E:\\In-Accord-Apps\\dist\\In-Accord.Launcher.build-seq.txt"]
+2026-02-28T01:49:01.387Z using canonical seq at E:\In-Accord-Apps\dist\launcher-build-win32\In-Accord.Launcher.build-seq.txt
+2026-02-28T01:49:01.451Z package.json already in sync (0.0.39)
+2026-02-28T01:49:01.452Z wrote local build hint -> E:\In-Accord-Apps\dist\launcher-build-win32\build-source\launcher-ui\build\In-Accord.Launcher.build-seq.txt
+2026-02-28T01:49:01.453Z splash src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\splash.png
+2026-02-28T01:49:01.454Z appIcon src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-28T01:49:01.455Z splashHeader src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-28T01:56:00.711Z checking canonical seq candidates -> ["e:\\In-Accord-Apps\\dist\\launcher-build-win32\\In-Accord.Launcher.build-seq.txt","e:\\In-Accord-Apps\\dist\\launcher-build-win32\\build-source\\In-Accord.Launcher.build-seq.txt","e:\\In-Accord-Apps\\dist\\In-Accord.Launcher.build-seq.txt"]
+2026-02-28T01:56:00.712Z using canonical seq at e:\In-Accord-Apps\dist\launcher-build-win32\In-Accord.Launcher.build-seq.txt
+2026-02-28T01:56:00.714Z package.json already in sync (0.0.39)
+2026-02-28T01:56:00.715Z wrote local build hint -> e:\In-Accord-Apps\dist\launcher-build-win32\build-source\launcher-ui\build\In-Accord.Launcher.build-seq.txt
+2026-02-28T01:56:00.716Z splash src missing: e:\In-Accord-Apps\dist\launcher-build-win32\Images\splash.png
+2026-02-28T01:56:00.717Z appIcon src missing: e:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-28T01:56:00.717Z splashHeader src missing: e:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-28T01:59:24.648Z checking canonical seq candidates -> ["E:\\In-Accord-Apps\\dist\\launcher-build-win32\\In-Accord.Launcher.build-seq.txt","E:\\In-Accord-Apps\\dist\\launcher-build-win32\\build-source\\In-Accord.Launcher.build-seq.txt","E:\\In-Accord-Apps\\dist\\In-Accord.Launcher.build-seq.txt"]
+2026-02-28T01:59:24.649Z using canonical seq at E:\In-Accord-Apps\dist\launcher-build-win32\In-Accord.Launcher.build-seq.txt
+2026-02-28T01:59:24.696Z package.json already in sync (0.0.39)
+2026-02-28T01:59:24.697Z wrote local build hint -> E:\In-Accord-Apps\dist\launcher-build-win32\build-source\launcher-ui\build\In-Accord.Launcher.build-seq.txt
+2026-02-28T01:59:24.698Z splash src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\splash.png
+2026-02-28T01:59:24.699Z appIcon src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-28T01:59:24.699Z splashHeader src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-28T02:05:32.318Z checking canonical seq candidates -> ["e:\\In-Accord-Apps\\dist\\launcher-build-win32\\In-Accord.Launcher.build-seq.txt","e:\\In-Accord-Apps\\dist\\launcher-build-win32\\build-source\\In-Accord.Launcher.build-seq.txt","e:\\In-Accord-Apps\\dist\\In-Accord.Launcher.build-seq.txt"]
+2026-02-28T02:05:32.318Z using canonical seq at e:\In-Accord-Apps\dist\launcher-build-win32\In-Accord.Launcher.build-seq.txt
+2026-02-28T02:05:32.320Z package.json already in sync (0.0.39)
+2026-02-28T02:05:32.322Z wrote local build hint -> e:\In-Accord-Apps\dist\launcher-build-win32\build-source\launcher-ui\build\In-Accord.Launcher.build-seq.txt
+2026-02-28T02:05:32.323Z splash src missing: e:\In-Accord-Apps\dist\launcher-build-win32\Images\splash.png
+2026-02-28T02:05:32.324Z appIcon src missing: e:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-28T02:05:32.325Z splashHeader src missing: e:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-28T02:07:24.203Z checking canonical seq candidates -> ["e:\\In-Accord-Apps\\dist\\launcher-build-win32\\In-Accord.Launcher.build-seq.txt","e:\\In-Accord-Apps\\dist\\launcher-build-win32\\build-source\\In-Accord.Launcher.build-seq.txt","e:\\In-Accord-Apps\\dist\\In-Accord.Launcher.build-seq.txt"]
+2026-02-28T02:07:24.204Z using canonical seq at e:\In-Accord-Apps\dist\launcher-build-win32\In-Accord.Launcher.build-seq.txt
+2026-02-28T02:07:24.206Z package.json already in sync (0.0.39)
+2026-02-28T02:07:24.208Z wrote local build hint -> e:\In-Accord-Apps\dist\launcher-build-win32\build-source\launcher-ui\build\In-Accord.Launcher.build-seq.txt
+2026-02-28T02:07:24.209Z splash src missing: e:\In-Accord-Apps\dist\launcher-build-win32\Images\splash.png
+2026-02-28T02:07:24.268Z appIcon src missing: e:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-28T02:07:24.321Z splashHeader src missing: e:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-28T02:09:36.921Z checking canonical seq candidates -> ["e:\\In-Accord-Apps\\dist\\launcher-build-win32\\In-Accord.Launcher.build-seq.txt","e:\\In-Accord-Apps\\dist\\launcher-build-win32\\build-source\\In-Accord.Launcher.build-seq.txt","e:\\In-Accord-Apps\\dist\\In-Accord.Launcher.build-seq.txt"]
+2026-02-28T02:09:36.921Z using canonical seq at e:\In-Accord-Apps\dist\launcher-build-win32\In-Accord.Launcher.build-seq.txt
+2026-02-28T02:09:36.923Z package.json already in sync (0.0.39)
+2026-02-28T02:09:36.924Z wrote local build hint -> e:\In-Accord-Apps\dist\launcher-build-win32\build-source\launcher-ui\build\In-Accord.Launcher.build-seq.txt
+2026-02-28T02:09:36.925Z splash src missing: e:\In-Accord-Apps\dist\launcher-build-win32\Images\splash.png
+2026-02-28T02:09:36.926Z appIcon src missing: e:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-28T02:09:36.927Z splashHeader src missing: e:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-28T02:22:22.433Z bumped canonical seq E:\In-Accord-Apps\dist\launcher-build-win32\In-Accord.Launcher.build-seq.txt 39 -> 40
+2026-02-28T02:22:22.433Z checking canonical seq candidates -> ["e:\\In-Accord-Apps\\dist\\launcher-build-win32\\In-Accord.Launcher.build-seq.txt","e:\\In-Accord-Apps\\dist\\launcher-build-win32\\build-source\\In-Accord.Launcher.build-seq.txt","e:\\In-Accord-Apps\\dist\\In-Accord.Launcher.build-seq.txt"]
+2026-02-28T02:22:22.453Z using canonical seq at e:\In-Accord-Apps\dist\launcher-build-win32\In-Accord.Launcher.build-seq.txt
+2026-02-28T02:22:22.506Z synced package.json version 0.0.39 -> 0.0.40
+2026-02-28T02:22:22.557Z wrote local build hint -> e:\In-Accord-Apps\dist\launcher-build-win32\build-source\launcher-ui\build\In-Accord.Launcher.build-seq.txt
+2026-02-28T02:22:22.608Z splash src missing: e:\In-Accord-Apps\dist\launcher-build-win32\Images\splash.png
+2026-02-28T02:22:22.661Z appIcon src missing: e:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-28T02:22:22.712Z splashHeader src missing: e:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-28T02:28:04.743Z bumped canonical seq E:\In-Accord-Apps\dist\launcher-build-win32\In-Accord.Launcher.build-seq.txt 40 -> 41
+2026-02-28T02:28:04.744Z checking canonical seq candidates -> ["E:\\In-Accord-Apps\\dist\\launcher-build-win32\\In-Accord.Launcher.build-seq.txt","E:\\In-Accord-Apps\\dist\\launcher-build-win32\\build-source\\In-Accord.Launcher.build-seq.txt","E:\\In-Accord-Apps\\dist\\In-Accord.Launcher.build-seq.txt"]
+2026-02-28T02:28:04.795Z using canonical seq at E:\In-Accord-Apps\dist\launcher-build-win32\In-Accord.Launcher.build-seq.txt
+2026-02-28T02:28:04.797Z synced package.json version 0.0.40 -> 0.0.41
+2026-02-28T02:28:04.798Z wrote local build hint -> E:\In-Accord-Apps\dist\launcher-build-win32\build-source\launcher-ui\build\In-Accord.Launcher.build-seq.txt
+2026-02-28T02:28:04.848Z splash src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\splash.png
+2026-02-28T02:28:04.849Z appIcon src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
+2026-02-28T02:28:04.850Z splashHeader src missing: E:\In-Accord-Apps\dist\launcher-build-win32\Images\Discord Dev.png
