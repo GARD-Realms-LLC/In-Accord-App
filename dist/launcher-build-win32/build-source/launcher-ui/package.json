@@ -1,0 +1,78 @@
+{
+  "name": "in-accord-launcher-ui",
+  "version": "0.0.41",
+  "description": "In-Accord Launcher UI - packaged with electron-builder",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "prebuild": "node -e \"const fs=require('fs'); const p=JSON.parse(fs.readFileSync('package.json','utf8')); let v=p.version.split('.'); while(v.length<3) v.push('0'); v[2]=String(parseInt(v[2]||'0',10)+1); p.version=v.join('.'); fs.writeFileSync('package.json',JSON.stringify(p,null,2)); console.log('Auto-incremented package.json to',p.version);\"",
+    "build": "electron-builder --win portable"
+  },
+  "build": {
+    "appId": "com.inaccord.launcher",
+    "productName": "In-Accord Launcher",
+    "artifactName": "In-Accord Launcher.exe",
+    "beforePack": "build/beforePack.cjs",
+    "afterPack": "build/afterPack.cjs",
+    "afterAllArtifactBuild": "build/afterAllArtifactBuild.cjs",
+    "files": [
+      "**/*",
+      "../**",
+      "../Images/**",
+      "!node_modules/*/{CHANGELOG.md,README.md,readme.md,license,LICENSE*}"
+    ],
+    "directories": {
+      "output": "../../.builder"
+    },
+    "extraFiles": [
+      "../launcher.js"
+    ],
+    "extraResources": [
+      {
+        "from": "../Images/splash.png",
+        "to": "splash.png"
+      },
+      {
+        "from": "../Images/background.png",
+        "to": "background.png"
+      },
+      {
+        "from": "../Images/Launcher-Installer.png",
+        "to": "Launcher-Installer.png"
+      },
+      {
+        "from": "../Images/install.png",
+        "to": "install.png"
+      },
+      {
+        "from": "../Images/stable.png",
+        "to": "stable.png"
+      },
+      {
+        "from": "../Images/ptb.png",
+        "to": "ptb.png"
+      },
+      {
+        "from": "../Images/canary.png",
+        "to": "canary.png"
+      },
+      {
+        "from": "../Images/Discord Dev.png",
+        "to": "development.png"
+      }
+    ],
+    "win": {
+      "icon": "build/icon.ico",
+      "target": [
+        "portable"
+      ]
+    },
+    "portable": {
+      "requestExecutionLevel": "user"
+    }
+  },
+  "devDependencies": {
+    "electron": "^39.2.7",
+    "electron-builder": "^26.8.1"
+  }
+}
